@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pretext xmlns:xi="http://www.w3.org/2001/XInclude" xml:lang="en-US">
+  <docinfo>
+<macros>
+{\labelitemi}{$\diamond$}
+\def\arraystretch{1.5}
+\newcommand{\contentsfinish}{}
+\newcommand{\separator}{\begin{center}\rule{\columnwidth}{\arrayrulewidth}\end{center}}
+\newcommand{\tosay}[1]{\begin{center}\text{\fbox{\scriptsize{#1}}}\end{center}}
+\renewcommand{\cftsecfont}{}
+\renewcommand{\cftsecpagefont}{}
+\renewcommand{\descriptionlabel}[1]{\hspace{\labelsep}\smallcaps{#1}}
+\def\oldequation{\equation}
+\def\endoldequation{\endequation}
+\newcommand{\nl}{
+}
+\newcommand{\runin}[1]{\textls[50]{\otherscshape #1}}
+\renewcommand{\sectionmark}[1]{}
+\renewcommand{\subsectionmark}[1]{}
+\renewcommand{\sectionmark}[1]{\markboth{{\thesection}.\ \smallcaps{#1}}{\thesection.\ \smallcaps{#1}}}
+\renewcommand{\subsectionmark}[1]{}
+\renewcommand{\sectionmark}[1]{\markboth{{\scriptsize\thesection}.\ \smallcaps{#1}}{}}
+\renewcommand{\subsectionmark}[1]{}
+%\renewcommand{\headrulewidth}{0pt}
+%\renewcommand{\headrulewidth}{0.5pt}
+\newcommand{\makedefaultsection}[2][true]{
+}
+\newcommand{\timestamp}{{\color{red}Last updated: {\currenttime\ (UTC), \today}}}
+\renewcommand{\le}{\leqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\ge}{\geqslant}
+\newcommand{\ideal}[1]{\left\langle\, #1 \,\right\rangle}
+\newcommand{\subgp}[1]{\left\langle\, #1 \,\right\rangle}
+\def\p{\varphi}
+\def\isomorphic{\cong}
+\def\Gal{\text{Gal}}
+\def\im{\text{im}}
+\def\normal{\vartriangleleft}
+\renewcommand{\qedsymbol}{$\checkmark$}
+\def\lcm{{\text{lcm}\,}}
+\newcommand{\q}[1]{{\color{red} {#1}}}
+\newcommand{\startimportant}[1]{\end{[{Hint:} #1]\end}}
+\renewcommand{\textcircled}[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=2pt,color=red] (char) {#1};}}
+\newcommand{\crossout}[1]{\tikz[baseline=(char.base)]{\node[mynode, cross out,draw] (char) {#1};}}
+\newcommand{\set}[1]{\left\{ {#1} \right\}}
+\newcommand{\setof}[2]{{\left\{#1\,\colon\,#2\right\}}}
+\def\C{{\mathbb C}}
+\def\Z{{\mathbb Z}}
+\def\bF{{\mathbb F}}
+\def\Q{{\mathbb Q}}
+\def\N{{\mathbb N}}
+\def\R{{\mathbb R}}
+\newcommand{\h}[1]{{\textbf{#1}}}
+\def\presnotes{}
+</macros>
+<latex-image-preamble>
+\usepackage{tikz}
+\usepackage{url}
+\usepackage{tkz-graph}
+\usepackage{tkz-euclide}
+\usetikzlibrary{patterns}
+\usetikzlibrary{positioning}
+\usetikzlibrary{matrix,arrows}
+\usetikzlibrary{calc}
+\usetikzlibrary{shapes}
+\usetikzlibrary{through,intersections,decorations,shadows,fadings}
+\usepackage{pgfplots}
+</latex-image-preamble>
+<!-- <search>
+            <google>
+                <cx>017464805646507420634:civa1brpuu6</cx>
+            </google>
+        </search> -->
+<rename element="principle">Discussion</rename>
+<rename element="heuristic">Cube Move</rename>
+<rename element="insight">Screencast</rename>
+<rename element="hypothesis">Warmup</rename>
+  </docinfo>
+  <book>
+    <title>Explorations in Modern Mathematics</title>
+
+    
+    	
+    <frontmatter>
+		<titlepage>
+	  
+			  <author>
+					<personname>Mike Janssen</personname>
+					<department>Mathematics and Statistics Department</department>
+					<institution>Dordt University</institution>
+					<email>mike.janssen@dordt.edu</email>
+				</author>
+		
+		
+	  
+			  </titlepage>
+
+		<preface xml:id="Sec-Introduction">
+		  <title>Introduction</title>
+		  <p>
+			In January 2017, Dr. Francis E. Su, president of the Mathematical Association of America, gave his retiring presidential address, <em><url href="https://mathyawp.wordpress.com/2017/01/08/mathematics-for-human-flourishing/">Mathematics for Human Flourishing</url></em><fn>In 2018, he gave an expanded version of this talk as a First Mondays address at Dordt College.</fn>. In this address and the subsequent book <xref ref="Su2020" />, Su describes ways that the practice of mathematics can help human beings cultivate virtues which in turn enable us live the good life. He identifies several desires that encourage the cultivation of virtue, among them <em>exploration</em>, <em>play</em>, <em>truth</em>, <em>justice</em>, and <em>beauty</em>.
+		  </p>
+  
+		  <p>
+			This book uses guided exploration to investigate mathematical topics that specifically meet those desires. We will explore the Rubik's cube and other puzzles and thus <em>play</em> with mathematics. We'll see how deductive reasoning can be used to argue for <em>truth</em>, while also exploring its limitations. <em>Justice</em> will be explored by application of mathematics to democracy and the networks used to exploit our fellow image-bearers. And we'll finish the semester with projects that explore <em>beauty</em> in mathematics.
+		  </p>
+  
+		  <references>
+			<biblio xml:id="Su2020">
+				F. E. Su, C. Jackson, <em>Mathematics for Human Flourishing</em>. Yale University Press, 2020.
+			</biblio>
+		  </references>
+		</preface>
+
+		<preface xml:id="Sec-NoteToInstructors">
+		  <title>A Note to Students</title>
+		  <p>
+			This work was compiled with some strong opinions.
+		  </p>
+		  <p>
+			The first is that, as with a sport, instrument, or nearly any other skill, you can't learn mathematics without doing mathematics. Thus, there are few worked-out examples in this book. We would rather spend a long time in productive struggle to understand an idea deeply than be spoon-fed solutions.
+		  </p>
+		  <p>
+			The second is that most people's ideas of what counts as a mathematical question are far too narrow. Mathematics is not merely geometry, algebra, and calculus (maybe with a dash of statistics for good measure). Mathematics is a way of thinking; it's about abstraction, deductive reasoning, and problem-solving. This way of thinking can be applied in surprising places, and can lead to delight and wonder at the world God has made. We will explore some of these questions this semester.
+		  </p>
+		  
+		</preface>
+	</frontmatter>
+    	
+      
+	
+	
+    <part xml:id="part-play">
+		<title>Play</title>
+		<introduction>
+			<p>
+				
+			</p>
+		</introduction>
+		
+		
+		<chapter xml:id="chap-cube">
+			<title>The Cube</title>
+			
+			<introduction>
+				<p>
+				
+				</p>
+			</introduction>
+			
+			
+			<section>
+				<title></title>
+			
+				<introduction>
+					<p>
+					
+					</p>
+				</introduction>
+			
+			
+				<conclusion>
+					<p>
+					
+					</p>
+				</conclusion>
+			
+			
+				<exercises>
+				
+				
+				</exercises>
+				
+			</section>
+			
+			<section>
+				<title></title>
+				
+				<introduction>
+					<p>
+					
+					</p>
+				</introduction>
+				
+				
+				<conclusion>
+					<p>
+					
+					</p>
+				</conclusion>
+				
+				
+				<exercises>
+				
+				
+				</exercises>
+				
+			</section>
+
+			
+		</chapter>
+		
+		
+		<chapter xml:id="chap-chess">
+			<title>Chess</title>
+			<introduction>
+			
+			</introduction>
+			
+			
+			
+			
+		</chapter>
+		
+		
+		
+	</part>
+	
+	
+	
+	<part xml:id="part-truth">
+		<title>Truth</title>
+		
+		<chapter xml:id="chap-reasoning">
+			<title>Inductive and Deductive Reasoning</title>
+			
+			
+			
+		</chapter>
+		
+		
+		
+		<chapter xml:id="chap-logic">
+			<title>Mathematical Logic</title>
+			
+			
+			
+		</chapter>
+		
+		<chapter xml:id="chap-incompleteness">
+			<title>Incompleteness</title>
+			
+			
+			
+		</chapter>
+		
+		
+	
+	
+	
+	</part>
+	
+	
+	
+	<part xml:id="part-power">
+		<title>Power</title>
+		
+		 <chapter xml:id="chap-dynamical-systems">
+		 	<title>Discrete Dynamical Systems</title>
+			 
+			 
+		 </chapter>
+		 
+		 
+		 <chapter xml:id="chap-graphs">
+		 	<title>Graphs and Networks</title>
+			 
+			 
+		 </chapter>
+		 
+		 
+		 <chapter xml:id="chap-coding">
+		 	<title>Modular Arithmetic and Coding Theory</title>
+			 
+			 
+		 </chapter>
+		 	
+		
+		
+	</part>
+	
+	
+	
+	<part xml:id="part-justice">
+		<title>Justice</title>
+		
+		<chapter xml:id="chap-voting">
+			<title>Voting</title>
+			
+			
+			
+		</chapter>
+		
+		<chapter xml:id="chap-apportionment">
+			<title>Apportionment</title>
+			
+			
+		</chapter>
+		
+		
+		<chapter xml:id="chap-redistricting">
+			<title>Redistricting</title>
+			
+			
+			
+		</chapter>
+		
+		
+		
+		
+	</part>
+	
+	
+	
+	<part xml:id="part-beauty">
+		<title>Beauty</title>
+		
+		<chapter xml:id="chap-fibonacci">
+			<title>The Fibonacci Sequence</title>
+			
+		</chapter>
+		
+		<chapter xml:id="chap-fractals">
+			<title>Fractal Geometry</title>
+			
+			
+		</chapter>
+		
+		
+		<chapter xml:id="chap-art">
+			<title>Mathematics and the Arts</title>
+			
+			
+		</chapter>
+		
+		
+
+			
+		
+		
+		
+		
+		
+	</part>
+		
+			
+			
+
+		
+	
+	
+
+
+
+
+
+
+	<backmatter>
+	  <index>
+		<title>Index</title>
+		<index-list />
+	  </index>
+	</backmatter>
+
+
+    
+    
+    
+    <!--<xi:include href="./Truth.ptx" />
+    <xi:include href="./Justice.ptx" />    
+     <backmatter>
+      <index>
+        <title>Index</title>
+        <index-list />
+      </index>
+    </backmatter>-->
+  </book>
+</pretext>

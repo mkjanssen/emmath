@@ -1,0 +1,10 @@
+{
+  "clips" : [
+    {
+      "content" : "<section>\n<title><\/title>\n\n<introduction>\n\t<p>\n\t\n\t<\/p>\n<\/introduction>\n\n\n<conclusion>\n\t<p>\n\t\n\t<\/p>\n<\/conclusion>\n\n\n<exercises>\n\n\n<\/exercises>\n\n<\/section>",
+      "name" : "New Section",
+      "shortcut" : "cmd-alt-ctrl-shift-n",
+      "trigger" : ";newsec"
+    }
+  ]
+}

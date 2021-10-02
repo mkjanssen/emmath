@@ -1,0 +1,60 @@
+\documentclass[tikz]{standalone} %\usetikzlibrary{calc} 
+\usepackage{rubikcube,rubikrotation,rubikpatterns,rubiktwocube} 
+\newcommand{\CycleThreeEdgesFlipTwo}{[CycleThreeEdgesFlipTwo],F,R,U,Rp,Up,Fp}%
+\newcommand{\cyclethreeedgesfliptwo}{\CycleThreeEdgesFlipTwo}%
+\standaloneconfig{border=0bp}
+%
+%----corner sequences--------------------------
+\newcommand{\AllYellow}{[allyellow],R,U,Rp,U,R,Up,Up,Rp}% = SUNE  %cross -->allyellow
+\newcommand{\allyellow}{\AllYellow}%
+\newcommand{\CycleThreeCorners}{[cyclethreecorners],Lp,U,R,Up,L,U,Rp,Up}%
+\newcommand{\cyclethreecorners}{\CycleThreeCorners}%
+\newcommand{\CornerRotation}{[CornerRotation],Up,Rp,Dp,R,U,Rp,D,R}
+\newcommand{\cornerrotate}{[cornerrotate],Up,Rp,Dp,R,U,Rp,D,R}
+\newcommand{\SwapTwoCorners}{[swaptwocorners],Rp,F,Rp,B2,R,Fp,Rp,B2,R2,Up}
+\newcommand{\swaptwocorners}{\SwapTwoCorners}
+\newcommand{\CornerOrientation}{[CornerOrientation],Rp,D2,R,Bp,U2,B,Rp,D2,R,Bp,U2,B} % (R^{-1} D^2 R B^{-1} U^2 B)^2
+\newcommand{\EdgeOrientation}{[EdgeOrientation],Sr,U,Sr,U,Sr,U2,Srp,U,Srp,U,Srp,U2}
+%
+%% brace and bracket macros 
+\newcommand{\Rubikbracket}[1]{$\left(\mbox{#1}\right)$}
+\newcommand{\Rubikbrace}[1]{$\left\{\mbox{#1}\right\}$}
+\newcommand{\cubenumber}[1]{\strut\raisebox{1cm}{#1}}
+\definecolor{ptblue}{HTML}{2A5EA4}
+\begin{document}
+%\begin{figure}[htb]
+\centering%
+%\RubikFaceUpAll{W}
+%\RubikFaceFrontAll{O}
+%\RubikFaceRightAll{G}
+\RubikCubeSolvedWY
+%\RubikRotation{random,120}
+\ShowCube{5cm}{0.6}{%
+\RubikRotation{\CornerOrientation,\CornerOrientation}
+\DrawRubikCubeSF%
+%%-----------------
+%% Right
+%\draw[line width=2pt,color=ptblue,<-] (3.5,2) -- (5.3, 2);
+%\node (R) at (4.6, 2.5)  [ptblue]{\textbf{\textsf{R}}};
+%\node (x) at (5.8, 2)  [ptblue]{\textbf{\textsf{x}}};
+%%Left
+%\draw[line width=2pt,color=ptblue,<-] (-0.2,2) -- (-1.5, 2);
+%\node (L) at (-1.1, 2.5)  [ptblue]{\textbf{\textsf{L}}};
+%%Up
+%\draw[line width=2pt,color=ptblue,<-] (2, 3.5) -- (2, 5.5);
+%\node (U) at (1.4, 4.7)  [ptblue]{\textbf{\textsf{U}}};
+%\node (y) at (2, 6.1)  [ptblue]{\textbf{\textsf{y}}};
+%%Down
+%\draw[line width=2pt,color=ptblue,<-] (2, -0.2) -- (2, -1.5);
+%\node (D) at (2.6, -1.1)  [ptblue]{\textbf{\textsf{D}}};
+%%Front
+%\draw[line width=2pt,color=ptblue,<-] (1.5, 1.5) -- (0, -1);
+%\node (F) at (0.7, -0.7)  [ptblue]{\textbf{\textsf{F}}};
+%\node (z) at (-0.3, -1.4)  [ptblue]{\textbf{\textsf{z}}};
+%%Back
+%\draw[line width=2pt,color=ptblue,<-] (3.2, 4.2) -- (4, 5.5);
+%\node (B) at (4.4, 5)  [ptblue]{\textbf{\textsf{B}}};
+%%
+}
+%\end{figure}
+\end{document}

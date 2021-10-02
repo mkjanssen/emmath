@@ -1,0 +1,66 @@
+\documentclass[tikz]{standalone} %\usetikzlibrary{calc} 
+\usepackage{rubikcube,rubikrotation,rubikpatterns,rubiktwocube} 
+\newcommand{\CycleThreeEdgesFlipTwo}{[CycleThreeEdgesFlipTwo],F,R,U,Rp,Up,Fp}%
+\newcommand{\cyclethreeedgesfliptwo}{\CycleThreeEdgesFlipTwo}%
+%\standaloneconfig{border=0bp}
+%
+%----corner sequences--------------------------
+\newcommand{\AllYellow}{[allyellow],R,U,Rp,U,R,Up,Up,Rp}% = SUNE  %cross -->allyellow
+\newcommand{\allyellow}{\AllYellow}%
+\newcommand{\CycleThreeCorners}{[cyclethreecorners],Lp,U,R,Up,L,U,Rp,Up}%
+\newcommand{\cyclethreecorners}{\CycleThreeCorners}%
+\newcommand{\cornerrotate}{[cornerrotate],Up,Rp,Dp,R,U,Rp,D,R}
+\newcommand{\SwapTwoCorners}{[swaptwocorners],Rp,F,Rp,B2,R,Fp,Rp,B2,R2,Up}
+\newcommand{\swaptwocorners}{\SwapTwoCorners}
+%
+%% brace and bracket macros 
+\newcommand{\Rubikbracket}[1]{$\left(\mbox{#1}\right)$}
+\newcommand{\Rubikbrace}[1]{$\left\{\mbox{#1}\right\}$}
+\newcommand{\cubenumber}[1]{\strut\raisebox{1cm}{#1}}
+\definecolor{ptblue}{HTML}{2A5EA4}
+\begin{document}
+\begin{figure}[htb]
+\centering%
+\RubikCubeGreyWY%
+\RubikFaceUp{W}{W}{X}%
+            {W}{W}{X}%
+            {W}{W}{X}%
+\RubikFaceLeft{X}{X}{X}%
+              {X}{X}{X}%
+              {X}{X}{W}
+\RubikFaceFront{X}{X}{W}%
+               {X}{O}{W}%
+               {X}{X}{X}
+\ShowCube{1cm}{0.5}{\DrawRubikCubeSF}%
+\end{figure}
+\end{document}
+%\RubikFaceUpAll{W}
+%\RubikFaceFrontAll{O}
+%\RubikFaceRightAll{G}
+%\RubikCubeSolvedWY
+\RubikCubeGreyWY%
+\RubikFaceUp{W}{W}{X}%
+            {W}{W}{X}%
+            {W}{W}{X}%
+\RubikFaceLeft{X}{X}{X}%
+              {X}{X}{X}%
+              {X}{X}{W}
+\RubikFaceFront{X}{X}{W}%
+               {X}{X}{W}%
+               {X}{X}{X}
+\ShowCube{1cm}{0.5}{\DrawRubikCubeSF}%
+%\DrawRubikCubeRU%
+%%-----------------
+%% Right
+%\RubikCubeSolvedWY%
+%\ShowCube{1cm}{0.5}{\DrawRubikCubeRU}
+%\RubikRotation{Sr}
+%\hspace{0.5in}%
+%\SequenceBraceA{$S_r$}{%
+%                     \ShowSequence{}{\Rubik}{\SequenceLong}%
+%                     }
+%\hspace{0.5in}%
+%\ShowCube{1cm}{0.5}{\DrawRubikCubeRU}
+%%%
+%}
+\end{figure}

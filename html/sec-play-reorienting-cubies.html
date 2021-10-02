@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*       on 2021-10-01T21:15:30-05:00       *-->
+<!--*   A recent stable commit (2020-08-09):   *-->
+<!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Reorienting Cubies</title>
+<meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['\\(','\\)']]
+    },
+    asciimath2jax: {
+        ignoreClass: ".*",
+        processClass: "has_am"
+    },
+    jax: ["input/AsciiMath"],
+    extensions: ["asciimath2jax.js"],
+    TeX: {
+        extensions: ["extpfeil.js", "autobold.js", "https://pretextbook.org/js/lib/mathjaxknowl.js", "AMScd.js", ],
+        // scrolling to fragment identifiers is controlled by other Javascript
+        positionToHash: false,
+        equationNumbers: { autoNumber: "none", useLabelIds: true, },
+        TagSide: "right",
+        TagIndent: ".8em",
+    },
+    // HTML-CSS output Jax to be dropped for MathJax 3.0
+    "HTML-CSS": {
+        scale: 88,
+        mtextFontInherit: true,
+    },
+    CommonHTML: {
+        scale: 88,
+        mtextFontInherit: true,
+    },
+});
+</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML-full"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.min.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.sticky.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.espy.min.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/0.13/pretext.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/0.13/pretext_add_on.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script xmlns:svg="http://www.w3.org/2000/svg">sagecellEvalName='Evaluate (Sage)';
+</script><link xmlns:svg="http://www.w3.org/2000/svg" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/pretext.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/pretext_add_on.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/banner_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/toc_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/knowls_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/style_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/colors_blue_grey.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/setcolors.css" rel="stylesheet" type="text/css">
+<!-- 2019-10-12: Temporary - CSS file for experiments with styling --><link xmlns:svg="http://www.w3.org/2000/svg" href="developer.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<a class="assistive" href="#content">Skip to main content</a><div xmlns:svg="http://www.w3.org/2000/svg" id="latex-macros" class="hidden-content" style="display:none">\({\labelitemi}{$\diamond$}
+\def\arraystretch{1.5}
+\newcommand{\contentsfinish}{}
+\newcommand{\separator}{\begin{center}\rule{\columnwidth}{\arrayrulewidth}\end{center}}
+\newcommand{\tosay}[1]{\begin{center}\text{\fbox{\scriptsize{#1}}}\end{center}}
+\renewcommand{\cftsecfont}{}
+\renewcommand{\cftsecpagefont}{}
+\renewcommand{\descriptionlabel}[1]{\hspace{\labelsep}\smallcaps{#1}}
+\def\oldequation{\equation}
+\def\endoldequation{\endequation}
+\newcommand{\nl}{
+}
+\newcommand{\runin}[1]{\textls[50]{\otherscshape #1}}
+\renewcommand{\sectionmark}[1]{}
+\renewcommand{\subsectionmark}[1]{}
+\renewcommand{\sectionmark}[1]{\markboth{{\thesection}.\ \smallcaps{#1}}{\thesection.\ \smallcaps{#1}}}
+\renewcommand{\subsectionmark}[1]{}
+\renewcommand{\sectionmark}[1]{\markboth{{\scriptsize\thesection}.\ \smallcaps{#1}}{}}
+\renewcommand{\subsectionmark}[1]{}
+\newcommand{\makedefaultsection}[2][true]{
+}
+\newcommand{\timestamp}{{\color{red}Last updated: {\currenttime\ (UTC), \today}}}
+\renewcommand{\le}{\leqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\ge}{\geqslant}
+\newcommand{\ideal}[1]{\left\langle\, #1 \,\right\rangle}
+\newcommand{\subgp}[1]{\left\langle\, #1 \,\right\rangle}
+\def\p{\varphi}
+\def\isomorphic{\cong}
+\def\Gal{\text{Gal}}
+\def\im{\text{im}}
+\def\normal{\vartriangleleft}
+\renewcommand{\qedsymbol}{$\checkmark$}
+\def\lcm{{\text{lcm}\,}}
+\newcommand{\q}[1]{{\color{red} {#1}}}
+\newcommand{\startimportant}[1]{\end{[{Hint:} #1]\end}}
+\renewcommand{\textcircled}[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=2pt,color=red] (char) {#1};}}
+\newcommand{\crossout}[1]{\tikz[baseline=(char.base)]{\node[mynode, cross out,draw] (char) {#1};}}
+\newcommand{\set}[1]{\left\{ {#1} \right\}}
+\newcommand{\setof}[2]{{\left\{#1\,\colon\,#2\right\}}}
+\def\C{{\mathbb C}}
+\def\Z{{\mathbb Z}}
+\def\bF{{\mathbb F}}
+\def\Q{{\mathbb Q}}
+\def\N{{\mathbb N}}
+\def\R{{\mathbb R}}
+\newcommand{\h}[1]{{\textbf{#1}}}
+\def\presnotes{}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\)</div>
+<header id="masthead" class="smallbuttons"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><a href="book-1.html"><span class="title">Explorations in Modern Mathematics</span></a></h1>
+<p class="byline">Mike Janssen</p>
+</div>
+</div></div>
+<nav xmlns:svg="http://www.w3.org/2000/svg" id="primary-navbar" class="navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active" aria-label="Show or hide table of contents sidebar">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
+<a class="index-button toolbar-item button" href="index-14.html" title="Index">Index</a><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="sec-play-moving-cubies.html" title="Previous">Prev</a><a id="upbutton" class="up-button button toolbar-item" href="chap-cube.html" title="Up">Up</a><a id="nextbutton" class="next-button button toolbar-item" href="references-2.html" title="Next">Next</a></span>
+</div>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="sec-play-moving-cubies.html" title="Previous">Prev</a><a class="up-button button toolbar-item" href="chap-cube.html" title="Up">Up</a><a class="next-button button toolbar-item" href="references-2.html" title="Next">Next</a>
+</div>
+</div></nav></header><div class="page">
+<div xmlns:svg="http://www.w3.org/2000/svg" id="sidebar-left" class="sidebar" role="navigation"><div class="sidebar-content">
+<nav id="toc"><ul>
+<li class="link frontmatter">
+<a href="frontmatter-1.html" data-scroll="frontmatter-1"><span class="title">Front Matter</span></a><ul>
+<li><a href="colophon-1.html" data-scroll="colophon-1">Colophon</a></li>
+<li><a href="Sec-Introduction.html" data-scroll="Sec-Introduction">Introduction</a></li>
+<li><a href="sec-NoteToStudents.html" data-scroll="sec-NoteToStudents">A Note to Students</a></li>
+<li><a href="sec-NoteToInstructors.html" data-scroll="sec-NoteToInstructors">A Note to Instructors</a></li>
+</ul>
+</li>
+<li class="link part"><a href="part-play.html" data-scroll="part-play"><span class="codenumber">I</span> <span class="title">Play</span></a></li>
+<li class="link">
+<a href="chap-cube.html" data-scroll="chap-cube"><span class="codenumber">1</span> <span class="title">The Cube</span></a><ul>
+<li><a href="sec-play-intro.html" data-scroll="sec-play-intro">Introduction and Background</a></li>
+<li><a href="sec-play-exploring-the-cube.html" data-scroll="sec-play-exploring-the-cube">Exploring and Describing the Cube</a></li>
+<li><a href="sec-play-moving-cubies.html" data-scroll="sec-play-moving-cubies">Moving Cubies</a></li>
+<li><a href="sec-play-reorienting-cubies.html" data-scroll="sec-play-reorienting-cubies" class="active">Reorienting Cubies</a></li>
+<li><a href="references-2.html" data-scroll="references-2">References</a></li>
+</ul>
+</li>
+<li class="link part"><a href="part-truth.html" data-scroll="part-truth"><span class="codenumber">II</span> <span class="title">Truth</span></a></li>
+<li class="link"><a href="chap-reasoning.html" data-scroll="chap-reasoning"><span class="codenumber">2</span> <span class="title">Inductive and Deductive Reasoning</span></a></li>
+<li class="link"><a href="chap-logic.html" data-scroll="chap-logic"><span class="codenumber">3</span> <span class="title">Mathematical Logic</span></a></li>
+<li class="link"><a href="chap-incompleteness.html" data-scroll="chap-incompleteness"><span class="codenumber">4</span> <span class="title">Incompleteness</span></a></li>
+<li class="link part"><a href="part-power.html" data-scroll="part-power"><span class="codenumber">III</span> <span class="title">Power</span></a></li>
+<li class="link"><a href="chap-dynamical-systems.html" data-scroll="chap-dynamical-systems"><span class="codenumber">5</span> <span class="title">Discrete Dynamical Systems</span></a></li>
+<li class="link"><a href="chap-graphs.html" data-scroll="chap-graphs"><span class="codenumber">6</span> <span class="title">Graphs and Networks</span></a></li>
+<li class="link"><a href="chap-coding.html" data-scroll="chap-coding"><span class="codenumber">7</span> <span class="title">Modular Arithmetic and Coding Theory</span></a></li>
+<li class="link part"><a href="part-justice.html" data-scroll="part-justice"><span class="codenumber">IV</span> <span class="title">Justice</span></a></li>
+<li class="link"><a href="chap-voting.html" data-scroll="chap-voting"><span class="codenumber">8</span> <span class="title">Voting</span></a></li>
+<li class="link"><a href="chap-apportionment.html" data-scroll="chap-apportionment"><span class="codenumber">9</span> <span class="title">Apportionment</span></a></li>
+<li class="link"><a href="chap-redistricting.html" data-scroll="chap-redistricting"><span class="codenumber">10</span> <span class="title">Redistricting</span></a></li>
+<li class="link part"><a href="part-beauty.html" data-scroll="part-beauty"><span class="codenumber">V</span> <span class="title">Beauty</span></a></li>
+<li class="link"><a href="chap-fibonacci.html" data-scroll="chap-fibonacci"><span class="codenumber">11</span> <span class="title">The Fibonacci Sequence</span></a></li>
+<li class="link"><a href="chap-fractals.html" data-scroll="chap-fractals"><span class="codenumber">12</span> <span class="title">Fractal Geometry</span></a></li>
+<li class="link"><a href="chap-art.html" data-scroll="chap-art"><span class="codenumber">13</span> <span class="title">Mathematics and the Arts</span></a></li>
+<li class="link backmatter"><a href="backmatter-1.html" data-scroll="backmatter-1"><span class="title">Back Matter</span></a></li>
+<li class="link"><a href="index-14.html" data-scroll="index-14"><span class="title">Index</span></a></li>
+</ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://pretextbook.org">Authored in PreTeXt</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/badge.gif" alt="Powered by MathJax"></a></nav></div>
+</div></div>
+<main class="main"><div id="content" class="pretext-content"><section xmlns:svg="http://www.w3.org/2000/svg" class="section" id="sec-play-reorienting-cubies"><h2 class="heading hide-type">
+<span class="type">Section</span> <span class="codenumber">1.4</span> <span class="title">Reorienting Cubies</span>
+</h2>
+<article class="assemblage assemblage-like" id="assemblage-7"><h6 class="heading"><span class="title">Motivating Questions.</span></h6>
+<p id="p-62">In this section, we will explore the following questions. <ol class="decimal">
+<li id="li-58">How can we change the orientation of the corner cubies?</li>
+<li id="li-59">How can we change the orientation of the edge cubies?</li>
+<li id="li-60">How can we apply our four Cube moves to solve the Cube?</li>
+</ol></p></article><section class="introduction" id="introduction-6"><p id="p-63">In <a href="sec-play-moving-cubies.html" class="internal" title="Section 1.3: Moving Cubies">Section 1.3</a>, we considered ways of moving certain edge and corner cubies. The key that allows us to use <a class="xref" data-knowl="./knowl/cube-move-cr.html" title="Cube Move 1.3.1: Moving Corners">Cube Move 1.3.1</a> and <a class="xref" data-knowl="./knowl/cube-move-er.html" title="Cube Move 1.3.4: Moving Edges">Cube Move 1.3.4</a> to put your cubies in the correct location is that, when executed correctly, they affect precisely three cubies each, leaving the rest in the same place with the same orientation at the end of the move.</p>
+<p id="p-64">As we embark on learning our last two Cube moves, it's worth taking some time to practice what we already know. Each unsolved Cube is a puzzle, solvable by clever application of these moves.</p></section><p id="p-65">We begin by exploring a move that reorients two corners.</p>
+<article class="heuristic theorem-like" id="cube-move-co"><h6 class="heading">
+<span class="type">Cube Move</span><span class="space"> </span><span class="codenumber">1.4.1</span><span class="period">.</span>
+</h6>
+<p id="p-66">Consider the following sequence of Cube moves.</p>
+<div class="displaymath">
+\begin{equation*}
+(R' D^2 R B' U^2 B)^2
+\end{equation*}
+</div></article><article class="exploration project-like" id="expl-cube-move-co"><h6 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">1.4.1</span><span class="period">.</span><span class="space"> </span><span class="title">Reorienting Corners.</span>
+</h6>
+<p id="p-67">The Cube move described in <a class="xref" data-knowl="./knowl/cube-move-co.html" title="Cube Move 1.4.1">Cube Move 1.4.1</a> reorients two corners: one on the Up face, and one on the Down face.</p>
+<ol class="decimal">
+<li id="li-61">By performing this move several times, identify on the blank Cube below what is happening to the Up face of the Cube. Describe what is happening to the Down face as well.</li>
+<li id="li-62">Using the cubie notation described in <a class="xref" data-knowl="./knowl/def-cubie-names.html" title="Definition 1.2.7">Definition 1.2.7</a>, describe what is happens to the Up and Down faces of the Cube after performing this move.</li>
+<li id="li-63">Given what this move does, exercise your human creativity and suggest a short name/abbreviation for this move.</li>
+<li id="li-64">What is the order of the move?</li>
+<li id="li-65">Practice the move until you can reliably execute it.</li>
+</ol>
+<figure class="figure figure-like" id="fig-cube-move-e"><div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="./images/grey_cube.svg" class="contained" alt=""></div>
+<figcaption><span class="type">Figure</span><span class="space"> </span><span class="codenumber">1.4.2<span class="period">.</span></span><span class="space"> </span>A blank cube.</figcaption></figure></article><p id="p-68">Our last Cube move will reorient two edge cubies. Recall <a class="xref" data-knowl="./knowl/def-sr.html" title="Definition 1.3.3">Definition 1.3.3</a>.</p>
+<article class="heuristic theorem-like" id="cube-move-eo"><h6 class="heading">
+<span class="type">Cube Move</span><span class="space"> </span><span class="codenumber">1.4.3</span><span class="period">.</span>
+</h6>
+<p id="p-69">Consider the following sequence of Cube moves.</p>
+<div class="displaymath">
+\begin{equation*}
+(S_R U)^3 U (S_R ' U)^3 U
+\end{equation*}
+</div></article><article class="exploration project-like" id="expl-cube-move-co"><h6 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">1.4.2</span><span class="period">.</span><span class="space"> </span><span class="title">Reorienting Edges.</span>
+</h6>
+<p id="p-70">The Cube move described in <a class="xref" data-knowl="./knowl/cube-move-co.html" title="Cube Move 1.4.1">Cube Move 1.4.1</a> reorients two edges on the Up face.</p>
+<ol class="decimal">
+<li id="li-66">By performing this move several times, identify on the blank Cube below what is happening to the Up face of the Cube.</li>
+<li id="li-67">Using the cubie notation described in <a class="xref" data-knowl="./knowl/def-cubie-names.html" title="Definition 1.2.7">Definition 1.2.7</a>, describe what is happens to the Up face of the Cube after performing this move.</li>
+<li id="li-68">Given what this move does, exercise your human creativity and suggest a short name/abbreviation for this move.</li>
+<li id="li-69">What is the order of the move?</li>
+<li id="li-70">Practice the move until you can reliably execute it.</li>
+</ol>
+<figure class="figure figure-like" id="fig-cube-move-e"><div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="./images/grey_cube.svg" class="contained" alt=""></div>
+<figcaption><span class="type">Figure</span><span class="space"> </span><span class="codenumber">1.4.4<span class="period">.</span></span><span class="space"> </span>A blank cube.</figcaption></figure></article><article class="assemblage assemblage-like" id="assemblage-8"><h6 class="heading"><span class="title">Solving the Cube.</span></h6>
+<p id="p-71">When you can consistently perform <a class="xref" data-knowl="./knowl/cube-move-cr.html" title="Cube Move 1.3.1: Moving Corners">Cube Move 1.3.1</a>, <a class="xref" data-knowl="./knowl/cube-move-co.html" title="Cube Move 1.4.1">Cube Move 1.4.1</a>, <a class="xref" data-knowl="./knowl/cube-move-er.html" title="Cube Move 1.3.4: Moving Edges">Cube Move 1.3.4</a>, and <a class="xref" data-knowl="./knowl/cube-move-eo.html" title="Cube Move 1.4.3">Cube Move 1.4.3</a>, you can use them to solve the Cube. You can use any strategy you want, but here is one to consider.</p>
+<ol class="decimal">
+<li id="li-71">Put the corners in the correct <em class="emphasis">location</em>.</li>
+<li id="li-72">Put the edges in the correct <em class="emphasis">location</em>.</li>
+<li id="li-73">
+<em class="emphasis">Reorient</em> any corners that need reorienting.</li>
+<li id="li-74">
+<em class="emphasis">Reorient</em> any edges that need reorienting.</li>
+<li id="li-75"><em class="emphasis">Celebrate!</em></li>
+<li id="li-76">Scramble the Cube and do it again.</li>
+</ol></article><section class="conclusion" id="conclusion-3"><h6 class="heading">Conclusion.<span></span>
+</h6>
+<p id="p-72">In this section, we explored the last moves we need to solve the Cube. We also described a strategy for solving the Cube. Our method of solving the Cube is based on the <em class="emphasis">corners-first</em> (CF) method, which is distinct from the layer-by-layer (LL) method which is often the first solving method people learn. The first solution to the Cube, by Erno Rubik himself, was corners-first, and the first world speed-cubing record (22.95 seconds) was done corners-first.</p>
+<p id="p-73">There are advantages and disadvantages to all solution methods. Advantages to corners-first are:</p>
+<ul class="disc">
+<li id="li-77">The move sequences are generally shorter in CF</li>
+<li id="li-78">There are just a few important move sequences to memorize</li>
+<li id="li-79">You generally don't "break" your existing work and so can recover from mistakes more easily</li>
+<li id="li-80">The solution can scale from a leisurely solve of a few minutes or more to quite fast solves</li>
+</ul></section><section class="exercises" id="exercises-2"><h3 class="heading hide-type">
+<span class="type">Exercises</span> <span class="codenumber"></span> <span class="title">Exercises</span>
+</h3>
+<article class="exercise exercise-like" id="exercise-5"><h6 class="heading"><span class="codenumber">1<span class="period">.</span></span></h6>
+<p id="p-74">Sam is nearly done with his Cube! Which of the Cube moves from this section does he need? How many times will he have to perform it?</p>
+<figure class="figure figure-like" id="fig-exercise-co"><div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="./images/co.svg" class="contained" alt=""></div>
+<figcaption><span class="type">Figure</span><span class="space"> </span><span class="codenumber">1.4.5<span class="period">.</span></span><span class="space"> </span></figcaption></figure></article><article class="exercise exercise-like" id="exercise-6"><h6 class="heading"><span class="codenumber">2<span class="period">.</span></span></h6>
+<p id="p-75">Lila is nearly done with her Cube! Which move from this section will be helpful? How should she use it?</p>
+<figure class="figure figure-like" id="fig-exercise-eo"><div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="./images/eo-exer.svg" class="contained" alt=""></div>
+<figcaption><span class="type">Figure</span><span class="space"> </span><span class="codenumber">1.4.6<span class="period">.</span></span><span class="space"> </span></figcaption></figure></article><article class="exercise exercise-like" id="exercise-7"><h6 class="heading"><span class="codenumber">3<span class="period">.</span></span></h6>
+<p id="p-76">Sam has gotten himself into a bit of a pickle. How can he apply our moves to solve his Cube?</p>
+<figure class="figure figure-like" id="fig-exercise-co-move"><div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="./images/co02.svg" class="contained" alt=""></div>
+<figcaption><span class="type">Figure</span><span class="space"> </span><span class="codenumber">1.4.7<span class="period">.</span></span><span class="space"> </span></figcaption></figure></article><article class="exercise exercise-like" id="exercise-8"><h6 class="heading"><span class="codenumber">4<span class="period">.</span></span></h6>
+<p id="p-77">This configuration is known as the <dfn class="terminology">superflip</dfn>. Describe what you see. Can you achieve this on your Cube?</p>
+<figure class="figure figure-like" id="fig-exer-superflip"><div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="./images/superflip.svg" class="contained" alt=""></div>
+<figcaption><span class="type">Figure</span><span class="space"> </span><span class="codenumber">1.4.8<span class="period">.</span></span><span class="space"> </span></figcaption></figure></article></section></section></div></main>
+</div>
+</body>
+</html>

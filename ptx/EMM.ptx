@@ -152,6 +152,7 @@
 		  
 		</preface>
 		
+		
 		<preface xml:id="sec-NoteToInstructors">
 			  <title>A Note to Instructors</title>
 			  <p>
@@ -164,1051 +165,2412 @@
 	
 	
     <part xml:id="part-play">
-		<title>Play</title>
+	<title>Play</title>
+	<introduction>
+		<p>
+			
+		</p>
+	</introduction>
+	
+	
+	<chapter xml:id="chap-cube">
+		<title>The Cube</title>
+		
 		<introduction>
 			<p>
-				
+				We begin our mathematical explorations in a place that may seem unusual.
+				The Rubik's Cube, invented<fn>Or, to use Rubik's word, <em>discovered</em>.</fn> in the 1970s by Hungarian architecture professor Erno Rubik, is the best-selling toy of all time.
+				It is also a rich mathematical playscape, a tactile means of exploring and challenging our fundamental ideas around what counts as an arithmetic operation.
+			</p>
+			<p>
+				The Cube's colorful, playful nature also underscores our purpose in beginning with it.
+				Specifically, exploring the Cube will help us develop some of the virtues Francis Su identifies in <xref ref="Su2020" /> under the desire of <em>play</em>: exploring the Cube will hopefuly pique your <em>curiosity</em> and build your <em>patience</em> and <em>perseverance</em>.
+				Solving it will require you to <em>change perspectives</em> and build <em>confidence in struggle</em>.
+				And, I hope, the satisfaction and joy you experience in finally solving it will engender an <em>openness of spirit</em> that we will carry into further explorations for the rest of the text.
+			</p>
+			<p>
+				As we begin, I also wish to acknowledge the efforts of the <em><url href="https://www.artofmathematics.org/">Discovering the Art of Mathematics</url></em> project, especially the <url href="https://www.artofmathematics.org/books/games-and-puzzles">Games and Puzzles</url> book.
+				I learned the Rubik's Cube by reading and teaching their work, and it is impossible to overstate their influence on this chapter.
 			</p>
 		</introduction>
 		
 		
-		<chapter xml:id="chap-cube">
-			<title>The Cube</title>
+					
+		<section xml:id="sec-play-intro">
+			<title>Introduction and Background</title>
+		
+			<introduction>
+				  
+				  
+				  
+				  
+				  <assemblage>
+					<title>Motivating Questions</title>
+					<p>
+					<statement>
+					In this section, we will explore the following questions.
+					<ol>
+					  <li>What does it mean to play?</li>
+					  <li>What are the components of the Cube?</li>
+					  <li>What are some of the elementary mathematical properties of the Cube?</li>	  
+					</ol>
+					
+					</statement>
+					</p>
+					
+				  </assemblage>
+				  
+				  
+				  </introduction>
+				  
+				  <subsection>
+					  <title>Thinking about Play</title>
+					  
+					  <exploration xml:id="expl_intro">
+						  <p>
+							  <statement>
+								  First, introduce yourself to the members of your group. Then, consider the questions:
+								  <ol>
+									  <li>What are the essential qualities of play? That is, what makes one activity <em>play</em>, and another not?</li> 
+									  <li>What does it mean to be <em>playful</em> in your own major disciplines?</li>
+									  <li>What does it mean to be an <em>explorer</em> in your major disciplines?</li>
+									  <li>What are you excited about this semester? Your answer can be from one of your classes or outside of your classes.</li>
+								  </ol>
+								  Write your answers in your notes. We'll discuss your responses before working on <xref ref="invest-firstquestionsaboutthecube" />.
+							  </statement>
+						  </p>							  
+					  </exploration>
+					  
+					  
+					  <p>
+							The Dutch historian and cultural theorist Johan Huizinga identified four elements of play: it should be <em>voluntary</em>; it should be distinct from ordinary life, taking place within its circumscribed time and locality, since dubbed the <q>magic circle</q>; and it, like a game of chess or solve of a Rubik's cube, can be repeated.
+						</p>
+						<p>
+						  It is the goal of this text to make mathematics playful, inasmuch as is possible.
+						  We recognize that you may be reading this for a class which was not voluntary, and you are constrained in your mathematical play by the requirements put upon you by your instructor.
+						  However, we encourage you to approach not only the solution of the Rubik's cube from a playful posture, but subsequent explorations as well.
+						</p>
+				  
+				  </subsection>
+				  
+				  <subsection>
+								<title>Exploring the Cube</title>
+								
+								<investigation xml:id="invest-firstquestionsaboutthecube">
+									<statement>
+									<p>
+										In your groups, investigate your Cubes. What do you notice? What do you wonder? Make a list of as many observations and questions as you can, and write them in your notes.
+									</p>
+									</statement>
+								  </investigation>
+								  
+								
+								
+								<definition>
+									<index>cubie</index>
+								  <index><h>cubie</h><h>center</h></index>
+								  <index><h>cubie</h><h>corner</h></index>
+								  <index><h>cubie</h><h>edge</h></index>
+									<statement>
+										<p>
+											The little cubes which make up the Cube are often called <term>cubies</term>. The cubies located at the corners are imaginatively called <term>corner cubies</term>, the cubies located at the centers <term>center cubies</term>, and the others <term>edge cubies</term>.
+											</p>
+									</statement>
+								</definition>
+					
+								<investigation xml:id="invest-corner-cubies">
+									<statement>
+										<p>
+											In this investigation we'll consider the corner cubies. Hold your Cube with the white center cubie facing up and the red center cubie facing you.
+											<ol>
+												<li>How many corners are there?</li>
+												<li>How many stickers does a corner cubie have?</li>
+												<li>Can you move a corner cubie to a position other than a corner? Explain your reasoning.</li>
+												<li>Identify all the positions on the Cube to which a corner cubie can be moved while keeping the white center cubie on top and red in front.</li>
+											</ol>
+											As always, make sure you can explain your answers.
+										</p>
+					<image xml:id="moving-corner-cubies" width="50%" source="./images/moving_cubies.svg" />
+									</statement>
+									<solution>
+										There are 8 corners, with three stickers each. Since all corners have three stickers, and other cubies have fewer stickers, we can't move a corner cubie to any location other than another corner. But we <em>can</em> move a given corner to any other corner.
+									</solution>
+					
+					
+								</investigation>
+								
+								<investigation xml:id="invest-edge-cubies">
+									<statement>
+										<p>
+											In this investigation we'll consider the edge cubies. Hold your Cube with the white center cubie facing up and the red center cubie facing you.
+											<ol>
+												<li>How many edge cubies are there?</li>
+												<li>How many stickers does an edge cubie have?</li>
+												<li>Can you move an edge cubie to a position other than an edge? Explain your reasoning.</li>
+												<li>Identify all the positions on the Cube to which an edge cubie can be moved while keeping the white center cubie on top and red in front.</li>
+											</ol>
+											As always, make sure you can explain your answers.
+										</p>
+					<image xml:id="moving-edge-cubies" width="50%" source="./images/moving_cubies.svg" />
+									</statement>
+									<solution>
+										There are twelve edge cubies, with two stickers each. As was the case with corners, we can only put edge cubies in other edge locations, but we can move a given edge cubie to any other edge.
+									</solution>
+					
+								</investigation>
+								
+								
+								<investigation xml:id="invest-center-cubies">
+									<statement>
+										<p>
+											In this investigation we'll consider the center cubies. Hold your Cube with the white center cubie facing up and the red center cubie facing you.
+											<ol>
+												<li>How many center cubies are there?</li>
+												<li>How many stickers does an center cubie have?</li>
+												<li>Can you move a center cubie to a position other than a center? Explain your reasoning.</li>
+												<li>Identify all the positions on the Cube to which a center cubie can be moved while keeping the white center cubie on top and red in front.</li>
+											</ol>
+											As always, make sure you can explain your answers.
+										</p>
+					<image xml:id="moving-center-cubies" width="50%" source="./images/moving_cubies.svg" />
+									</statement>
+									<solution>
+										Finally, we saw that the six center cubies (each with one sticker) cannot move relative to the others.
+									</solution>
+					
+								</investigation>
+					
+								  
+								  <assemblage>
+									  <title>Question</title>
+									  <p>
+										  <statement>
+											  How can you tell when a cubie is in the correct <em>location</em>? How can you tell when it is <em>oriented</em> correctly? Is there a difference?<fn>Does it depend on the cubie?</fn>
+										  </statement>
+					
+									  </p>
+									<solution>
+										Since the centers don't move relative to one another, we can use the centers to tell us where a given cubie goes. For instance, the corner cubie at the corner of the white, red, and blue faces must have a white, red and blue sticker. It is properly oriented when the correct sticker is in each face.
+									</solution>
+					
+								  </assemblage>
+								  
+								  
+								
+								
+							</subsection>
+				  
+				  
+			
+		</section>
+		
+		
+		<section xml:id="sec-play-exploring-the-cube">
+			<title>Exploring and Describing the Cube</title>
+			
+			<assemblage>
+				<title>Motivating Questions</title>
+				<p>
+					<statement>
+						In this section, we will explore the following questions.
+						<ol>
+							<li>What are faces and layers, and what methods exist for solving them?</li>
+							<li>How can we describe a complex series of Cube moves?</li>
+							<li>What is the order of a Cube move?</li>	  
+						</ol>
+					</statement>
+				</p>
+			</assemblage>
 			
 			<introduction>
 				<p>
-					We begin our mathematical explorations in a place that may seem unusual.
-					The Rubik's Cube, invented<fn>Or, to use Rubik's word, <em>discovered</em>.</fn> in the 1970s by Hungarian architecture professor Erno Rubik, is the best-selling toy of all time.
-					It is also a rich mathematical playscape, a tactile means of exploring and challenging our fundamental ideas around what counts as an arithmetic operation.
-				</p>
-				<p>
-					The Cube's colorful, playful nature also underscores our purpose in beginning by exploring it.
-					Specifically, exploring the Cube will help us develop some of the virtues Francis Su identifies in <xref ref="Su2020" /> under the desire of <em>play</em>: exploring the Cube will hopefuly pique your <em>curiosity</em> and build your <em>patience</em> and <em>perseverance</em>.
-					Solving it will require you to <em>change perspectives</em> and build <em>confidence in struggle</em>.
-					And, I hope, the satisfaction and joy you experience in finally solving it will engender an <em>openness of spirit</em> that we will carry into further explorations for the rest of the text.
-				</p>
-				<p>
-					As we begin, I also wish to acknowledge the efforts of the <em><url href="https://www.artofmathematics.org/">Discovering the Art of Mathematics</url></em> project, especially the <url href="https://www.artofmathematics.org/books/games-and-puzzles">Games and Puzzles</url> book.
-					I learned the Rubik's Cube by reading and teaching their work, and it is impossible to overstate their influence on this chapter.
+					In this section, we'll define a few terms and work on an initial exploration of the Cube's white layer.
+					Then, we'll discuss the need for a precise method communicating about our Cubes, and introduce some standard notation.
 				</p>
 			</introduction>
 			
 			
 			
-			
-			<section xml:id="sec-play-intro">
-				<title>Introduction and Background</title>
-			
-				<introduction>
-					  
-					  
-					  
-					  
-					  <assemblage>
-						<title>Motivating Questions</title>
+			<subsection>
+				<title>Faces and Layers</title>
+				
+				
+				<p>
+					We begin with a definition.
+				</p>
+				
+				<definition xml:id="def-cube-face">
+					<index><h>Cube face</h><h>solved</h></index>
+					<statement>
 						<p>
-						<statement>
-						In this section, we will explore the following questions.
-						<ol>
-						  <li>What does it mean to play?</li>
-						  <li>What are the components of the Cube?</li>
-						  <li>What are some of the elementary mathematical properties of the Cube?</li>	  
-						</ol>
-						
-						</statement>
+							A <term>face</term> of the Cube refers to one of its sides.
+							We say a face is <term>solved</term> if all the stickers on that side are the same color.
 						</p>
-						
-					  </assemblage>
-					  
-					  
-					  </introduction>
-					  
-					  <subsection>
-					  	<title>Thinking about Play</title>
-						  
-						  <exploration xml:id="expl_intro">
-							  <p>
-								  <statement>
-									  First, introduce yourself to the members of your group. Then, consider the questions:
-									  <ol>
-										  <li>What are the essential qualities of play? That is, what makes one activity <em>play</em>, and another not?</li> 
-										  <li>What does it mean to be <em>playful</em> in your own major disciplines?</li>
-										  <li>What does it mean to be an <em>explorer</em> in your major disciplines?</li>
-										  <li>What are you excited about this semester? Your answer can be from one of your classes or outside of your classes.</li>
-									  </ol>
-									  Write your answers in your notes. We'll discuss your responses before working on <xref ref="invest-firstquestionsaboutthecube" />.
-								  </statement>
-							  </p>							  
-						  </exploration>
-						  
-						  QUALITIES OF PLAY from SU AND HUIZINGA here--perhaps another question?
-					  
-					  </subsection>
-					  
-					  <subsection>
-					  	<title>Exploring the Cube</title>
-						  
-						  <investigation xml:id="invest-firstquestionsaboutthecube">
-						  	<statement>
-							  <p>
-								  In your groups, investigate your Cubes. What do you notice? What do you wonder? Make a list of as many observations and questions as you can, and write them in your notes.
-							  </p>
-						  	</statement>
-					  	  </investigation>
-							
-						  
-						  
-						  <definition>
-						  	<index>cubie</index>
-							<index><h>cubie</h><h>center</h></index>
-							<index><h>cubie</h><h>corner</h></index>
-							<index><h>cubie</h><h>edge</h></index>
-							  <statement>
-								  <p>
-									  The little cubes which make up the Cube are often called <term>cubies</term>. The cubies located at the corners are imaginatively called <term>corner cubies</term>, the cubies located at the centers <term>center cubies</term>, and the others <term>edge cubies</term>.
-									  </p>
-							  </statement>
-						  </definition>
-			  
-						  <investigation xml:id="invest-corner-cubies">
-							  <statement>
-								  <p>
-									  In this investigation we'll consider the corner cubies. Hold your Cube with the white center cubie facing up and the red center cubie facing you.
-									  <ol>
-										  <li>How many corners are there?</li>
-										  <li>How many stickers does a corner cubie have?</li>
-										  <li>Can you move a corner cubie to a position other than a corner? Explain your reasoning.</li>
-										  <li>Identify all the positions on the Cube to which a corner cubie can be moved while keeping the white center cubie on top and red in front.</li>
-									  </ol>
-									  As always, make sure you can explain your answers.
-								  </p>
-			  <image xml:id="moving-corner-cubies" width="50%" source="./images/moving_cubies.svg" />
-							  </statement>
-							  <solution>
-								  There are 8 corners, with three stickers each. Since all corners have three stickers, and other cubies have fewer stickers, we can't move a corner cubie to any location other than another corner. But we <em>can</em> move a given corner to any other corner.
-							  </solution>
-			  
-			  
-						  </investigation>
-						  
-						  <investigation xml:id="invest-edge-cubies">
-							  <statement>
-								  <p>
-									  In this investigation we'll consider the edge cubies. Hold your Cube with the white center cubie facing up and the red center cubie facing you.
-									  <ol>
-										  <li>How many edge cubies are there?</li>
-										  <li>How many stickers does an edge cubie have?</li>
-										  <li>Can you move an edge cubie to a position other than an edge? Explain your reasoning.</li>
-										  <li>Identify all the positions on the Cube to which an edge cubie can be moved while keeping the white center cubie on top and red in front.</li>
-									  </ol>
-									  As always, make sure you can explain your answers.
-								  </p>
-			  <image xml:id="moving-edge-cubies" width="50%" source="./images/moving_cubies.svg" />
-							  </statement>
-							  <solution>
-								  There are twelve edge cubies, with two stickers each. As was the case with corners, we can only put edge cubies in other edge locations, but we can move a given edge cubie to any other edge.
-							  </solution>
-			  
-						  </investigation>
-						  
-						  
-						  <investigation xml:id="invest-center-cubies">
-							  <statement>
-								  <p>
-									  In this investigation we'll consider the center cubies. Hold your Cube with the white center cubie facing up and the red center cubie facing you.
-									  <ol>
-										  <li>How many center cubies are there?</li>
-										  <li>How many stickers does an center cubie have?</li>
-										  <li>Can you move a center cubie to a position other than a center? Explain your reasoning.</li>
-										  <li>Identify all the positions on the Cube to which a center cubie can be moved while keeping the white center cubie on top and red in front.</li>
-									  </ol>
-									  As always, make sure you can explain your answers.
-								  </p>
-			  <image xml:id="moving-center-cubies" width="50%" source="./images/moving_cubies.svg" />
-							  </statement>
-							  <solution>
-								  Finally, we saw that the six corners (each with one sticker) cannot move relative to the others.
-							  </solution>
-			  
-						  </investigation>
-			  
-							
-							<assemblage>
-								<title>Question</title>
-								<p>
-									<statement>
-										How can you tell when a cubie is in the correct <em>location</em>? How can you tell when it is <em>oriented</em> correctly? Is there a difference?<fn>Does it depend on the cubie?</fn>
-									</statement>
-			  
-								</p>
-							  <solution>
-								  Since the centers don't move relative to one another, we can use the centers to tell us where a given cubie goes. For instance, the corner cubie at the corner of the white, red, and blue faces must have a white, red and blue sticker. It is properly oriented when the correct sticker is in each face.
-							  </solution>
-			  
-							</assemblage>
-							
-							
-						  
-						  
-					  </subsection>
-					  
-					  <!-- <subsection>
-					  	<title>Counting Configurations of the Cube</title>
-						  <p>
-						  	In this section, we will count configurations of the Cube.
-							To do so, we'll need a refresher on counting.							
-						  </p>
-						  
-						  
-						  
-						  <url href="https://medium.com/@chaitanyaanimesh/calculating-the-number-of-permutations-of-the-rubiks-cube-121066f5f054">exercises for calculating rubik's cube configurations</url>
-						  
-					  </subsection>
-			
-			
-				<conclusion>
-					<p>
-					
-					</p>
-				</conclusion>
-			
-			
-				<exercises>
-					
-					<exercise>
-						
-					</exercise>
+					</statement>
+				</definition>
 				
-				
-				</exercises> -->
-				
-			</section>
-			
-			
-			<section xml:id="sec-play-exploring-the-cube">
-				<title>Exploring and Describing the Cube</title>
+				<p>
+					There are many ways to solve the Cube, and we'll explore one approach later in this chapter.
+					A crucial step in learning to solve the Cube is learning to solve one face.
+				</p>
 				
 				<assemblage>
-					<title>Motivating Questions</title>
+					<title>Challenge</title>
 					<p>
 						<statement>
-							In this section, we will explore the following questions.
-							<ol>
-								<li>What are faces and layers, and what methods exist for solving them?</li>
-								<li>How can we describe a complex series of Cube moves?</li>
-								<li>What is the order of a Cube move?</li>	  
-							</ol>
+							Scramble your Cube. Then solve the white face. If you have not done this before (or even if you have), this may take hours or days, not minutes! <emph>Avoid relying on any outside resources</emph> (including websites, friends, etc.). 
+							
+							When you solve it, congratulations! Then scramble the face and solve it again. Repeat this process until you can reliably do it in just a few minutes. Once you can reliably solve the white face, describe, <emph>in writing</emph>, your methods as clearly and precisely as you can. What challenges did you have to overcome? How did you overcome them?
 						</statement>
 					</p>
 				</assemblage>
 				
+				<p>
+					Congratulations on solving a face of your Cube! But a question comes to mind. 
+					When your white face is in its solved state, are all the cubies on the white face in the correct location?
+				</p>
+				
+				<definition xml:id="def-cube-layer">
+					<index><h>Cube layer</h><h>solved</h></index>
+					<statement>
+						<p>
+							A <term>layer</term> of the Cube consists of a face and all of the stickers on Cubies which compose the face.
+							A layer is <term>solved</term> if all of the Cubies in the layer are in the correct location with the correct orientation.
+						</p>
+					</statement>
+				</definition>
+					
+				<assemblage>
+					<title>Challenge</title>
+					<p>
+						<statement>
+							Scramble your Cube and then solve the white layer. As before, this may take hours or days. When you solve it, congratulations! Scramble it and do it again.
+							
+							Once you can reliably solve the white layer, describe, in writing, your methods as clearly and precisely as you can.
+						</statement>
+					</p>
+				</assemblage>
+				
+				
+			</subsection>
+			
+			
+			
+			<subsection>
+				<title>The Need for Notation</title>
+				
+				
+				<principle xml:id="discussion-verbal-cubie-moves">
+					<statement>
+						<p>
+							Find a partner. Take turns describing verbally <emph>and without pointing to your Cube</emph> your method for moving a corner cubie to its proper position.
+							Similarly, verbally describe your method for moving an edge cubie to its proper position.
+						</p>
+					</statement>
+				</principle>
+				
+				<principle xml:id="discussion-written-cubie-moves">
+					<statement>
+						<p>
+							As you probably noticed, it is challenging to orally describe complex/technical ideas in much detail without becoming lost.
+							Is it easier to describe your cubie movements in writing?
+							Why or why not?
+						</p>
+					</statement>
+				</principle>
+				
+				<p>
+					Every area of inquiry has an associated collection of terminology and shorthand notation.
+					At its best, this terminology enables efficient and clear communication.
+					However, terminology can often be a barrier.
+					Thus, we want to avoid introducing unnecessary or confusing jargon whenever possible.
+					However, as I hope <xref ref="discussion-verbal-cubie-moves" /> and <xref ref="discussion-written-cubie-moves" /> underscore, a lack of terminology or shorthand notation severely impairs our ability to communicate deep technical ideas.
+					It is with this background that we introduce the following notation, which has become standard in the Cubing community.<aside>Indeed, it seems no accident of history that Newton and Leibniz's calculus came about <em>after</em> algebraic notation became standardized.</aside>
+				</p>
+				
+				<definition xml:id="def-face-names">
+					<p>
+						Hold the Cube in such a way that you are looking at one of the faces.
+						<ul>
+							<li>The face you are looking at is referred to as the <term>front</term> (F) face.</li>
+							<li>The face on the side opposite the front is referred to as the <term>back</term> (B) face.</li>
+							<li>The face on the right side is referred to as the <term>right</term> (R) face.</li>
+							<li>The face opposite the right is the <term>left</term> (L) face.</li>
+							<li>The face on the top of the Cube is the <term>up</term> (U) face.</li>
+							<li>The face on the bottom of the Cube is the <term>down</term> (D) face.</li>
+						</ul>
+						A graphical version appears in <xref ref="fig-cube-faces" />.							
+					</p>
+					<figure xml:id="fig-cube-faces">
+						<image xml:id="img-cube-faces" source="./images/faces.svg" width="50%" />
+					</figure>
+				</definition>
+				
+				<activity>
+					<statement>
+						<p>
+							List the colors of each of the six faces in <xref ref="fig-cube-faces" />.
+						</p>
+					</statement>
+				</activity>
+				
+				<p>
+					As we we will see momentarily, the names described in <xref ref="def-face-names" /> not only help us refer to faces, but also moves of the Cube which help us solve it.
+					In order to understand what a given move does to the Cube, we will need to refer to certain cubies by location.
+					The following definition enables this.
+				</p>
+				
+				<definition xml:id="def-cubie-names">
+					<statement>
+						<p>
+							A cubie is named by the face(s) on which it sits, using lowercase letters.
+						</p>
+					</statement>
+				</definition>
+				
+				<activity xml:id="act-cubie-names">
+					<statement>
+						
+						<p>
+							Consider the scrambled Cube in <xref ref="fig-cubie-names" />.
+						</p>
+						<ol>
+							<li>What colors are the <m>\ell f u</m> cubie?</li>
+							<li>Give the colors of the <m>br</m> cubie.</li>
+							<li>How can you tell whether the cubie in the named location is a corner or edge cubie?</li>
+							<li>How many letters are required to name a center cubie?</li>
+							<li>Where is the edge cubie that is blue and orange?</li>
+						</ol>
+						<figure xml:id="fig-cubie-names">
+							<image xml:id="img-cubie-names" source="./images/cubie_names.svg" width="50%" />
+							<caption>A scrambled cube.</caption>
+						</figure>
+						
+					</statement>
+				</activity>
+				
+				<p>
+					We are most interested in using our new notation to describe <em>moves</em> of the various faces.
+					We thus make the following definition.
+				</p>
+				
+				<definition xml:id="def-face-moves">
+					<index><h>Cube move</h><h>face rotation</h></index>
+					<statement>
+						<p>
+							A given face name, e.g., <m>R</m>, describes a <m>90^\circ</m> clockwise turn of that face, <em>as you look at the face</em>.
+							A given face name with prime symbol, e.g., <m>R'</m>, denotes a <m>90^\circ</m> counterclockwise turn of that face, <em>as you look at the face</em>.
+							A sequence of face moves is written multiplicatively, left to right.
+							We may use parentheses and exponents to write our moves more compactly.
+						</p>
+					</statement>
+				</definition>
+				
+				
+				
+				
+				<exploration xml:id="expl-turning-faces">
+					<statement>
+						<p>
+							Consider the following questions in the context of a completely solved cube as pictured in <xref ref="fig-solved-cube" />.
+						</p>
+						<ol>
+							<li>After performing the move <m>R</m>, what color(s) will be on the Up face?</li>
+							<li>Again starting from a solved cube, perform the move <m>L</m>. What color(s) are on the Up face?</li>
+							<li>Explain the difference in your answers to the first two questions.</li>
+							<li>How are <m>F^3</m> and <m>F'</m> related?</li>
+							<li>Consider the Cube move <m>RF^2 U (LDR)^3</m>. Which face will you turn first: the left face, or the front face?</li>
+							<li>Again consider the Cube move <m>RF^2 U (LDR)^3</m>. How many times in this move will we turn the right face?</li>
+							<li>What would it mean for two cube moves to be <term>equal</term>? Test your definition by determining whether <m>LD = DL</m>.</li>
+							<li>Suppose <m>X</m> and <m>Y</m> are two cube moves. When, if ever, is <m>XY = YX</m>?</li>
+						</ol>
+						<figure xml:id="fig-solved-cube">
+							<image xml:id="img-solved-cube" source="./images/solved_cube_sf.svg" width="50%" />
+							<caption>A solved cube.</caption>
+						</figure>
+					</statement>
+				</exploration>
+				
+				
+			</subsection>
+			
+			<subsection>
+				<title>Order</title>
+				
+				<p>
+					A useful algebraic concept for describing Cube moves is that of <em>order</em>.
+				</p>
+				
+				<definition xml:id="def-order">
+					<index><h>Cube move</h><h>order</h></index>
+					<statement>
+						<p>
+							The <term>order</term> of a cube move <m>M</m> is the least number of times <m>n \gt 1</m> that <m>M</m> can be repeated before a solved Cube is solved again.
+							We write <m>|M| = n</m>.
+						</p>
+					</statement>
+				</definition>
+				
+				<example>
+					<statement>
+						<p>
+							The order of <m>R</m> is 4, since 4 clockwise quarter-turns of the right face of a solved Cube results in a solved Cube, and no fewer number of turns results in a solved Cube.
+						</p>
+					</statement>
+				</example>
+				
+				<exploration>
+					<statement>
+						<ol>
+							<li>What is <m>|U^2|</m>?</li>
+							<li>Calculate <m>|R^3|</m>. Why does this make sense?</li>
+							<li>Calculate <m>|RUR^{-1} U^{-1}|</m>?</li>
+						</ol>
+					</statement>
+				</exploration>
+				
+			</subsection>
+			
+			
+			
+			<conclusion>
+				<title>Conclusion</title>
+				<p>
+					In this section, we began a systematic exploration of the properties of the Cube.
+					First, we described the need for a notational shorthand in solving the white face and layer.
+				</p>
+				<p>
+					The standard notation refers to each face <em>as you look at it</em>, ignoring color, and describes a <m>90^\circ</m> clockwise turn of the face. 
+					So, <m>FR</m> means to first turn the front face <m>90^\circ</m> clockwise, then the right face <m>90^\circ</m> clockwise.
+					We then noted that we can refer to a cubie by describing the face(s) on which it sits (using lowercase letters to distinguish cubies from faces): three letters refer to a corner, as it sits at the intersection of three faces; two letters refer to an edge, and one to a center.
+				</p>
+				<p>
+					We concluded by introducing the idea of order, which will help us analyze and understand more complex sequences of Cube moves in the next section.
+				</p>
+				
+			</conclusion>
+			
+			
+			
+			
+		</section>
+		
+		
+		<section xml:id="sec-play-moving-cubies">
+			<title>Moving Cubies</title>
+			
+			<assemblage>
+				<title>Motivating Questions</title>
+				<p>
+					<statement>
+						In this section, we will explore the following questions.
+						<ol>
+							<li>How can we move the corner cubies so they are in the correct location?</li>
+							<li>How can we describe the movement of the middle <q>slice</q> of our Cube?</li>
+							<li>How can we move the edge cubies so they are in the correct location?</li>	  
+						</ol>
+					</statement>
+				</p>
+			</assemblage>
+			
+			<introduction>
+				<p>
+					Our goal in this chapter is to explore, and eventually solve, the Cube.
+					To do this, every cubie must be in the correct <em>location</em> with the correct <em>orientation</em>.
+					In this section, we focus on two moves which will allow us to put the cubies in the correct location.
+					Once they are in the correct location, we'll see moves in the next section which will help us orient them correctly, enabling us to (finally) solve the Cube.
+				</p>
+			</introduction>
+			
+			<p>
+				We begin by considering <xref ref="cube-move-cr" />.
+			</p>
+			
+			<heuristic xml:id="cube-move-cr">
+				<title>Moving Corners</title>
+				<statement>
+					<p>
+						Consider the following sequence of Cube moves.
+					</p>
+					<me>
+						U' R' D' R U R' D R
+					</me>
+				</statement>
+			</heuristic>
+			
+			<exploration xml:id="expl-cube-move-cr">
+				<index><h>Cube move</h><h>moving corners</h></index>
+				<statement>
+					<p>
+						The Cube move described in <xref ref="cube-move-cr" /> moves some of the corners on the front face of the Cube.
+					</p>
+					<ol>
+						<li>By performing this move several times, identify on the blank Cube below what is happening to the front face of the Cube.</li>
+						<li>Using the cubie notation described in <xref ref="def-cubie-names" />, describe what happens to the front face of the Cube after performing this move.</li>
+						<li>Given what happens to the front face, exercise your human creativity and suggest a short name/abbreviation for this move.</li>
+						<li>What is the order of the move?</li>
+						<li>Practice the move until you can reliably execute it.</li>
+					</ol>
+					<figure xml:id="fig-cube-move-cr">
+						<image xml:id="img-cube-move-cr" source="./images/grey_cube.svg" width="50%" />
+						<caption>A blank cube.</caption>
+					</figure>
+				</statement>
+			</exploration>
+			
+			<activity xml:id="act-cube-move-cr">
+				<statement>
+					<p>
+						Now that you have identified exactly what <xref ref="cube-move-cr" /> does, use it to solve as much of your Cube it enables.
+					</p>
+				</statement>
+			</activity>
+			
+			
+			<p>
+				In order to move the edges, it will be helpful to add one more type of fundamental Cube move to our repertoire.
+			</p>
+			
+			<definition xml:id="def-sr">
+				<index><h>Cube move</h><h>middle slice</h></index>
+				<statement>
+					<p>
+						By <m>S_R</m> we mean a clockwise rotation of the (vertical) middle slice <em>as we look at the right face</em>.
+					</p>
+					
+					<sidebyside widths="30% 15% 30%" valign="middle">
+						<image source="./images/solved_cube.svg" width="30%" />
+						
+						<p><me>\underrightarrow{\quad S_R\quad}</me></p>
+						
+						<image source="./images/middle_slice.svg" width="30%" />
+					</sidebyside>
+				</statement>
+			</definition>
+			
+			
+			<heuristic xml:id="cube-move-er">
+				<index><h>Cube move</h><h>moving edges</h></index>
+				<title>Moving Edges</title>
+				<statement>
+					<p>
+						Consider the following sequence of Cube moves.
+					</p>
+					<me>
+						S_R^2 U' S_R' U^2 S_R U' S_R^2
+					</me>
+				</statement>
+			</heuristic>
+			
+			<exploration xml:id="expl-cube-move-er">
+				<statement>
+					<p>
+						The Cube move described in <xref ref="cube-move-er" /> moves some of the edges on the up face of the Cube.
+					</p>
+					<ol>
+						<li>By performing this move several times, identify on the blank Cube below what is happening to the up face of the Cube.</li>
+						<li>Using the cubie notation described in <xref ref="def-cubie-names" />, describe what is happens to the up face of the Cube after performing this move.</li>
+						<li>Given what happens to the up face, exercise your human creativity and suggest a short name/abbreviation for this move.</li>
+						<li>What is the order of the move?</li>
+						<li>Practice the move until you can reliably execute it.</li>
+					</ol>
+					<figure xml:id="fig-cube-move-e">
+						<image xml:id="img-cube-move-er" source="./images/grey_cube.svg" width="50%" />
+						<caption>A blank cube.</caption>
+					</figure>
+				</statement>
+			</exploration>
+			
+			
+			<activity xml:id="act-cube-move-er">
+				<statement>
+					<p>
+						Now that you have identified exactly what <xref ref="cube-move-cr" /> and <xref ref="cube-move-er" /> do, use them to put every cubie on your Cube in its correct location.
+					</p>
+				</statement>
+			</activity>
+			
+			
+			
+			
+			
+			<conclusion>
+				<title>Conclusion</title>
+				<p>
+					In this section, we focused on two moves that enable us to put our cubies in the correct location.
+					We first found <xref ref="cube-move-cr" />, which affects corners on the front face, and no other cubies.
+					Similarly, <xref ref="cube-move-er" /> affects edges on the up face, and no other cubies.
+					We were then able to put every cubie on our Cube in the correct location. Hurray!
+				</p>
+			</conclusion>
+			
+			
+			<exercises>
+				<exercise xml:id="exer-scrambled-edges">
+					<p>
+						Consider the state of Lila's Cube in <xref ref="fig-scrambled-edges" />. She is so close to solving it! Can you help her finish?
+					</p>
+					<figure xml:id="fig-scrambled-edges">
+						<image source="./images/scrambled_edges.svg" width="50%" />
+					</figure>
+				</exercise>
+				<exercise>
+					<p>
+						Sam is nearly done with his Cube; it's pictured in <xref ref="fig-edges-corners" />.
+						Can you help him finish?
+					</p>
+					<figure xml:id="fig-edges-corners">
+						<image source="./images/edges-corners.svg" width="50%" />
+					</figure>
+				</exercise>
+				<exercise>
+					<p>
+						Thanks to your help, Lila solved her Cube in <xref ref="exer-scrambled-edges" />, but now she needs more help! Can you help her finish the Cube pictured in <xref ref="fig-edge-on-bottom" />?
+					</p>
+					<figure xml:id="fig-edge-on-bottom">
+						<image source="./images/edge_on_bottom.svg" width="50%" />
+					</figure>
+				</exercise>
+				<exercise>
+					<p>
+						Consider the situation in <xref ref="fig-scrambled-corners" />.
+						Why will <xref ref="cube-move-cr" /> alone be insufficient for putting the corners in their correct locations?
+						Devise a strategy for putting the corners in the correct locations.
+					</p>
+					<figure xml:id="fig-scrambled-corners">
+					<image source="./images/scrambled_corners.svg" width="50%" />
+					</figure>
+				</exercise>
+			
+			</exercises>
+			
+		</section>
+		
+		
+		<section xml:id="sec-play-reorienting-cubies">
+			<title>Reorienting Cubies</title>
+			
+			<assemblage>
+				<title>Motivating Questions</title>
+				<p>
+					<statement>
+						In this section, we will explore the following questions.
+						<ol>
+							<li>How can we change the orientation of the corner cubies?</li>
+							<li>How can we change the orientation of the edge cubies?</li>
+							<li>How can we apply our four Cube moves to solve the Cube?</li>
+						</ol>
+					</statement>
+				</p>
+			</assemblage>
+			
+			<introduction>
+				<p>
+					In <xref ref="sec-play-moving-cubies" />, we considered ways of moving certain edge and corner cubies.
+					The key that allows us to use <xref ref="cube-move-cr" /> and <xref ref="cube-move-er" /> to put your cubies in the correct location is that each move affects precisely three cubies.
+					All others are left unmoved. 
+					By using just <xref ref="cube-move-cr" /> and <xref ref="cube-move-er" />, we can thus put each cubie in the correct location.
+					However, even if a cubie is in the correct location, it may be that its stickers are on the wrong faces<mdash />in this case, it needs to be <em>reoriented</em>.
+				</p>
+				<p>
+					In this section, we will see how to reorient cubies once they are in the correct location.
+					To do so, we'll learn two moves: one that reorients corners, and one that reorients edges.
+					Once we are able to put each cubie in the correct location, and then orient it correctly, each scrambled Cube becomes a puzzle, solvable by clever application of these moves.
+				</p>
+			</introduction>
+			
+			<p>
+				We begin by exploring a move that reorients two corners.
+			</p>
+			
+			<heuristic xml:id="cube-move-co">
+				<index><h>Cube move</h><h>reorienting corners</h></index>
+				<statement>
+					<p>
+						Consider the following sequence of Cube moves.
+					</p>
+					<me>
+						(R' D^2 R B' U^2 B)^2
+					</me>
+				</statement>
+			</heuristic>
+				
+			
+			<exploration xml:id="expl-cube-move-co">
+				<title>Reorienting Corners</title>
+				<statement>
+					<p>
+						The Cube move described in <xref ref="cube-move-co" /> reorients two corners: one on the Up face, and one on the Down face.
+					</p>
+					<ol>
+						<li>By performing this move several times, identify on the blank Cube below what is happening to the Up face of the Cube. Describe what is happening to the Down face as well.</li>
+						<li>Using the cubie notation described in <xref ref="def-cubie-names" />, describe what is happens to the Up and Down faces of the Cube after performing this move.</li>
+						<li>Given what this move does, exercise your human creativity and suggest a short name/abbreviation for this move.</li>
+						<li>What is the order of the move?</li>
+						<li>Practice the move until you can reliably execute it.</li>
+					</ol>
+					<figure xml:id="fig-cube-move-e">
+						<image xml:id="img-cube-move-er" source="./images/grey_cube.svg" width="50%" />
+						<caption>A blank cube.</caption>
+					</figure>
+				</statement>
+			</exploration>
+			
+			<p>
+				Our last Cube move will reorient two edge cubies.
+				Recall <xref ref="def-sr" />.
+			</p>
+			
+			<heuristic xml:id="cube-move-eo">
+				<index><h>Cube move</h><h>reorienting edges</h></index>
+				<statement>
+					<p>
+						Consider the following sequence of Cube moves.
+					</p>
+					<me>
+						(S_R U)^3 U (S_R ' U)^3 U
+					</me>
+				</statement>
+			</heuristic>
+			
+			
+			<exploration xml:id="expl-cube-move-co">
+				<title>Reorienting Edges</title>
+				<statement>
+					<p>
+						The Cube move described in <xref ref="cube-move-co" /> reorients two edges on the Up face.
+					</p>
+					<ol>
+						<li>By performing this move several times, identify on the blank Cube below what is happening to the Up face of the Cube.</li>
+						<li>Using the cubie notation described in <xref ref="def-cubie-names" />, describe what is happens to the Up face of the Cube after performing this move.</li>
+						<li>Given what this move does, exercise your human creativity and suggest a short name/abbreviation for this move.</li>
+						<li>What is the order of the move?</li>
+						<li>Practice the move until you can reliably execute it.</li>
+					</ol>
+					<figure xml:id="fig-cube-move-e">
+						<image xml:id="img-cube-move-er" source="./images/grey_cube.svg" width="50%" />
+						<caption>A blank cube.</caption>
+					</figure>
+				</statement>
+			</exploration>
+			
+			
+			<assemblage>
+				<title>Solving the Cube</title>
+				<p>
+					When you can consistently perform <xref ref="cube-move-cr" />, <xref ref="cube-move-co" />, <xref ref="cube-move-er" />, and <xref ref="cube-move-eo" />, you can use them to solve the Cube. 
+					You can use any strategy you want, but here is one to consider.
+					<ol>
+						<li>Put the corners in the correct <em>location</em>.</li>
+						<li>Put the edges in the correct <em>location</em>.</li>
+						<li><em>Reorient</em> any corners that need reorienting.</li>
+						<li><em>Reorient</em> any edges that need reorienting.</li>
+						<li><em>Celebrate!</em></li>
+						<li>Scramble the Cube and do it again.</li>
+					</ol>
+				</p>
+			  </assemblage>
+			  
+		  <conclusion>
+			<title>Conclusion</title>
+				<p>
+					In this section, we explored the last moves we need to solve the Cube. 
+					We also described a strategy for solving the Cube. 
+					Our method of solving the Cube is based on the <em>corners-first</em> (CF) method, which is distinct from the layer-by-layer (LL) method which is often the first solving method people learn.
+					The first solution to the Cube, by Erno Rubik himself, was corners-first, and the first world speed-cubing record (22.95 seconds) was done corners-first.
+				</p>
+				<p>
+					There are advantages and disadvantages to all solution methods.
+					Advantages to corners-first are:
+					<ul>
+						<li>The move sequences are generally shorter in CF</li>
+						<li>There are just a few important move sequences to memorize</li>
+						<li>You generally don't "break" your existing work and so can recover from mistakes more easily</li>
+						<li>The solution can scale from a leisurely solve of a few minutes or more to quite fast solves</li>
+					</ul>
+				</p>
+			</conclusion>
+			
+			
+			<exercises>
+				<exercise>
+					<p>
+						Sam is nearly done with his Cube! Which of the Cube moves from this section does he need? How many times will he have to perform it?
+					</p>
+					<figure xml:id="fig-exercise-co">
+						<image source="./images/co.svg" width="50%" />
+					</figure>
+				</exercise>
+				
+				<exercise>
+					<p>
+						Lila is nearly done with her Cube! Which move from this section will be helpful? How should she use it?
+					</p>
+					<figure xml:id="fig-exercise-eo">
+						<image source="./images/eo-exer.svg" width="50%" />
+					</figure>
+				</exercise>
+				
+				<exercise>
+					<p>
+						Sam has gotten himself into a bit of a pickle. How can he apply our moves to solve his Cube?
+					</p>
+					<figure xml:id="fig-exercise-co-move">
+						<image source="./images/co02.svg" width="50%" />
+					</figure>
+				</exercise>
+				
+				<exercise>
+					<p>
+						This configuration is known as the <term>superflip</term>.
+						Describe what you see. 
+						Can you achieve this on your Cube?
+					</p>
+					<figure xml:id="fig-exer-superflip">
+						<image source="./images/superflip.svg" width="50%" />
+					</figure>
+				</exercise>
+			</exercises>
+			
+		</section>
+		
+		
+		
+	</chapter>
+	
+	</part>
+			
+			
+
+		
+	<part xml:id="part-truth">
+			<title>Truth</title>
+			
+			<introduction>
+				<p>
+					As Su identifies in <xref ref="Su2020" />, humans have an innate desire for truth.
+					Defining just what we mean by <term>truth</term> is tricky, so we'll follow Su's lead and just say that <q>true statements are ones that align with reality</q>.
+					In an age of rampant disinformation, we seek to know what is actually true.
+				</p>
+				<p>
+					Mathematics is often thought of as one of the last bastions of objective truth.
+					One widely accepted cultural norm is that if a statement is quantitative, or can be arrived at via a sequence of logical deductions, it is often considered "true", whereas statements that cannot be presented in such a way live in the realm of opinion. 
+					Yet, mathematics is a human endeavor; and what do mathematicians mean when they talk of a statement being <q>true</q>, anyway? 
+					The answer might surprise you.
+				</p>
+				
+				<p>
+					In this unit, we'll explore inductive and deductive reasoning, as well as formal logic. 
+					We'll explore the shortcomings of mathematical thinking in addition to its strengths.
+				</p>
+				
+				<p>
+					This chapter is heavily influenced by <em><url href="https://www.artofmathematics.org/books/truth-reasoning-certainty-and-proof">Discovering the Art of Mathematics: Truth, Reasoning, Certainty, and Proof</url></em> by Fleron, Hotchkiss, Ecke, and von Renesse.
+				</p>
+			</introduction>
+			
+			<chapter xml:id="chap-reasoning">
+				<title>Inductive and Deductive Reasoning</title>
+				
 				<introduction>
 					<p>
-						In this section, we'll define a few terms and work on an initial exploration of the Cube's white layer.
-						Then, we'll discuss the need for notation for communicating about our Cubes and introduce some standard notation.
+						In order to  more fully explore the deductive reasoning employed in mathematical explorations, we'll first contrast it with the inductive reasoning common in other areas of inquiry.
+					</p>
+					<p>
+						WRITE MORE HERE
 					</p>
 				</introduction>
 				
 				
-				
-				<subsection>
-					<title>Faces and Layers</title>
-					
-					
-					<p>
-						We begin with a definition.
-					</p>
-					
-					<definition xml:id="def-cube-face">
-						<index><h>Cube face</h><h>solved</h></index>
-						<statement>
-							<p>
-								A <term>face</term> of the Cube refers to one of its sides.
-								We say a face is <term>solved</term> if all the stickers on that side are the same color.
-							</p>
-						</statement>
-					</definition>
-					
-					<p>
-						There are many ways to solve the Cube, and we'll explore one approach later in this chapter.
-						A crucial step in learning to solve the Cube is learning to solve one face.
-					</p>
+				<section>
+					<title>Inductive Reasoning</title>
 					
 					<assemblage>
-						<title>Challenge</title>
+						<title>Motivating Questions</title>
 						<p>
 							<statement>
-								Scramble your Cube. Then solve the white face. If you have not done this before (or even if you have), this may take hours or days, not minutes! <emph>Avoid relying on any outside resources</emph> (including websites, friends, etc.). 
-								
-								When you solve it, congratulations! Then scramble the face and solve it again. Repeat this process until you can reliably do it in just a few minutes. Once you can reliably solve the white face, describe, <emph>in writing</emph>, your methods as clearly and precisely as you can. What challenges did you have to overcome? How did you overcome them?
+								In this section, we will explore the following questions.
+								<ol>
+									<li>What is truth? What is fact? Is there a difference?</li>
+									<li>What is inductive reasoning? When is it helpful? What are its shortcomings?</li>			
+								</ol>
 							</statement>
 						</p>
 					</assemblage>
 					
 					<p>
-						Congratulations on solving a face of your Cube! But a question comes to mind. 
-						When your white face is in its solved state, are all the cubies on the white face in the correct location?
+						We'll begin by attempting to define <em>truth</em> and <em>fact</em>, and compare them.
+						We'll then explore <em>inductive reasoning</em> in depth, considering its benefits shortcomings.
 					</p>
 					
-					<definition xml:id="def-cube-layer">
-						<index><h>Cube layer</h><h>solved</h></index>
+					
+					<principle>
 						<statement>
 							<p>
-								A <term>layer</term> of the Cube consists of a face and all of the stickers on Cubies which compose the face.
-								A layer is <term>solved</term> if all of the Cubies in the layer are in the correct location with the correct orientation.
+								What is truth? What is fact? How are the two concepts related? How are they different? Under which category does the sentence <m>1+1=2</m> fall?
 							</p>
+	
+						</statement>	
+						
+						<!-- <solution>
+							<p>
+								<em>Truth</em> refers to propositions which are correct and valid for all time, places, and people. It never changes. <em>Facts</em> refer to propositions supported by evidence. They are subject to change based on new evidence.
+								There was some debate about the nature of truth relative to belief. 
+								For instances, Christians believe that the historical person of Jesus is the Son of God. 
+								Muslims do not. 
+								Is this statement true for Christians but not for Muslims?
+								Or is the proposition that the historical person of Jesus is the Son of God <em>true</em>, but Christians and Muslims have differing beliefs on its truth?
+							</p>
+	
+						</solution> -->
+	
+	
+					</principle>
+	
+					<activity xml:id="act-whats-my-world">
+						<title>What's my world?</title>
+						<statement>
+							<p>
+								In the game <em>What's my World?</em>, one person thinks of a single law that defines a hypothetical world (e.g., <q>My world does not contain things that start with the letter 'C'.</q>). The other players attempt to guess this governing law by taking turns asking questions of the creator, such as <q>Does your world contain dogs? Does it contain cats?</q> and so on. When one of the guessers believe they can identify the governing law, they ask the creator.
+							</p>
+							<p>
+								Play a few rounds of this game, taking turns in the role of creator. <em>Other than asking the creator directly</em>, how could you be <em>certain</em> that you had determined the law of the world?
+							</p>
+						</statement>
+						
+						<solution>
+							<p>
+								We played various rounds of this game, but the only way we identified that we could know <em>for certain</em> that we had guessed the governing law correctly is by asking the creator. We can amass evidence and develop facts and a theory based on those facts, but we can only know for certain by asking the creator directly.
+							</p>
+	
+						</solution>
+	
+	
+					</activity>
+					
+					
+					
+					<definition>
+						<index>inductive reasoning</index>
+						<p>
+							<term>Inductive reasoning</term> is the process of drawing general conclusions from particular instances, generally known as <term>data</term>.
+						</p>
+					</definition>
+					
+					<p>
+						The work of the guesser in <xref ref="act-whats-my-world" /> is to employ inductive reasoning to determine the general law put in place by the creator.
+						This is the scientific process at its best: looking at the world in its orderliness and using our curiosity and creativity to infer larger governing principles.
+						If you have taken a statistics course, this is the type of reasoning employed there.
+					</p>
+					<p>
+						But how does this work in mathematics?
+					</p>
+					
+					<exploration xml:id="expl-dot-game">
+						<statement>
+							<p>
+								Let's play a game with dots and lines. 
+								We'll start with at least two dots (though you'll probably want to increase this number pretty quickly).
+								The rules are:
+							</p>
+							<ul>
+								<li>Split your dots into two groups, group <m>A</m> and group <m>B</m>, and draw each group on its own line.</li>
+								<li>Connect (some of) the dots from <m>A</m> to (some of) the dots in <m>B</m> with lines. The lines don't have to be straight<mdash />they can curve in any way you want!<mdash />but each line should connect precisely two dots: one from <m>A</m> and one from <m>B</m>.</li>
+								<li>Each dot should be connected to at least one other dot<mdash />no lonely dots!</li>
+							</ul>
+							<p>
+								So, if I label four dots as <m>X, Y, Z, W</m>, <em>one possible</em> drawing is given in <xref ref="fig-dot-game-example" />.
+							</p>
+							<figure xml:id="fig-dot-game-example">
+								<image source="./images/dot-game-example.svg" width="35%" />
+							</figure>
+							<p>
+								However, there is a problem with this drawing: the lines cross! I know, this wasn't one of the rules above, but let's add it.
+							</p>
+							<ul>
+								<li>The lines can be drawn so that none of them cross.</li>
+							</ul>
+							<p>
+								Now consider the following questions.
+							</p>
+							<ol>
+								<li>Redraw the picture in <xref ref="fig-dot-game-example" /> so that none of the lines cross.</li>
+								<li>Give a name to drawings of figures like <xref ref="fig-dot-game-example" /> which <em>can</em> be drawn so that none of the lines cross.</li>
+								<li>Which drawings are possible with two or three dots? Can they be drawn to have the property that none of the lines cross?</li>
+								<li>What other drawings are possible with four dots? Five?</li>
+								<li>Based on your work here, do you think it will always be possible to draw these pictures so that none of the lines cross? Explain your thinking.</li>
+							</ol>
+						</statement>
+					</exploration>
+					
+					<principle>
+						<statement>
+							<p>
+								Based on our work in this section, what are some strengths of inductive reasoning?
+								What are some possible pitfalls?
+								How can we minimize these potential downsides?
+							</p>
+						</statement>
+					</principle>
+					
+					<exercises>
+						<exercise>
+							<p>
+								Do some internet research on the <term>Twin Prime Conjecture</term>.
+								What is it? When was it first formulated?
+								Is it true? Likely true?
+							</p>
+						</exercise>
+					</exercises>
+					
+					
+					
+					
+					
+				</section>
+				
+				
+				
+				<section>
+					<title>Deductive Reasoning</title>
+					
+					<assemblage>
+						<title>Motivating Questions</title>
+						<p>
+							<statement>
+								In this section, we will explore the following questions.
+								<ol>
+									<li>What is deductive reasoning? How does it differ from inductive reasoning?</li>
+									<li>How is deductive reasoning employed in mathematics?</li>
+									<li>What are some strengths and weaknesses of deductive reasoning?</li>	  
+								</ol>
+							</statement>
+						</p>
+					</assemblage>
+					
+					<p>
+						Formal mathematical reasoning is deductive (defined momentarily), and begins with <term>axioms</term>, which are statements that should be self-evident and taken to be true.
+						Note that while axioms are not always explicitly stated, they <em>can</em> be when necessary.
+					</p>
+					
+					<investigation>
+						<statement>
+						<p>
+							The most famous set of axioms are Euclid's postulates for geometry, defined in <em><url href="https://en.wikipedia.org/wiki/Euclid's_Elements">The Elements</url></em>, which not only shaped thousands of years of geometry, but solidified the deductive approach to doing and explaining mathematics that we will explore in this unit.
+							At the beginning of Book I of <em>The Elements</em>, Euclid identified five postulates and five axioms.
+						</p>
+						<p>
+							Euclid's <em>postulates</em> are:
+						</p>
+						<ol>
+							<li>A straight line segment can be drawn joining any two points.</li>
+							<li>Any straight line segment can be extended indefinitely in a straight line.</li>
+							<li>Any circle can be described given a center and (radial) distance.</li>
+							<li>All right angles are equal to one another.</li>
+							<li>If a straight line intersecting two straight lines make the interior angles on the same side less than two right angles, the two straight lines, if produced indefinitely, meet on the side on which the angles are less than two right angles.</li>
+						</ol>
+						
+						<p>
+							Euclid's <em>axioms</em> (or <em>common notions</em>) are:
+						</p>
+						<ol>
+							<li>Things which are equal to the same thing are also equal to one another.</li>
+							<li>If equals are added to equals, the wholes are equal.</li>
+							<li>If equals are subtracted from equals, the remainders are equal.</li>
+							<li>Things which coincide with one another are equal to one another.</li>
+							<li>The whole is greater than the part.</li>
+						</ol>
+						
+						<p>
+							The desired qualities of a system of axioms are:
+						</p>
+							<ol>	
+								<li><term>consistency</term>: we cannot deduce contradictory propositions, such as "God exists" and "God does not exist" from the same set of axioms</li>
+								<li><term>simplicity</term>: we have as few axioms as possible, and they are no more complicated than they need to be</li>
+								<li><term>completeness</term>: the system can answer every question we can think to ask</li>
+							</ol>
+	
+						
+	
+	
+						<p>
+							In your groups, discuss Euclid's postulates and common notions, perhaps in view of the desired qualities of an axiomatic system.
+							What strikes you as being interesting or noteworthy? Make a list of at least 2-3 observations.
+							Then consider: on what axioms or assumptions do you make decisions (e.g., about how to spend your time, resources, etc)?
+						</p>
+						</statement>
+						
+						<solution>
+							<p>
+								Axioms are unproved, self-evident propositions on top of which logical deductions can be made, and entire fields of study rest.
+								They should be as simple as possible; all except Euclid's fifth postulate (the parallel postulate) are considered quite straightforward.
+								The parallel postulate has a fascinating history; it turns out be independent of the other postulates, and one can create new geometries (on the surface of a sphere, for instance), by rejecting it.
+							</p>
+							<p>
+								There are lots of unproved assumptions that we make in life.
+								Many Christian mathematicians make explicit that they view the authority of Scripture as an axiom; they can't use logic to conclusively deduce that Scripture is the only authority for Christian faith and life, but they <em>assume</em> it in order to draw conclusions <em>about</em> faith and life.
+							</p>
+	
+								
+	
+						</solution>
+	
+	
+	
+	
+	
+					</investigation>
+					
+					
+	
+					<p>
+						The process of <term>deductive reasoning</term> in mathematics begins from a set of generally agreed-upon axioms of <url href="https://en.wikipedia.org/wiki/Zermelo–Fraenkel_set_theory">set theory</url><fn>It should be noted that there is disagreement about the Axiom of Choice, mostly due to some of its surprising consequences.</fn> and uses logic to make inevitable conclusions from those axioms. These conclusions are generally called <term>theorems</term>. They are usually given as conditional statements of the form <q>If <m>P</m>, then <m>Q</m>,</q> where <m>P</m> and <m>Q</m> are sensible<aside>For some definition of the word <q>sensible</q>.</aside> statements.
+						Moreover, since most deductive statements are presented in conditional form, their scope is generally limited.
+						That is, the statement <q>if it is Monday, then we have math class</q> is only making a claim about what happens on Mondays; it says nothing whatsoever about any other day of the week.
+						We will explore the consequences of this more in <xref ref="chap-logic" />.
+					</p>
+					
+					
+					
+					<p>
+						The author Lewis Carroll loved logic puzzles (he was actually a mathematics professor!), and wrote many of them. Here is one, axiomatized for easy reference.
+					</p>
+	
+					
+					<axiom xml:id="axiom-kittens">
+						<title>(Carroll)</title>
+						<statement>
+							<p>
+								Consider the axioms:
+							</p>
+							<ol>
+								<li>If a kitten loves fish, then it is teachable.</li>
+								<li>Every kitten without a tail will play with a gorilla.</li>
+								<li>All kittens with whiskers love fish.</li>
+								<li>If a kitten has green eyes, then it is not teachable.</li>
+								<li>All kittens have whiskers or do not have tails.</li>
+							</ol>
+							
+						</statement>
+					</axiom>
+					
+					<p>
+						Once you have a deductive argument that (generally) begins from your premises and reasons, step-by-step, to your conclusion, you can write out the argument in a short essay known as a <em>proof</em>.
+						For our purposes, a proof is just a <em>convicing argument</em>.
+						It should be written at a level appropriate to the reader and clearly lay out the steps necessary for a reader who accepts your hypotheses to believe the conclusion.
+						As an example, consider the following.
+					</p>
+					
+					<example xml:id="example-kitten-deduction">
+						<statement>
+							<p>
+								All kittens with whiskers are teachable.
+							</p>
+							<p>
+								<term>Proof</term>. Suppose we have a kitten with whiskers. Let's call him Arthur. By <xref ref="axiom-kittens" /> #3, Arthur loves fish. Since Arthur loves fish, <xref ref="axiom-kittens" /> #1 implies that Arthur is teachable.
+							</p>
+							<p>
+								Since Arthur was an arbitrary kitten, we conclude that all kittens with whiskers are teachable.
+							</p>
+						</statement>
+					</example>
+					
+					<p>
+						There are several observations which are worth a moment of our time in the proof in <xref ref="example-kitten-deduction" />.
+					</p>
+					<ul>
+						<li>We first note that the proof is written using standard conventions of academic writing, including complete sentences, proper punctuation and capitalization, etc. This is important! In order to convince someone that your argument is valid, they need to be able to read it.</li>
+						<li>While the statement to be proved is not written as <q>if <m>P</m>, then <m>Q</m></q>, it <em>can</em> be stated that way: <q>If <m>A</m> is a kitten with whiskers, then <m>A</m> is teachable</q>. Thus, our proof begins by considering an arbitrary kitten with whiskers, who we name Arthur. We observe, however, that there is nothing special about Arthur that figures into our proof in a meaningful way, so the argument will apply just as well to any kitten with whiskers we may find.</li>
+						<li>In each step we take throughout the proof, we refer to the specific axiom from <xref ref="axiom-kittens" /> that allow us to take that step. It is valuable to be able to do this, but generally we do not specifically refer to the axioms by number. This is to improve the readability of the proof.</li>
+						<li>Finally, note that our proof concludes with a conclusion: all kittens with whiskers are teachable. This is good practice and sends an unmistakable signal to the reader that you are done.</li>
+					</ul>
+					
+					<p>
+						Now, prove the theorems that follow using <xref ref="axiom-kittens" />.
+					</p>
+	
+					
+					
+					
+					
+					
+					<theorem>
+						<statement>
+							<p>
+								If a kitten has green eyes, then it does not love fish.
+							</p>
+						</statement>
+					</theorem>
+					
+					<theorem>
+						<statement>
+							<p>
+								If a kitten has a tail, then it does not have green eyes.
+							</p>
+						</statement>
+						<proof>
+							<p>
+								TBD! We tried some things, but there are issues. We'll look at it again after we study <xref ref="def-implications" />.
+							</p>
+	
+						</proof>
+	
+					</theorem>
+					
+					<theorem>
+						<statement>
+							<p>
+								Every kitten with green eyes will play with a gorilla.
+							</p>
+						</statement>
+					</theorem>
+					
+					
+	
+				
+					
+					<activity>
+						<statement>
+							<p>
+								Compare and contrast the structures of the proofs of the preceding theorems.
+								Can you clarify the general reasoning patterns you used to prove them?
+							</p>
+	
+						</statement>
+	
+					</activity>
+					
+					
+					<principle>
+						<statement>	
+							<p>
+								We have now explored both inductive and deductive reasoning. How are they similar? How are they different? How might you decide which type of reasoning to employ in a given situation? What are their strengths and weaknesses?
+							</p>
+						</statement>
+					</principle>
+					
+					<conclusion>
+						<title>Conclusion</title>
+						<p>
+							In this section, we explored deductive reasoning, which begins from accepted axioms and premises and then reasons, step by logical step, toward a conclusion.
+							This is the primary form of reasoning used in mathematics.
+							We saw that while conclusions reached via deductive reasoning are generally tighter and more certain, there are still some drawbacks.
+						</p>
+						<p>
+							The main drawback of deductive reasoning involves scope.
+							We must begin with axioms, so the axioms must be well-chosen and sensible.
+							However, if one disagrees with the choice of a set of axioms, then one must be willing to set aside any results deduced from them (or, at least, deduced from the particular axioms with which one disagrees).
+						</p>
+						<p>
+							A second drawback having to do with scope concerns the premises of a conditional statement.
+							In particular, if the premises of a statement are not satisfied, the statement makes no assertion whatsoever 
+							(though, as we will see in <xref ref="chap-logic" />, there is still a <em>consistent</em> way to assign truth values to statements whose premises are not satisfied).
+						</p>
+					</conclusion>
+					
+					
+					
+					<exercises>
+					
+						<exercise>
+							<statement>
+								<p>
+									Invent one or two additional theorems that can be deduced from <xref ref="axiom-kittens" />.
+									Prove them.
+								</p>
+							</statement>
+						</exercise>
+					</exercises>
+					
+					
+					
+					
+				</section>
+				
+				
+				
+				
+			</chapter>
+			
+			
+			
+			<chapter xml:id="chap-logic">
+				<title>Modern Mathematical Logic</title>
+				
+				<introduction>
+					<p>
+						In <xref ref="chap-reasoning" />, we explored two types of reasoning: inductive reasoning, and deductive reasoning.
+						The type of reasoning used most often in mathematics is deductive reasoning.
+						In the late 19th/early 20th century, logic itself was mathematized by the likes of George Boole and Augustus De Morgan into a <em>propositional calculus</em>.
+						This gave mathematicians a means of determining the truth value of a statement purely based on its inherent logical structure.
+					</p>
+					<p>
+						It is this method of calculating that we explore in this chapter.
+					</p>
+				</introduction>
+				
+				<section xml:id="sec-connectives">
+					<title>Logical Connectives and Rules of Inference</title>
+					
+					<assemblage>
+						<title>Motivating Questions</title>
+						<p>
+							<statement>
+								In this section, we will explore the following questions.
+								<ol>
+									<li>What is a proposition?</li>
+									<li>What are logical connectives? How can they be used to build new propositions?</li>
+									<li>What does it mean for two propositions to be logically equivalent?</li>	  
+								</ol>
+							</statement>
+						</p>
+					</assemblage>
+					
+					
+					
+					<p>
+						In the late 19th and early 20th centuries, mathematicians began mathematize and formalize logic itself. Today we begin to explore these foundational issues. We'll start with some definitions.
+					</p>
+		
+					
+					<definition>
+						<index>proposition</index>
+						<index><h>proposition</h><h>elementary</h></index>
+						<index>logical connectives</index>
+						<p>
+							A <term>proposition</term> is a declarative sentence which is either true or false, but not both.
+							An <term>elementary proposition</term> is a sentence with a subject and a verb, but no connectives (such as <em>and, or, not, if-then,</em> or <em>if-and-only-if</em>).
+						</p>
+		
+					</definition>
+					
+					<activity xml:id="act-propositions">
+						<statement>
+							<p>
+								Determine which of the following are propositions (elementary or otherwise).
+								If a given sentence is a proposition, determine its truth value.
+								If it isn't, explain why not.
+							</p>
+							<ol>
+								<li>Erik Hoekstra is the president of Dordt University.</li>
+								<li>The square root of a whole number is always a whole number.</li>
+								<li>The Green Bay Packers are the worst football team.</li>
+								<li>Why is this class so much fun?</li>
+								<li>This sentence is false.</li>
+								<li>A group of crows is called a murder.</li>
+								<li>Everyone likes cats.</li>
+							</ol>
+		
+						</statement>
+						
+						<solution>
+							<ol>
+								<li>This is a true proposition.</li>
+								<li>This is a false proposition. As an example, <m>\sqrt{21}</m> is not a whole number.</li>
+								<li>This one is harder (though it's an easy "true" from your instructor). But it's likely either a false proposition (due to the Packers not having the worst record in the league) or not a proposition at all, as agreement with the sentence is a matter of subjective taste.</li>
+								<li>This is an interrogative, not a declaration.</li>
+								<li>This is a declarative sentence, but it's neither true nor false; it's a paradox.</li>
+								<li>This is a true proposition! Who knew?</li>
+								<li>This is a false proposition.</li>
+							</ol>
+		
+						</solution>
+		
+		
+					</activity>
+					
+					<p>
+						Now that we have a sense for what a proposition is, we'll take old propositions and make new ones using <em>logical connectives</em>.
+						In order to describe how the connectives work, mathematicians define the truth values of the new propositions <em>formally</em><mdash />that is, without regard to the content of the propositions themselves<mdash />in terms of the possible combinations of truth values from the constituent propositions.
+						This gives us an abstract way of considering the truth values of propositions.
+					</p>
+		
+					<definition>
+						<index>negation</index>
+						<index><h>logical connectives</h><h>negation</h></index>
+						<statement>
+						<p>
+							Suppose <m>P</m> and <m>Q</m> are statements (e.g., like those in <xref ref="act-propositions" />).
+							The <term>negation</term> of <m>P</m>, denoted <m>\neg P</m> and read "not <m>P</m>", has the opposite truth value of <m>P</m> and is defined by <xref ref="table-negation" />.
+						</p>
+						
+						<table xml:id="table-negation">
+						  <title>
+							The negation of <m>P</m>.
+						  </title>
+						  <tabular halign="center">
+							<row bottom="medium">
+							  <cell halign="left" right="medium">
+								<m>​P</m>
+							  </cell>
+							  <cell halign="left">
+								<m>​\neg P</m>
+							  </cell>
+							</row>
+							<row>
+							  <cell right="medium">
+								T
+							  </cell>
+							  <cell>
+								F
+							  </cell>
+							</row>
+							<row>
+							  <cell right="medium">
+								F
+							  </cell>
+							  <cell>
+								T
+							  </cell>
+							</row>
+						  </tabular>
+						</table>
 						</statement>
 					</definition>
 						
-					<assemblage>
-						<title>Challenge</title>
-						<p>
-							<statement>
-								Scramble your Cube and then solve the white layer. As before, this may take hours or days. When you solve it, congratulations! Scramble it and do it again.
-								
-								Once you can reliably solve the white layer, describe, in writing, your methods as clearly and precisely as you can.
-							</statement>
-						</p>
-					</assemblage>
-					
-					
-				</subsection>
-				
-				
-				
-				<subsection>
-					<title>The Need for Notation</title>
-					
-					
-					<principle xml:id="discussion-verbal-cubie-moves">
+					<definition>
+						<index>and</index>
+						<index><h>logical connectives</h><h>and</h></index>
 						<statement>
-							<p>
-								Find a partner. Take turns describing verbally <emph>and without pointing to your Cube</emph> your method for moving a corner cubie to its proper position.
-								Similarly, verbally describe your edge cubie to its proper position.
-							</p>
-						</statement>
-					</principle>
-					
-					<principle xml:id="discussion-written-cubie-moves">
-						<statement>
-							<p>
-								As you probably noticed, it is challenging to orally describe complex/technical ideas in much detail without becoming lost.
-								Is it easier to describe your cubie movements in writing?
-								Why or why not?
-							</p>
-						</statement>
-					</principle>
-					
-					<p>
-						Every area of inquiry has an associated collection of terminology and shorthand notation.
-						At its best, this terminology enables efficient and clear communication.
-						However, terminology can often be a barrier.
-						Thus, we want to avoid introducing unnecessary or confusing jargon whenever possible.
-						However, as I hope <xref ref="discussion-verbal-cubie-moves" /> and <xref ref="discussion-written-cubie-moves" /> underscore, a lack of terminology or shorthand notation severely impairs our ability to communicate deep technical ideas.
-						It is with this background that we introduce the following notation, which has become standard in the Cubing community.<aside>Indeed, it seems no accident of history that Newton and Leibniz's calculus came about <em>after</em> algebraic notation became standardized.</aside>
-					</p>
-					
-					<definition xml:id="def-face-names">
 						<p>
-							Hold the Cube in such a way that you are looking at one of the faces.
-							<ul>
-								<li>The face you are looking at is referred to as the <term>front</term> (F) face.</li>
-								<li>The face on the side opposite the front is referred to as the <term>back</term> (B) face.</li>
-								<li>The face on the right side is referred to as the <term>right</term> (R) face.</li>
-								<li>The face opposite the right is the <term>left</term> (L) face.</li>
-								<li>The face on the top of the Cube is the <term>up</term> (U) face.</li>
-								<li>The face on the bottom of the Cube is the <term>down</term> (D) face.</li>
-							</ul>
-							A graphical version appears in <xref ref="fig-cube-faces" />.							
+							The <term>conjunction</term> of <m>P</m> and <m>Q</m>, denoted <m>P \land Q</m> and read <q><m>P</m> and <m>Q</m></q>, is true when both <m>P</m> and <m>Q</m> are true, and false otherwise. See <xref ref="table-and" />.
 						</p>
-						<figure xml:id="fig-cube-faces">
-							<image xml:id="img-cube-faces" source="./images/faces.svg" width="50%" />
-						</figure>
+						
+						<table xml:id="table-and">
+						  <title>
+							The conjunction of <m>P</m> and <m>Q</m>.
+						  </title>
+						  <tabular halign="center">
+							<row bottom="medium">
+							  <cell halign="left" right="medium">
+								<m>​P</m>
+							  </cell>
+							  <cell halign="left" right="medium">
+								<m>​Q</m>
+							  </cell>
+							  <cell halign="left">
+								<m>P \land Q​</m>
+							  </cell>
+							</row>
+							<row>
+							  <cell right="medium">
+								T
+							  </cell>
+							  <cell right="medium">
+								T
+							  </cell>
+							  <cell>
+								T
+							  </cell>
+							</row>
+							<row>
+							  <cell right="medium">
+								T
+							  </cell>
+							  <cell right="medium">
+								F
+							  </cell>
+							  <cell>
+								F
+							  </cell>
+							</row>
+							<row>
+							  <cell right="medium">
+								F
+							  </cell>
+							  <cell right="medium">
+								T
+							  </cell>
+							  <cell>
+								F
+							  </cell>
+							</row>
+							<row>
+							  <cell right="medium">
+								F
+							  </cell>
+							  <cell right="medium">
+								F
+							  </cell>
+							  <cell>
+								F
+							  </cell>
+							</row>
+						  </tabular>
+						</table>
+						</statement>
+					</definition>
+					
+					<definition>
+						<index>or</index>
+						<index><h>logical connectives</h><h>or</h></index>
+						<statement>
+						
+						<p>
+							The <term>disjunction</term> of <m>P</m> and <m>Q</m>, denoted <m>P \lor Q</m> and read <q><m>P</m> or <m>Q</m></q>, is true when <m>P</m> is true, <m>Q</m> is true, or both are true, and false otherwise. See <xref ref="table-or" />.
+						</p>
+						
+						<table xml:id="table-or">
+						  <title>
+							The disjunction of <m>P</m> and <m>Q</m>.
+						  </title>
+						  <tabular halign="center">
+							<row bottom="medium">
+							  <cell halign="left" right="medium">
+								<m>​P</m>
+							  </cell>
+							  <cell halign="left" right="medium">
+								<m>​Q</m>
+							  </cell>
+							  <cell halign="left">
+								<m>P \lor Q​</m>
+							  </cell>
+							</row>
+							<row>
+							  <cell right="medium">
+								T
+							  </cell>
+							  <cell right="medium">
+								T
+							  </cell>
+							  <cell>
+								T
+							  </cell>
+							</row>
+							<row>
+							  <cell right="medium">
+								T
+							  </cell>
+							  <cell right="medium">
+								F
+							  </cell>
+							  <cell>
+								T
+							  </cell>
+							</row>
+							<row>
+							  <cell right="medium">
+								F
+							  </cell>
+							  <cell right="medium">
+								T
+							  </cell>
+							  <cell>
+								T
+							  </cell>
+							</row>
+							<row>
+							  <cell right="medium">
+								F
+							  </cell>
+							  <cell right="medium">
+								F
+							  </cell>
+							  <cell>
+								F
+							  </cell>
+							</row>
+						  </tabular>
+						</table>
+						
+						</statement>
+						
+		
+						
+		
+					
 					</definition>
 					
 					<activity>
 						<statement>
 							<p>
-								List the colors of each of the six faces in <xref ref="fig-cube-faces" />.
-							</p>
-						</statement>
-					</activity>
-					
-					<p>
-						As we we will see momentarily, the names described in <xref ref="def-face-names" /> not only help us refer to faces, but also moves of the Cube which help us solve it.
-						In order to understand what moves do, we will have a need to refer to certain cubies by location.
-						The following definition enables this.
-					</p>
-					
-					<definition xml:id="def-cubie-names">
-						<statement>
-							<p>
-								A cubie is named by the face(s) on which it sits, using lowercase letters.
-							</p>
-						</statement>
-					</definition>
-					
-					<activity xml:id="act-cubie-names">
-						<statement>
-							
-							<p>
-								Consider the scrambled Cube in <xref ref="fig-cubie-names" />.
+								Meaningfully negate the following propositions (without just saying "It is not the case that...").
 							</p>
 							<ol>
-								<li>What colors are the <m>\ell f u</m> cubie?</li>
-								<li>Give the colors of the <m>br</m> cubie.</li>
-								<li>How can you tell whether the cubie in the named location is a corner or edge cubie?</li>
-								<li>How many letters are required to name a center cubie?</li>
-								<li>Where is the edge cubie that is blue and orange?</li>
+								<li><m>e</m> is a negative real number.</li>
+								<li>Iowa is the tenth largest state.</li>
+								<li>17 is a prime number.</li>
 							</ol>
-							<figure xml:id="fig-cubie-names">
-								<image xml:id="img-cubie-names" source="./images/cubie_names.svg" width="50%" />
-								<caption>A scrambled cube.</caption>
-							</figure>
-							
+							<solution>
+								<ol>
+									<li><m>e</m> is a nonnegative real number.</li>
+									<li>Iowa is not the tenth largest state.</li>
+									<li>17 is a composite number.</li>
+								</ol>
+		
+		
+							</solution>
+		
+		
+		
 						</statement>
+		
+					
 					</activity>
-					
-					<p>
-						We are most interested in using our new notation to describe <em>moves</em> of the various faces.
-						We thus make the following definition.
-					</p>
-					
-					<definition xml:id="def-face-moves">
-						<index><h>Cube move</h><h>face rotation</h></index>
-						<statement>
-							<p>
-								A given face name, e.g., <m>R</m>, describes a <m>90^\circ</m> clockwise turn of that face, <em>as you look at the face</em>.
-								A given face name with prime symbol, e.g., <m>R'</m>, denotes a <m>90^\circ</m> counterclockwise turn of that face, <em>as you look at the face</em>.
-								A sequence of face moves is written multiplicatively, left to right.
-								We may use parentheses and exponents to write our moves more compactly.
-							</p>
-						</statement>
-					</definition>
-					
-					
-					
-					
-					<exploration xml:id="expl-turning-faces">
-						<statement>
-							<p>
-								Consider the following questions in the context of a completely solved cube as pictured in <xref ref="fig-solved-cube" />.
-							</p>
-							<ol>
-								<li>After performing the move <m>R</m>, what color(s) will be on the Up face?</li>
-								<li>Again starting from a solved cube, perform the move <m>L</m>. What color(s) are on the Up face?</li>
-								<li>Explain the difference in your answers to the first two questions.</li>
-								<li>How are <m>F^3</m> and <m>F'</m> related?</li>
-								<li>Consider the Cube move <m>RF^2 U (LDR)^3</m>. Which face will you turn first: the left face, or the front face?</li>
-								<li>Again consider the Cube move <m>RF^2 U (LDR)^3</m>. How many times in this move will we turn the right face?</li>
-								<li>What would it mean for two cube moves to be <term>equal</term>? Test your definition by determining whether <m>LD = DL</m>.</li>
-								<li>Suppose <m>X</m> and <m>Y</m> are two cube moves. When, if ever, is <m>XY = YX</m>?</li>
-							</ol>
-							<figure xml:id="fig-solved-cube">
-								<image xml:id="img-solved-cube" source="./images/solved_cube_sf.svg" width="50%" />
-								<caption>A solved cube.</caption>
-							</figure>
-						</statement>
-					</exploration>
-					
-					
-				</subsection>
-				
-				<subsection>
-					<title>Order</title>
-					
-					<p>
-						A useful algebraic concept for describing Cube moves is that of <em>order</em>.
-					</p>
-					
-					<definition xml:id="def-order">
-						<index><h>Cube move</h><h>order</h></index>
-						<statement>
-							<p>
-								The <term>order</term> of a cube move <m>M</m> is the least number of times <m>n \gt 1</m> that <m>M</m> can be repeated before a solved Cube is solved again.
-								We write <m>|M| = n</m>.
-							</p>
-						</statement>
-					</definition>
-					
-					<example>
-						<statement>
-							<p>
-								The order of <m>R</m> is 4, since 4 clockwise quarter-turns of the right face of a solved Cube results in a solved Cube, and no fewer number of turns results in a solved Cube.
-							</p>
-						</statement>
-					</example>
+		
 					
 					<exploration>
 						<statement>
+							<p>
+								Determine the truth values of the following propositions.
+							</p>
 							<ol>
-								<li>What is <m>|U^2|</m>?</li>
-								<li>Calculate <m>|R^3|</m>. Why does this make sense?</li>
-								<li>Calculate <m>|RUR^{-1} U^{-1}|</m>?</li>
+								<li>Math 149 meets on Mondays and the capital of Iowa is Des Moines.</li>
+								<li>Math 149 meets on Mondays and the capital of Minnesota is Minneapolis.</li>
+								<li>Math 149 meets on Mondays or the capital of Minnesota is Minneapolis.</li>
 							</ol>
+							
+		
 						</statement>
+						
+						<solution>
+							<p>We want to emphasize that the truth of the conjunction or disjunction depends <em>only on the truth of the constituent statements</em>. It doesn't matter whether it makes sense semantically to combine the constituents this way.</p>
+							
+							<ol>
+								<li>This is true, as both constituents are true.</li>
+								<li>This is false; the capital of Minnesota is St. Paul, not Minneapolis.</li>
+								<li>This is true, since it's a disjunctive statement and one of the constituents is true (Math 149 meets on Mondays).</li>
+							</ol>
+		
+						
+						</solution>
 					</exploration>
-					
-				</subsection>
-				
-				
-				
-				<conclusion>
-					<title>Conclusion</title>
-					<p>
-						In this section, we began a systematic exploration of the properties of the Cube.
-						First, we described the need for a notational shorthand for describing our approaches to solving the white face and layer.
-					</p>
-					<p>
-						The standard notation refers to each face <em>as you look at it</em>, ignoring color, and describes a <m>90^\circ</m> clockwise turn of the face. 
-						So, <m>FR</m> means to first turn the front face <m>90^\circ</m> clockwise, then the right face <m>90^\circ</m> clockwise.
-						We then noted that we can refer to a cubie by describing the face(s) on which it sits (using lowercase letters to distinguish cubies from faces): three letters refer to a corner, as it sits at the intersection of three faces; two letters refer to an edge, and one to a center.
-					</p>
-					<p>
-						We concluded by introducing the idea of order, which will help us analyze and understand more complex sequences of Cube moves in the next section.
-					</p>
-					
-				</conclusion>
-				
-				
-				
-				
-			</section>
+						
+						
+						
+						<p>
+							The last connective we'll consider (for now) is <em>implication</em>.
+						</p>
+			
+						<definition xml:id="def-implications">
+							<index>implication</index>
+							<index>if-then</index>
+							<index>conditional statements</index>
+							<index><h>logical connectives</h><h>implies</h></index>
+							<p>
+								Let <m>P</m> and <m>Q</m> be statements.
+								The <term>implication</term>, "<m>P</m> implies <m>Q</m>" (or "if <m>P</m>, then <m>Q</m>") is denoted <m>P\Rightarrow Q</m>, and is false only when <m>P</m> is true but <m>Q</m> is false.
+								See <xref ref="table-implication" />.
+							</p>
+							
+							<table xml:id="table-implication">
+							  <title>
+								The implication <m>P\Rightarrow Q</m>.
+							  </title>
+							  <tabular halign="center">
+								<row bottom="medium">
+								  <cell halign="left" right="medium">
+									<m>​P</m>
+								  </cell>
+								  <cell halign="left" right="medium">
+									<m>​Q</m>
+								  </cell>
+								  <cell halign="left">
+									<m>P\Rightarrow Q​</m>
+								  </cell>
+								</row>
+								<row>
+								  <cell right="medium">
+									T
+								  </cell>
+								  <cell right="medium">
+									T
+								  </cell>
+								  <cell>
+									T
+								  </cell>
+								</row>
+								<row>
+								  <cell right="medium">
+									T
+								  </cell>
+								  <cell right="medium">
+									F
+								  </cell>
+								  <cell>
+									F
+								  </cell>
+								</row>
+								<row>
+								  <cell right="medium">
+									F
+								  </cell>
+								  <cell right="medium">
+									T
+								  </cell>
+								  <cell>
+									T
+								  </cell>
+								</row>
+								<row>
+								  <cell right="medium">
+									F
+								  </cell>
+								  <cell right="medium">
+									F
+								  </cell>
+								  <cell>
+									T
+								  </cell>
+								</row>
+							  </tabular>
+							</table>
+						</definition>
+						
+						<exploration>
+							<statement>
+								<p>
+									Determine the truth values of the following statements. Identify which row of <xref ref="table-implication" /> you are in.
+								</p>
+								<ol>
+									<li>If <m>x</m> is negative, then <m>-5x</m> is positive.</li>
+									<li>If we have Math 149 today, then it is Wednesday.</li>
+									<li>If <m>9 > 5</m>, then dogs do not have wings.</li>
+									<li>If <m>2=4</m>, then Calvin Coolidge is our greatest president.</li>
+								</ol>
+			
+							</statement>
+							<!-- 
+			<solution>
+								<p>As with conjunction and disjunction, there need be no causal relationship (or any relationship at all) between the constituents in an implication. To actually deduce the implication, however, usually does require a causal link to be established.</p>
+								<ol>
+									<li>This is true.</li>
+								</ol>
+			
+							</solution>
+			 -->
 			
 			
-			<section xml:id="sec-play-moving-cubies">
-				<title>Moving Cubies</title>
-				
-				<assemblage>
-					<title>Motivating Questions</title>
-					<p>
-						<statement>
-							In this section, we will explore the following questions.
-							<ol>
-								<li>How can we move the corner cubies so they are in the correct location?</li>
-								<li>How can we describe the movement of the middle <q>slice</q> of our Cube?</li>
-								<li>How can we move the edge cubies so they are in the correct location?</li>	  
-							</ol>
-						</statement>
-					</p>
-				</assemblage>
-				
-				<introduction>
-					<p>
-						Our goal in this chapter is to explore, and eventually solve, the Cube.
-						To do this, every cubie must be in the correct <em>location</em> with the correct <em>orientation</em>.
-						In this section, we focus on two moves which will allow us to put the cubies in the correct location.
-						Once they are in the correct location, we'll see moves in the next section which will enable us to orient them correctly, enabling us to (finally) solve the Cube.
-					</p>
-				</introduction>
-				
-				<p>
-					We begin by considering <xref ref="cube-move-cr" />.
-				</p>
-				
-				<heuristic xml:id="cube-move-cr">
-					<title>Moving Corners</title>
-					<statement>
+						</exploration>
+			
+			
+						
 						<p>
-							Consider the following sequence of Cube moves.
-						</p>
-						<me>
-							U' R' D' R U R' D R
-						</me>
-					</statement>
-				</heuristic>
-				
-				<exploration xml:id="expl-cube-move-cr">
-					<index><h>Cube move</h><h>moving corners</h></index>
-					<statement>
-						<p>
-							The Cube move described in <xref ref="cube-move-cr" /> moves some of the corners on the front face of the Cube.
-						</p>
-						<ol>
-							<li>By performing this move several times, identify on the blank Cube below what is happening to the front face of the Cube.</li>
-							<li>Using the cubie notation described in <xref ref="def-cubie-names" />, describe what is happens to the front face of the Cube after performing this move.</li>
-							<li>Given what happens to the front face, exercise your human creativity and suggest a short name/abbreviation for this move.</li>
-							<li>What is the order of the move?</li>
-							<li>Practice the move until you can reliably execute it.</li>
-						</ol>
-						<figure xml:id="fig-cube-move-cr">
-							<image xml:id="img-cube-move-cr" source="./images/grey_cube.svg" width="50%" />
-							<caption>A blank cube.</caption>
-						</figure>
-					</statement>
-				</exploration>
-				
-				<activity xml:id="act-cube-move-cr">
-					<statement>
-						<p>
-							Now that you have identified exactly what <xref ref="cube-move-cr" /> does, use it to solve as much of your Cube it enables.
-						</p>
-					</statement>
-				</activity>
-				
-				
-				<p>
-					In order to move the edges, it will be helpful to add one more type of fundamental Cube move to our repertoire.
-				</p>
-				
-				<definition xml:id="def-sr">
-					<index><h>Cube move</h><h>middle slice</h></index>
-					<statement>
-						<p>
-							By <m>S_R</m> we mean a clockwise rotation of the (vertical) middle slice <em>as we look at the right face</em>.
+							The formalization of mathematical logic ramps up a bit when we consider conditional statements.
+							It is important to remember that we define the truth value of the proposition <m>P \Rightarrow Q</m> <em>purely formally</em> based on the structure of the conditional statement and the truth values of the constituents <m>P</m> and <m>Q</m>.
+							There need not be a causal relationship between <m>P</m> and <m>Q</m>!
 						</p>
 						
-						<sidebyside widths="30% 15% 30%" valign="middle">
-							<image source="./images/solved_cube.svg" width="30%" />
-							
-							<p><me>\underrightarrow{\quad S_R\quad}</me></p>
-							
-							<image source="./images/middle_slice.svg" width="30%" />
-						</sidebyside>
-					</statement>
-				</definition>
-				
-				
-				<heuristic xml:id="cube-move-er">
-					<index><h>Cube move</h><h>moving edges</h></index>
-					<title>Moving Edges</title>
-					<statement>
 						<p>
-							Consider the following sequence of Cube moves.
+							The last two rows of <xref ref="table-implication" /> are also worth a moment of our time.
+							They state that if the statement <m>P</m><fn>Often called the <em>antecedent.</em></fn> is false, then the <em>implication</em> <m>P\Rightarrow Q</m> is <em>true</em>.
+							Note that this is different than saying that <m>Q</m><fn>Often called the <em>consequent.</em></fn> is true.
+							When the implication <m>P\Rightarrow Q</m> is true because <m>P</m> is false, we usually say that <m>P\Rightarrow Q</m> is <term>vacuously true</term>.
 						</p>
-						<me>
-							S_R^2 U' S_R' U^2 S_R U' S_R^2
-						</me>
-					</statement>
-				</heuristic>
-				
-				<exploration xml:id="expl-cube-move-er">
-					<statement>
-						<p>
-							The Cube move described in <xref ref="cube-move-er" /> moves some of the edges on the up face of the Cube.
-						</p>
-						<ol>
-							<li>By performing this move several times, identify on the blank Cube below what is happening to the up face of the Cube.</li>
-							<li>Using the cubie notation described in <xref ref="def-cubie-names" />, describe what is happens to the up face of the Cube after performing this move.</li>
-							<li>Given what happens to the up face, exercise your human creativity and suggest a short name/abbreviation for this move.</li>
-							<li>What is the order of the move?</li>
-							<li>Practice the move until you can reliably execute it.</li>
-						</ol>
-						<figure xml:id="fig-cube-move-e">
-							<image xml:id="img-cube-move-er" source="./images/grey_cube.svg" width="50%" />
-							<caption>A blank cube.</caption>
-						</figure>
-					</statement>
-				</exploration>
-				
-				
-				<activity xml:id="act-cube-move-er">
-					<statement>
-						<p>
-							Now that you have identified exactly what <xref ref="cube-move-cr" /> and <xref ref="cube-move-er" /> do, use them to put every cubie on your Cube in its correct location.
-						</p>
-					</statement>
-				</activity>
-				
-				
-				
-				
-				
-				<conclusion>
-					<title>Conclusion</title>
-					<p>
-						In this section, we focused on two moves that enable us to put our cubies in the correct location.
-						We first found <xref ref="cube-move-cr" />, which affects corners on the front face, and no other cubies.
-						Similarly, <xref ref="cube-move-er" /> affects edges on the up face, and no other cubies.
-						We were then able to put every cubie on our Cube in the correct location. Hurray!
-					</p>
-				</conclusion>
-				
-				
-				<exercises>
-					<exercise xml:id="exer-scrambled-edges">
-						<p>
-							Consider the state of Lila's Cube in <xref ref="fig-scrambled-edges" />. She is so close to solving it! Can you help her finish?
-						</p>
-						<figure xml:id="fig-scrambled-edges">
-							<image source="./images/scrambled_edges.svg" width="50%" />
-						</figure>
-					</exercise>
-					<exercise>
-						<p>
-							Sam is nearly done with his Cube; it's pictured in <xref ref="fig-edges-corners" />.
-							Can you help him finish?
-						</p>
-						<figure xml:id="fig-edges-corners">
-							<image source="./images/edges-corners.svg" width="50%" />
-						</figure>
-					</exercise>
-					<exercise>
-						<p>
-							Thanks to your help, Lila solved her Cube in <xref ref="exer-scrambled-edges" />, but now she needs more help! Can you help her finish the Cube pictured in <xref ref="fig-edge-on-bottom" />?
-						</p>
-						<figure xml:id="fig-edge-on-bottom">
-							<image source="./images/edge_on_bottom.svg" width="50%" />
-						</figure>
-					</exercise>
-					<exercise>
-						<p>
-							Consider the situation in <xref ref="fig-scrambled-corners" />.
-							Why will <xref ref="cube-move-cr" /> alone be insufficient for putting the corners in their correct locations?
-							Devise a strategy for putting the corners in the correct locations.
-						</p>
-						<figure xml:id="fig-scrambled-corners">
-						<image source="./images/scrambled_corners.svg" width="50%" />
-						</figure>
-					</exercise>
-				
-				</exercises>
-				
-			</section>
+						
+						<activity>
+							<index>vacuous truth</index>
+							<statement>
+								<p>
+									Suppose Dr. Janssen promises that, if everyone has solved their Rubik's Cube by Friday, then he will bring Defender sandwiches (on pretzel buns, with everything, as God intended) to class<fn>This is purely hypothetical.</fn>.
+									Unfortunately, a few students do not solve the Cube by Friday, so Dr. Janssen does not bring Defenders.
+								</p>
+			
+								<p>
+									Decide the truth value of the implication "If everyone can solve their Cubes by Friday, Dr. Janssen will bring Defenders to class".
+									How does this help you think about vacuous truth?
+								</p>
+								
+								
 			
 			
+							</statement>
 			
+						</activity>
+						
+						
+						<p>
+							An important tool in our logical toolkit is one you likely employed in the theorems you deduced from <xref ref="axiom-kittens" />.
+						</p>
+						
+						
+						<exploration>
+							<index>contrapositive</index>
+							<statement>
+								<p>
+									Let <m>P</m> and <m>Q</m> be statements.
+									The <term>contrapositive</term> of the implication <m>P\Rightarrow Q</m> is the implication <m>(\neg Q) \Rightarrow (\neg P)</m>.
+									Complete <xref ref="table-contrap" />. Is the contrapositive equivalent to anything we've looked at thus far?
+								</p>
+								<table xml:id="table-contrap">
+								  <title>
+									The contrapositive of <m> P\Rightarrow Q</m>.
+								  </title>
+								  <tabular>
+									<row bottom="medium">
+									  <cell right="medium">
+										<m>P</m>
+									  </cell>
+									  <cell right="medium">
+										<m>Q</m>
+									  </cell>
+									  <cell right="medium">
+										<m>\neg P​</m>
+									  </cell>
+									  <cell right="medium">
+										<m>\neg Q​</m>
+									  </cell>
+									  <cell>
+										<m>(\neg Q) \Rightarrow (\neg P)</m>
+									  </cell>
+									</row>
+									<row>
+									  <cell halign="center" right="medium">
+										T
+									  </cell>
+									  <cell halign="center" right="medium">
+										T
+									  </cell>
+									  <cell right="medium">
+									  </cell>
+									  <cell right="medium">
+									  </cell>
+									  <cell halign="center">
+										<line>
+										</line>
+										<line>
+										</line>
+									  </cell>
+									</row>
+									<row>
+									  <cell halign="center" right="medium">
+										T
+									  </cell>
+									  <cell halign="center" right="medium">
+										F
+									  </cell>
+									  <cell right="medium">
+									  </cell>
+									  <cell right="medium">
+									  </cell>
+									  <cell halign="center">
+										<line>
+										</line>
+										<line>
+										</line>
+									  </cell>
+									</row>
+									<row>
+									  <cell halign="center" right="medium">
+										F
+									  </cell>
+									  <cell halign="center" right="medium">
+										T
+									  </cell>
+									  <cell right="medium">
+									  </cell>
+									  <cell right="medium">
+									  </cell>
+									  <cell halign="center">
+										<line>
+										</line>
+										<line>
+										</line>
+									  </cell>
+									</row>
+									<row>
+									  <cell halign="center" right="medium">
+										F
+									  </cell>
+									  <cell halign="center" right="medium">
+										F
+									  </cell>
+									  <cell right="medium">
+									  </cell>
+									  <cell right="medium">
+									  </cell>
+									  <cell halign="center">
+										<line>
+										</line>
+										<line>
+										</line>
+									  </cell>
+									</row>
+								  </tabular>
+								</table>
+							</statement>
+						</exploration>
+						
+						
+						
+						<activity>
+							<statement>
+								<p>
+									Write the contrapositives of the following statements. Be ready to explain why the contrapositives are equivalent to the original implications.
+								</p>
+								<ol>
+									<li>If a kitten loves fish, then it is teachable.</li>
+									<li>If a kitten does not have a tail, then it will play with a gorilla.</li>
+									<li>If a kitten has green eyes, then it is not teachable.</li>
+									<li>If today is Wednesday, then we have math class.</li>
+								</ol>
+							</statement>
 			
-			<section xml:id="sec-play-reorienting-cubies">
-				<title>Reorienting Cubies</title>
-				
-				<assemblage>
-					<title>Motivating Questions</title>
-					<p>
-						<statement>
-							In this section, we will explore the following questions.
-							<ol>
-								<li>How can we change the orientation of the corner cubies?</li>
-								<li>How can we change the orientation of the edge cubies?</li>
-								<li>How can we apply our four Cube moves to solve the Cube?</li>
-							</ol>
-						</statement>
-					</p>
-				</assemblage>
-				
-				<introduction>
-					<p>
-						In <xref ref="sec-play-moving-cubies" />, we considered ways of moving certain edge and corner cubies.
-						The key that allows us to use <xref ref="cube-move-cr" /> and <xref ref="cube-move-er" /> to put your cubies in the correct location is that, when executed correctly, they affect precisely three cubies each, leaving the rest in the same place with the same orientation at the end of the move.
-					</p>
-					<p>
-						As we embark on learning our last two Cube moves, it's worth taking some time to practice what we already know.
-						Each unsolved Cube is a puzzle, solvable by clever application of these moves.
-					</p>
-				</introduction>
-				
-				<p>
-					We begin by exploring a move that reorients two corners.
-				</p>
-				
-				<heuristic xml:id="cube-move-co">
-					<index><h>Cube move</h><h>reorienting corners</h></index>
-					<statement>
+						</activity>
+						
 						<p>
-							Consider the following sequence of Cube moves.
+							We have now explored several ways of combining existing propositions into larger propositions using logical connectives.
+							When we use logic to write proofs, we also employ tools known as <em>rules of inference</em>.
+							They clearly describe what steps we are allowed to take.
+							There are many such rules; we will highlight two.
 						</p>
-						<me>
-							(R' D^2 R B' U^2 B)^2
-						</me>
-					</statement>
-				</heuristic>
-					
-				
-				<exploration xml:id="expl-cube-move-co">
-					<title>Reorienting Corners</title>
-					<statement>
+			 
 						<p>
-							The Cube move described in <xref ref="cube-move-co" /> reorients two corners: one on the Up face, and one on the Down face.
+							The way in which reasoning with implications is often done uses a rule of inference known as <term>modus ponens</term> which runs roughly:
 						</p>
-						<ol>
-							<li>By performing this move several times, identify on the blank Cube below what is happening to the Up face of the Cube. Describe what is happening to the Down face as well.</li>
-							<li>Using the cubie notation described in <xref ref="def-cubie-names" />, describe what is happens to the Up and Down faces of the Cube after performing this move.</li>
-							<li>Given what this move does, exercise your human creativity and suggest a short name/abbreviation for this move.</li>
-							<li>What is the order of the move?</li>
-							<li>Practice the move until you can reliably execute it.</li>
-						</ol>
-						<figure xml:id="fig-cube-move-e">
-							<image xml:id="img-cube-move-er" source="./images/grey_cube.svg" width="50%" />
-							<caption>A blank cube.</caption>
-						</figure>
-					</statement>
-				</exploration>
-				
-				<p>
-					Our last Cube move will reorient two edge cubies.
-					Recall <xref ref="def-sr" />.
-				</p>
-				
-				<heuristic xml:id="cube-move-eo">
-					<index><h>Cube move</h><h>reorienting edges</h></index>
-					<statement>
-						<p>
-							Consider the following sequence of Cube moves.
-						</p>
-						<me>
-							(S_R U)^3 U (S_R ' U)^3 U
-						</me>
-					</statement>
-				</heuristic>
-				
-				
-				<exploration xml:id="expl-cube-move-co">
-					<title>Reorienting Edges</title>
-					<statement>
-						<p>
-							The Cube move described in <xref ref="cube-move-co" /> reorients two edges on the Up face.
-						</p>
-						<ol>
-							<li>By performing this move several times, identify on the blank Cube below what is happening to the Up face of the Cube.</li>
-							<li>Using the cubie notation described in <xref ref="def-cubie-names" />, describe what is happens to the Up face of the Cube after performing this move.</li>
-							<li>Given what this move does, exercise your human creativity and suggest a short name/abbreviation for this move.</li>
-							<li>What is the order of the move?</li>
-							<li>Practice the move until you can reliably execute it.</li>
-						</ol>
-						<figure xml:id="fig-cube-move-e">
-							<image xml:id="img-cube-move-er" source="./images/grey_cube.svg" width="50%" />
-							<caption>A blank cube.</caption>
-						</figure>
-					</statement>
-				</exploration>
-				
-				
-				<assemblage>
-					<title>Solving the Cube</title>
-					<p>
-						When you can consistently perform <xref ref="cube-move-cr" />, <xref ref="cube-move-co" />, <xref ref="cube-move-er" />, and <xref ref="cube-move-eo" />, you can use them to solve the Cube. 
-						You can use any strategy you want, but here is one to consider.
-						<ol>
-							<li>Put the corners in the correct <em>location</em>.</li>
-							<li>Put the edges in the correct <em>location</em>.</li>
-							<li><em>Reorient</em> any corners that need reorienting.</li>
-							<li><em>Reorient</em> any edges that need reorienting.</li>
-							<li><em>Celebrate!</em></li>
-							<li>Scramble the Cube and do it again.</li>
-						</ol>
-					</p>
-				  </assemblage>
-				  
-			  <conclusion>
-				<title>Conclusion</title>
-					<p>
-						In this section, we explored the last moves we need to solve the Cube. 
-						We also described a strategy for solving the Cube. 
-						Our method of solving the Cube is based on the <em>corners-first</em> (CF) method, which is distinct from the layer-by-layer (LL) method which is often the first solving method people learn.
-						The first solution to the Cube, by Erno Rubik himself, was corners-first, and the first world speed-cubing record (22.95 seconds) was done corners-first.
-					</p>
-					<p>
-						There are advantages and disadvantages to all solution methods.
-						Advantages to corners-first are:
 						<ul>
-							<li>The move sequences are generally shorter in CF</li>
-							<li>There are just a few important move sequences to memorize</li>
-							<li>You generally don't "break" your existing work and so can recover from mistakes more easily</li>
-							<li>The solution can scale from a leisurely solve of a few minutes or more to quite fast solves</li>
+							<li>If <m>P</m>, then <m>Q</m>.</li>
+							<li><m>P</m>,</li>
+							<li>Therefore, <m>Q</m></li>
 						</ul>
-					</p>
-				</conclusion>
+						
+						<p>
+							A closely related rule of inference is known as <term>modus tollens</term>, and runs thusly:
+						</p>
+						<ul>
+							<li>If <m>P</m>, then <m>Q</m>.</li>
+							<li>Not <m>Q</m>,</li>
+							<li>Therefore, not <m>P</m>.</li>
+						</ul>
+			 
+			 
+							
+							
+							
+						<exercises>
+						
+						<exercise>
+							<statement>
+								<p>
+								an awesome exercise written by Anika
+								</p>
+							</statement>
+						</exercise>
+						
+						<exercise>
+							an awesome exercise written by Libby
+						</exercise>
+						</exercises>
+		
+		
+		
+					
+					
+					
+				</section>
 				
 				
-				<exercises>
-					<exercise>
-						<p>
-							Sam is nearly done with his Cube! Which of the Cube moves from this section does he need? How many times will he have to perform it?
-						</p>
-						<figure xml:id="fig-exercise-co">
-							<image source="./images/co.svg" width="50%" />
-						</figure>
-					</exercise>
+				<section xml:id="sec-formal-systems-incompleteness">
+					<title>Formal Systems and Incompleteness</title>
 					
-					<exercise>
+					<assemblage>
+						<title>Motivating Questions</title>
 						<p>
-							Lila is nearly done with her Cube! Which move from this section will be helpful? How should she use it?
+							<statement>
+								In this section, we will explore the following questions.
+								<ol>
+									<li>What are formal systems?</li>
+									<li>What was Hilbert's goal? How was it resolved?</li>
+									<li>How did Cantor describe infinite sets?</li>	  
+								</ol>
+							</statement>
 						</p>
-						<figure xml:id="fig-exercise-eo">
-							<image source="./images/eo-exer.svg" width="50%" />
-						</figure>
-					</exercise>
+					</assemblage>
 					
-					<exercise>
-						<p>
-							Sam has gotten himself into a bit of a pickle. How can he apply our moves to solve his Cube?
-						</p>
-						<figure xml:id="fig-exercise-co-move">
-							<image source="./images/co02.svg" width="50%" />
-						</figure>
-					</exercise>
+					<subsection xml:id="subsec-formal-systems">
+						<title>Formal Systems</title>
 					
-					<exercise>
 						<p>
-							This configuration is known as the <term>superflip</term>.
-							Describe what you see. 
-							Can you achieve this on your Cube?
+							We have seen thus far a way of formalizing logic so that we can think about the truth of a statement purely syntactically (structurally) without regard for the semantic meaning of the statements under consideration.
+							In the late 19th century, mathematicians developed what became known as <term>formal systems</term>, consisting of axioms, which were strings of symbols, such as
+							<me>
+								\exists B \forall C, (C\in B \Leftrightarrow C\subseteq A),
+							</me>
+							along with a <term>logical calculus</term>, which govern the rules of inference that can be used on the axioms to deduce new theorems.
 						</p>
-						<figure xml:id="fig-exer-superflip">
-							<image source="./images/superflip.svg" width="50%" />
-						</figure>
-					</exercise>
-				</exercises>
+						
+						<p>
+							Further, mathematicians had long assumed there were consistent foundational axioms for their discipline.
+							Newly discovered paradoxes challenged this view.
+						</p>
+						<exploration>
+							<title>Russell's Paradox</title>
+							<p>
+								In a certain town lives a barber who only cuts the hair of <em>all</em> people who do not cut their own hair.
+								Who cuts the barber's hair?
+							</p>
+	<!-- 						<solution>
+								<p>
+									This is a paradox: if the barber cuts his own hair, we reach a contradiction, as he only cuts the hair of those who do not cut their own hair. On the other hand, if the barber does not cut his own hair, he does by definition.
+								</p>
+								<p>
+									This sort of self-referential paradox is exactly the sort that we'll study later in this section that led to the foundational crisis referred to in the section title.
+								</p>
+							</solution> -->
+						</exploration>
+						
+						<p>
+							Two main schools of mathematical philosophy sprung up in the wake of these discoveries.
+							The <term>formalists</term> argued that statements of mathematics and logic are really just about the rules and consequences for manipulating symbols and strings of letters.
+							That is, mathematics does not have a subject matter at all--just empty symbols, which may be given an interpretation in particular situations and thus have meaning.
+						</p>
+						<p>
+							The response came from the <term>intuitionists</term>.
+							Intuitionism is an approach that consideres mathematics to be purely the result of the constructive mental activity of humans rather than the discovery of any principles which we can reasonably claim exist in an objective reality.
+							Thus, in some sense, mathematics is up to whoever is doing the mathematics.
+							To the intuitionists, the formalists were reducing mathematics to a meaningless game with symbols.
+						</p>
+						
+						<principle>
+							<p>
+								Do you resonate more with a formalist approach to mathematics, or an intuitionist approach?
+								Relatedly: do you believe mathematics is something humans invent, or something we discover in the world around us?
+								Why?
+							</p>
+						</principle>
+		
+		
+						<p>
+							In 1900, at the second International Congress of Mathematicians in Paris, the esteemed mathematician David Hilbert posed 23 theretofore unanswered problems in mathematics that he thought were important to guide the development of mathematics in the 20th century.
+							We've already seen one of them (the 8th): the Goldbach conjecture.
+							Most of Hilbert's problems have been solved, but three are unresolved, two are thought to be too vague to ever get consensus on what a solution would look like, and one is the subject of much debate.
+						</p>
+						<p>					
+							In an attempt to resolve the issues raised by paradoxes like Russell's Paradox, Hilbert posed this problem, the second on the list:
+						</p>
+						<blockquote>
+							But above all I wish to designate the following as the most important among the numerous questions which can be asked with regard to the axioms: To prove that they are not contradictory, that is, that a definite number of logical steps based upon them can never lead to contradictory results….
+						</blockquote>
+						
+						<p>
+							That is, Hilbert wanted mathematicians to prove that the axioms on which mathematics was founded did not lead to a contradiction.
+							The resolution to this problem is surprising, and to begin to explore it, we will turn to the infinite.
+						</p>
+						
+					</subsection>
+					
+					<subsection xml:id="subsec-infinite-sets">
+						<title>Infinity and Incompleteness</title>
+						
+							<p>
+								In <xref ref="subsec-formal-systems" />, we learned about the push from mathematicians in the late 19th/early 20th century were trying to show that the axioms, the very foundations on which mathematics was built, were both <em>complete</em> (the truth of every sensible statement could be decided via deductions from the axioms) and <em>consistent</em> (one could never deduce contradictory statements from the axioms).
+							</p>
+							
+							<p>
+								For reasons which are hopefully clear, we'll assume that the axioms are consistent, that is, no contradictions will arise from them. (If contradictions <em>can</em> arise, we are in trouble indeed.)
+								But if the axioms are consistent, can it be shown that they're complete?
+								To answer this question, we dive into the realm of infinity.
+							</p>
+							
+							
+							<definition>
+								<p>
+									Let <m>S</m> and <m>T</m> be <term>sets</term>, which we may think of as collections of objects.
+									We say that <m>S</m> and <m>T</m> have the same <term>cardinality</term> if there is a one-to-one correspondence between the objects of <m>S</m> and those of <m>T</m>, i.e., if each element of <m>S</m> can be paired up with one and only one unique element of <m>T</m>.
+									In this case, we write <m>|S| = |T|</m>.
+								</p>
+							</definition>
+							
+							<activity>
+								<statement>
+									<p>
+										Let <m>S = \{1,2,3,4\}</m>, <m>T=\{\square,\circ,\bigstar,\triangle\}</m>, and <m>U = \{\diamondsuit,\spadesuit,\clubsuit\}</m>.
+									</p>
+									<ol>
+										<li>Can you find a one-to-one correspondence between <m>S</m> and <m>T</m>? Describe it, or explain why none exist.</li>
+										<li>Can you find a one-to-one correspondence between <m>S</m> and <m>U</m>? Describe it, or explain why none exist.</li>
+										<li>Can you find a one-to-one correspondence between <m>T</m> and <m>U</m>? Describe it, or explain why none exist.</li>
+									</ol>
+								</statement>
+							</activity>
+							
+							<p>
+								In order to explore our undecidable statement, we need to set some notation.
+							</p>
 				
-			</section>
-			
-			<references>
-				<biblio xml:id="Su2020">
-					F. E. Su, C. Jackson, <em>Mathematics for Human Flourishing</em>. Yale University Press, 2020.
-				</biblio>
-			  </references>
-
-			
-		</chapter>
-		
-		
-		<!-- <chapter xml:id="chap-chess">
-			<title>Chess</title>
-			<introduction>
-			
-			</introduction>
-			
-			
-			
-			
-		</chapter> -->
-		
-		
-		
-	</part>
+							<definition xml:id="def-number_sets">
+								<p>
+									We define the following sets of numbers.
+								</p>
+								<ol>
+									<li>The <term>natural numbers</term> are given by <m>\mathbb{N} = \{1, 2, 3, \ldots\}</m>.</li>
+									<li>The <term>whole numbers</term> are given by <m>\mathbb{W} = \{0,1,2,3,\ldots\}</m>.</li>
+									<li>The <term>integers</term> are given by <m>\mathbb{Z} = \{\ldots, -3, -2, -1, 0, 1, 2, 3, \ldots\}</m>.</li>
+									<li>The <term>even integers</term> are given by <m>2\mathbb{Z} = \{\ldots, -6, -4, -2, 0, 2, 4, 6, \ldots\}</m>.</li>
+									<li>The set of <term>rational numbers</term> is denoted by <m>\mathbb{Q}</m> and consists of all fractions <m>\frac{a}{b}</m>, where <m>a,b</m> are integers and <m>b\ne 0</m>.</li>
+									<li>The set of <term>real numbers</term> is denoted by <m>\mathbb{R}</m> and is given by all positive and negative infinite decimals (alternatively, every point on the number line).</li>
+								</ol>
+								</definition>
+				
+							<activity>
+								<statement>
+									<p>
+										For the numbers that follow, identify all sets described in <xref ref="def-number_sets" /> they live in.
+									</p>
+									<ol>
+										<li> <m>7</m></li>
+										<li><m>-2</m></li>
+										<li><m>\pi</m></li>
+										<li><m>\frac{4}{3}</m></li>
+										<li><m>0</m></li>
+									</ol>
+								</statement>
+							</activity>
+				
+							<p>
+								We now look for some one-to-one correspondences.
+							</p>
+				
+							<exploration xml:id="expl-countable">
+								<statement>
+									<p>
+										For the following pairs of sets, determine whether a one-to-one correspondence between the two sets exists. If it does, describe it. If it does not, give a justification.
+									</p>
+									<ol>
+										<li><m>\mathbb{N}</m> and <m>\mathbb{W}</m></li>
+										<li><m>\mathbb{W}</m> and <m>\mathbb{Z}</m></li>
+										<li><m>\mathbb{Z}</m> and <m>2\mathbb{Z}</m></li>
+										<li><m>\mathbb{N}</m> and <m>2\mathbb{Z}</m></li>
+										<li>(Challenge) <m>\mathbb{N}</m> and <m>\mathbb{Q}</m></li>
+									</ol>
+								</statement>
+							</exploration>
+							
+							<exploration xml:id="expl-uncountable">
+								<statement>
+									<p>
+										Let's explore the relationship between the cardinalities of <m>\mathbb{N}</m> and <m>\mathbb{R}</m> by considering the interval <m>[0,1]</m> consisting of all real numbers (points on the number line) <m>x</m> satisfying <m>0 \le x \le 1</m>.
+										We will use the notation <m>0.a_1 a_2 a_3 \ldots</m> to denote the infinite decimal with tenths place value <m>a_1</m>, hundredths <m>a_2</m>, and so on.
+									</p>
+									<ol>
+										<li>What is the relationship between <m>|\mathbb{R}|</m> and <m>|[0,1]|</m>?</li>
+										<li>Suppose we have a one-to-one correspondence between <m>\mathbb{N}</m> and <m>[0,1]</m>. Explain why this means that we can write 
+											<md>
+												<mrow>1 \amp \leftrightarrow 0.d_{11}d_{12}d_{13}\ldots</mrow>
+												<mrow>2 \amp \leftrightarrow 0.d_{21}d_{22}d_{23}\ldots</mrow>
+												<mrow>3 \amp \leftrightarrow 0.d_{31}d_{32}d_{33}\ldots</mrow>
+												<mrow> \amp \vdots </mrow>
+											</md>
+											where <m>d_{ij}</m> is the <m>j</m>th decimal digit of the <m>i</m>th number on the list.
+											</li>
+										<li>Define a real number <m>M = 0.e_1 e_2 e_3 \ldots</m> where <m>e_j = 2</m> if <m>d_{jj} \ge 5</m> and <m>e_j = 7</m> if <m>d_{jj} \lt 5</m>. Suppose the first three numbers on the list above are
+											<md>
+												<mrow> \amp 0.4548430426\ldots</mrow>
+												<mrow> \amp 0.4607677961\ldots</mrow>
+												<mrow> \amp 0.4702962689\ldots</mrow>
+											</md>
+											What is <m>M</m> in this case?
+										</li>
+										<li>In general, is it true that <m>0 \le M \le 1</m>?</li>
+										<li>Where is <m>M</m> on the list in Question 2?</li>
+										<li>What does your answer to the previous question suggest about the one-to-one correspondence we wrote down in Question 2?</li>
+										<li>What does your answer to the previous question suggest about the relationship between <m>|\mathbb{N}|</m> and <m>|[0,1]|</m>? Between <m>|\mathbb{N}|</m> and <m>|\mathbb{R}|</m>?</li>
+									</ol>
+								</statement>
+							</exploration>
+				
+							
+							<principle xml:id="disc-ch">
+								<p>
+									Given your responses to <xref ref="expl-countable" /> and <xref ref="expl-uncountable" />, do you think there is a set <m>S</m> such that <m>|S| \gt |\mathbb{N}|</m> and <m>|S| \lt |\mathbb{R}|</m>? Why or why not?
+								</p>
+							</principle>
+							
+							
+							<p>
+								<index>incompleteness theorems</index>
+								In the early 1930s, the Austrian mathematical logician Kurt Godel revolutionized mathematical logic with his two <term>incompleteness theorems</term>.
+								Informally, first incompleteness theorem states that any sufficiently strong, consistent formal system contains undecidable statements.
+								That is, there are sensible statements, such as the one raised in <xref ref="disc-ch" />, which cannot be proved from within the system.
+								In that case, we may choose to adopt either the statement <em>or its negation</em> as an additional axiom, and may do so without creating any contradiction.
+							</p>
+							<p>
+								The question in <xref ref="disc-ch" /> leads to just such a proposition, namely that no such set <m>S</m> exists.
+								This has been known as the <term>continuum hypothesis</term>.
+								It was first suggested by Cantor in 1878, and was one of Hilbert's 23 problems.
+								Godel himself proved in 1940 that its negation, i.e., that such a set <m>S</m> does exist, is independent of the usual axioms of set theory.
+								The mathematician Paul Cohen proved in 1963 that the continuum hypothesis itself is independent of the usual axioms of set theory, thus verifying that the hypothesis is undecidable.
+							</p>
+						
+						
+					</subsection>
+					
+					<exercises>
+						
+						<exercise>
+							<statement>
+								<p>
+									How have mathematicians reacted to Godel's incompleteness theorems?
+									What consequences, if any, have there been for the work of discovering new mathematics?
+								</p>
+							</statement>
+						</exercise>
+						
+						<exercise>
+							<statement>
+								<p>
+									The existence of undecidable statements in mathematics, such as the continuum hypothesis, may seem like an esoteric quirk without any real consequences.
+									However, there have been similar undecidable statements discovered in related disciplines such as computer science and physics.
+									Find such a statement and, as best you can, describe it.
+								</p>
+							</statement>
+						</exercise>
+					</exercises>
 	
 	
 	
-	<part xml:id="part-truth">
-		<title>Truth</title>
-		
-		<chapter xml:id="chap-reasoning">
-			<title>Inductive and Deductive Reasoning</title>
+					
+					
+					
+				</section>
+				
+				
+				
+				
+				
+				
+				
+				
+			</chapter>
 			
 			
 			
-		</chapter>
-		
-		
-		
-		<chapter xml:id="chap-logic">
-			<title>Mathematical Logic</title>
 			
-			
-			
-		</chapter>
-		
-		<chapter xml:id="chap-incompleteness">
-			<title>Incompleteness</title>
-			
-			
-			
-		</chapter>
 		
 		
-	
-	
-	
-	</part>
-	
-	
-	
-	<part xml:id="part-power">
-		<title>Power</title>
 		
-		 <chapter xml:id="chap-dynamical-systems">
-		 	<title>Discrete Dynamical Systems</title>
+		</part>
+		
+		
+		
+		<part xml:id="part-power">
+			<title>Power</title>
+			
+			 <chapter xml:id="chap-dynamical-systems">
+				 <title>Discrete Dynamical Systems</title>
+				 
+				 
+			 </chapter>
 			 
 			 
-		 </chapter>
-		 
-		 
-		 <chapter xml:id="chap-graphs">
-		 	<title>Graphs and Networks</title>
+			 <chapter xml:id="chap-graphs">
+				 <title>Graphs and Networks</title>
+				 
+				 
+			 </chapter>
 			 
 			 
-		 </chapter>
-		 
-		 
-		 <chapter xml:id="chap-coding">
-		 	<title>Modular Arithmetic and Coding Theory</title>
-			 
-			 
-		 </chapter>
-		 	
+			 <chapter xml:id="chap-coding">
+				 <title>Modular Arithmetic and Coding Theory</title>
+				 
+				 
+			 </chapter>
+				 
+			
+			
+		</part>
 		
 		
-	</part>
+		
+		<part xml:id="part-justice">
+			<title>Justice</title>
+			
+			<chapter xml:id="chap-voting">
+				<title>Voting</title>
+				
+				
+				<section xml:id="sec-voting-intro">
+					<title>Introduction to Voting</title>
+					
+					
+					
+					
+				</section>
+				
+				
+				<section xml:id="sec-more-voting-systems">
+					<title>More Voting Systems</title>
+					
+					
+				</section>
+				
+				
+				<section xml:id="sec-evaluating-voting-systems">
+					<title>Evaluating Systems of Voting</title>
+					
+					
+					
+				</section>
+				
+				
+				
+				
+			</chapter>
+			
+			<chapter xml:id="chap-apportionment">
+				<title>Apportionment</title>
+				
+				<section xml:id="sec-apportionment-intro">
+					<title>Introduction to Apportionment</title>
+					
+					
+				</section>
+				
+				<section xml:id="sec-apportionment-methods">
+					<title>More Apportionment Methods</title>
+					
+					
+					
+				</section>
+				
+				
+			</chapter>
+			
+			
+			<chapter xml:id="chap-redistricting">
+				<title>Redistricting</title>
+				
+				
+				
+			</chapter>
+			
+			
+			
+			
+		</part>
+		
+		
+		
+		<part xml:id="part-beauty">
+			<title>Beauty</title>
+			
+			<chapter xml:id="chap-fibonacci">
+				<title>The Fibonacci Sequence</title>
+				
+			</chapter>
+			
+			<chapter xml:id="chap-fractals">
+				<title>Fractal Geometry</title>
+				
+				
+			</chapter>
+			
+			
+			<chapter xml:id="chap-art">
+				<title>Mathematics and the Arts</title>
+				
+				
+			</chapter>
+			
+			
 	
-	
-	
-	<part xml:id="part-justice">
-		<title>Justice</title>
-		
-		<chapter xml:id="chap-voting">
-			<title>Voting</title>
+				
 			
 			
 			
-		</chapter>
-		
-		<chapter xml:id="chap-apportionment">
-			<title>Apportionment</title>
 			
 			
-		</chapter>
-		
-		
-		<chapter xml:id="chap-redistricting">
-			<title>Redistricting</title>
-			
-			
-			
-		</chapter>
-		
-		
-		
-		
-	</part>
-	
-	
-	
-	<part xml:id="part-beauty">
-		<title>Beauty</title>
-		
-		<chapter xml:id="chap-fibonacci">
-			<title>The Fibonacci Sequence</title>
-			
-		</chapter>
-		
-		<chapter xml:id="chap-fractals">
-			<title>Fractal Geometry</title>
-			
-			
-		</chapter>
-		
-		
-		<chapter xml:id="chap-art">
-			<title>Mathematics and the Arts</title>
-			
-			
-		</chapter>
-		
-		
-
-			
-		
-		
-		
-		
-		
-	</part>
-		
-			
-			
-
-		
-	
+		</part>
 	
 
 

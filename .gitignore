@@ -253,3 +253,10 @@ TSWLatexianTemp*
 
 # standalone packages
 *.sta
+
+feedback/
+.nova/
+html-bad/
+ptx-old/
+EMM-broken.ptx
+pubOLD.xml

@@ -1,6 +1,7 @@
 {
   "identifier" : "2274319A-8C17-44CF-A1E6-2EC549CE2A20",
   "localPath" : "html",
+  "remotePath" : "\/var\/www\/emmath.org\/html",
   "remoteURL" : "https:\/\/emmath.org",
   "server" : "emmath.org",
   "usesPublishing" : true

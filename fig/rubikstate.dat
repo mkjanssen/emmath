@@ -1,0 +1,10 @@
+%% filename: rubikstate.dat
+%% written by rubikrotation.sty=v5.0 (2018/02/25)
+cubesize,three
+up,W,W,W,W,W,W,W,W,W
+down,Y,Y,Y,Y,Y,Y,Y,Y,Y
+left,B,B,B,B,B,B,B,B,B
+right,G,G,G,G,G,G,G,G,G
+front,O,O,O,O,O,O,O,O,O
+back,R,R,R,R,R,R,R,R,R
+rotation,[Superflip],Dp,R2,Fp,D2,F2,U2,Lp,R,Dp,R2,B,F,Rp,U2,Lp,F2,Rp,U2,Rp,Up,<(20f*)>

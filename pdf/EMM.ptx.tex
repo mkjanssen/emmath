@@ -1,0 +1,2115 @@
+%********************************************%
+%*       Generated from PreTeXt source      *%
+%*       on 2021-10-18T10:38:05-05:00       *%
+%*   A recent stable commit (2020-08-09):   *%
+%* 98f21740783f166a773df4dc83cab5293ab63a4a *%
+%*                                          *%
+%*         https://pretextbook.org          *%
+%*                                          *%
+%********************************************%
+%% We elect to always write snapshot output into <job>.dep file
+\RequirePackage{snapshot}
+\documentclass[oneside,10pt,]{book}
+%% Custom Preamble Entries, early (use latex.preamble.early)
+%% Default LaTeX packages
+%%   1.  always employed (or nearly so) for some purpose, or
+%%   2.  a stylewriter may assume their presence
+\usepackage{geometry}
+%% Some aspects of the preamble are conditional,
+%% the LaTeX engine is one such determinant
+\usepackage{ifthen}
+%% etoolbox has a variety of modern conveniences
+\usepackage{etoolbox}
+\usepackage{ifxetex,ifluatex}
+%% Raster graphics inclusion
+\usepackage{graphicx}
+%% Color support, xcolor package
+%% Always loaded, for: add/delete text, author tools
+%% Here, since tcolorbox loads tikz, and tikz loads xcolor
+\PassOptionsToPackage{usenames,dvipsnames,svgnames,table}{xcolor}
+\usepackage{xcolor}
+%% begin: defined colors, via xcolor package, for styling
+%% end: defined colors, via xcolor package, for styling
+%% Colored boxes, and much more, though mostly styling
+%% skins library provides "enhanced" skin, employing tikzpicture
+%% boxes may be configured as "breakable" or "unbreakable"
+%% "raster" controls grids of boxes, aka side-by-side
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\tcbuselibrary{breakable}
+\tcbuselibrary{raster}
+%% We load some "stock" tcolorbox styles that we use a lot
+%% Placement here is provisional, there will be some color work also
+%% First, black on white, no border, transparent, but no assumption about titles
+\tcbset{ bwminimalstyle/.style={size=minimal, boxrule=-0.3pt, frame empty,
+colback=white, colbacktitle=white, coltitle=black, opacityfill=0.0} }
+%% Second, bold title, run-in to text/paragraph/heading
+%% Space afterwards will be controlled by environment,
+%% independent of constructions of the tcb title
+%% Places \blocktitlefont onto many block titles
+\tcbset{ runintitlestyle/.style={fonttitle=\blocktitlefont\upshape\bfseries, attach title to upper} }
+%% Spacing prior to each exercise, anywhere
+\tcbset{ exercisespacingstyle/.style={before skip={1.5ex plus 0.5ex}} }
+%% Spacing prior to each block
+\tcbset{ blockspacingstyle/.style={before skip={2.0ex plus 0.5ex}} }
+%% xparse allows the construction of more robust commands,
+%% this is a necessity for isolating styling and behavior
+%% The tcolorbox library of the same name loads the base library
+\tcbuselibrary{xparse}
+%% Hyperref should be here, but likes to be loaded late
+%%
+%% Inline math delimiters, \(, \), need to be robust
+%% 2016-01-31:  latexrelease.sty  supersedes  fixltx2e.sty
+%% If  latexrelease.sty  exists, bugfix is in kernel
+%% If not, bugfix is in  fixltx2e.sty
+%% See:  https://tug.org/TUGboat/tb36-3/tb114ltnews22.pdf
+%% and read "Fewer fragile commands" in distribution's  latexchanges.pdf
+\IfFileExists{latexrelease.sty}{}{\usepackage{fixltx2e}}
+%% shorter subnumbers in some side-by-side require manipulations
+\usepackage{xstring}
+%% Footnote counters and part/chapter counters are manipulated
+%% April 2018:  chngcntr  commands now integrated into the kernel,
+%% but circa 2018/2019 the package would still try to redefine them,
+%% so we need to do the work of loading conditionally for old kernels.
+%% From version 1.1a,  chngcntr  should detect defintions made by LaTeX kernel.
+\ifdefined\counterwithin
+\else
+    \usepackage{chngcntr}
+\fi
+%% Text height identically 9 inches, text width varies on point size
+%% See Bringhurst 2.1.1 on measure for recommendations
+%% 75 characters per line (count spaces, punctuation) is target
+%% which is the upper limit of Bringhurst's recommendations
+\geometry{letterpaper,total={340pt,9.0in}}
+%% Custom Page Layout Adjustments (use latex.geometry)
+%% This LaTeX file may be compiled with pdflatex, xelatex, or lualatex executables
+%% LuaTeX is not explicitly supported, but we do accept additions from knowledgeable users
+%% The conditional below provides  pdflatex  specific configuration last
+%% begin: engine-specific capabilities
+\ifthenelse{\boolean{xetex} \or \boolean{luatex}}{%
+%% begin: xelatex and lualatex-specific default configuration
+\ifxetex\usepackage{xltxtra}\fi
+%% realscripts is the only part of xltxtra relevant to lualatex 
+\ifluatex\usepackage{realscripts}\fi
+%% end:   xelatex and lualatex-specific default configuration
+}{
+%% begin: pdflatex-specific default configuration
+%% We assume a PreTeXt XML source file may have Unicode characters
+%% and so we ask LaTeX to parse a UTF-8 encoded file
+%% This may work well for accented characters in Western language,
+%% but not with Greek, Asian languages, etc.
+%% When this is not good enough, switch to the  xelatex  engine
+%% where Unicode is better supported (encouraged, even)
+\usepackage[utf8]{inputenc}
+%% end: pdflatex-specific default configuration
+}
+%% end:   engine-specific capabilities
+%%
+%% Fonts.  Conditional on LaTex engine employed.
+%% Default Text Font: The Latin Modern fonts are
+%% "enhanced versions of the [original TeX] Computer Modern fonts."
+%% We use them as the default text font for PreTeXt output.
+%% Automatic Font Control
+%% Portions of a document, are, or may, be affected by defined commands
+%% These are perhaps more flexible when using  xelatex  rather than  pdflatex
+%% The following definitions are meant to be re-defined in a style, using \renewcommand
+%% They are scoped when employed (in a TeX group), and so should not be defined with an argument
+\newcommand{\divisionfont}{\relax}
+\newcommand{\blocktitlefont}{\relax}
+\newcommand{\contentsfont}{\relax}
+\newcommand{\pagefont}{\relax}
+\newcommand{\tabularfont}{\relax}
+\newcommand{\xreffont}{\relax}
+\newcommand{\titlepagefont}{\relax}
+%%
+\ifthenelse{\boolean{xetex} \or \boolean{luatex}}{%
+%% begin: font setup and configuration for use with xelatex
+%% Generally, xelatex is necessary for non-Western fonts
+%% fontspec package provides extensive control of system fonts,
+%% meaning *.otf (OpenType), and apparently *.ttf (TrueType)
+%% that live *outside* your TeX/MF tree, and are controlled by your *system*
+%% (it is possible that a TeX distribution will place fonts in a system location)
+%%
+%% The fontspec package is the best vehicle for using different fonts in  xelatex
+%% So we load it always, no matter what a publisher or style might want
+%%
+\usepackage{fontspec}
+%%
+%% begin: xelatex main font ("font-xelatex-main" template)
+%% Latin Modern Roman is the default font for xelatex and so is loaded with a TU encoding
+%% *in the format* so we can't touch it, only perhaps adjust it later
+%% in one of two ways (then known by NFSS names such as "lmr")
+%% (1) via NFSS with font family names such as "lmr" and "lmss"
+%% (2) via fontspec with commands like \setmainfont{Latin Modern Roman}
+%% The latter requires the font to be known at the system-level by its font name,
+%% but will give access to OTF font features through optional arguments
+%% https://tex.stackexchange.com/questions/470008/
+%% where-and-how-does-fontspec-sty-specify-the-default-font-latin-modern-roman
+%% http://tex.stackexchange.com/questions/115321
+%% /how-to-optimize-latin-modern-font-with-xelatex
+%%
+%% end:   xelatex main font ("font-xelatex-main" template)
+%% begin: xelatex mono font ("font-xelatex-mono" template)
+%% (conditional on non-trivial uses being present in source)
+%% end:   xelatex mono font ("font-xelatex-mono" template)
+%% begin: xelatex font adjustments ("font-xelatex-style" template)
+%% end:   xelatex font adjustments ("font-xelatex-style" template)
+%%
+%% Extensive support for other languages
+\usepackage{polyglossia}
+%% Set main/default language based on pretext/@xml:lang value
+%% document language code is "en-US", US English
+%% usmax variant has extra hypenation
+\setmainlanguage[variant=usmax]{english}
+%% Enable secondary languages based on discovery of @xml:lang values
+%% Enable fonts/scripts based on discovery of @xml:lang values
+%% Western languages should be ably covered by Latin Modern Roman
+%% end:   font setup and configuration for use with xelatex
+}{%
+%% begin: font setup and configuration for use with pdflatex
+%% begin: pdflatex main font ("font-pdflatex-main" template)
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+%% end:   pdflatex main font ("font-pdflatex-main" template)
+%% begin: pdflatex mono font ("font-pdflatex-mono" template)
+%% (conditional on non-trivial uses being present in source)
+%% end:   pdflatex mono font ("font-pdflatex-mono" template)
+%% begin: pdflatex font adjustments ("font-pdflatex-style" template)
+%% end:   pdflatex font adjustments ("font-pdflatex-style" template)
+%% end:   font setup and configuration for use with pdflatex
+}
+%% Micromanage spacing, etc.  The named "microtype-options"
+%% template may be employed to fine-tune package behavior
+\usepackage{microtype}
+%% Symbols, align environment, commutative diagrams, bracket-matrix
+\usepackage{amsmath}
+\usepackage{amscd}
+\usepackage{amssymb}
+%% allow page breaks within display mathematics anywhere
+%% level 4 is maximally permissive
+%% this is exactly the opposite of AMSmath package philosophy
+%% there are per-display, and per-equation options to control this
+%% split, aligned, gathered, and alignedat are not affected
+\allowdisplaybreaks[4]
+%% allow more columns to a matrix
+%% can make this even bigger by overriding with  latex.preamble.late  processing option
+\setcounter{MaxMatrixCols}{30}
+%%
+%%
+%% Division Titles, and Page Headers/Footers
+%% titlesec package, loading "titleps" package cooperatively
+%% See code comments about the necessity and purpose of "explicit" option.
+%% The "newparttoc" option causes a consistent entry for parts in the ToC 
+%% file, but it is only effective if there is a \titleformat for \part.
+%% "pagestyles" loads the  titleps  package cooperatively.
+\usepackage[explicit, newparttoc, pagestyles]{titlesec}
+%% The companion titletoc package for the ToC.
+\usepackage{titletoc}
+%% Fixes a bug with transition from chapters to appendices in a "book"
+%% See generating XSL code for more details about necessity
+\newtitlemark{\chaptertitlename}
+%% begin: customizations of page styles via the modal "titleps-style" template
+%% Designed to use commands from the LaTeX "titleps" package
+%% Plain pages should have the same font for page numbers
+\renewpagestyle{plain}{%
+\setfoot{}{\pagefont\thepage}{}%
+}%
+%% Single pages as in default LaTeX
+\renewpagestyle{headings}{%
+\sethead{\pagefont\slshape\MakeUppercase{\ifthechapter{\chaptertitlename\space\thechapter.\space}{}\chaptertitle}}{}{\pagefont\thepage}%
+}%
+\pagestyle{headings}
+%% end: customizations of page styles via the modal "titleps-style" template
+%%
+%% Create globally-available macros to be provided for style writers
+%% These are redefined for each occurence of each division
+\newcommand{\divisionnameptx}{\relax}%
+\newcommand{\titleptx}{\relax}%
+\newcommand{\subtitleptx}{\relax}%
+\newcommand{\shortitleptx}{\relax}%
+\newcommand{\authorsptx}{\relax}%
+\newcommand{\epigraphptx}{\relax}%
+%% Create environments for possible occurences of each division
+%% Environment for a PTX "preface" at the level of a LaTeX "chapter"
+\NewDocumentEnvironment{preface}{mmmmmm}
+{%
+\renewcommand{\divisionnameptx}{Preface}%
+\renewcommand{\titleptx}{#1}%
+\renewcommand{\subtitleptx}{#2}%
+\renewcommand{\shortitleptx}{#3}%
+\renewcommand{\authorsptx}{#4}%
+\renewcommand{\epigraphptx}{#5}%
+\chapter*{#1}%
+\addcontentsline{toc}{chapter}{#3}
+\label{#6}%
+}{}%
+%% Environment for a PTX "part" at the level of a LaTeX "part"
+\NewDocumentEnvironment{partptx}{mmmmmm}
+{%
+\renewcommand{\divisionnameptx}{Part}%
+\renewcommand{\titleptx}{#1}%
+\renewcommand{\subtitleptx}{#2}%
+\renewcommand{\shortitleptx}{#3}%
+\renewcommand{\authorsptx}{#4}%
+\renewcommand{\epigraphptx}{#5}%
+\part[{#3}]{#1}%
+\label{#6}%
+}{}%
+%% Environment for a PTX "chapter" at the level of a LaTeX "chapter"
+\NewDocumentEnvironment{chapterptx}{mmmmmm}
+{%
+\renewcommand{\divisionnameptx}{Chapter}%
+\renewcommand{\titleptx}{#1}%
+\renewcommand{\subtitleptx}{#2}%
+\renewcommand{\shortitleptx}{#3}%
+\renewcommand{\authorsptx}{#4}%
+\renewcommand{\epigraphptx}{#5}%
+\chapter[{#3}]{#1}%
+\label{#6}%
+}{}%
+%% Environment for a PTX "section" at the level of a LaTeX "section"
+\NewDocumentEnvironment{sectionptx}{mmmmmm}
+{%
+\renewcommand{\divisionnameptx}{Section}%
+\renewcommand{\titleptx}{#1}%
+\renewcommand{\subtitleptx}{#2}%
+\renewcommand{\shortitleptx}{#3}%
+\renewcommand{\authorsptx}{#4}%
+\renewcommand{\epigraphptx}{#5}%
+\section[{#3}]{#1}%
+\label{#6}%
+}{}%
+%% Environment for a PTX "subsection" at the level of a LaTeX "subsection"
+\NewDocumentEnvironment{subsectionptx}{mmmmmm}
+{%
+\renewcommand{\divisionnameptx}{Subsection}%
+\renewcommand{\titleptx}{#1}%
+\renewcommand{\subtitleptx}{#2}%
+\renewcommand{\shortitleptx}{#3}%
+\renewcommand{\authorsptx}{#4}%
+\renewcommand{\epigraphptx}{#5}%
+\subsection[{#3}]{#1}%
+\label{#6}%
+}{}%
+%% Environment for a PTX "index" at the level of a LaTeX ""
+\NewDocumentEnvironment{indexptx}{mmmmmm}
+{%
+\renewcommand{\divisionnameptx}{Index}%
+\renewcommand{\titleptx}{#1}%
+\renewcommand{\subtitleptx}{#2}%
+\renewcommand{\shortitleptx}{#3}%
+\renewcommand{\authorsptx}{#4}%
+\renewcommand{\epigraphptx}{#5}%
+\*{#1}%
+\addcontentsline{toc}{}{#3}
+\label{#6}%
+}{}%
+%% Environment for a PTX "exercises" at the level of a LaTeX "subsection"
+\NewDocumentEnvironment{exercises-subsection}{mmmmmm}
+{%
+\renewcommand{\divisionnameptx}{Exercises}%
+\renewcommand{\titleptx}{#1}%
+\renewcommand{\subtitleptx}{#2}%
+\renewcommand{\shortitleptx}{#3}%
+\renewcommand{\authorsptx}{#4}%
+\renewcommand{\epigraphptx}{#5}%
+\subsection[{#3}]{#1}%
+\label{#6}%
+}{}%
+%% Environment for a PTX "exercises" at the level of a LaTeX "subsection"
+\NewDocumentEnvironment{exercises-subsection-numberless}{mmmmmm}
+{%
+\renewcommand{\divisionnameptx}{Exercises}%
+\renewcommand{\titleptx}{#1}%
+\renewcommand{\subtitleptx}{#2}%
+\renewcommand{\shortitleptx}{#3}%
+\renewcommand{\authorsptx}{#4}%
+\renewcommand{\epigraphptx}{#5}%
+\subsection*{#1}%
+\addcontentsline{toc}{subsection}{#3}
+\label{#6}%
+}{}%
+%% Environment for a PTX "references" at the level of a LaTeX "section"
+\NewDocumentEnvironment{references-section}{mmmmmm}
+{%
+\renewcommand{\divisionnameptx}{References}%
+\renewcommand{\titleptx}{#1}%
+\renewcommand{\subtitleptx}{#2}%
+\renewcommand{\shortitleptx}{#3}%
+\renewcommand{\authorsptx}{#4}%
+\renewcommand{\epigraphptx}{#5}%
+\section[{#3}]{#1}%
+\label{#6}%
+}{}%
+%% Environment for a PTX "references" at the level of a LaTeX "section"
+\NewDocumentEnvironment{references-section-numberless}{mmmmmm}
+{%
+\renewcommand{\divisionnameptx}{References}%
+\renewcommand{\titleptx}{#1}%
+\renewcommand{\subtitleptx}{#2}%
+\renewcommand{\shortitleptx}{#3}%
+\renewcommand{\authorsptx}{#4}%
+\renewcommand{\epigraphptx}{#5}%
+\section*{#1}%
+\addcontentsline{toc}{section}{#3}
+\label{#6}%
+}{}%
+%%
+%% Styles for six traditional LaTeX divisions
+\titleformat{\part}[display]
+{\divisionfont\Huge\bfseries\centering}{\divisionnameptx\space\thepart}{30pt}{\Huge#1}
+[{\Large\centering\authorsptx}]
+\titleformat{\chapter}[display]
+{\divisionfont\huge\bfseries}{\divisionnameptx\space\thechapter}{20pt}{\Huge#1}
+[{\Large\authorsptx}]
+\titleformat{name=\chapter,numberless}[display]
+{\divisionfont\huge\bfseries}{}{0pt}{#1}
+[{\Large\authorsptx}]
+\titlespacing*{\chapter}{0pt}{50pt}{40pt}
+\titleformat{\section}[hang]
+{\divisionfont\Large\bfseries}{\thesection}{1ex}{#1}
+[{\large\authorsptx}]
+\titleformat{name=\section,numberless}[block]
+{\divisionfont\Large\bfseries}{}{0pt}{#1}
+[{\large\authorsptx}]
+\titlespacing*{\section}{0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+\titleformat{\subsection}[hang]
+{\divisionfont\large\bfseries}{\thesubsection}{1ex}{#1}
+[{\normalsize\authorsptx}]
+\titleformat{name=\subsection,numberless}[block]
+{\divisionfont\large\bfseries}{}{0pt}{#1}
+[{\normalsize\authorsptx}]
+\titlespacing*{\subsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+\titleformat{\subsubsection}[hang]
+{\divisionfont\normalsize\bfseries}{\thesubsubsection}{1em}{#1}
+[{\small\authorsptx}]
+\titleformat{name=\subsubsection,numberless}[block]
+{\divisionfont\normalsize\bfseries}{}{0pt}{#1}
+[{\normalsize\authorsptx}]
+\titlespacing*{\subsubsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+\titleformat{\paragraph}[hang]
+{\divisionfont\normalsize\bfseries}{\theparagraph}{1em}{#1}
+[{\small\authorsptx}]
+\titleformat{name=\paragraph,numberless}[block]
+{\divisionfont\normalsize\bfseries}{}{0pt}{#1}
+[{\normalsize\authorsptx}]
+\titlespacing*{\paragraph}{0pt}{3.25ex plus 1ex minus .2ex}{1.5em}
+%%
+%% Styles for five traditional LaTeX divisions
+\titlecontents{part}%
+[0pt]{\contentsmargin{0em}\addvspace{1pc}\contentsfont\bfseries}%
+{\Large\thecontentslabel\enspace}{\Large}%
+{}%
+[\addvspace{.5pc}]%
+\titlecontents{chapter}%
+[0pt]{\contentsmargin{0em}\addvspace{1pc}\contentsfont\bfseries}%
+{\large\thecontentslabel\enspace}{\large}%
+{\hfill\bfseries\thecontentspage}%
+[\addvspace{.5pc}]%
+\dottedcontents{section}[3.8em]{\contentsfont}{2.3em}{1pc}%
+\dottedcontents{subsection}[6.1em]{\contentsfont}{3.2em}{1pc}%
+\dottedcontents{subsubsection}[9.3em]{\contentsfont}{4.3em}{1pc}%
+%%
+%% Begin: Semantic Macros
+%% To preserve meaning in a LaTeX file
+%%
+%% \mono macro for content of "c", "cd", "tag", etc elements
+%% Also used automatically in other constructions
+%% Simply an alias for \texttt
+%% Always defined, even if there is no need, or if a specific tt font is not loaded
+\newcommand{\mono}[1]{\texttt{#1}}
+%%
+%% Following semantic macros are only defined here if their
+%% use is required only in this specific document
+%%
+%% Used for inline definitions of terms
+\newcommand{\terminology}[1]{\textbf{#1}}
+%% End: Semantic Macros
+%% Divisional exercises (and worksheet) as LaTeX environments
+%% Third argument is option for extra workspace in worksheets
+%% Hanging indent occupies a 5ex width slot prior to left margin
+%% Experimentally this seems just barely sufficient for a bold "888."
+%% Division exercises, not in exercise group
+\tcbset{ divisionexercisestyle/.style={bwminimalstyle, runintitlestyle, exercisespacingstyle, left=5ex, breakable, parbox=false } }
+\newtcolorbox{divisionexercise}[4]{divisionexercisestyle, before title={\hspace{-5ex}\makebox[5ex][l]{#1.}}, title={\notblank{#2}{#2\space}{}}, phantom={\hypertarget{#4}{}}, after={\notblank{#3}{\newline\rule{\workspacestrutwidth}{#3}\newline}{}}}
+%% Localize LaTeX supplied names (possibly none)
+\renewcommand*{\partname}{Part}
+\renewcommand*{\chaptername}{Chapter}
+%% Equation Numbering
+%% Controlled by  numbering.equations.level  processing parameter
+%% No adjustment here implies document-wide numbering
+\numberwithin{equation}{section}
+%% "tcolorbox" environment for a single image, occupying entire \linewidth
+%% arguments are left-margin, width, right-margin, as multiples of
+%% \linewidth, and are guaranteed to be positive and sum to 1.0
+\tcbset{ imagestyle/.style={bwminimalstyle} }
+\NewTColorBox{image}{mmm}{imagestyle,left skip=#1\linewidth,width=#2\linewidth}
+%% For improved tables
+\usepackage{array}
+%% Some extra height on each row is desirable, especially with horizontal rules
+%% Increment determined experimentally
+\setlength{\extrarowheight}{0.2ex}
+%% Define variable thickness horizontal rules, full and partial
+%% Thicknesses are 0.03, 0.05, 0.08 in the  booktabs  package
+\newcommand{\hrulethin}  {\noalign{\hrule height 0.04em}}
+\newcommand{\hrulemedium}{\noalign{\hrule height 0.07em}}
+\newcommand{\hrulethick} {\noalign{\hrule height 0.11em}}
+%% We preserve a copy of the \setlength package before other
+%% packages (extpfeil) get a chance to load packages that redefine it
+\let\oldsetlength\setlength
+\newlength{\Oldarrayrulewidth}
+\newcommand{\crulethin}[1]%
+{\noalign{\global\oldsetlength{\Oldarrayrulewidth}{\arrayrulewidth}}%
+\noalign{\global\oldsetlength{\arrayrulewidth}{0.04em}}\cline{#1}%
+\noalign{\global\oldsetlength{\arrayrulewidth}{\Oldarrayrulewidth}}}%
+\newcommand{\crulemedium}[1]%
+{\noalign{\global\oldsetlength{\Oldarrayrulewidth}{\arrayrulewidth}}%
+\noalign{\global\oldsetlength{\arrayrulewidth}{0.07em}}\cline{#1}%
+\noalign{\global\oldsetlength{\arrayrulewidth}{\Oldarrayrulewidth}}}
+\newcommand{\crulethick}[1]%
+{\noalign{\global\oldsetlength{\Oldarrayrulewidth}{\arrayrulewidth}}%
+\noalign{\global\oldsetlength{\arrayrulewidth}{0.11em}}\cline{#1}%
+\noalign{\global\oldsetlength{\arrayrulewidth}{\Oldarrayrulewidth}}}
+%% Single letter column specifiers defined via array package
+\newcolumntype{A}{!{\vrule width 0.04em}}
+\newcolumntype{B}{!{\vrule width 0.07em}}
+\newcolumntype{C}{!{\vrule width 0.11em}}
+%% tcolorbox to place tabular outside of a sidebyside
+\tcbset{ tabularboxstyle/.style={bwminimalstyle,} }
+\newtcolorbox{tabularbox}[3]{tabularboxstyle, left skip=#1\linewidth, width=#2\linewidth,}
+\newcommand{\tablecelllines}[3]%
+{\begin{tabular}[#2]{@{}#1@{}}#3\end{tabular}}
+%% Footnote Numbering
+%% Specified by numbering.footnotes.level
+%% Undo counter reset by chapter for a book
+\counterwithout{footnote}{chapter}
+\counterwithin*{footnote}{section}
+%% More flexible list management, esp. for references
+%% But also for specifying labels (i.e. custom order) on nested lists
+\usepackage{enumitem}
+%% Lists of references in their own section, maximum depth 1
+\newlist{referencelist}{description}{4}
+\setlist[referencelist]{leftmargin=!,labelwidth=!,labelsep=0ex,itemsep=1.0ex,topsep=1.0ex,partopsep=0pt,parsep=0pt}
+%% Support for index creation
+%% imakeidx package does not require extra pass (as with makeidx)
+%% Title of the "Index" section set via a keyword
+%% Language support for the "see" and "see also" phrases
+\usepackage{imakeidx}
+\makeindex[title=Index, intoc=true]
+\renewcommand{\seename}{See}
+\renewcommand{\alsoname}{See also}
+%% hyperref driver does not need to be specified, it will be detected
+%% Footnote marks in tcolorbox have broken linking under
+%% hyperref, so it is necessary to turn off all linking
+%% It *must* be given as a package option, not with \hypersetup
+\usepackage[hyperfootnotes=false]{hyperref}
+%% configure hyperref's  \url  to match listings' inline verbatim
+\renewcommand\UrlFont{\small\ttfamily}
+%% Hyperlinking active in electronic PDFs, all links solid and blue
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,filecolor=blue,urlcolor=blue}
+\hypersetup{pdftitle={Explorations in Modern Mathematics}}
+%% If you manually remove hyperref, leave in this next command
+%% This will allow LaTeX compilation, employing this no-op command
+\providecommand\phantomsection{}
+%% Division Numbering: Chapters, Sections, Subsections, etc
+%% Division numbers may be turned off at some level ("depth")
+%% A section *always* has depth 1, contrary to us counting from the document root
+%% The latex default is 3.  If a larger number is present here, then
+%% removing this command may make some cross-references ambiguous
+%% The precursor variable $numbering-maxlevel is checked for consistency in the common XSL file
+\setcounter{secnumdepth}{3}
+%%
+%% AMS "proof" environment is no longer used, but we leave previously
+%% implemented \qedhere in place, should the LaTeX be recycled
+\newcommand{\qedhere}{\relax}
+%%
+%% A faux tcolorbox whose only purpose is to provide common numbering
+%% facilities for most blocks (possibly not projects, 2D displays)
+%% Controlled by  numbering.theorems.level  processing parameter
+\newtcolorbox[auto counter, number within=section]{block}{}
+%%
+%% This document is set to number PROJECT-LIKE on a separate numbering scheme
+%% So, a faux tcolorbox whose only purpose is to provide this numbering
+%% Controlled by  numbering.projects.level  processing parameter
+\newtcolorbox[auto counter, number within=section]{project-distinct}{}
+%% A faux tcolorbox whose only purpose is to provide common numbering
+%% facilities for 2D displays which are subnumbered as part of a "sidebyside"
+\makeatletter
+\newtcolorbox[auto counter, number within=tcb@cnt@block, number freestyle={\noexpand\thetcb@cnt@block(\noexpand\alph{\tcbcounter})}]{subdisplay}{}
+\makeatother
+%%
+%% tcolorbox, with styles, for THEOREM-LIKE
+%%
+%% theorem: fairly simple numbered block/structure
+\tcbset{ theoremstyle/.style={bwminimalstyle, runintitlestyle, blockspacingstyle, after title={\space}, } }
+\newtcolorbox[use counter from=block]{theorem}[3]{title={{Theorem~\thetcbcounter\notblank{#1#2}{\space}{}\notblank{#1}{\space#1}{}\notblank{#2}{\space(#2)}{}}}, phantomlabel={#3}, breakable, parbox=false, after={\par}, fontupper=\itshape, theoremstyle, }
+%%
+%% tcolorbox, with styles, for AXIOM-LIKE
+%%
+%% principle: fairly simple numbered block/structure
+\tcbset{ principlestyle/.style={bwminimalstyle, runintitlestyle, blockspacingstyle, after title={\space}, } }
+\newtcolorbox[use counter from=block]{principle}[3]{title={{Discussion~\thetcbcounter\notblank{#1#2}{\space}{}\notblank{#1}{\space#1}{}\notblank{#2}{\space(#2)}{}}}, phantomlabel={#3}, breakable, parbox=false, after={\par}, fontupper=\itshape, principlestyle, }
+%% heuristic: fairly simple numbered block/structure
+\tcbset{ heuristicstyle/.style={bwminimalstyle, runintitlestyle, blockspacingstyle, after title={\space}, } }
+\newtcolorbox[use counter from=block]{heuristic}[3]{title={{Cube Move~\thetcbcounter\notblank{#1#2}{\space}{}\notblank{#1}{\space#1}{}\notblank{#2}{\space(#2)}{}}}, phantomlabel={#3}, breakable, parbox=false, after={\par}, fontupper=\itshape, heuristicstyle, }
+%% axiom: fairly simple numbered block/structure
+\tcbset{ axiomstyle/.style={bwminimalstyle, runintitlestyle, blockspacingstyle, after title={\space}, } }
+\newtcolorbox[use counter from=block]{axiom}[3]{title={{Axiom~\thetcbcounter\notblank{#1#2}{\space}{}\notblank{#1}{\space#1}{}\notblank{#2}{\space(#2)}{}}}, phantomlabel={#3}, breakable, parbox=false, after={\par}, fontupper=\itshape, axiomstyle, }
+%%
+%% tcolorbox, with styles, for DEFINITION-LIKE
+%%
+%% definition: fairly simple numbered block/structure
+\tcbset{ definitionstyle/.style={bwminimalstyle, runintitlestyle, blockspacingstyle, after title={\space}, after upper={\space\space\hspace*{\stretch{1}}\(\lozenge\)}, } }
+\newtcolorbox[use counter from=block]{definition}[2]{title={{Definition~\thetcbcounter\notblank{#1}{\space\space#1}{}}}, phantomlabel={#2}, breakable, parbox=false, after={\par}, definitionstyle, }
+%%
+%% tcolorbox, with styles, for EXAMPLE-LIKE
+%%
+%% example: fairly simple numbered block/structure
+\tcbset{ examplestyle/.style={bwminimalstyle, runintitlestyle, blockspacingstyle, after title={\space}, after upper={\space\space\hspace*{\stretch{1}}\(\square\)}, } }
+\newtcolorbox[use counter from=block]{example}[2]{title={{Example~\thetcbcounter\notblank{#1}{\space\space#1}{}}}, phantomlabel={#2}, breakable, parbox=false, after={\par}, examplestyle, }
+%%
+%% tcolorbox, with styles, for PROJECT-LIKE
+%%
+%% exploration: fairly simple numbered block/structure
+\tcbset{ explorationstyle/.style={bwminimalstyle, runintitlestyle, blockspacingstyle, after title={\space}, } }
+\newtcolorbox[use counter from=project-distinct]{exploration}[2]{title={{Exploration~\thetcbcounter\notblank{#1}{\space\space#1}{}}}, phantomlabel={#2}, breakable, parbox=false, after={\par}, explorationstyle, }
+%% investigation: fairly simple numbered block/structure
+\tcbset{ investigationstyle/.style={bwminimalstyle, runintitlestyle, blockspacingstyle, after title={\space}, } }
+\newtcolorbox[use counter from=project-distinct]{investigation}[2]{title={{Investigation~\thetcbcounter\notblank{#1}{\space\space#1}{}}}, phantomlabel={#2}, breakable, parbox=false, after={\par}, investigationstyle, }
+%% activity: fairly simple numbered block/structure
+\tcbset{ activitystyle/.style={bwminimalstyle, runintitlestyle, blockspacingstyle, after title={\space}, } }
+\newtcolorbox[use counter from=project-distinct]{activity}[2]{title={{Activity~\thetcbcounter\notblank{#1}{\space\space#1}{}}}, phantomlabel={#2}, breakable, parbox=false, after={\par}, activitystyle, }
+%%
+%% tcolorbox, with styles, for ASIDE-LIKE
+%%
+%% aside: fairly simple un-numbered block/structure
+\tcbset{ asidestyle/.style={bwminimalstyle, runintitlestyle, blockspacingstyle, after title={\space}, } }
+\newtcolorbox{aside}[2]{title={\notblank{#1}{#1}{}}, phantomlabel={#2}, breakable, parbox=false, asidestyle}
+%%
+%% tcolorbox, with styles, for FIGURE-LIKE
+%%
+%% figureptx: 2-D display structure
+\tcbset{ figureptxstyle/.style={bwminimalstyle, middle=1ex, blockspacingstyle, fontlower=\blocktitlefont} }
+\newtcolorbox[use counter from=block]{figureptx}[3]{lower separated=false, before lower={{\textbf{Figure~\thetcbcounter}\space#1}}, phantomlabel={#2}, unbreakable, parbox=false, figureptxstyle, }
+%% tableptx: 2-D display structure
+\tcbset{ tableptxstyle/.style={bwminimalstyle, middle=1ex, blockspacingstyle, coltitle=black, bottomtitle=2ex, titlerule=-0.3pt, fonttitle=\blocktitlefont} }
+\newtcolorbox[use counter from=block]{tableptx}[3]{title={{\textbf{Table~\thetcbcounter}\space#1}}, phantomlabel={#2}, unbreakable, parbox=false, tableptxstyle, }
+%%
+%% xparse environments for introductions and conclusions of divisions
+%%
+%% introduction: in a structured division
+\NewDocumentEnvironment{introduction}{m}
+{\notblank{#1}{\noindent\textbf{#1}\space}{}}{\par\medskip}
+%% conclusion: in a structured division
+\NewDocumentEnvironment{conclusion}{m}
+{\par\medskip\noindent\notblank{#1}{\textbf{#1}\space}{}}{}
+%%
+%% tcolorbox, with styles, for miscellaneous environments
+%%
+%% assemblage: fairly simple un-numbered block/structure
+\tcbset{ assemblagestyle/.style={size=normal, colback=white, colbacktitle=white, coltitle=black, colframe=black, rounded corners, titlerule=0.0pt, center title, fonttitle=\blocktitlefont\bfseries, blockspacingstyle, } }
+\newtcolorbox{assemblage}[2]{title={\notblank{#1}{#1}{}}, phantomlabel={#2}, breakable, parbox=false, assemblagestyle}
+%% proof: title is a replacement
+\tcbset{ proofstyle/.style={bwminimalstyle, fonttitle=\blocktitlefont\itshape, attach title to upper, after title={\space}, after upper={\space\space\hspace*{\stretch{1}}\(\blacksquare\)},
+} }
+\newtcolorbox{proof}[2]{title={\notblank{#1}{#1}{Proof.}}, phantom={\hypertarget{#2}{}}, breakable, parbox=false, after={\par}, proofstyle }
+%% Graphics Preamble Entries
+\usepackage{tikz}
+\usepackage{url}
+\usepackage{tkz-graph}
+\usepackage{tkz-euclide}
+\usetikzlibrary{patterns}
+\usetikzlibrary{positioning}
+\usetikzlibrary{matrix,arrows}
+\usetikzlibrary{calc}
+\usetikzlibrary{shapes}
+\usetikzlibrary{through,intersections,decorations,shadows,fadings}
+\usepackage{pgfplots}
+%% If tikz has been loaded, replace ampersand with \amp macro
+%% tcolorbox styles for sidebyside layout
+\tcbset{ sbsstyle/.style={raster before skip=2.0ex, raster equal height=rows, raster force size=false} }
+\tcbset{ sbspanelstyle/.style={bwminimalstyle, fonttitle=\blocktitlefont} }
+%% Enviroments for side-by-side and components
+%% Necessary to use \NewTColorBox for boxes of the panels
+%% "newfloat" environment to squash page-breaks within a single sidebyside
+%% "xparse" environment for entire sidebyside
+\NewDocumentEnvironment{sidebyside}{mmmm}
+  {\begin{tcbraster}
+    [sbsstyle,raster columns=#1,
+    raster left skip=#2\linewidth,raster right skip=#3\linewidth,raster column skip=#4\linewidth]}
+  {\end{tcbraster}}
+%% "tcolorbox" environment for a panel of sidebyside
+\NewTColorBox{sbspanel}{mO{top}}{sbspanelstyle,width=#1\linewidth,valign=#2}
+%% extpfeil package for certain extensible arrows,
+%% as also provided by MathJax extension of the same name
+%% NB: this package loads mtools, which loads calc, which redefines
+%%     \setlength, so it can be removed if it seems to be in the 
+%%     way and your math does not use:
+%%     
+%%     \xtwoheadrightarrow, \xtwoheadleftarrow, \xmapsto, \xlongequal, \xtofrom
+%%     
+%%     we have had to be extra careful with variable thickness
+%%     lines in tables, and so also load this package late
+\usepackage{extpfeil}
+%% Custom Preamble Entries, late (use latex.preamble.late)
+%% Begin: Author-provided packages
+%% (From  docinfo/latex-preamble/package  elements)
+%% End: Author-provided packages
+%% Begin: Author-provided macros
+%% (From  docinfo/macros  element)
+%% Plus three from MBX for XML characters
+{\labelitemi}{$\diamond$}
+\def\arraystretch{1.5}
+\newcommand{\contentsfinish}{}
+\newcommand{\separator}{\begin{center}\rule{\columnwidth}{\arrayrulewidth}\end{center}}
+\newcommand{\tosay}[1]{\begin{center}\text{\fbox{\scriptsize{#1}}}\end{center}}
+\renewcommand{\cftsecfont}{}
+\renewcommand{\cftsecpagefont}{}
+\renewcommand{\descriptionlabel}[1]{\hspace{\labelsep}\smallcaps{#1}}
+\def\oldequation{\equation}
+\def\endoldequation{\endequation}
+\newcommand{\nl}{
+}
+\newcommand{\runin}[1]{\textls[50]{\otherscshape #1}}
+\renewcommand{\sectionmark}[1]{}
+\renewcommand{\subsectionmark}[1]{}
+\renewcommand{\sectionmark}[1]{\markboth{{\thesection}.\ \smallcaps{#1}}{\thesection.\ \smallcaps{#1}}}
+\renewcommand{\subsectionmark}[1]{}
+\renewcommand{\sectionmark}[1]{\markboth{{\scriptsize\thesection}.\ \smallcaps{#1}}{}}
+\renewcommand{\subsectionmark}[1]{}
+\newcommand{\makedefaultsection}[2][true]{
+}
+\newcommand{\timestamp}{{\color{red}Last updated: {\currenttime\ (UTC), \today}}}
+\renewcommand{\le}{\leqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\ge}{\geqslant}
+\newcommand{\ideal}[1]{\left\langle\, #1 \,\right\rangle}
+\newcommand{\subgp}[1]{\left\langle\, #1 \,\right\rangle}
+\def\p{\varphi}
+\def\isomorphic{\cong}
+\def\Gal{\text{Gal}}
+\def\im{\text{im}}
+\def\normal{\vartriangleleft}
+\renewcommand{\qedsymbol}{$\checkmark$}
+\def\lcm{{\text{lcm}\,}}
+\newcommand{\q}[1]{{\color{red} {#1}}}
+\newcommand{\startimportant}[1]{\end{[{Hint:} #1]\end}}
+\renewcommand{\textcircled}[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=2pt,color=red] (char) {#1};}}
+\newcommand{\crossout}[1]{\tikz[baseline=(char.base)]{\node[mynode, cross out,draw] (char) {#1};}}
+\newcommand{\set}[1]{\left\{ {#1} \right\}}
+\newcommand{\setof}[2]{{\left\{#1\,\colon\,#2\right\}}}
+\def\C{{\mathbb C}}
+\def\Z{{\mathbb Z}}
+\def\bF{{\mathbb F}}
+\def\Q{{\mathbb Q}}
+\def\N{{\mathbb N}}
+\def\R{{\mathbb R}}
+\newcommand{\h}[1]{{\textbf{#1}}}
+\def\presnotes{}
+\newcommand{\lt}{<}
+\newcommand{\gt}{>}
+\newcommand{\amp}{&}
+%% End: Author-provided macros
+\begin{document}
+\frontmatter
+%% begin: half-title
+\thispagestyle{empty}
+{\titlepagefont\centering
+\vspace*{0.28\textheight}
+{\Huge Explorations in Modern Mathematics}\\}
+\clearpage
+%% end:   half-title
+%% begin: title page
+%% Inspired by Peter Wilson's "titleDB" in "titlepages" CTAN package
+\thispagestyle{empty}
+{\titlepagefont\centering
+\vspace*{0.14\textheight}
+%% Target for xref to top-level element is ToC
+\addtocontents{toc}{\protect\hypertarget{g:book:idm3404627320}{}}
+{\Huge Explorations in Modern Mathematics}\\[3\baselineskip]
+{\Large Mike Janssen}\\[0.5\baselineskip]
+{\Large Dordt University}\\}
+\clearpage
+%% end:   title page
+%% begin: copyright-page
+\thispagestyle{empty}
+\hypertarget{g:colophon:idm3404625000}{}\vspace*{\stretch{2}}
+\noindent{\bfseries Edition}: Spring 2022 Beta Edition\par\medskip
+\noindent{\bfseries Website}: \href{https:\slash{}\slash{}emmath.org}{https:\slash{}\slash{}emmath.org}\par\medskip
+\noindent\textcopyright{}2022\textendash{}\quad{}\\[0.5\baselineskip]
+Permission is granted to copy and (re)distribute this material in any format and\slash{}or adapt it (even commercially) under the terms of the Creative Commons Attribution-ShareAlike 4.0 International License.  The work may be used for free in any way by any party so long as attribution is given to the author(s) and if the material is modified, the resulting contributions are distributed under the same license as this original.  All trademarks\texttrademark{} are the registered\textregistered{} marks of their respective owners. The graphic \begin{sidebyside}{1}{0.375}{0.375}{0}%
+\begin{sbspanel}{0.25}%
+\includegraphics[width=\linewidth]{./images/CC-BY-SA-license.svg}
+\end{sbspanel}%
+\end{sidebyside}%
+ that may appear in other locations in the text shows that the work is licensed with the Creative Commons and that the work may be used for free by any party so long as attribution is given to the author(s) and if the material is modified, the resulting contributions are distributed under the same license as this original. Full details may be found by visiting \href{https://creativecommons.org/licenses/by-sa/4.0/}{https:\slash{}\slash{}creativecommons.org\slash{}licenses\slash{}by-sa\slash{}4.0\slash{}}  or sending a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.\par\medskip
+\vspace*{\stretch{1}}
+\null\clearpage
+%% end:   copyright-page
+%
+%
+\typeout{************************************************}
+\typeout{Preface  Introduction}
+\typeout{************************************************}
+%
+\begin{preface}{Introduction}{}{Introduction}{}{}{x:preface:Sec-Introduction}
+In January 2017, Dr. Francis E. Su, president of the Mathematical Association of America, gave his retiring presidential address, \emph{\href{https://mathyawp.wordpress.com/2017/01/08/mathematics-for-human-flourishing/}{Mathematics for Human Flourishing}}\footnote{In 2018, he gave an expanded version of this talk as a First Mondays address at Dordt College.\label{g:fn:idm3404616792}}. In this address and the subsequent book \hyperlink{x:biblio:Su2020}{[{\xreffont 1}]}, Su describes ways that the practice of mathematics can help human beings cultivate virtues which in turn enable us live the good life. He identifies several desires that encourage the cultivation of virtue, among them \emph{exploration}, \emph{play}, \emph{truth}, \emph{justice}, and \emph{beauty}.%
+\par
+This book uses guided exploration to investigate mathematical topics that specifically meet those desires. We will explore the Rubik's cube and other puzzles and thus \emph{play} with mathematics. We'll see how deductive reasoning can be used to argue for \emph{truth}, while also exploring its limitations. \emph{Justice} will be explored by application of mathematics to democracy and the networks used to exploit our fellow image-bearers. And we'll finish the semester with projects that explore \emph{beauty} in mathematics.%
+%
+%
+\typeout{************************************************}
+\typeout{References  References}
+\typeout{************************************************}
+%
+\begin{references--numberless}{References}{}{References}{}{}{g:references:idm3404610776}
+F. E. Su, C. Jackson, \emph{Mathematics for Human Flourishing}. Yale University Press, 2020.\end{references--numberless}
+\end{preface}
+%
+%
+\typeout{************************************************}
+\typeout{Preface  A Note to Students}
+\typeout{************************************************}
+%
+\begin{preface}{A Note to Students}{}{A Note to Students}{}{}{x:preface:sec-NoteToStudents}
+This work was compiled with some strong opinions.%
+\par
+The first is that, as with a sport, instrument, or nearly any other skill, you can't learn mathematics without doing mathematics. Thus, there are few worked-out examples in this book. We would rather spend a long time in productive struggle to understand an idea deeply than be spoon-fed solutions.%
+\par
+The second is that most people's ideas of what counts as a mathematical question are far too narrow. Mathematics is not merely geometry, algebra, and calculus (maybe with a dash of statistics for good measure). Mathematics is a way of thinking; it's about abstraction, deductive reasoning, and problem-solving. This way of thinking can be applied in surprising places, and can lead to delight and wonder at the world around us. We will explore some of these questions this semester.%
+\end{preface}
+%
+%
+\typeout{************************************************}
+\typeout{Preface  A Note to Instructors}
+\typeout{************************************************}
+%
+\begin{preface}{A Note to Instructors}{}{A Note to Instructors}{}{}{x:preface:sec-NoteToInstructors}
+%
+\end{preface}
+%% begin: table of contents
+%% Adjust Table of Contents
+\setcounter{tocdepth}{0}
+\renewcommand*\contentsname{Contents}
+\tableofcontents
+%% end:   table of contents
+\mainmatter
+%
+%
+\typeout{************************************************}
+\typeout{Part I Play}
+\typeout{************************************************}
+%
+\begin{partptx}{Play}{}{Play}{}{}{x:part:part-play}
+ %
+ %
+%
+\typeout{************************************************}
+\typeout{Chapter 1 The Cube}
+\typeout{************************************************}
+%
+\begin{chapterptx}{The Cube}{}{The Cube}{}{}{x:chapter:chap-cube}
+\begin{introduction}{}%
+We begin our mathematical explorations in a place that may seem unusual. The Rubik's Cube, invented\footnote{Or, to use Rubik's word, \emph{discovered}.\label{g:fn:idm3404603496}} in the 1970s by Hungarian architecture professor Erno Rubik, is the best-selling toy of all time. It is also a rich mathematical playscape, a tactile means of exploring and challenging our fundamental ideas around what counts as an arithmetic operation.%
+\par
+The Cube's colorful, playful nature also underscores our purpose in beginning by exploring it. Specifically, exploring the Cube will help us develop some of the virtues Francis Su identifies in \hyperlink{x:biblio:Su2020}{[{\xreffont 1}]} under the desire of \emph{play}: exploring the Cube will hopefuly pique your \emph{curiosity} and build your \emph{patience} and \emph{perseverance}. Solving it will require you to \emph{change perspectives} and build \emph{confidence in struggle}. And, I hope, the satisfaction and joy you experience in finally solving it will engender an \emph{openness of spirit} that we will carry into further explorations for the rest of the text.%
+\par
+As we begin, I also wish to acknowledge the efforts of the \emph{\href{https://www.artofmathematics.org/}{Discovering the Art of Mathematics}} project, especially the \href{https://www.artofmathematics.org/books/games-and-puzzles}{Games and Puzzles} book. I learned the Rubik's Cube by reading and teaching their work, and it is impossible to overstate their influence on this chapter.%
+\end{introduction}%
+%
+%
+\typeout{************************************************}
+\typeout{Section 1.1 Introduction and Background}
+\typeout{************************************************}
+%
+\begin{sectionptx}{Introduction and Background}{}{Introduction and Background}{}{}{x:section:sec-play-intro}
+\begin{introduction}{}%
+\begin{assemblage}{Motivating Questions.}{g:assemblage:idm3404595128}%
+In this section, we will explore the following questions. %
+\begin{enumerate}
+\item{}What does it mean to play?%
+\item{}What are the components of the Cube?%
+\item{}What are some of the elementary mathematical properties of the Cube?%
+\end{enumerate}
+%
+\end{assemblage}
+\end{introduction}%
+%
+%
+\typeout{************************************************}
+\typeout{Subsection 1.1.1 Thinking about Play}
+\typeout{************************************************}
+%
+\begin{subsectionptx}{Thinking about Play}{}{Thinking about Play}{}{}{g:subsection:idm3404595544}
+\begin{exploration}{}{x:exploration:expl_intro}%
+First, introduce yourself to the members of your group. Then, consider the questions: %
+\begin{enumerate}
+\item{}What are the essential qualities of play? That is, what makes one activity \emph{play}, and another not?%
+\item{}What does it mean to be \emph{playful} in your own major disciplines?%
+\item{}What does it mean to be an \emph{explorer} in your major disciplines?%
+\item{}What are you excited about this semester? Your answer can be from one of your classes or outside of your classes.%
+\end{enumerate}
+ Write your answers in your notes. We'll discuss your responses before working on \hyperref[x:investigation:invest-firstquestionsaboutthecube]{Investigation~{\xreffont\ref{x:investigation:invest-firstquestionsaboutthecube}}}.%
+\end{exploration}%
+ QUALITIES OF PLAY from SU AND HUIZINGA here-{}-{}perhaps another question?\end{subsectionptx}
+%
+%
+\typeout{************************************************}
+\typeout{Subsection 1.1.2 Exploring the Cube}
+\typeout{************************************************}
+%
+\begin{subsectionptx}{Exploring the Cube}{}{Exploring the Cube}{}{}{g:subsection:idm3404587224}
+\begin{investigation}{}{x:investigation:invest-firstquestionsaboutthecube}%
+In your groups, investigate your Cubes. What do you notice? What do you wonder? Make a list of as many observations and questions as you can, and write them in your notes.%
+\end{investigation}%
+\begin{definition}{}{g:definition:idm3404586360}%
+\index{cubie}%
+\index{cubiecenter}%
+\index{cubiecorner}%
+\index{cubieedge}%
+The little cubes which make up the Cube are often called \terminology{cubies}. The cubies located at the corners are imaginatively called \terminology{corner cubies}, the cubies located at the centers \terminology{center cubies}, and the others \terminology{edge cubies}.%
+\end{definition}
+\begin{investigation}{}{x:investigation:invest-corner-cubies}%
+In this investigation we'll consider the corner cubies. Hold your Cube with the white center cubie facing up and the red center cubie facing you.%
+\begin{enumerate}
+\item{}How many corners are there?%
+\item{}How many stickers does a corner cubie have?%
+\item{}Can you move a corner cubie to a position other than a corner? Explain your reasoning.%
+\item{}Identify all the positions on the Cube to which a corner cubie can be moved while keeping the white center cubie on top and red in front.%
+\end{enumerate}
+As always, make sure you can explain your answers.%
+\begin{image}{0.25}{0.5}{0.25}%
+\includegraphics[width=\linewidth]{./images/moving_cubies.pdf}
+\end{image}%
+\par\smallskip%
+\noindent\textbf{\blocktitlefont Solution}.\hypertarget{g:solution:idm3404577592}{}\quad{}There are 8 corners, with three stickers each. Since all corners have three stickers, and other cubies have fewer stickers, we can't move a corner cubie to any location other than another corner. But we \emph{can} move a given corner to any other corner.\end{investigation}%
+\begin{investigation}{}{x:investigation:invest-edge-cubies}%
+In this investigation we'll consider the edge cubies. Hold your Cube with the white center cubie facing up and the red center cubie facing you.%
+\begin{enumerate}
+\item{}How many edge cubies are there?%
+\item{}How many stickers does an edge cubie have?%
+\item{}Can you move an edge cubie to a position other than an edge? Explain your reasoning.%
+\item{}Identify all the positions on the Cube to which an edge cubie can be moved while keeping the white center cubie on top and red in front.%
+\end{enumerate}
+As always, make sure you can explain your answers.%
+\begin{image}{0.25}{0.5}{0.25}%
+\includegraphics[width=\linewidth]{./images/moving_cubies.pdf}
+\end{image}%
+\par\smallskip%
+\noindent\textbf{\blocktitlefont Solution}.\hypertarget{g:solution:idm3404572936}{}\quad{}There are twelve edge cubies, with two stickers each. As was the case with corners, we can only put edge cubies in other edge locations, but we can move a given edge cubie to any other edge.\end{investigation}%
+\begin{investigation}{}{x:investigation:invest-center-cubies}%
+In this investigation we'll consider the center cubies. Hold your Cube with the white center cubie facing up and the red center cubie facing you.%
+\begin{enumerate}
+\item{}How many center cubies are there?%
+\item{}How many stickers does an center cubie have?%
+\item{}Can you move a center cubie to a position other than a center? Explain your reasoning.%
+\item{}Identify all the positions on the Cube to which a center cubie can be moved while keeping the white center cubie on top and red in front.%
+\end{enumerate}
+As always, make sure you can explain your answers.%
+\begin{image}{0.25}{0.5}{0.25}%
+\includegraphics[width=\linewidth]{./images/moving_cubies.pdf}
+\end{image}%
+\par\smallskip%
+\noindent\textbf{\blocktitlefont Solution}.\hypertarget{g:solution:idm3404568696}{}\quad{}Finally, we saw that the six corners (each with one sticker) cannot move relative to the others.\end{investigation}%
+\begin{assemblage}{Question.}{g:assemblage:idm3404568216}%
+How can you tell when a cubie is in the correct \emph{location}? How can you tell when it is \emph{oriented} correctly? Is there a difference?\footnotemark{}%
+\end{assemblage}
+\footnotetext[1]{Does it depend on the cubie?\label{g:fn:idm3404566440}}%
+\end{subsectionptx}
+\end{sectionptx}
+%
+%
+\typeout{************************************************}
+\typeout{Section 1.2 Exploring and Describing the Cube}
+\typeout{************************************************}
+%
+\begin{sectionptx}{Exploring and Describing the Cube}{}{Exploring and Describing the Cube}{}{}{x:section:sec-play-exploring-the-cube}
+\begin{assemblage}{Motivating Questions.}{g:assemblage:idm3404564056}%
+In this section, we will explore the following questions. %
+\begin{enumerate}
+\item{}What are faces and layers, and what methods exist for solving them?%
+\item{}How can we describe a complex series of Cube moves?%
+\item{}What is the order of a Cube move?%
+\end{enumerate}
+%
+\end{assemblage}
+\begin{introduction}{}%
+In this section, we'll define a few terms and work on an initial exploration of the Cube's white layer. Then, we'll discuss the need for notation for communicating about our Cubes and introduce some standard notation.%
+\end{introduction}%
+%
+%
+\typeout{************************************************}
+\typeout{Subsection 1.2.1 Faces and Layers}
+\typeout{************************************************}
+%
+\begin{subsectionptx}{Faces and Layers}{}{Faces and Layers}{}{}{g:subsection:idm3404560872}
+We begin with a definition.%
+\begin{definition}{}{x:definition:def-cube-face}%
+\index{Cube facesolved}%
+A \terminology{face} of the Cube refers to one of its sides. We say a face is \terminology{solved} if all the stickers on that side are the same color.%
+\end{definition}
+There are many ways to solve the Cube, and we'll explore one approach later in this chapter. A crucial step in learning to solve the Cube is learning to solve one face.%
+\begin{assemblage}{Challenge.}{g:assemblage:idm3404558008}%
+Scramble your Cube. Then solve the white face. If you have not done this before (or even if you have), this may take hours or days, not minutes! Avoid relying on any outside resources (including websites, friends, etc.). When you solve it, congratulations! Then scramble the face and solve it again. Repeat this process until you can reliably do it in just a few minutes. Once you can reliably solve the white face, describe, in writing, your methods as clearly and precisely as you can. What challenges did you have to overcome? How did you overcome them?%
+\end{assemblage}
+Congratulations on solving a face of your Cube! But a question comes to mind. When your white face is in its solved state, are all the cubies on the white face in the correct location?%
+\begin{definition}{}{x:definition:def-cube-layer}%
+\index{Cube layersolved}%
+A \terminology{layer} of the Cube consists of a face and all of the stickers on Cubies which compose the face. A layer is \terminology{solved} if all of the Cubies in the layer are in the correct location with the correct orientation.%
+\end{definition}
+\begin{assemblage}{Challenge.}{g:assemblage:idm3404551784}%
+Scramble your Cube and then solve the white layer. As before, this may take hours or days. When you solve it, congratulations! Scramble it and do it again. Once you can reliably solve the white layer, describe, in writing, your methods as clearly and precisely as you can.%
+\end{assemblage}
+\end{subsectionptx}
+%
+%
+\typeout{************************************************}
+\typeout{Subsection 1.2.2 The Need for Notation}
+\typeout{************************************************}
+%
+\begin{subsectionptx}{The Need for Notation}{}{The Need for Notation}{}{}{g:subsection:idm3404550440}
+\begin{principle}{}{}{x:principle:discussion-verbal-cubie-moves}%
+Find a partner. Take turns describing verbally and without pointing to your Cube your method for moving a corner cubie to its proper position. Similarly, verbally describe your edge cubie to its proper position.%
+\end{principle}
+\begin{principle}{}{}{x:principle:discussion-written-cubie-moves}%
+As you probably noticed, it is challenging to orally describe complex\slash{}technical ideas in much detail without becoming lost. Is it easier to describe your cubie movements in writing? Why or why not?%
+\end{principle}
+Every area of inquiry has an associated collection of terminology and shorthand notation. At its best, this terminology enables efficient and clear communication. However, terminology can often be a barrier. Thus, we want to avoid introducing unnecessary or confusing jargon whenever possible. However, as I hope \hyperref[x:principle:discussion-verbal-cubie-moves]{Discussion~{\xreffont\ref{x:principle:discussion-verbal-cubie-moves}}} and \hyperref[x:principle:discussion-written-cubie-moves]{Discussion~{\xreffont\ref{x:principle:discussion-written-cubie-moves}}} underscore, a lack of terminology or shorthand notation severely impairs our ability to communicate deep technical ideas. It is with this background that we introduce the following notation, which has become standard in the Cubing community.\begin{aside}{}{g:aside:idm3404545560}%
+\end{aside}
+%
+\begin{definition}{}{x:definition:def-face-names}%
+Hold the Cube in such a way that you are looking at one of the faces.%
+\begin{itemize}[label=\textbullet]
+\item{}The face you are looking at is referred to as the \terminology{front} (F) face.%
+\item{}The face on the side opposite the front is referred to as the \terminology{back} (B) face.%
+\item{}The face on the right side is referred to as the \terminology{right} (R) face.%
+\item{}The face opposite the right is the \terminology{left} (L) face.%
+\item{}The face on the top of the Cube is the \terminology{up} (U) face.%
+\item{}The face on the bottom of the Cube is the \terminology{down} (D) face.%
+\end{itemize}
+A graphical version appears in \hyperref[x:figure:fig-cube-faces]{Figure~{\xreffont\ref{x:figure:fig-cube-faces}}}.%
+\begin{figureptx}{}{x:figure:fig-cube-faces}{}%
+\begin{image}{0.25}{0.5}{0.25}%
+\includegraphics[width=\linewidth]{./images/faces.pdf}
+\end{image}%
+\tcblower
+\end{figureptx}%
+\end{definition}
+\begin{activity}{}{g:activity:idm3404537160}%
+List the colors of each of the six faces in \hyperref[x:figure:fig-cube-faces]{Figure~{\xreffont\ref{x:figure:fig-cube-faces}}}.%
+\end{activity}%
+As we we will see momentarily, the names described in \hyperref[x:definition:def-face-names]{Definition~{\xreffont\ref{x:definition:def-face-names}}} not only help us refer to faces, but also moves of the Cube which help us solve it. In order to understand what moves do, we will have a need to refer to certain cubies by location. The following definition enables this.%
+\begin{definition}{}{x:definition:def-cubie-names}%
+A cubie is named by the face(s) on which it sits, using lowercase letters.%
+\end{definition}
+\begin{activity}{}{x:activity:act-cubie-names}%
+Consider the scrambled Cube in \hyperref[x:figure:fig-cubie-names]{Figure~{\xreffont\ref{x:figure:fig-cubie-names}}}.%
+%
+\begin{enumerate}
+\item{}What colors are the \(\ell f u\) cubie?%
+\item{}Give the colors of the \(br\) cubie.%
+\item{}How can you tell whether the cubie in the named location is a corner or edge cubie?%
+\item{}How many letters are required to name a center cubie?%
+\item{}Where is the edge cubie that is blue and orange?%
+\end{enumerate}
+\begin{figureptx}{A scrambled cube.}{x:figure:fig-cubie-names}{}%
+\begin{image}{0.25}{0.5}{0.25}%
+\includegraphics[width=\linewidth]{./images/cubie_names.pdf}
+\end{image}%
+\tcblower
+\end{figureptx}%
+\end{activity}%
+We are most interested in using our new notation to describe \emph{moves} of the various faces. We thus make the following definition.%
+\begin{definition}{}{x:definition:def-face-moves}%
+\index{Cube moveface rotation}%
+A given face name, e.g., \(R\), describes a \(90^\circ\) clockwise turn of that face, \emph{as you look at the face}. A given face name with prime symbol, e.g., \(R'\), denotes a \(90^\circ\) counterclockwise turn of that face, \emph{as you look at the face}. A sequence of face moves is written multiplicatively, left to right. We may use parentheses and exponents to write our moves more compactly.%
+\end{definition}
+\begin{exploration}{}{x:exploration:expl-turning-faces}%
+Consider the following questions in the context of a completely solved cube as pictured in \hyperref[x:figure:fig-solved-cube]{Figure~{\xreffont\ref{x:figure:fig-solved-cube}}}.%
+%
+\begin{enumerate}
+\item{}After performing the move \(R\), what color(s) will be on the Up face?%
+\item{}Again starting from a solved cube, perform the move \(L\). What color(s) are on the Up face?%
+\item{}Explain the difference in your answers to the first two questions.%
+\item{}How are \(F^3\) and \(F'\) related?%
+\item{}Consider the Cube move \(RF^2 U (LDR)^3\). Which face will you turn first: the left face, or the front face?%
+\item{}Again consider the Cube move \(RF^2 U (LDR)^3\). How many times in this move will we turn the right face?%
+\item{}What would it mean for two cube moves to be \terminology{equal}? Test your definition by determining whether \(LD = DL\).%
+\item{}Suppose \(X\) and \(Y\) are two cube moves. When, if ever, is \(XY = YX\)?%
+\end{enumerate}
+\begin{figureptx}{A solved cube.}{x:figure:fig-solved-cube}{}%
+\begin{image}{0.25}{0.5}{0.25}%
+\includegraphics[width=\linewidth]{./images/solved_cube_sf.pdf}
+\end{image}%
+\tcblower
+\end{figureptx}%
+\end{exploration}%
+\end{subsectionptx}
+%
+%
+\typeout{************************************************}
+\typeout{Subsection 1.2.3 Order}
+\typeout{************************************************}
+%
+\begin{subsectionptx}{Order}{}{Order}{}{}{g:subsection:idm3404550312}
+A useful algebraic concept for describing Cube moves is that of \emph{order}.%
+\begin{definition}{}{x:definition:def-order}%
+\index{Cube moveorder}%
+The \terminology{order} of a cube move \(M\) is the least number of times \(n \gt 1\) that \(M\) can be repeated before a solved Cube is solved again. We write \(|M| = n\).%
+\end{definition}
+\begin{example}{}{g:example:idm3404510440}%
+The order of \(R\) is 4, since 4 clockwise quarter-turns of the right face of a solved Cube results in a solved Cube, and no fewer number of turns results in a solved Cube.%
+\end{example}
+\begin{exploration}{}{g:exploration:idm3404506968}%
+%
+\begin{enumerate}
+\item{}What is \(|U^2|\)?%
+\item{}Calculate \(|R^3|\). Why does this make sense?%
+\item{}Calculate \(|RUR^{-1} U^{-1}|\)?%
+\end{enumerate}
+\end{exploration}%
+\end{subsectionptx}
+\begin{conclusion}{Conclusion.}%
+In this section, we began a systematic exploration of the properties of the Cube. First, we described the need for a notational shorthand for describing our approaches to solving the white face and layer.%
+\par
+The standard notation refers to each face \emph{as you look at it}, ignoring color, and describes a \(90^\circ\) clockwise turn of the face. So, \(FR\) means to first turn the front face \(90^\circ\) clockwise, then the right face \(90^\circ\) clockwise. We then noted that we can refer to a cubie by describing the face(s) on which it sits (using lowercase letters to distinguish cubies from faces): three letters refer to a corner, as it sits at the intersection of three faces; two letters refer to an edge, and one to a center.%
+\par
+We concluded by introducing the idea of order, which will help us analyze and understand more complex sequences of Cube moves in the next section.%
+\end{conclusion}%
+\end{sectionptx}
+%
+%
+\typeout{************************************************}
+\typeout{Section 1.3 Moving Cubies}
+\typeout{************************************************}
+%
+\begin{sectionptx}{Moving Cubies}{}{Moving Cubies}{}{}{x:section:sec-play-moving-cubies}
+\begin{assemblage}{Motivating Questions.}{g:assemblage:idm3404499704}%
+In this section, we will explore the following questions. %
+\begin{enumerate}
+\item{}How can we move the corner cubies so they are in the correct location?%
+\item{}How can we describe the movement of the middle ``slice'' of our Cube?%
+\item{}How can we move the edge cubies so they are in the correct location?%
+\end{enumerate}
+%
+\end{assemblage}
+\begin{introduction}{}%
+Our goal in this chapter is to explore, and eventually solve, the Cube. To do this, every cubie must be in the correct \emph{location} with the correct \emph{orientation}. In this section, we focus on two moves which will allow us to put the cubies in the correct location. Once they are in the correct location, we'll see moves in the next section which will enable us to orient them correctly, enabling us to (finally) solve the Cube.%
+\end{introduction}%
+We begin by considering \hyperref[x:heuristic:cube-move-cr]{Cube Move~{\xreffont\ref{x:heuristic:cube-move-cr}}}.%
+\begin{heuristic}{Moving Corners.}{}{x:heuristic:cube-move-cr}%
+Consider the following sequence of Cube moves.%
+%
+\begin{equation*}
+U' R' D' R U R' D R
+\end{equation*}
+\end{heuristic}
+\begin{exploration}{}{x:exploration:expl-cube-move-cr}%
+The Cube move described in \hyperref[x:heuristic:cube-move-cr]{Cube Move~{\xreffont\ref{x:heuristic:cube-move-cr}}} moves some of the corners on the front face of the Cube.%
+%
+\begin{enumerate}
+\item{}By performing this move several times, identify on the blank Cube below what is happening to the front face of the Cube.%
+\item{}Using the cubie notation described in \hyperref[x:definition:def-cubie-names]{Definition~{\xreffont\ref{x:definition:def-cubie-names}}}, describe what is happens to the front face of the Cube after performing this move.%
+\item{}Given what happens to the front face, exercise your human creativity and suggest a short name\slash{}abbreviation for this move.%
+\item{}What is the order of the move?%
+\item{}Practice the move until you can reliably execute it.%
+\end{enumerate}
+\begin{figureptx}{A blank cube.}{x:figure:fig-cube-move-cr}{}%
+\begin{image}{0.25}{0.5}{0.25}%
+\includegraphics[width=\linewidth]{./images/grey_cube.pdf}
+\end{image}%
+\tcblower
+\end{figureptx}%
+\end{exploration}%
+\begin{activity}{}{x:activity:act-cube-move-cr}%
+Now that you have identified exactly what \hyperref[x:heuristic:cube-move-cr]{Cube Move~{\xreffont\ref{x:heuristic:cube-move-cr}}} does, use it to solve as much of your Cube it enables.%
+\end{activity}%
+In order to move the edges, it will be helpful to add one more type of fundamental Cube move to our repertoire.%
+\begin{definition}{}{x:definition:def-sr}%
+\index{Cube movemiddle slice}%
+By \(S_R\) we mean a clockwise rotation of the (vertical) middle slice \emph{as we look at the right face}.%
+\begin{sidebyside}{3}{0.0416666666666667}{0.0416666666666667}{0.0833333333333333}%
+\begin{sbspanel}{0.3}[center]%
+\includegraphics[width=\linewidth]{./images/solved_cube.pdf}
+\end{sbspanel}%
+\begin{sbspanel}{0.15}[center]%
+%
+\begin{equation*}
+\underrightarrow{\quad S_R\quad}
+\end{equation*}
+%
+\end{sbspanel}%
+\begin{sbspanel}{0.3}[center]%
+\includegraphics[width=\linewidth]{./images/middle_slice.pdf}
+\end{sbspanel}%
+\end{sidebyside}%
+\end{definition}
+\begin{heuristic}{Moving Edges.}{}{x:heuristic:cube-move-er}%
+\index{Cube movemoving edges}%
+Consider the following sequence of Cube moves.%
+%
+\begin{equation*}
+S_R^2 U' S_R' U^2 S_R U' S_R^2
+\end{equation*}
+\end{heuristic}
+\begin{exploration}{}{x:exploration:expl-cube-move-er}%
+The Cube move described in \hyperref[x:heuristic:cube-move-er]{Cube Move~{\xreffont\ref{x:heuristic:cube-move-er}}} moves some of the edges on the up face of the Cube.%
+%
+\begin{enumerate}
+\item{}By performing this move several times, identify on the blank Cube below what is happening to the up face of the Cube.%
+\item{}Using the cubie notation described in \hyperref[x:definition:def-cubie-names]{Definition~{\xreffont\ref{x:definition:def-cubie-names}}}, describe what is happens to the up face of the Cube after performing this move.%
+\item{}Given what happens to the up face, exercise your human creativity and suggest a short name\slash{}abbreviation for this move.%
+\item{}What is the order of the move?%
+\item{}Practice the move until you can reliably execute it.%
+\end{enumerate}
+\begin{figureptx}{A blank cube.}{x:figure:fig-cube-move-e}{}%
+\begin{image}{0.25}{0.5}{0.25}%
+\includegraphics[width=\linewidth]{./images/grey_cube.pdf}
+\end{image}%
+\tcblower
+\end{figureptx}%
+\end{exploration}%
+\begin{activity}{}{x:activity:act-cube-move-er}%
+Now that you have identified exactly what \hyperref[x:heuristic:cube-move-cr]{Cube Move~{\xreffont\ref{x:heuristic:cube-move-cr}}} and \hyperref[x:heuristic:cube-move-er]{Cube Move~{\xreffont\ref{x:heuristic:cube-move-er}}} do, use them to put every cubie on your Cube in its correct location.%
+\end{activity}%
+\begin{conclusion}{Conclusion.}%
+In this section, we focused on two moves that enable us to put our cubies in the correct location. We first found \hyperref[x:heuristic:cube-move-cr]{Cube Move~{\xreffont\ref{x:heuristic:cube-move-cr}}}, which affects corners on the front face, and no other cubies. Similarly, \hyperref[x:heuristic:cube-move-er]{Cube Move~{\xreffont\ref{x:heuristic:cube-move-er}}} affects edges on the up face, and no other cubies. We were then able to put every cubie on our Cube in the correct location. Hurray!%
+\end{conclusion}%
+%
+%
+\typeout{************************************************}
+\typeout{Exercises 1.3 Exercises}
+\typeout{************************************************}
+%
+\begin{exercises-subsection-numberless}{Exercises}{}{Exercises}{}{}{g:exercises:idm3404468648}
+\begin{divisionexercise}{1}{}{}{x:exercise:exer-scrambled-edges}%
+Consider the state of Lila's Cube in \hyperref[x:figure:fig-scrambled-edges]{Figure~{\xreffont\ref{x:figure:fig-scrambled-edges}}}. She is so close to solving it! Can you help her finish?%
+\begin{figureptx}{}{x:figure:fig-scrambled-edges}{}%
+\begin{image}{0.25}{0.5}{0.25}%
+\includegraphics[width=\linewidth]{./images/scrambled_edges.pdf}
+\end{image}%
+\tcblower
+\end{figureptx}%
+\end{divisionexercise}%
+\begin{divisionexercise}{2}{}{}{g:exercise:idm3404466040}%
+Sam is nearly done with his Cube; it's pictured in \hyperref[x:figure:fig-edges-corners]{Figure~{\xreffont\ref{x:figure:fig-edges-corners}}}. Can you help him finish?%
+\begin{figureptx}{}{x:figure:fig-edges-corners}{}%
+\begin{image}{0.25}{0.5}{0.25}%
+\includegraphics[width=\linewidth]{./images/edges-corners.pdf}
+\end{image}%
+\tcblower
+\end{figureptx}%
+\end{divisionexercise}%
+\begin{divisionexercise}{3}{}{}{g:exercise:idm3404463928}%
+Thanks to your help, Lila solved her Cube in \hyperlink{x:exercise:exer-scrambled-edges}{Exercise~{\xreffont 1.3.1}}, but now she needs more help! Can you help her finish the Cube pictured in \hyperref[x:figure:fig-edge-on-bottom]{Figure~{\xreffont\ref{x:figure:fig-edge-on-bottom}}}?%
+\begin{figureptx}{}{x:figure:fig-edge-on-bottom}{}%
+\begin{image}{0.25}{0.5}{0.25}%
+\includegraphics[width=\linewidth]{./images/edge_on_bottom.pdf}
+\end{image}%
+\tcblower
+\end{figureptx}%
+\end{divisionexercise}%
+\begin{divisionexercise}{4}{}{}{g:exercise:idm3404462568}%
+Consider the situation in \hyperref[x:figure:fig-scrambled-corners]{Figure~{\xreffont\ref{x:figure:fig-scrambled-corners}}}. Why will \hyperref[x:heuristic:cube-move-cr]{Cube Move~{\xreffont\ref{x:heuristic:cube-move-cr}}} alone be insufficient for putting the corners in their correct locations? Devise a strategy for putting the corners in the correct locations.%
+\begin{figureptx}{}{x:figure:fig-scrambled-corners}{}%
+\begin{image}{0.25}{0.5}{0.25}%
+\includegraphics[width=\linewidth]{./images/scrambled_corners.pdf}
+\end{image}%
+\tcblower
+\end{figureptx}%
+\end{divisionexercise}%
+\end{exercises-subsection-numberless}
+\end{sectionptx}
+%
+%
+\typeout{************************************************}
+\typeout{Section 1.4 Reorienting Cubies}
+\typeout{************************************************}
+%
+\begin{sectionptx}{Reorienting Cubies}{}{Reorienting Cubies}{}{}{x:section:sec-play-reorienting-cubies}
+\begin{assemblage}{Motivating Questions.}{g:assemblage:idm3404457816}%
+In this section, we will explore the following questions. %
+\begin{enumerate}
+\item{}How can we change the orientation of the corner cubies?%
+\item{}How can we change the orientation of the edge cubies?%
+\item{}How can we apply our four Cube moves to solve the Cube?%
+\end{enumerate}
+%
+\end{assemblage}
+\begin{introduction}{}%
+In \hyperref[x:section:sec-play-moving-cubies]{Section~{\xreffont\ref{x:section:sec-play-moving-cubies}}}, we considered ways of moving certain edge and corner cubies. The key that allows us to use \hyperref[x:heuristic:cube-move-cr]{Cube Move~{\xreffont\ref{x:heuristic:cube-move-cr}}} and \hyperref[x:heuristic:cube-move-er]{Cube Move~{\xreffont\ref{x:heuristic:cube-move-er}}} to put your cubies in the correct location is that, when executed correctly, they affect precisely three cubies each, leaving the rest in the same place with the same orientation at the end of the move.%
+\par
+As we embark on learning our last two Cube moves, it's worth taking some time to practice what we already know. Each unsolved Cube is a puzzle, solvable by clever application of these moves.%
+\end{introduction}%
+We begin by exploring a move that reorients two corners.%
+\begin{heuristic}{}{}{x:heuristic:cube-move-co}%
+\index{Cube movereorienting corners}%
+Consider the following sequence of Cube moves.%
+%
+\begin{equation*}
+(R' D^2 R B' U^2 B)^2
+\end{equation*}
+\end{heuristic}
+\begin{exploration}{Reorienting Corners.}{x:exploration:expl-cube-move-co}%
+The Cube move described in \hyperref[x:heuristic:cube-move-co]{Cube Move~{\xreffont\ref{x:heuristic:cube-move-co}}} reorients two corners: one on the Up face, and one on the Down face.%
+%
+\begin{enumerate}
+\item{}By performing this move several times, identify on the blank Cube below what is happening to the Up face of the Cube. Describe what is happening to the Down face as well.%
+\item{}Using the cubie notation described in \hyperref[x:definition:def-cubie-names]{Definition~{\xreffont\ref{x:definition:def-cubie-names}}}, describe what is happens to the Up and Down faces of the Cube after performing this move.%
+\item{}Given what this move does, exercise your human creativity and suggest a short name\slash{}abbreviation for this move.%
+\item{}What is the order of the move?%
+\item{}Practice the move until you can reliably execute it.%
+\end{enumerate}
+\begin{figureptx}{A blank cube.}{x:figure:fig-cube-move-e}{}%
+\begin{image}{0.25}{0.5}{0.25}%
+\includegraphics[width=\linewidth]{./images/grey_cube.pdf}
+\end{image}%
+\tcblower
+\end{figureptx}%
+\end{exploration}%
+Our last Cube move will reorient two edge cubies. Recall \hyperref[x:definition:def-sr]{Definition~{\xreffont\ref{x:definition:def-sr}}}.%
+\begin{heuristic}{}{}{x:heuristic:cube-move-eo}%
+\index{Cube movereorienting edges}%
+Consider the following sequence of Cube moves.%
+%
+\begin{equation*}
+(S_R U)^3 U (S_R ' U)^3 U
+\end{equation*}
+\end{heuristic}
+\begin{exploration}{Reorienting Edges.}{x:exploration:expl-cube-move-co}%
+The Cube move described in \hyperref[x:heuristic:cube-move-co]{Cube Move~{\xreffont\ref{x:heuristic:cube-move-co}}} reorients two edges on the Up face.%
+%
+\begin{enumerate}
+\item{}By performing this move several times, identify on the blank Cube below what is happening to the Up face of the Cube.%
+\item{}Using the cubie notation described in \hyperref[x:definition:def-cubie-names]{Definition~{\xreffont\ref{x:definition:def-cubie-names}}}, describe what is happens to the Up face of the Cube after performing this move.%
+\item{}Given what this move does, exercise your human creativity and suggest a short name\slash{}abbreviation for this move.%
+\item{}What is the order of the move?%
+\item{}Practice the move until you can reliably execute it.%
+\end{enumerate}
+\begin{figureptx}{A blank cube.}{x:figure:fig-cube-move-e}{}%
+\begin{image}{0.25}{0.5}{0.25}%
+\includegraphics[width=\linewidth]{./images/grey_cube.pdf}
+\end{image}%
+\tcblower
+\end{figureptx}%
+\end{exploration}%
+\begin{assemblage}{Solving the Cube.}{g:assemblage:idm3404437512}%
+When you can consistently perform \hyperref[x:heuristic:cube-move-cr]{Cube Move~{\xreffont\ref{x:heuristic:cube-move-cr}}}, \hyperref[x:heuristic:cube-move-co]{Cube Move~{\xreffont\ref{x:heuristic:cube-move-co}}}, \hyperref[x:heuristic:cube-move-er]{Cube Move~{\xreffont\ref{x:heuristic:cube-move-er}}}, and \hyperref[x:heuristic:cube-move-eo]{Cube Move~{\xreffont\ref{x:heuristic:cube-move-eo}}}, you can use them to solve the Cube. You can use any strategy you want, but here is one to consider.%
+\begin{enumerate}
+\item{}Put the corners in the correct \emph{location}.%
+\item{}Put the edges in the correct \emph{location}.%
+\item{}\emph{Reorient} any corners that need reorienting.%
+\item{}\emph{Reorient} any edges that need reorienting.%
+\item{}\emph{Celebrate!}%
+\item{}Scramble the Cube and do it again.%
+\end{enumerate}
+%
+\end{assemblage}
+\begin{conclusion}{Conclusion.}%
+In this section, we explored the last moves we need to solve the Cube. We also described a strategy for solving the Cube. Our method of solving the Cube is based on the \emph{corners-first} (CF) method, which is distinct from the layer-by-layer (LL) method which is often the first solving method people learn. The first solution to the Cube, by Erno Rubik himself, was corners-first, and the first world speed-cubing record (22.95 seconds) was done corners-first.%
+\par
+There are advantages and disadvantages to all solution methods. Advantages to corners-first are:%
+\begin{itemize}[label=\textbullet]
+\item{}The move sequences are generally shorter in CF%
+\item{}There are just a few important move sequences to memorize%
+\item{}You generally don't "break" your existing work and so can recover from mistakes more easily%
+\item{}The solution can scale from a leisurely solve of a few minutes or more to quite fast solves%
+\end{itemize}
+%
+\end{conclusion}%
+%
+%
+\typeout{************************************************}
+\typeout{Exercises 1.4 Exercises}
+\typeout{************************************************}
+%
+\begin{exercises-subsection-numberless}{Exercises}{}{Exercises}{}{}{g:exercises:idm3404426568}
+\begin{divisionexercise}{1}{}{}{g:exercise:idm3404426344}%
+Sam is nearly done with his Cube! Which of the Cube moves from this section does he need? How many times will he have to perform it?%
+\begin{figureptx}{}{x:figure:fig-exercise-co}{}%
+\begin{image}{0.25}{0.5}{0.25}%
+\includegraphics[width=\linewidth]{./images/co.pdf}
+\end{image}%
+\tcblower
+\end{figureptx}%
+\end{divisionexercise}%
+\begin{divisionexercise}{2}{}{}{g:exercise:idm3404424808}%
+Lila is nearly done with her Cube! Which move from this section will be helpful? How should she use it?%
+\begin{figureptx}{}{x:figure:fig-exercise-eo}{}%
+\begin{image}{0.25}{0.5}{0.25}%
+\includegraphics[width=\linewidth]{./images/eo-exer.pdf}
+\end{image}%
+\tcblower
+\end{figureptx}%
+\end{divisionexercise}%
+\begin{divisionexercise}{3}{}{}{g:exercise:idm3404423256}%
+Sam has gotten himself into a bit of a pickle. How can he apply our moves to solve his Cube?%
+\begin{figureptx}{}{x:figure:fig-exercise-co-move}{}%
+\begin{image}{0.25}{0.5}{0.25}%
+\includegraphics[width=\linewidth]{./images/co02.pdf}
+\end{image}%
+\tcblower
+\end{figureptx}%
+\end{divisionexercise}%
+\begin{divisionexercise}{4}{}{}{g:exercise:idm3404421720}%
+This configuration is known as the \terminology{superflip}. Describe what you see. Can you achieve this on your Cube?%
+\begin{figureptx}{}{x:figure:fig-exer-superflip}{}%
+\begin{image}{0.25}{0.5}{0.25}%
+\includegraphics[width=\linewidth]{./images/superflip.pdf}
+\end{image}%
+\tcblower
+\end{figureptx}%
+\end{divisionexercise}%
+\end{exercises-subsection-numberless}
+\end{sectionptx}
+%
+%
+\typeout{************************************************}
+\typeout{References 1.5 References}
+\typeout{************************************************}
+%
+\begin{references-section}{References}{}{References}{}{}{g:references:idm3404458328}
+F. E. Su, C. Jackson, \emph{Mathematics for Human Flourishing}. Yale University Press, 2020.\end{references-section}
+\end{chapterptx}
+ \end{partptx}
+%
+%
+\typeout{************************************************}
+\typeout{Part II Truth}
+\typeout{************************************************}
+%
+\begin{partptx}{Truth}{}{Truth}{}{}{x:part:part-truth}
+ As Su identifies in \hyperlink{x:biblio:Su2020}{[{\xreffont 1}]}, humans have an innate desire for truth. Defining just what we mean by \terminology{truth} is tricky, so we'll follow Su's lead and just say that ``true statements are ones that align with reality''. In an age of rampant disinformation, we seek to know what is actually true.%
+\par
+Mathematics is often thought of as one of the last bastions of objective truth. One widely accepted cultural norm is that if a statement is quantitative, or can be arrived at via a sequence of logical deductions, it is often considered "true", whereas statements that cannot be presented in such a way live in the realm of opinion. Yet, mathematics is a human endeavor; and what do mathematicians mean when they talk of a statement being ``true'', anyway? The answer might surprise you.%
+\par
+In this unit, we'll explore inductive and deductive reasoning, as well as formal logic. We'll explore the shortcomings of mathematical thinking in addition to its strengths.%
+\par
+This chapter is heavily influenced by \emph{\href{https://www.artofmathematics.org/books/truth-reasoning-certainty-and-proof}{Discovering the Art of Mathematics: Truth, Reasoning, Certainty, and Proof}} by Fleron, Hotchkiss, Ecke, and von Renesse.%
+ %
+%
+\typeout{************************************************}
+\typeout{Chapter 2 Inductive and Deductive Reasoning}
+\typeout{************************************************}
+%
+\begin{chapterptx}{Inductive and Deductive Reasoning}{}{Inductive and Deductive Reasoning}{}{}{x:chapter:chap-reasoning}
+\begin{introduction}{}%
+In order to  more fully explore the deductive reasoning employed in mathematical explorations, we'll first contrast it with the inductive reasoning common in other areas of inquiry.%
+\par
+WRITE MORE HERE%
+\end{introduction}%
+%
+%
+\typeout{************************************************}
+\typeout{Section 2.1 Inductive Reasoning}
+\typeout{************************************************}
+%
+\begin{sectionptx}{Inductive Reasoning}{}{Inductive Reasoning}{}{}{g:section:idm3404410552}
+\begin{assemblage}{Motivating Questions.}{g:assemblage:idm3404410136}%
+In this section, we will explore the following questions. %
+\begin{enumerate}
+\item{}What is truth? What is fact? Is there a difference?%
+\item{}What is inductive reasoning? When is it helpful? What are its shortcomings?%
+\end{enumerate}
+%
+\end{assemblage}
+We'll begin by attempting to define \emph{truth} and \emph{fact}, and compare them. We'll then explore \emph{inductive reasoning} in depth, considering its benefits shortcomings.%
+\begin{principle}{}{}{g:principle:idm3404406616}%
+What is truth? What is fact? How are the two concepts related? How are they different? Under which category does the sentence \(1+1=2\) fall?%
+\end{principle}
+\begin{activity}{What's my world?}{x:activity:act-whats-my-world}%
+In the game \emph{What's my World?}, one person thinks of a single law that defines a hypothetical world (e.g., ``My world does not contain things that start with the letter 'C'.''). The other players attempt to guess this governing law by taking turns asking questions of the creator, such as ``Does your world contain dogs? Does it contain cats?'' and so on. When one of the guessers believe they can identify the governing law, they ask the creator.%
+\par
+Play a few rounds of this game, taking turns in the role of creator. \emph{Other than asking the creator directly}, how could you be \emph{certain} that you had determined the law of the world?%
+\par\smallskip%
+\noindent\textbf{\blocktitlefont Solution}.\hypertarget{g:solution:idm3404400472}{}\quad{}We played various rounds of this game, but the only way we identified that we could know \emph{for certain} that we had guessed the governing law correctly is by asking the creator. We can amass evidence and develop facts and a theory based on those facts, but we can only know for certain by asking the creator directly.%
+\end{activity}%
+\begin{definition}{}{g:definition:idm3404399208}%
+\index{inductive reasoning}%
+\terminology{Inductive reasoning} is the process of drawing general conclusions from particular instances, generally known as \terminology{data}.%
+\end{definition}
+The work of the guesser in \hyperref[x:activity:act-whats-my-world]{Activity~{\xreffont\ref{x:activity:act-whats-my-world}}} is to employ inductive reasoning to determine the general law put in place by the creator. This is the scientific process at its best: looking at the world in its orderliness and using our curiosity and creativity to infer larger governing principles. If you have taken a statistics course, this is the type of reasoning employed there.%
+\par
+But how does this work in mathematics?%
+\begin{exploration}{}{x:exploration:expl-dot-game}%
+Let's play a game with dots and lines. We'll start with at least two dots (though you'll probably want to increase this number pretty quickly). The rules are:%
+%
+\begin{itemize}[label=\textbullet]
+\item{}Split your dots into two groups, group \(A\) and group \(B\), and draw each group on its own line.%
+\item{}Connect (some of) the dots from \(A\) to (some of) the dots in \(B\) with lines. The lines don't have to be straight\textemdash{}they can curve in any way you want!\textemdash{}but each line should connect precisely two dots: one from \(A\) and one from \(B\).%
+\item{}Each dot should be connected to at least one other dot\textemdash{}no lonely dots!%
+\end{itemize}
+So, if I label four dots as \(X, Y, Z, W\), \emph{one possible} drawing is given in \hyperref[x:figure:fig-dot-game-example]{Figure~{\xreffont\ref{x:figure:fig-dot-game-example}}}.%
+\begin{figureptx}{}{x:figure:fig-dot-game-example}{}%
+\begin{image}{0.325}{0.35}{0.325}%
+\includegraphics[width=\linewidth]{./images/dot-game-example.pdf}
+\end{image}%
+\tcblower
+\end{figureptx}%
+However, there is a problem with this drawing: the lines cross! I know, this wasn't one of the rules above, but let's add it.%
+%
+\begin{itemize}[label=\textbullet]
+\item{}The lines can be drawn so that none of them cross.%
+\end{itemize}
+Now consider the following questions.%
+%
+\begin{enumerate}
+\item{}Redraw the picture in \hyperref[x:figure:fig-dot-game-example]{Figure~{\xreffont\ref{x:figure:fig-dot-game-example}}} so that none of the lines cross.%
+\item{}Give a name to drawings of figures like \hyperref[x:figure:fig-dot-game-example]{Figure~{\xreffont\ref{x:figure:fig-dot-game-example}}} which \emph{can} be drawn so that none of the lines cross.%
+\item{}Which drawings are possible with two or three dots? Can they be drawn to have the property that none of the lines cross?%
+\item{}What other drawings are possible with four dots? Five?%
+\item{}Based on your work here, do you think it will always be possible to draw these pictures so that none of the lines cross? Explain your thinking.%
+\end{enumerate}
+\end{exploration}%
+\begin{principle}{}{}{g:principle:idm3404383192}%
+Based on our work in this section, what are some strengths of inductive reasoning? What are some possible pitfalls? How can we minimize these potential downsides?%
+\end{principle}
+%
+%
+\typeout{************************************************}
+\typeout{Exercises 2.1 Exercises}
+\typeout{************************************************}
+%
+\begin{exercises-subsection-numberless}{Exercises}{}{Exercises}{}{}{g:exercises:idm3404382488}
+\begin{divisionexercise}{1}{}{}{g:exercise:idm3404382360}%
+Do some internet research on the \terminology{Twin Prime Conjecture}. What is it? When was it first formulated? Is it true? Likely true?%
+\end{divisionexercise}%
+\end{exercises-subsection-numberless}
+\end{sectionptx}
+%
+%
+\typeout{************************************************}
+\typeout{Section 2.2 Deductive Reasoning}
+\typeout{************************************************}
+%
+\begin{sectionptx}{Deductive Reasoning}{}{Deductive Reasoning}{}{}{g:section:idm3404410424}
+\begin{assemblage}{Motivating Questions.}{g:assemblage:idm3404381000}%
+In this section, we will explore the following questions. %
+\begin{enumerate}
+\item{}What is deductive reasoning? How does it differ from inductive reasoning?%
+\item{}How is deductive reasoning employed in mathematics?%
+\item{}What are some strengths and weaknesses of deductive reasoning?%
+\end{enumerate}
+%
+\end{assemblage}
+Formal mathematical reasoning is deductive (defined momentarily), and begins with \terminology{axioms}, which are statements that should be self-evident and taken to be true. Note that while axioms are not always explicitly stated, they \emph{can} be when necessary.%
+\begin{investigation}{}{g:investigation:idm3404377576}%
+The most famous set of axioms are Euclid's postulates for geometry, defined in \emph{\href{https://en.wikipedia.org/wiki/Euclid's_Elements}{The Elements}}, which not only shaped thousands of years of geometry, but solidified the deductive approach to doing and explaining mathematics that we will explore in this unit. At the beginning of Book I of \emph{The Elements}, Euclid identified five postulates and five axioms.%
+\par
+Euclid's \emph{postulates} are:%
+%
+\begin{enumerate}
+\item{}A straight line segment can be drawn joining any two points.%
+\item{}Any straight line segment can be extended indefinitely in a straight line.%
+\item{}Any circle can be described given a center and (radial) distance.%
+\item{}All right angles are equal to one another.%
+\item{}If a straight line intersecting two straight lines make the interior angles on the same side less than two right angles, the two straight lines, if produced indefinitely, meet on the side on which the angles are less than two right angles.%
+\end{enumerate}
+Euclid's \emph{axioms} (or \emph{common notions}) are:%
+%
+\begin{enumerate}
+\item{}Things which are equal to the same thing are also equal to one another.%
+\item{}If equals are added to equals, the wholes are equal.%
+\item{}If equals are subtracted from equals, the remainders are equal.%
+\item{}Things which coincide with one another are equal to one another.%
+\item{}The whole is greater than the part.%
+\end{enumerate}
+The desired qualities of a system of axioms are:%
+%
+\begin{enumerate}
+\item{}\terminology{consistency}: we cannot deduce contradictory propositions, such as "God exists" and "God does not exist" from the same set of axioms%
+\item{}\terminology{simplicity}: we have as few axioms as possible, and they are no more complicated than they need to be%
+\item{}\terminology{completeness}: the system can answer every question we can think to ask%
+\end{enumerate}
+In your groups, discuss Euclid's postulates and common notions, perhaps in view of the desired qualities of an axiomatic system. What strikes you as being interesting or noteworthy? Make a list of at least 2-3 observations. Then consider: on what axioms or assumptions do you make decisions (e.g., about how to spend your time, resources, etc)?%
+\par\smallskip%
+\noindent\textbf{\blocktitlefont Solution}.\hypertarget{g:solution:idm3404366856}{}\quad{}Axioms are unproved, self-evident propositions on top of which logical deductions can be made, and entire fields of study rest. They should be as simple as possible; all except Euclid's fifth postulate (the parallel postulate) are considered quite straightforward. The parallel postulate has a fascinating history; it turns out be independent of the other postulates, and one can create new geometries (on the surface of a sphere, for instance), by rejecting it.%
+\par
+There are lots of unproved assumptions that we make in life. Many Christian mathematicians make explicit that they view the authority of Scripture as an axiom; they can't use logic to conclusively deduce that Scripture is the only authority for Christian faith and life, but they \emph{assume} it in order to draw conclusions \emph{about} faith and life.%
+\end{investigation}%
+The process of \terminology{deductive reasoning} in mathematics begins from a set of generally agreed-upon axioms of \href{https://en.wikipedia.org/wiki/Zermelo–Fraenkel_set_theory}{set theory}\footnote{It should be noted that there is disagreement about the Axiom of Choice, mostly due to some of its surprising consequences.\label{g:fn:idm3404363384}} and uses logic to make inevitable conclusions from those axioms. These conclusions are generally called \terminology{theorems}. They are usually given as conditional statements of the form ``If \(P\), then \(Q\),'' where \(P\) and \(Q\) are sensible\begin{aside}{}{g:aside:idm3404360200}%
+\end{aside}
+ statements. Moreover, since most deductive statements are presented in conditional form, their scope is generally limited. That is, the statement ``if it is Monday, then we have math class'' is only making a claim about what happens on Mondays; it says nothing whatsoever about any other day of the week. We will explore the consequences of this more in \hyperref[x:chapter:chap-logic]{Chapter~{\xreffont\ref{x:chapter:chap-logic}}}.%
+\par
+The author Lewis Carroll loved logic puzzles (he was actually a mathematics professor!), and wrote many of them. Here is one, axiomatized for easy reference.%
+\begin{axiom}{(Carroll).}{}{x:axiom:axiom-kittens}%
+Consider the axioms:%
+%
+\begin{enumerate}
+\item{}If a kitten loves fish, then it is teachable.%
+\item{}Every kitten without a tail will play with a gorilla.%
+\item{}All kittens with whiskers love fish.%
+\item{}If a kitten has green eyes, then it is not teachable.%
+\item{}All kittens have whiskers or do not have tails.%
+\end{enumerate}
+\end{axiom}
+Once you have a deductive argument that (generally) begins from your premises and reasons, step-by-step, to your conclusion, you can write out the argument in a short essay known as a \emph{proof}. For our purposes, a proof is just a \emph{convicing argument}. It should be written at a level appropriate to the reader and clearly lay out the steps necessary for a reader who accepts your hypotheses to believe the conclusion. As an example, consider the following.%
+\begin{example}{}{x:example:example-kitten-deduction}%
+All kittens with whiskers are teachable.%
+\par
+\terminology{Proof}. Suppose we have a kitten with whiskers. Let's call him Arthur. By \hyperref[x:axiom:axiom-kittens]{Axiom~{\xreffont\ref{x:axiom:axiom-kittens}}} \#3, Arthur loves fish. Since Arthur loves fish, \hyperref[x:axiom:axiom-kittens]{Axiom~{\xreffont\ref{x:axiom:axiom-kittens}}} \#1 implies that Arthur is teachable.%
+\par
+Since Arthur was an arbitrary kitten, we conclude that all kittens with whiskers are teachable.%
+\end{example}
+There are several observations which are worth a moment of our time in the proof in \hyperref[x:example:example-kitten-deduction]{Example~{\xreffont\ref{x:example:example-kitten-deduction}}}.%
+%
+\begin{itemize}[label=\textbullet]
+\item{}We first note that the proof is written using standard conventions of academic writing, including complete sentences, proper punctuation and capitalization, etc. This is important! In order to convince someone that your argument is valid, they need to be able to read it.%
+\item{}While the statement to be proved is not written as ``if \(P\), then \(Q\)'', it \emph{can} be stated that way: ``If \(A\) is a kitten with whiskers, then \(A\) is teachable''. Thus, our proof begins by considering an arbitrary kitten with whiskers, who we name Arthur. We observe, however, that there is nothing special about Arthur that figures into our proof in a meaningful way, so the argument will apply just as well to any kitten with whiskers we may find.%
+\item{}In each step we take throughout the proof, we refer to the specific axiom from \hyperref[x:axiom:axiom-kittens]{Axiom~{\xreffont\ref{x:axiom:axiom-kittens}}} that allow us to take that step. It is valuable to be able to do this, but generally we do not specifically refer to the axioms by number. This is to improve the readability of the proof.%
+\item{}Finally, note that our proof concludes with a conclusion: all kittens with whiskers are teachable. This is good practice and sends an unmistakable signal to the reader that you are done.%
+\end{itemize}
+Now, prove the theorems that follow using \hyperref[x:axiom:axiom-kittens]{Axiom~{\xreffont\ref{x:axiom:axiom-kittens}}}.%
+\begin{theorem}{}{}{g:theorem:idm3404342920}%
+If a kitten has green eyes, then it does not love fish.%
+\end{theorem}
+\begin{theorem}{}{}{g:theorem:idm3404343336}%
+If a kitten has a tail, then it does not have green eyes.%
+\end{theorem}
+\begin{proof}{}{g:proof:idm3404341688}
+TBD! We tried some things, but there are issues. We'll look at it again after we study \hyperref[x:definition:def-implications]{Definition~{\xreffont\ref{x:definition:def-implications}}}.%
+\end{proof}
+\begin{theorem}{}{}{g:theorem:idm3404340584}%
+Every kitten with green eyes will play with a gorilla.%
+\end{theorem}
+\begin{activity}{}{g:activity:idm3404339976}%
+Compare and contrast the structures of the proofs of the preceding theorems. Can you clarify the general reasoning patterns you used to prove them?%
+\end{activity}%
+\begin{principle}{}{}{g:principle:idm3404339288}%
+We have now explored both inductive and deductive reasoning. How are they similar? How are they different? How might you decide which type of reasoning to employ in a given situation? What are their strengths and weaknesses?%
+\end{principle}
+\begin{conclusion}{Conclusion.}%
+In this section, we explored deductive reasoning, which begins from accepted axioms and premises and then reasons, step by logical step, toward a conclusion. This is the primary form of reasoning used in mathematics. We saw that while conclusions reached via deductive reasoning are generally tighter and more certain, there are still some drawbacks.%
+\par
+The main drawback of deductive reasoning involves scope. We must begin with axioms, so the axioms must be well-chosen and sensible. However, if one disagrees with the choice of a set of axioms, then one must be willing to set aside any results deduced from them (or, at least, deduced from the particular axioms with which one disagrees).%
+\par
+A second drawback having to do with scope concerns the premises of a conditional statement. In particular, if the premises of a statement are not satisfied, the statement makes no assertion whatsoever (though, as we will see in \hyperref[x:chapter:chap-logic]{Chapter~{\xreffont\ref{x:chapter:chap-logic}}}, there is still a \emph{consistent} way to assign truth values to statements whose premises are not satisfied).%
+\end{conclusion}%
+%
+%
+\typeout{************************************************}
+\typeout{Exercises 2.2 Exercises}
+\typeout{************************************************}
+%
+\begin{exercises-subsection-numberless}{Exercises}{}{Exercises}{}{}{g:exercises:idm3404335512}
+\begin{divisionexercise}{1}{}{}{g:exercise:idm3404335288}%
+Invent one or two additional theorems that can be deduced from \hyperref[x:axiom:axiom-kittens]{Axiom~{\xreffont\ref{x:axiom:axiom-kittens}}}. Prove them.%
+\end{divisionexercise}%
+\end{exercises-subsection-numberless}
+\end{sectionptx}
+\end{chapterptx}
+ %
+%
+\typeout{************************************************}
+\typeout{Chapter 3 Modern Mathematical Logic}
+\typeout{************************************************}
+%
+\begin{chapterptx}{Modern Mathematical Logic}{}{Modern Mathematical Logic}{}{}{x:chapter:chap-logic}
+\begin{introduction}{}%
+In \hyperref[x:chapter:chap-reasoning]{Chapter~{\xreffont\ref{x:chapter:chap-reasoning}}}, we explored two types of reasoning: inductive reasoning, and deductive reasoning. The type of reasoning used most often in mathematics is deductive reasoning. In the late 19th\slash{}early 20th century, logic itself was mathematized by the likes of George Boole and Augustus De Morgan into a \emph{propositional calculus}. This gave mathematicians a means of determining the truth value of a statement purely based on its inherent logical structure.%
+\par
+It is this method of calculating that we explore in this chapter.%
+\end{introduction}%
+%
+%
+\typeout{************************************************}
+\typeout{Section 3.1 Logical Connectives and Rules of Inference}
+\typeout{************************************************}
+%
+\begin{sectionptx}{Logical Connectives and Rules of Inference}{}{Logical Connectives and Rules of Inference}{}{}{x:section:sec-connectives}
+\begin{assemblage}{Motivating Questions.}{g:assemblage:idm3404330536}%
+In this section, we will explore the following questions. %
+\begin{enumerate}
+\item{}What is a proposition?%
+\item{}What are logical connectives? How can they be used to build new propositions?%
+\item{}What does it mean for two propositions to be logically equivalent?%
+\end{enumerate}
+%
+\end{assemblage}
+In the late 19th and early 20th centuries, mathematicians began mathematize and formalize logic itself. Today we begin to explore these foundational issues. We'll start with some definitions.%
+\begin{definition}{}{g:definition:idm3404327608}%
+\index{proposition}%
+\index{propositionelementary}%
+\index{logical connectives}%
+A \terminology{proposition} is a declarative sentence which is either true or false, but not both. An \terminology{elementary proposition} is a sentence with a subject and a verb, but no connectives (such as \emph{and, or, not, if-then,} or \emph{if-and-only-if}).%
+\end{definition}
+\begin{activity}{}{x:activity:act-propositions}%
+Determine which of the following are propositions (elementary or otherwise). If a given sentence is a proposition, determine its truth value. If it isn't, explain why not.%
+%
+\begin{enumerate}
+\item{}Erik Hoekstra is the president of Dordt University.%
+\item{}The square root of a whole number is always a whole number.%
+\item{}The Green Bay Packers are the worst football team.%
+\item{}Why is this class so much fun?%
+\item{}This sentence is false.%
+\item{}A group of crows is called a murder.%
+\item{}Everyone likes cats.%
+\end{enumerate}
+\par\smallskip%
+\noindent\textbf{\blocktitlefont Solution}.\hypertarget{g:solution:idm3404321192}{}\quad{}%
+\begin{enumerate}
+\item{}This is a true proposition.%
+\item{}This is a false proposition. As an example, \(\sqrt{21}\) is not a whole number.%
+\item{}This one is harder (though it's an easy "true" from your instructor). But it's likely either a false proposition (due to the Packers not having the worst record in the league) or not a proposition at all, as agreement with the sentence is a matter of subjective taste.%
+\item{}This is an interrogative, not a declaration.%
+\item{}This is a declarative sentence, but it's neither true nor false; it's a paradox.%
+\item{}This is a true proposition! Who knew?%
+\item{}This is a false proposition.%
+\end{enumerate}
+\end{activity}%
+Now that we have a sense for what a proposition is, we'll take old propositions and make new ones using \emph{logical connectives}. In order to describe how the connectives work, mathematicians define the truth values of the new propositions \emph{formally}\textemdash{}that is, without regard to the content of the propositions themselves\textemdash{}in terms of the possible combinations of truth values from the constituent propositions. This gives us an abstract way of considering the truth values of propositions.%
+\begin{definition}{}{g:definition:idm3404315720}%
+\index{negation}%
+\index{logical connectivesnegation}%
+Suppose \(P\) and \(Q\) are statements (e.g., like those in \hyperref[x:activity:act-propositions]{Activity~{\xreffont\ref{x:activity:act-propositions}}}). The \terminology{negation} of \(P\), denoted \(\neg P\) and read "not \(P\)", has the opposite truth value of \(P\) and is defined by \hyperref[x:table:table-negation]{Table~{\xreffont\ref{x:table:table-negation}}}.%
+\begin{tableptx}{\textbf{The negation of \(P\).}}{x:table:table-negation}{}%
+\centering%
+{\tabularfont%
+\begin{tabular}{cc}
+\multicolumn{1}{lB}{\(​P\)}&\multicolumn{1}{l}{\(​\neg P\)}\tabularnewline\hrulemedium
+\multicolumn{1}{cB}{T}&F\tabularnewline[0pt]
+\multicolumn{1}{cB}{F}&T
+\end{tabular}
+}%
+\end{tableptx}%
+\end{definition}
+\begin{definition}{}{g:definition:idm3404304840}%
+\index{and}%
+\index{logical connectivesand}%
+The \terminology{conjunction} of \(P\) and \(Q\), denoted \(P \land Q\) and read ``\(P\) and \(Q\)'', is true when both \(P\) and \(Q\) are true, and false otherwise. See \hyperref[x:table:table-and]{Table~{\xreffont\ref{x:table:table-and}}}.%
+\begin{tableptx}{\textbf{The conjunction of \(P\) and \(Q\).}}{x:table:table-and}{}%
+\centering%
+{\tabularfont%
+\begin{tabular}{ccc}
+\multicolumn{1}{lB}{\(​P\)}&\multicolumn{1}{lB}{\(​Q\)}&\multicolumn{1}{l}{\(P \land Q​\)}\tabularnewline\hrulemedium
+\multicolumn{1}{cB}{T}&\multicolumn{1}{cB}{T}&T\tabularnewline[0pt]
+\multicolumn{1}{cB}{T}&\multicolumn{1}{cB}{F}&F\tabularnewline[0pt]
+\multicolumn{1}{cB}{F}&\multicolumn{1}{cB}{T}&F\tabularnewline[0pt]
+\multicolumn{1}{cB}{F}&\multicolumn{1}{cB}{F}&F
+\end{tabular}
+}%
+\end{tableptx}%
+\end{definition}
+\begin{definition}{}{g:definition:idm3404287176}%
+\index{or}%
+\index{logical connectivesor}%
+The \terminology{disjunction} of \(P\) and \(Q\), denoted \(P \lor Q\) and read ``\(P\) or \(Q\)'', is true when \(P\) is true, \(Q\) is true, or both are true, and false otherwise. See \hyperref[x:table:table-or]{Table~{\xreffont\ref{x:table:table-or}}}.%
+\begin{tableptx}{\textbf{The disjunction of \(P\) and \(Q\).}}{x:table:table-or}{}%
+\centering%
+{\tabularfont%
+\begin{tabular}{ccc}
+\multicolumn{1}{lB}{\(​P\)}&\multicolumn{1}{lB}{\(​Q\)}&\multicolumn{1}{l}{\(P \lor Q​\)}\tabularnewline\hrulemedium
+\multicolumn{1}{cB}{T}&\multicolumn{1}{cB}{T}&T\tabularnewline[0pt]
+\multicolumn{1}{cB}{T}&\multicolumn{1}{cB}{F}&T\tabularnewline[0pt]
+\multicolumn{1}{cB}{F}&\multicolumn{1}{cB}{T}&T\tabularnewline[0pt]
+\multicolumn{1}{cB}{F}&\multicolumn{1}{cB}{F}&F
+\end{tabular}
+}%
+\end{tableptx}%
+\end{definition}
+\begin{activity}{}{g:activity:idm3404270232}%
+Meaningfully negate the following propositions (without just saying "It is not the case that...").%
+%
+\begin{enumerate}
+\item{}\(e\) is a negative real number.%
+\item{}Iowa is the tenth largest state.%
+\item{}17 is a prime number.%
+\end{enumerate}
+\par\smallskip%
+\noindent%
+\begin{enumerate}
+\item{}\(e\) is a nonnegative real number.%
+\item{}Iowa is not the tenth largest state.%
+\item{}17 is a composite number.%
+\end{enumerate}
+\end{activity}%
+\begin{exploration}{}{g:exploration:idm3404267000}%
+Determine the truth values of the following propositions.%
+%
+\begin{enumerate}
+\item{}Math 149 meets on Mondays and the capital of Iowa is Des Moines.%
+\item{}Math 149 meets on Mondays and the capital of Minnesota is Minneapolis.%
+\item{}Math 149 meets on Mondays or the capital of Minnesota is Minneapolis.%
+\end{enumerate}
+\par\smallskip%
+\noindent\textbf{\blocktitlefont Solution}.\hypertarget{g:solution:idm3404265432}{}\quad{}We want to emphasize that the truth of the conjunction or disjunction depends \emph{only on the truth of the constituent statements}. It doesn't matter whether it makes sense semantically to combine the constituents this way.%
+%
+\begin{enumerate}
+\item{}This is true, as both constituents are true.%
+\item{}This is false; the capital of Minnesota is St. Paul, not Minneapolis.%
+\item{}This is true, since it's a disjunctive statement and one of the constituents is true (Math 149 meets on Mondays).%
+\end{enumerate}
+\end{exploration}%
+The last connective we'll consider (for now) is \emph{implication}.%
+\begin{definition}{}{x:definition:def-implications}%
+\index{implication}%
+\index{if-then}%
+\index{conditional statements}%
+\index{logical connectivesimplies}%
+Let \(P\) and \(Q\) be statements. The \terminology{implication}, "\(P\) implies \(Q\)" (or "if \(P\), then \(Q\)") is denoted \(P\Rightarrow Q\), and is false only when \(P\) is true but \(Q\) is false. See \hyperref[x:table:table-implication]{Table~{\xreffont\ref{x:table:table-implication}}}.%
+\begin{tableptx}{\textbf{The implication \(P\Rightarrow Q\).}}{x:table:table-implication}{}%
+\centering%
+{\tabularfont%
+\begin{tabular}{ccc}
+\multicolumn{1}{lB}{\(​P\)}&\multicolumn{1}{lB}{\(​Q\)}&\multicolumn{1}{l}{\(P\Rightarrow Q​\)}\tabularnewline\hrulemedium
+\multicolumn{1}{cB}{T}&\multicolumn{1}{cB}{T}&T\tabularnewline[0pt]
+\multicolumn{1}{cB}{T}&\multicolumn{1}{cB}{F}&F\tabularnewline[0pt]
+\multicolumn{1}{cB}{F}&\multicolumn{1}{cB}{T}&T\tabularnewline[0pt]
+\multicolumn{1}{cB}{F}&\multicolumn{1}{cB}{F}&T
+\end{tabular}
+}%
+\end{tableptx}%
+\end{definition}
+\begin{exploration}{}{g:exploration:idm3404244264}%
+Determine the truth values of the following statements. Identify which row of \hyperref[x:table:table-implication]{Table~{\xreffont\ref{x:table:table-implication}}} you are in.%
+%
+\begin{enumerate}
+\item{}If \(x\) is negative, then \(-5x\) is positive.%
+\item{}If we have Math 149 today, then it is Wednesday.%
+\item{}If \(9 > 5\), then dogs do not have wings.%
+\item{}If \(2=4\), then Calvin Coolidge is our greatest president.%
+\end{enumerate}
+\end{exploration}%
+The formalization of mathematical logic ramps up a bit when we consider conditional statements. It is important to remember that we define the truth value of the proposition \(P \Rightarrow Q\) \emph{purely formally} based on the structure of the conditional statement and the truth values of the constituents \(P\) and \(Q\). There need not be a causal relationship between \(P\) and \(Q\)!%
+\par
+The last two rows of \hyperref[x:table:table-implication]{Table~{\xreffont\ref{x:table:table-implication}}} are also worth a moment of our time. They state that if the statement \(P\)\footnote{Often called the \emph{antecedent.}\label{g:fn:idm3404235480}} is false, then the \emph{implication} \(P\Rightarrow Q\) is \emph{true}. Note that this is different than saying that \(Q\)\footnote{Often called the \emph{consequent.}\label{g:fn:idm3404233160}} is true. When the implication \(P\Rightarrow Q\) is true because \(P\) is false, we usually say that \(P\Rightarrow Q\) is \terminology{vacuously true}.%
+\begin{activity}{}{g:activity:idm3404236664}%
+Suppose Dr. Janssen promises that, if everyone has solved their Rubik's Cube by Friday, then he will bring Defender sandwiches (on pretzel buns, with everything, as God intended) to class\footnotemark{}. Unfortunately, a few students do not solve the Cube by Friday, so Dr. Janssen does not bring Defenders.%
+\par
+Decide the truth value of the implication "If everyone can solve their Cubes by Friday, Dr. Janssen will bring Defenders to class". How does this help you think about vacuous truth?%
+\end{activity}%
+\footnotetext[3]{This is purely hypothetical.\label{g:fn:idm3404229848}}%
+An important tool in our logical toolkit is one you likely employed in the theorems you deduced from \hyperref[x:axiom:axiom-kittens]{Axiom~{\xreffont\ref{x:axiom:axiom-kittens}}}.%
+\begin{exploration}{}{g:exploration:idm3404228040}%
+Let \(P\) and \(Q\) be statements. The \terminology{contrapositive} of the implication \(P\Rightarrow Q\) is the implication \((\neg Q) \Rightarrow (\neg P)\). Complete \hyperref[x:table:table-contrap]{Table~{\xreffont\ref{x:table:table-contrap}}}. Is the contrapositive equivalent to anything we've looked at thus far?%
+\begin{tableptx}{\textbf{The contrapositive of \(P\Rightarrow Q\).}}{x:table:table-contrap}{}%
+\centering%
+{\tabularfont%
+\begin{tabular}{lllll}
+\multicolumn{1}{lB}{\(P\)}&\multicolumn{1}{lB}{\(Q\)}&\multicolumn{1}{lB}{\(\neg P​\)}&\multicolumn{1}{lB}{\(\neg Q​\)}&\((\neg Q) \Rightarrow (\neg P)\)\tabularnewline\hrulemedium
+\multicolumn{1}{cB}{T}&\multicolumn{1}{cB}{T}&\multicolumn{1}{lB}{}&\multicolumn{1}{lB}{}&\multicolumn{1}{c}{\tablecelllines{c}{m}
+{\\
+}
+}\tabularnewline[0pt]
+\multicolumn{1}{cB}{T}&\multicolumn{1}{cB}{F}&\multicolumn{1}{lB}{}&\multicolumn{1}{lB}{}&\multicolumn{1}{c}{\tablecelllines{c}{m}
+{\\
+}
+}\tabularnewline[0pt]
+\multicolumn{1}{cB}{F}&\multicolumn{1}{cB}{T}&\multicolumn{1}{lB}{}&\multicolumn{1}{lB}{}&\multicolumn{1}{c}{\tablecelllines{c}{m}
+{\\
+}
+}\tabularnewline[0pt]
+\multicolumn{1}{cB}{F}&\multicolumn{1}{cB}{F}&\multicolumn{1}{lB}{}&\multicolumn{1}{lB}{}&\multicolumn{1}{c}{\tablecelllines{c}{m}
+{\\
+}
+}
+\end{tabular}
+}%
+\end{tableptx}%
+\end{exploration}%
+\begin{activity}{}{g:activity:idm3404202040}%
+Write the contrapositives of the following statements. Be ready to explain why the contrapositives are equivalent to the original implications.%
+%
+\begin{enumerate}
+\item{}If a kitten loves fish, then it is teachable.%
+\item{}If a kitten does not have a tail, then it will play with a gorilla.%
+\item{}If a kitten has green eyes, then it is not teachable.%
+\item{}If today is Wednesday, then we have math class.%
+\end{enumerate}
+\end{activity}%
+We have now explored several ways of combining existing propositions into larger propositions using logical connectives. When we use logic to write proofs, we also employ tools known as \emph{rules of inference}. They clearly describe what steps we are allowed to take. There are many such rules; we will highlight two.%
+\par
+The way in which reasoning with implications is often done uses a rule of inference known as \terminology{modus ponens} which runs roughly:%
+%
+\begin{itemize}[label=\textbullet]
+\item{}If \(P\), then \(Q\).%
+\item{}\(P\),%
+\item{}Therefore, \(Q\)%
+\end{itemize}
+A closely related rule of inference is known as \terminology{modus tollens}, and runs thusly:%
+%
+\begin{itemize}[label=\textbullet]
+\item{}If \(P\), then \(Q\).%
+\item{}Not \(Q\),%
+\item{}Therefore, not \(P\).%
+\end{itemize}
+%
+%
+\typeout{************************************************}
+\typeout{Exercises 3.1 Exercises}
+\typeout{************************************************}
+%
+\begin{exercises-subsection-numberless}{Exercises}{}{Exercises}{}{}{g:exercises:idm3404192696}
+\begin{divisionexercise}{1}{}{}{g:exercise:idm3404192568}%
+an awesome exercise written by Anika%
+\end{divisionexercise}%
+\begin{divisionexercise}{2}{}{}{g:exercise:idm3404191976}%
+\end{divisionexercise}%
+\end{exercises-subsection-numberless}
+\end{sectionptx}
+%
+%
+\typeout{************************************************}
+\typeout{Section 3.2 Formal Systems and Incompleteness}
+\typeout{************************************************}
+%
+\begin{sectionptx}{Formal Systems and Incompleteness}{}{Formal Systems and Incompleteness}{}{}{x:section:sec-formal-systems-incompleteness}
+\begin{assemblage}{Motivating Questions.}{g:assemblage:idm3404191416}%
+In this section, we will explore the following questions. %
+\begin{enumerate}
+\item{}What are formal systems?%
+\item{}What was Hilbert's goal? How was it resolved?%
+\item{}How did Cantor describe infinite sets?%
+\end{enumerate}
+%
+\end{assemblage}
+%
+%
+\typeout{************************************************}
+\typeout{Subsection 3.2.1 Formal Systems}
+\typeout{************************************************}
+%
+\begin{subsectionptx}{Formal Systems}{}{Formal Systems}{}{}{x:subsection:subsec-formal-systems}
+We have seen thus far a way of formalizing logic so that we can think about the truth of a statement purely syntactically (structurally) without regard for the semantic meaning of the statements under consideration. In the late 19th century, mathematicians developed what became known as \terminology{formal systems}, consisting of axioms, which were strings of symbols, such as%
+\begin{equation*}
+\exists B \forall C, (C\in B \Leftrightarrow C\subseteq A),
+\end{equation*}
+along with a \terminology{logical calculus}, which govern the rules of inference that can be used on the axioms to deduce new theorems.%
+\par
+Further, mathematicians had long assumed there were consistent foundational axioms for their discipline. Newly discovered paradoxes challenged this view.%
+\begin{exploration}{Russell's Paradox.}{g:exploration:idm3404185864}%
+In a certain town lives a barber who only cuts the hair of \emph{all} people who do not cut their own hair. Who cuts the barber's hair?%
+\par\smallskip%
+\noindent\hypertarget{g:solution:idm3404184600}{}This is a paradox: if the barber cuts his own hair, we reach a contradiction, as he only cuts the hair of those who do not cut their own hair. On the other hand, if the barber does not cut his own hair, he does by definition.%
+\par
+This sort of self-referential paradox is exactly the sort that we'll study later in this section that led to the foundational crisis referred to in the section title.%
+\end{exploration}%
+Two main schools of mathematical philosophy sprung up in the wake of these discoveries. The \terminology{formalists} argued that statements of mathematics and logic are really just about the rules and consequences for manipulating symbols and strings of letters. That is, mathematics does not have a subject matter at all-{}-{}just empty symbols, which may be given an interpretation in particular situations and thus have meaning.%
+\par
+The response came from the \terminology{intuitionists}. Intuitionism is an approach that consideres mathematics to be purely the result of the constructive mental activity of humans rather than the discovery of any principles which we can reasonably claim exist in an objective reality. Thus, in some sense, mathematics is up to whoever is doing the mathematics. To the intuitionists, the formalists were reducing mathematics to a meaningless game with symbols.%
+\begin{principle}{}{}{g:principle:idm3404181224}%
+Do you resonate more with a formalist approach to mathematics, or an intuitionist approach? Relatedly: do you believe mathematics is something humans invent, or something we discover in the world around us? Why?%
+\end{principle}
+In 1900, at the second International Congress of Mathematicians in Paris, the esteemed mathematician David Hilbert posed 23 theretofore unanswered problems in mathematics that he thought were important to guide the development of mathematics in the 20th century. We've already seen one of them (the 8th): the Goldbach conjecture. Most of Hilbert's problems have been solved, but three are unresolved, two are thought to be too vague to ever get consensus on what a solution would look like, and one is the subject of much debate.%
+\par
+In an attempt to resolve the issues raised by paradoxes like Russell's Paradox, Hilbert posed this problem, the second on the list:%
+\begin{quote}%
+But above all I wish to designate the following as the most important among the numerous questions which can be asked with regard to the axioms: To prove that they are not contradictory, that is, that a definite number of logical steps based upon them can never lead to contradictory results….\end{quote}
+That is, Hilbert wanted mathematicians to prove that the axioms on which mathematics was founded did not lead to a contradiction. The resolution to this problem is surprising, and to begin to explore it, we will turn to the infinite.%
+\end{subsectionptx}
+%
+%
+\typeout{************************************************}
+\typeout{Subsection 3.2.2 Infinity and Incompleteness}
+\typeout{************************************************}
+%
+\begin{subsectionptx}{Infinity and Incompleteness}{}{Infinity and Incompleteness}{}{}{x:subsection:subsec-infinite-sets}
+In \hyperref[x:subsection:subsec-formal-systems]{Subsection~{\xreffont\ref{x:subsection:subsec-formal-systems}}}, we learned about the push from mathematicians in the late 19th\slash{}early 20th century were trying to show that the axioms, the very foundations on which mathematics was built, were both \emph{complete} (the truth of every sensible statement could be decided via deductions from the axioms) and \emph{consistent} (one could never deduce contradictory statements from the axioms).%
+\par
+For reasons which are hopefully clear, we'll assume that the axioms are consistent, that is, no contradictions will arise from them. (If contradictions \emph{can} arise, we are in trouble indeed.) But if the axioms are consistent, can it be shown that they're complete? To answer this question, we dive into the realm of infinity.%
+\begin{definition}{}{g:definition:idm3404174680}%
+Let \(S\) and \(T\) be \terminology{sets}, which we may think of as collections of objects. We say that \(S\) and \(T\) have the same \terminology{cardinality} if there is a one-to-one correspondence between the objects of \(S\) and those of \(T\), i.e., if each element of \(S\) can be paired up with one and only one unique element of \(T\). In this case, we write \(|S| = |T|\).%
+\end{definition}
+\begin{activity}{}{g:activity:idm3404174248}%
+Let \(S = \{1,2,3,4\}\), \(T=\{\square,\circ,\bigstar,\triangle\}\), and \(U = \{\diamondsuit,\spadesuit,\clubsuit\}\).%
+%
+\begin{enumerate}
+\item{}Can you find a one-to-one correspondence between \(S\) and \(T\)? Describe it, or explain why none exist.%
+\item{}Can you find a one-to-one correspondence between \(S\) and \(U\)? Describe it, or explain why none exist.%
+\item{}Can you find a one-to-one correspondence between \(T\) and \(U\)? Describe it, or explain why none exist.%
+\end{enumerate}
+\end{activity}%
+In order to explore our undecidable statement, we need to set some notation.%
+\begin{definition}{}{x:definition:def-number_sets}%
+We define the following sets of numbers.%
+%
+\begin{enumerate}
+\item{}The \terminology{natural numbers} are given by \(\mathbb{N} = \{1, 2, 3, \ldots\}\).%
+\item{}The \terminology{whole numbers} are given by \(\mathbb{W} = \{0,1,2,3,\ldots\}\).%
+\item{}The \terminology{integers} are given by \(\mathbb{Z} = \{\ldots, -3, -2, -1, 0, 1, 2, 3, \ldots\}\).%
+\item{}The \terminology{even integers} are given by \(2\mathbb{Z} = \{\ldots, -6, -4, -2, 0, 2, 4, 6, \ldots\}\).%
+\item{}The set of \terminology{rational numbers} is denoted by \(\mathbb{Q}\) and consists of all fractions \(\frac{a}{b}\), where \(a,b\) are integers and \(b\ne 0\).%
+\item{}The set of \terminology{real numbers} is denoted by \(\mathbb{R}\) and is given by all positive and negative infinite decimals (alternatively, every point on the number line).%
+\end{enumerate}
+\end{definition}
+\begin{activity}{}{g:activity:idm3404154184}%
+For the numbers that follow, identify all sets described in \hyperref[x:definition:def-number_sets]{Definition~{\xreffont\ref{x:definition:def-number_sets}}} they live in.%
+%
+\begin{enumerate}
+\item{}\(\displaystyle 7\)%
+\item{}\(\displaystyle -2\)%
+\item{}\(\displaystyle \pi\)%
+\item{}\(\displaystyle \frac{4}{3}\)%
+\item{}\(\displaystyle 0\)%
+\end{enumerate}
+\end{activity}%
+We now look for some one-to-one correspondences.%
+\begin{exploration}{}{x:exploration:expl-countable}%
+For the following pairs of sets, determine whether a one-to-one correspondence between the two sets exists. If it does, describe it. If it does not, give a justification.%
+%
+\begin{enumerate}
+\item{}\(\mathbb{N}\) and \(\mathbb{W}\)%
+\item{}\(\mathbb{W}\) and \(\mathbb{Z}\)%
+\item{}\(\mathbb{Z}\) and \(2\mathbb{Z}\)%
+\item{}\(\mathbb{N}\) and \(2\mathbb{Z}\)%
+\item{}(Challenge) \(\mathbb{N}\) and \(\mathbb{Q}\)%
+\end{enumerate}
+\end{exploration}%
+\begin{exploration}{}{x:exploration:expl-uncountable}%
+Let's explore the relationship between the cardinalities of \(\mathbb{N}\) and \(\mathbb{R}\) by considering the interval \([0,1]\) consisting of all real numbers (points on the number line) \(x\) satisfying \(0 \le x \le 1\). We will use the notation \(0.a_1 a_2 a_3 \ldots\) to denote the infinite decimal with tenths place value \(a_1\), hundredths \(a_2\), and so on.%
+%
+\begin{enumerate}
+\item{}What is the relationship between \(|\mathbb{R}|\) and \(|[0,1]|\)?%
+\item{}Suppose we have a one-to-one correspondence between \(\mathbb{N}\) and \([0,1]\). Explain why this means that we can write%
+\begin{align*}
+1 \amp \leftrightarrow 0.d_{11}d_{12}d_{13}\ldots\\
+2 \amp \leftrightarrow 0.d_{21}d_{22}d_{23}\ldots\\
+3 \amp \leftrightarrow 0.d_{31}d_{32}d_{33}\ldots\\
+\amp \vdots 
+\end{align*}
+where \(d_{ij}\) is the \(j\)th decimal digit of the \(i\)th number on the list.%
+\item{}Define a real number \(M = 0.e_1 e_2 e_3 \ldots\) where \(e_j = 2\) if \(d_{jj} \ge 5\) and \(e_j = 7\) if \(d_{jj} \lt 5\). Suppose the first three numbers on the list above are%
+\begin{align*}
+\amp 0.4548430426\ldots\\
+\amp 0.4607677961\ldots\\
+\amp 0.4702962689\ldots
+\end{align*}
+What is \(M\) in this case?%
+\item{}In general, is it true that \(0 \le M \le 1\)?%
+\item{}Where is \(M\) on the list in Question 2?%
+\item{}What does your answer to the previous question suggest about the one-to-one correspondence we wrote down in Question 2?%
+\item{}What does your answer to the previous question suggest about the relationship between \(|\mathbb{N}|\) and \(|[0,1]|\)? Between \(|\mathbb{N}|\) and \(|\mathbb{R}|\)?%
+\end{enumerate}
+\end{exploration}%
+\begin{principle}{}{}{x:principle:disc-ch}%
+Given your responses to \hyperref[x:exploration:expl-countable]{Exploration~{\xreffont\ref{x:exploration:expl-countable}}} and \hyperref[x:exploration:expl-uncountable]{Exploration~{\xreffont\ref{x:exploration:expl-uncountable}}}, do you think there is a set \(S\) such that \(|S| \gt |\mathbb{N}|\) and \(|S| \lt |\mathbb{R}|\)? Why or why not?%
+\end{principle}
+\index{incompleteness theorems} In the early 1930s, the Austrian mathematical logician Kurt Godel revolutionized mathematical logic with his two \terminology{incompleteness theorems}. Informally, first incompleteness theorem states that any sufficiently strong, consistent formal system contains undecidable statements. That is, there are sensible statements, such as the one raised in \hyperref[x:principle:disc-ch]{Discussion~{\xreffont\ref{x:principle:disc-ch}}}, which cannot be proved from within the system. In that case, we may choose to adopt either the statement \emph{or its negation} as an additional axiom, and may do so without creating any contradiction.%
+\par
+The question in \hyperref[x:principle:disc-ch]{Discussion~{\xreffont\ref{x:principle:disc-ch}}} leads to just such a proposition, namely that no such set \(S\) exists. This has been known as the \terminology{continuum hypothesis}. It was first suggested by Cantor in 1878, and was one of Hilbert's 23 problems. Godel himself proved in 1940 that its negation, i.e., that such a set \(S\) does exist, is independent of the usual axioms of set theory. The mathematician Paul Cohen proved in 1963 that the continuum hypothesis itself is independent of the usual axioms of set theory, thus verifying that the hypothesis is undecidable.%
+\end{subsectionptx}
+%
+%
+\typeout{************************************************}
+\typeout{Exercises 3.2.3 Exercises}
+\typeout{************************************************}
+%
+\begin{exercises-subsection}{Exercises}{}{Exercises}{}{}{g:exercises:idm3404178264}
+\begin{divisionexercise}{1}{}{}{g:exercise:idm3404119512}%
+How have mathematicians reacted to Godel's incompleteness theorems? What consequences, if any, have there been for the work of discovering new mathematics?%
+\end{divisionexercise}%
+\begin{divisionexercise}{2}{}{}{g:exercise:idm3404118648}%
+The existence of undecidable statements in mathematics, such as the continuum hypothesis, may seem like an esoteric quirk without any real consequences. However, there have been similar undecidable statements discovered in related disciplines such as computer science and physics. Find such a statement and, as best you can, describe it.%
+\end{divisionexercise}%
+\end{exercises-subsection}
+\end{sectionptx}
+\end{chapterptx}
+\end{partptx}
+%
+%
+\typeout{************************************************}
+\typeout{Part III Power}
+\typeout{************************************************}
+%
+\begin{partptx}{Power}{}{Power}{}{}{x:part:part-power}
+ %
+%
+\typeout{************************************************}
+\typeout{Chapter 4 Discrete Dynamical Systems}
+\typeout{************************************************}
+%
+\begin{chapterptx}{Discrete Dynamical Systems}{}{Discrete Dynamical Systems}{}{}{x:chapter:chap-dynamical-systems}
+\end{chapterptx}
+ %
+%
+\typeout{************************************************}
+\typeout{Chapter 5 Graphs and Networks}
+\typeout{************************************************}
+%
+\begin{chapterptx}{Graphs and Networks}{}{Graphs and Networks}{}{}{x:chapter:chap-graphs}
+\end{chapterptx}
+ %
+%
+\typeout{************************************************}
+\typeout{Chapter 6 Modular Arithmetic and Coding Theory}
+\typeout{************************************************}
+%
+\begin{chapterptx}{Modular Arithmetic and Coding Theory}{}{Modular Arithmetic and Coding Theory}{}{}{x:chapter:chap-coding}
+\end{chapterptx}
+\end{partptx}
+%
+%
+\typeout{************************************************}
+\typeout{Part IV Justice}
+\typeout{************************************************}
+%
+\begin{partptx}{Justice}{}{Justice}{}{}{x:part:part-justice}
+ %
+%
+\typeout{************************************************}
+\typeout{Chapter 7 Voting}
+\typeout{************************************************}
+%
+\begin{chapterptx}{Voting}{}{Voting}{}{}{x:chapter:chap-voting}
+\end{chapterptx}
+ %
+%
+\typeout{************************************************}
+\typeout{Chapter 8 Apportionment}
+\typeout{************************************************}
+%
+\begin{chapterptx}{Apportionment}{}{Apportionment}{}{}{x:chapter:chap-apportionment}
+\end{chapterptx}
+ %
+%
+\typeout{************************************************}
+\typeout{Chapter 9 Redistricting}
+\typeout{************************************************}
+%
+\begin{chapterptx}{Redistricting}{}{Redistricting}{}{}{x:chapter:chap-redistricting}
+\end{chapterptx}
+\end{partptx}
+%
+%
+\typeout{************************************************}
+\typeout{Part V Beauty}
+\typeout{************************************************}
+%
+\begin{partptx}{Beauty}{}{Beauty}{}{}{x:part:part-beauty}
+ %
+%
+\typeout{************************************************}
+\typeout{Chapter 10 The Fibonacci Sequence}
+\typeout{************************************************}
+%
+\begin{chapterptx}{The Fibonacci Sequence}{}{The Fibonacci Sequence}{}{}{x:chapter:chap-fibonacci}
+\end{chapterptx}
+ %
+%
+\typeout{************************************************}
+\typeout{Chapter 11 Fractal Geometry}
+\typeout{************************************************}
+%
+\begin{chapterptx}{Fractal Geometry}{}{Fractal Geometry}{}{}{x:chapter:chap-fractals}
+\end{chapterptx}
+ %
+%
+\typeout{************************************************}
+\typeout{Chapter 12 Mathematics and the Arts}
+\typeout{************************************************}
+%
+\begin{chapterptx}{Mathematics and the Arts}{}{Mathematics and the Arts}{}{}{x:chapter:chap-art}
+\end{chapterptx}
+\end{partptx}
+%
+\backmatter%
+%
+\clearpage\phantomsection%
+\addcontentsline{toc}{part}{Back Matter}%
+%
+%% The index is here, setup is all in preamble
+%% Index locators are cross-references, so same font here
+{\xreffont\printindex}
+%
+\end{document}

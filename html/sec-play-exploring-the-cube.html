@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--********************************************-->
 <!--*       Generated from PreTeXt source      *-->
-<!--*       on 2022-01-10T13:39:06-06:00       *-->
+<!--*       on 2022-04-29T09:49:18-05:00       *-->
 <!--*   A recent stable commit (2020-08-09):   *-->
 <!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
 <!--*                                          *-->
@@ -9,55 +9,66 @@
 <!--*                                          *-->
 <!--********************************************-->
 <html lang="en-US">
-<head>
+<head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Exploring and Describing the Cube</title>
 <meta name="Keywords" content="Authored in PreTeXt">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [['\\(','\\)']]
+<meta property="og:type" content="book">
+<meta property="book:title" content="Explorations in Modern Mathematics">
+<meta property="book:author" content="Mike Janssen">
+<script src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script>window.MathJax = {
+  tex: {
+    inlineMath: [['\\(','\\)']],
+    tags: "none",
+    tagSide: "right",
+    tagIndent: ".8em",
+    packages: {'[+]': ['base', 'extpfeil', 'ams', 'amscd', 'newcommand', 'knowl']}
+  },
+  options: {
+    ignoreHtmlClass: "tex2jax_ignore|ignore-math",
+    processHtmlClass: "process-math",
+    renderActions: {
+        findScript: [10, function (doc) {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(function(node) {
+                var display = !!node.type.match(/; *mode=display/);
+                var math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                var text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = {node: text, delim: '', n: 0};
+                math.end = {node: text, delim: '', n: 0};
+                doc.math.push(math);
+            });
+        }, '']
     },
-    asciimath2jax: {
-        ignoreClass: ".*",
-        processClass: "has_am"
-    },
-    jax: ["input/AsciiMath"],
-    extensions: ["asciimath2jax.js"],
-    TeX: {
-        extensions: ["extpfeil.js", "autobold.js", "https://pretextbook.org/js/lib/mathjaxknowl.js", "AMScd.js", ],
-        // scrolling to fragment identifiers is controlled by other Javascript
-        positionToHash: false,
-        equationNumbers: { autoNumber: "none", useLabelIds: true, },
-        TagSide: "right",
-        TagIndent: ".8em",
-    },
-    // HTML-CSS output Jax to be dropped for MathJax 3.0
-    "HTML-CSS": {
-        scale: 88,
-        mtextFontInherit: true,
-    },
-    CommonHTML: {
-        scale: 88,
-        mtextFontInherit: true,
-    },
-});
-</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML-full"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.min.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.sticky.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.espy.min.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/0.13/pretext.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/0.13/pretext_add_on.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script xmlns:svg="http://www.w3.org/2000/svg">sagecellEvalName='Evaluate (Sage)';
-</script><link xmlns:svg="http://www.w3.org/2000/svg" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic" rel="stylesheet" type="text/css">
-<link xmlns:svg="http://www.w3.org/2000/svg" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
-<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/pretext.css" rel="stylesheet" type="text/css">
-<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/pretext_add_on.css" rel="stylesheet" type="text/css">
-<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/banner_default.css" rel="stylesheet" type="text/css">
-<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/toc_default.css" rel="stylesheet" type="text/css">
-<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/knowls_default.css" rel="stylesheet" type="text/css">
-<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/style_default.css" rel="stylesheet" type="text/css">
-<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/colors_blue_grey.css" rel="stylesheet" type="text/css">
-<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/setcolors.css" rel="stylesheet" type="text/css">
-<!-- 2019-10-12: Temporary - CSS file for experiments with styling --><link xmlns:svg="http://www.w3.org/2000/svg" href="developer.css" rel="stylesheet" type="text/css">
+  },
+  chtml: {
+    scale: 0.88,
+    mtextInheritFont: true
+  },
+  loader: {
+    load: ['input/asciimath', '[tex]/extpfeil', '[tex]/amscd', '[tex]/newcommand', '[pretext]/mathjaxknowl3.js'],
+    paths: {pretext: "https://pretextbook.org/js/lib"},
+  },
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script src="https://pretextbook.org/js/lib/jquery.min.js"></script><script src="https://pretextbook.org/js/lib/jquery.sticky.js"></script><script src="https://pretextbook.org/js/lib/jquery.espy.min.js"></script><script src="https://pretextbook.org/js/0.13/pretext.js"></script><script>miniversion=0.674</script><script src="https://pretextbook.org/js/0.13/pretext_add_on.js?x=1"></script><script src="https://pretextbook.org/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
+</script><link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/pretext.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/pretext_add_on.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/banner_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/toc_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/knowls_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/style_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/colors_blue_grey.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/setcolors.css" rel="stylesheet" type="text/css">
+<!-- 2019-10-12: Temporary - CSS file for experiments with styling --><link href="developer.css" rel="stylesheet" type="text/css">
+<!--*** Runestone Services ***-->
+<script type="text/javascript" src="_static/runtime.44deab00544cc8fc.bundle.js"></script><script type="text/javascript" src="_static/637.d54be67956c5c660.bundle.js"></script><script type="text/javascript" src="_static/runestone.a1a8707963a337ef.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/637.fafafbd97df8a0d1.css">
+<link rel="stylesheet" type="text/css" href="_static/runestone.d062db89aaf1dddd.css">
 </head>
-<body class="mathbook-book has-toc has-sidebar-left">
-<a class="assistive" href="#content">Skip to main content</a><div xmlns:svg="http://www.w3.org/2000/svg" id="latex-macros" class="hidden-content" style="display:none">\({\labelitemi}{$\diamond$}
+<body class="pretext-book ignore-math has-toc has-sidebar-left">
+<a class="assistive" href="#content">Skip to main content</a><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\({\labelitemi}{$\diamond$}
 \def\arraystretch{1.5}
 \newcommand{\contentsfinish}{}
 \newcommand{\separator}{\begin{center}\rule{\columnwidth}{\arrayrulewidth}\end{center}}
@@ -109,187 +120,199 @@ MathJax.Hub.Config({
 \newcommand{\lt}{&lt;}
 \newcommand{\gt}{&gt;}
 \newcommand{\amp}{&amp;}
-\)</div>
+\)</span></div>
 <header id="masthead" class="smallbuttons"><div class="banner"><div class="container">
 <a id="logo-link" href=""></a><div class="title-container">
 <h1 class="heading"><a href="book-1.html"><span class="title">Explorations in Modern Mathematics</span></a></h1>
 <p class="byline">Mike Janssen</p>
 </div>
 </div></div>
-<nav xmlns:svg="http://www.w3.org/2000/svg" id="primary-navbar" class="navbar"><div class="container">
+<nav id="primary-navbar" class="navbar"><div class="container">
 <div class="navbar-top-buttons">
 <button class="sidebar-left-toggle-button button active" aria-label="Show or hide table of contents sidebar">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
-<a class="index-button toolbar-item button" href="index-31.html" title="Index">Index</a><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="sec-play-intro.html" title="Previous">Prev</a><a id="upbutton" class="up-button button toolbar-item" href="chap-cube.html" title="Up">Up</a><a id="nextbutton" class="next-button button toolbar-item" href="sec-play-moving-cubies.html" title="Next">Next</a></span>
+<a class="index-button toolbar-item button" href="index-62.html" title="Index">Index</a><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="sec-play-intro.html" title="Previous">Prev</a><a id="upbutton" class="up-button button toolbar-item" href="chap-cube.html" title="Up">Up</a><a id="nextbutton" class="next-button button toolbar-item" href="sec-play-moving-cubies.html" title="Next">Next</a></span>
 </div>
 </div>
 <div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
 <button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="sec-play-intro.html" title="Previous">Prev</a><a class="up-button button toolbar-item" href="chap-cube.html" title="Up">Up</a><a class="next-button button toolbar-item" href="sec-play-moving-cubies.html" title="Next">Next</a>
 </div>
 </div></nav></header><div class="page">
-<div xmlns:svg="http://www.w3.org/2000/svg" id="sidebar-left" class="sidebar" role="navigation"><div class="sidebar-content">
+<div id="sidebar-left" class="sidebar" role="navigation"><div class="sidebar-content">
 <nav id="toc"><ul>
 <li class="link frontmatter">
-<a href="frontmatter-1.html" data-scroll="frontmatter-1"><span class="title">Front Matter</span></a><ul>
-<li><a href="colophon-1.html" data-scroll="colophon-1">Colophon</a></li>
-<li><a href="Sec-Introduction.html" data-scroll="Sec-Introduction">Introduction</a></li>
-<li><a href="sec-NoteToStudents.html" data-scroll="sec-NoteToStudents">A Note to Students</a></li>
-<li><a href="sec-NoteToInstructors.html" data-scroll="sec-NoteToInstructors">A Note to Instructors</a></li>
+<a href="frontmatter-1.html" data-scroll="frontmatter-1" class="internal"><span class="title">Front Matter</span></a><ul>
+<li><a href="colophon-1.html" data-scroll="colophon-1" class="internal">Colophon</a></li>
+<li><a href="Sec-Introduction.html" data-scroll="Sec-Introduction" class="internal">Introduction</a></li>
+<li><a href="sec-NoteToStudents.html" data-scroll="sec-NoteToStudents" class="internal">A Note to Students</a></li>
+<li><a href="sec-NoteToInstructors.html" data-scroll="sec-NoteToInstructors" class="internal">A Note to Instructors</a></li>
 </ul>
 </li>
-<li class="link part"><a href="part-play.html" data-scroll="part-play"><span class="codenumber">I</span> <span class="title">Play</span></a></li>
+<li class="link part"><a href="part-play.html" data-scroll="part-play" class="internal"><span class="codenumber">I</span> <span class="title">Play</span></a></li>
 <li class="link">
-<a href="chap-cube.html" data-scroll="chap-cube"><span class="codenumber">1</span> <span class="title">The Cube</span></a><ul>
-<li><a href="sec-play-intro.html" data-scroll="sec-play-intro">Introduction and Background</a></li>
+<a href="chap-cube.html" data-scroll="chap-cube" class="internal"><span class="codenumber">1</span> <span class="title">The Cube</span></a><ul>
+<li><a href="sec-play-intro.html" data-scroll="sec-play-intro" class="internal">Introduction and Background</a></li>
 <li><a href="sec-play-exploring-the-cube.html" data-scroll="sec-play-exploring-the-cube" class="active">Exploring and Describing the Cube</a></li>
-<li><a href="sec-play-moving-cubies.html" data-scroll="sec-play-moving-cubies">Moving Cubies</a></li>
-<li><a href="sec-play-reorienting-cubies.html" data-scroll="sec-play-reorienting-cubies">Reorienting Cubies</a></li>
+<li><a href="sec-play-moving-cubies.html" data-scroll="sec-play-moving-cubies" class="internal">Moving Cubies</a></li>
+<li><a href="sec-play-reorienting-cubies.html" data-scroll="sec-play-reorienting-cubies" class="internal">Reorienting Cubies</a></li>
 </ul>
 </li>
-<li class="link part"><a href="part-truth.html" data-scroll="part-truth"><span class="codenumber">II</span> <span class="title">Truth</span></a></li>
+<li class="link part"><a href="part-truth.html" data-scroll="part-truth" class="internal"><span class="codenumber">II</span> <span class="title">Truth</span></a></li>
 <li class="link">
-<a href="chap-reasoning.html" data-scroll="chap-reasoning"><span class="codenumber">2</span> <span class="title">Inductive and Deductive Reasoning</span></a><ul>
-<li><a href="section-5.html" data-scroll="section-5">Inductive Reasoning</a></li>
-<li><a href="section-6.html" data-scroll="section-6">Deductive Reasoning</a></li>
-</ul>
-</li>
-<li class="link">
-<a href="chap-logic.html" data-scroll="chap-logic"><span class="codenumber">3</span> <span class="title">Modern Mathematical Logic</span></a><ul>
-<li><a href="sec-connectives.html" data-scroll="sec-connectives">Logical Connectives and Rules of Inference</a></li>
-<li><a href="sec-formal-systems-incompleteness.html" data-scroll="sec-formal-systems-incompleteness">Formal Systems and Incompleteness</a></li>
-</ul>
-</li>
-<li class="link part"><a href="part-power.html" data-scroll="part-power"><span class="codenumber">III</span> <span class="title">Power</span></a></li>
-<li class="link"><a href="chap-dynamical-systems.html" data-scroll="chap-dynamical-systems"><span class="codenumber">4</span> <span class="title">Discrete Dynamical Systems</span></a></li>
-<li class="link"><a href="chap-graphs.html" data-scroll="chap-graphs"><span class="codenumber">5</span> <span class="title">Graphs and Networks</span></a></li>
-<li class="link"><a href="chap-coding.html" data-scroll="chap-coding"><span class="codenumber">6</span> <span class="title">Modular Arithmetic and Coding Theory</span></a></li>
-<li class="link part"><a href="part-justice.html" data-scroll="part-justice"><span class="codenumber">IV</span> <span class="title">Justice</span></a></li>
-<li class="link">
-<a href="chap-voting.html" data-scroll="chap-voting"><span class="codenumber">7</span> <span class="title">Voting</span></a><ul>
-<li><a href="sec-voting-intro.html" data-scroll="sec-voting-intro">Introduction to Voting</a></li>
-<li><a href="sec-more-voting-systems.html" data-scroll="sec-more-voting-systems">More Voting Systems</a></li>
-<li><a href="sec-evaluating-voting-systems.html" data-scroll="sec-evaluating-voting-systems">Evaluating Systems of Voting</a></li>
+<a href="chap-reasoning.html" data-scroll="chap-reasoning" class="internal"><span class="codenumber">2</span> <span class="title">Inductive and Deductive Reasoning</span></a><ul>
+<li><a href="section-5.html" data-scroll="section-5" class="internal">Inductive Reasoning</a></li>
+<li><a href="section-6.html" data-scroll="section-6" class="internal">Deductive Reasoning</a></li>
 </ul>
 </li>
 <li class="link">
-<a href="chap-apportionment.html" data-scroll="chap-apportionment"><span class="codenumber">8</span> <span class="title">Apportionment</span></a><ul>
-<li><a href="sec-apportionment-intro.html" data-scroll="sec-apportionment-intro">Introduction to Apportionment</a></li>
-<li><a href="sec-apportionment-methods.html" data-scroll="sec-apportionment-methods">More Apportionment Methods</a></li>
+<a href="chap-logic.html" data-scroll="chap-logic" class="internal"><span class="codenumber">3</span> <span class="title">Modern Mathematical Logic</span></a><ul>
+<li><a href="sec-connectives.html" data-scroll="sec-connectives" class="internal">Logical Connectives and Rules of Inference</a></li>
+<li><a href="sec-formal-systems-incompleteness.html" data-scroll="sec-formal-systems-incompleteness" class="internal">Formal Systems and Incompleteness</a></li>
 </ul>
 </li>
-<li class="link"><a href="chap-redistricting.html" data-scroll="chap-redistricting"><span class="codenumber">9</span> <span class="title">Redistricting</span></a></li>
-<li class="link part"><a href="part-beauty.html" data-scroll="part-beauty"><span class="codenumber">V</span> <span class="title">Beauty</span></a></li>
-<li class="link"><a href="chap-fibonacci.html" data-scroll="chap-fibonacci"><span class="codenumber">10</span> <span class="title">The Fibonacci Sequence</span></a></li>
-<li class="link"><a href="chap-fractals.html" data-scroll="chap-fractals"><span class="codenumber">11</span> <span class="title">Fractal Geometry</span></a></li>
-<li class="link"><a href="chap-art.html" data-scroll="chap-art"><span class="codenumber">12</span> <span class="title">Mathematics and the Arts</span></a></li>
-<li class="link backmatter"><a href="backmatter-1.html" data-scroll="backmatter-1"><span class="title">Back Matter</span></a></li>
-<li class="link"><a href="index-31.html" data-scroll="index-31"><span class="title">Index</span></a></li>
-</ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://pretextbook.org">Authored in PreTeXt</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/badge.gif" alt="Powered by MathJax"></a></nav></div>
+<li class="link part"><a href="part-power.html" data-scroll="part-power" class="internal"><span class="codenumber">III</span> <span class="title">Power</span></a></li>
+<li class="link">
+<a href="chap-dynamical-systems.html" data-scroll="chap-dynamical-systems" class="internal"><span class="codenumber">4</span> <span class="title">Discrete Dynamical Systems</span></a><ul>
+<li><a href="sec-intro-to-dds.html" data-scroll="sec-intro-to-dds" class="internal">Sequences</a></li>
+<li><a href="sec-dds.html" data-scroll="sec-dds" class="internal">Discrete Dynamical Systems</a></li>
+</ul>
+</li>
+<li class="link"><a href="chap-graphs.html" data-scroll="chap-graphs" class="internal"><span class="codenumber">5</span> <span class="title">Graphs and Networks</span></a></li>
+<li class="link">
+<a href="chap-coding.html" data-scroll="chap-coding" class="internal"><span class="codenumber">6</span> <span class="title">Modular Arithmetic and Coding Theory</span></a><ul>
+<li><a href="sec-intro-to-mod-arithmetic.html" data-scroll="sec-intro-to-mod-arithmetic" class="internal">Adding in Circles</a></li>
+<li><a href="sec-coding.html" data-scroll="sec-coding" class="internal">Coding Theory</a></li>
+<li><a href="sec-cryptography.html" data-scroll="sec-cryptography" class="internal">Opkpun Tlzzhnlz: Hu Vclycpld vm Jyfwavnyhwof</a></li>
+</ul>
+</li>
+<li class="link part"><a href="part-justice.html" data-scroll="part-justice" class="internal"><span class="codenumber">IV</span> <span class="title">Justice</span></a></li>
+<li class="link">
+<a href="chap-voting.html" data-scroll="chap-voting" class="internal"><span class="codenumber">7</span> <span class="title">Voting</span></a><ul>
+<li><a href="sec-voting-intro.html" data-scroll="sec-voting-intro" class="internal">Elections with Two Candidates</a></li>
+<li><a href="sec-more-voting-systems.html" data-scroll="sec-more-voting-systems" class="internal">Elections with More than Two Candidates I</a></li>
+<li><a href="sec-evaluating-voting-systems.html" data-scroll="sec-evaluating-voting-systems" class="internal"></a></li>
+<li><a href="sec-more-voting-systems-iii.html" data-scroll="sec-more-voting-systems-iii" class="internal">Elections with More Than Two Candidates III</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="chap-apportionment.html" data-scroll="chap-apportionment" class="internal"><span class="codenumber">8</span> <span class="title">Apportionment</span></a><ul>
+<li><a href="sec-apportionment-intro.html" data-scroll="sec-apportionment-intro" class="internal">Apportionment and Divisor Methods</a></li>
+<li><a href="sec-apportionment-paradoxes.html" data-scroll="sec-apportionment-paradoxes" class="internal">Apportionment Paradoxes and Hills' Method</a></li>
+</ul>
+</li>
+<li class="link"><a href="chap-redistricting.html" data-scroll="chap-redistricting" class="internal"><span class="codenumber">9</span> <span class="title">Redistricting</span></a></li>
+<li class="link part"><a href="part-beauty.html" data-scroll="part-beauty" class="internal"><span class="codenumber">V</span> <span class="title">Beauty</span></a></li>
+<li class="link"><a href="chap-fibonacci.html" data-scroll="chap-fibonacci" class="internal"><span class="codenumber">10</span> <span class="title">The Fibonacci Sequence</span></a></li>
+<li class="link"><a href="chap-fractals.html" data-scroll="chap-fractals" class="internal"><span class="codenumber">11</span> <span class="title">Fractal Geometry</span></a></li>
+<li class="link"><a href="chap-art.html" data-scroll="chap-art" class="internal"><span class="codenumber">12</span> <span class="title">Mathematics and the Arts</span></a></li>
+<li class="link backmatter"><a href="backmatter-1.html" data-scroll="backmatter-1" class="internal"><span class="title">Back Matter</span></a></li>
+<li class="link"><a href="index-62.html" data-scroll="index-62" class="internal"><span class="title">Index</span></a></li>
+</ul></nav><div class="extras"><nav><a class="pretext-link" href="https://pretextbook.org">Authored in PreTeXt</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/badge.gif" alt="Powered by MathJax"></a></nav></div>
 </div></div>
-<main class="main"><div id="content" class="pretext-content"><section xmlns:svg="http://www.w3.org/2000/svg" class="section" id="sec-play-exploring-the-cube"><h2 class="heading hide-type">
+<main class="main"><div id="content" class="pretext-content"><section class="section" id="sec-play-exploring-the-cube"><h2 class="heading hide-type">
 <span class="type">Section</span> <span class="codenumber">1.2</span> <span class="title">Exploring and Describing the Cube</span>
 </h2>
-<article class="assemblage assemblage-like" id="assemblage-3"><h6 class="heading"><span class="title">Motivating Questions.</span></h6>
+<article class="assemblage assemblage-like" id="assemblage-3"><h3 class="heading"><span class="title">Motivating Questions.</span></h3>
 <p id="p-21">In this section, we will explore the following questions. <ol class="decimal">
-<li id="li-20">What are faces and layers, and what methods exist for solving them?</li>
-<li id="li-21">How can we describe a complex series of Cube moves?</li>
-<li id="li-22">What is the order of a Cube move?</li>
+<li id="li-20"><p id="p-derived-li-20">What are faces and layers, and what methods exist for solving them?</p></li>
+<li id="li-21"><p id="p-derived-li-21">How can we describe a complex series of Cube moves?</p></li>
+<li id="li-22"><p id="p-derived-li-22">What is the order of a Cube move?</p></li>
 </ol></p></article><section class="introduction" id="introduction-4"><p id="p-22">In this section, we'll define a few terms and work on an initial exploration of the Cube's white layer. Then, we'll discuss the need for a precise method communicating about our Cubes, and introduce some standard notation.</p></section><section class="subsection" id="subsection-3"><h3 class="heading hide-type">
 <span class="type">Subsection</span> <span class="codenumber">1.2.1</span> <span class="title">Faces and Layers</span>
 </h3>
 <p id="p-23">We begin with a definition.</p>
-<article class="definition definition-like" id="def-cube-face"><h6 class="heading">
+<article class="definition definition-like" id="def-cube-face"><h4 class="heading">
 <span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.2.1</span><span class="period">.</span>
-</h6>
+</h4>
 <p id="p-24">A <dfn class="terminology">face</dfn> of the Cube refers to one of its sides. We say a face is <dfn class="terminology">solved</dfn> if all the stickers on that side are the same color.</p></article><p id="p-25">There are many ways to solve the Cube, and we'll explore one approach later in this chapter. A crucial step in learning to solve the Cube is learning to solve one face.</p>
-<article class="assemblage assemblage-like" id="assemblage-4"><h6 class="heading"><span class="title">Challenge.</span></h6>
+<article class="assemblage assemblage-like" id="assemblage-4"><h4 class="heading"><span class="title">Challenge.</span></h4>
 <p id="p-26">Scramble your Cube. Then solve the white face. If you have not done this before (or even if you have), this may take hours or days, not minutes! Avoid relying on any outside resources (including websites, friends, etc.). When you solve it, congratulations! Then scramble the face and solve it again. Repeat this process until you can reliably do it in just a few minutes. Once you can reliably solve the white face, describe, in writing, your methods as clearly and precisely as you can. What challenges did you have to overcome? How did you overcome them?</p></article><p id="p-27">Congratulations on solving a face of your Cube! But a question comes to mind. When your white face is in its solved state, are all the cubies on the white face in the correct location?</p>
-<article class="definition definition-like" id="def-cube-layer"><h6 class="heading">
+<article class="definition definition-like" id="def-cube-layer"><h4 class="heading">
 <span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.2.2</span><span class="period">.</span>
-</h6>
-<p id="p-28">A <dfn class="terminology">layer</dfn> of the Cube consists of a face and all of the stickers on Cubies which compose the face. A layer is <dfn class="terminology">solved</dfn> if all of the Cubies in the layer are in the correct location with the correct orientation.</p></article><article class="assemblage assemblage-like" id="assemblage-5"><h6 class="heading"><span class="title">Challenge.</span></h6>
+</h4>
+<p id="p-28">A <dfn class="terminology">layer</dfn> of the Cube consists of a face and all of the stickers on Cubies which compose the face. A layer is <dfn class="terminology">solved</dfn> if all of the Cubies in the layer are in the correct location with the correct orientation.</p></article><article class="assemblage assemblage-like" id="assemblage-5"><h4 class="heading"><span class="title">Challenge.</span></h4>
 <p id="p-29">Scramble your Cube and then solve the white layer. As before, this may take hours or days. When you solve it, congratulations! Scramble it and do it again. Once you can reliably solve the white layer, describe, in writing, your methods as clearly and precisely as you can.</p></article></section><section class="subsection" id="subsection-4"><h3 class="heading hide-type">
 <span class="type">Subsection</span> <span class="codenumber">1.2.2</span> <span class="title">The Need for Notation</span>
 </h3>
-<article class="principle theorem-like" id="discussion-verbal-cubie-moves"><h6 class="heading">
+<article class="principle theorem-like" id="discussion-verbal-cubie-moves"><h4 class="heading">
 <span class="type">Discussion</span><span class="space"> </span><span class="codenumber">1.2.3</span><span class="period">.</span>
-</h6>
-<p id="p-30">Find a partner. Take turns describing verbally and without pointing to your Cube your method for moving a corner cubie to its proper position. Similarly, verbally describe your method for moving an edge cubie to its proper position.</p></article><article class="principle theorem-like" id="discussion-written-cubie-moves"><h6 class="heading">
+</h4>
+<p id="p-30">Find a partner. Take turns describing verbally and without pointing to your Cube your method for moving a corner cubie to its proper position. Similarly, verbally describe your method for moving an edge cubie to its proper position.</p></article><article class="principle theorem-like" id="discussion-written-cubie-moves"><h4 class="heading">
 <span class="type">Discussion</span><span class="space"> </span><span class="codenumber">1.2.4</span><span class="period">.</span>
-</h6>
-<p id="p-31">As you probably noticed, it is challenging to orally describe complex/technical ideas in much detail without becoming lost. Is it easier to describe your cubie movements in writing? Why or why not?</p></article><p id="p-32">Every area of inquiry has an associated collection of terminology and shorthand notation. At its best, this terminology enables efficient and clear communication. However, terminology can often be a barrier. Thus, we want to avoid introducing unnecessary or confusing jargon whenever possible. However, as I hope <a class="xref" data-knowl="./knowl/discussion-verbal-cubie-moves.html" title="Discussion 1.2.3">Discussion 1.2.3</a> and <a class="xref" data-knowl="./knowl/discussion-written-cubie-moves.html" title="Discussion 1.2.4">Discussion 1.2.4</a> underscore, a lack of terminology or shorthand notation severely impairs our ability to communicate deep technical ideas. It is with this background that we introduce the following notation, which has become standard in the Cubing community.<aside class="aside aside-like" id="aside-1">Indeed, it seems no accident of history that Newton and Leibniz's calculus came about <em class="emphasis">after</em> algebraic notation became standardized.</aside></p>
-<article class="definition definition-like" id="def-face-names"><h6 class="heading">
+</h4>
+<p id="p-31">As you probably noticed, it is challenging to orally describe complex/technical ideas in much detail without becoming lost. Is it easier to describe your cubie movements in writing? Why or why not?</p></article><p id="p-32">Every area of inquiry has an associated collection of terminology and shorthand notation. At its best, this terminology enables efficient and clear communication. However, terminology can often be a barrier. Thus, we want to avoid introducing unnecessary or confusing jargon whenever possible. However, as I hope <a href="" class="xref" data-knowl="./knowl/discussion-verbal-cubie-moves.html" title="Discussion 1.2.3">Discussion 1.2.3</a> and <a href="" class="xref" data-knowl="./knowl/discussion-written-cubie-moves.html" title="Discussion 1.2.4">Discussion 1.2.4</a> underscore, a lack of terminology or shorthand notation severely impairs our ability to communicate deep technical ideas. It is with this background that we introduce the following notation, which has become standard in the Cubing community.<aside class="aside aside-like" id="aside-1"></aside></p>
+<article class="definition definition-like" id="def-face-names"><h4 class="heading">
 <span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.2.5</span><span class="period">.</span>
-</h6>
+</h4>
 <p id="p-33">Hold the Cube in such a way that you are looking at one of the faces.</p>
 <ul class="disc">
-<li id="li-23">The face you are looking at is referred to as the <dfn class="terminology">front</dfn> (F) face.</li>
-<li id="li-24">The face on the side opposite the front is referred to as the <dfn class="terminology">back</dfn> (B) face.</li>
-<li id="li-25">The face on the right side is referred to as the <dfn class="terminology">right</dfn> (R) face.</li>
-<li id="li-26">The face opposite the right is the <dfn class="terminology">left</dfn> (L) face.</li>
-<li id="li-27">The face on the top of the Cube is the <dfn class="terminology">up</dfn> (U) face.</li>
-<li id="li-28">The face on the bottom of the Cube is the <dfn class="terminology">down</dfn> (D) face.</li>
+<li id="li-23"><p id="p-derived-li-23">The face you are looking at is referred to as the <dfn class="terminology">front</dfn> (F) face.</p></li>
+<li id="li-24"><p id="p-derived-li-24">The face on the side opposite the front is referred to as the <dfn class="terminology">back</dfn> (B) face.</p></li>
+<li id="li-25"><p id="p-derived-li-25">The face on the right side is referred to as the <dfn class="terminology">right</dfn> (R) face.</p></li>
+<li id="li-26"><p id="p-derived-li-26">The face opposite the right is the <dfn class="terminology">left</dfn> (L) face.</p></li>
+<li id="li-27"><p id="p-derived-li-27">The face on the top of the Cube is the <dfn class="terminology">up</dfn> (U) face.</p></li>
+<li id="li-28"><p id="p-derived-li-28">The face on the bottom of the Cube is the <dfn class="terminology">down</dfn> (D) face.</p></li>
 </ul>
-<p class="continuation">A graphical version appears in <a class="xref" data-knowl="./knowl/fig-cube-faces.html" title="Figure 1.2.6">Figure 1.2.6</a>.</p>
-<figure class="figure figure-like" id="fig-cube-faces"><div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="./images/faces.svg" class="contained" alt=""></div>
-<figcaption><span class="type">Figure</span><span class="space"> </span><span class="codenumber">1.2.6<span class="period">.</span></span><span class="space"> </span></figcaption></figure></article><article class="activity project-like" id="activity-1"><h6 class="heading">
-<span class="type">Activity</span><span class="space"> </span><span class="codenumber">1.2.1</span><span class="period">.</span>
-</h6>
-<p id="p-34">List the colors of each of the six faces in <a class="xref" data-knowl="./knowl/fig-cube-faces.html" title="Figure 1.2.6">Figure 1.2.6</a>.</p></article><p id="p-35">As we we will see momentarily, the names described in <a class="xref" data-knowl="./knowl/def-face-names.html" title="Definition 1.2.5">Definition 1.2.5</a> not only help us refer to faces, but also moves of the Cube which help us solve it. In order to understand what a given move does to the Cube, we will need to refer to certain cubies by location. The following definition enables this.</p>
-<article class="definition definition-like" id="def-cubie-names"><h6 class="heading">
-<span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.2.7</span><span class="period">.</span>
-</h6>
-<p id="p-36">A cubie is named by the face(s) on which it sits, using lowercase letters.</p></article><article class="activity project-like" id="act-cubie-names"><h6 class="heading">
-<span class="type">Activity</span><span class="space"> </span><span class="codenumber">1.2.2</span><span class="period">.</span>
-</h6>
-<p id="p-37">Consider the scrambled Cube in <a class="xref" data-knowl="./knowl/fig-cubie-names.html" title="Figure 1.2.8">Figure 1.2.8</a>.</p>
+<p class="continuation">A graphical version appears in <a href="" class="xref" data-knowl="./knowl/fig-cube-faces.html" title="Figure 1.2.6">Figure 1.2.6</a>.</p>
+<figure class="figure figure-like" id="fig-cube-faces"><div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="./images/faces.svg" class="contained"></div>
+<figcaption><span class="type">Figure</span><span class="space"> </span><span class="codenumber">1.2.6<span class="period">.</span></span><span class="space"> </span></figcaption></figure></article><article class="activity project-like" id="activity-1"><h4 class="heading">
+<span class="type">Activity</span><span class="space"> </span><span class="codenumber">1.2.7</span><span class="period">.</span>
+</h4>
+<p id="p-34">List the colors of each of the six faces in <a href="" class="xref" data-knowl="./knowl/fig-cube-faces.html" title="Figure 1.2.6">Figure 1.2.6</a>.</p></article><p id="p-35">As we we will see momentarily, the names described in <a href="" class="xref" data-knowl="./knowl/def-face-names.html" title="Definition 1.2.5">Definition 1.2.5</a> not only help us refer to faces, but also moves of the Cube which help us solve it. In order to understand what a given move does to the Cube, we will need to refer to certain cubies by location. The following definition enables this.</p>
+<article class="definition definition-like" id="def-cubie-names"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.2.8</span><span class="period">.</span>
+</h4>
+<p id="p-36">A cubie is named by the face(s) on which it sits, using lowercase letters.</p></article><article class="activity project-like" id="act-cubie-names"><h4 class="heading">
+<span class="type">Activity</span><span class="space"> </span><span class="codenumber">1.2.9</span><span class="period">.</span>
+</h4>
+<p id="p-37">Consider the scrambled Cube in <a href="" class="xref" data-knowl="./knowl/fig-cubie-names.html" title="Figure 1.2.10">Figure 1.2.10</a>.</p>
 <ol class="decimal">
-<li id="li-29">What colors are the \(\ell f u\) cubie?</li>
-<li id="li-30">Give the colors of the \(br\) cubie.</li>
-<li id="li-31">How can you tell whether the cubie in the named location is a corner or edge cubie?</li>
-<li id="li-32">How many letters are required to name a center cubie?</li>
-<li id="li-33">Where is the edge cubie that is blue and orange?</li>
+<li id="li-29"><p id="p-derived-li-29">What colors are the <span class="process-math">\(\ell f u\)</span> cubie?</p></li>
+<li id="li-30"><p id="p-derived-li-30">Give the colors of the <span class="process-math">\(br\)</span> cubie.</p></li>
+<li id="li-31"><p id="p-derived-li-31">How can you tell whether the cubie in the named location is a corner or edge cubie?</p></li>
+<li id="li-32"><p id="p-derived-li-32">How many letters are required to name a center cubie?</p></li>
+<li id="li-33"><p id="p-derived-li-33">Where is the edge cubie that is blue and orange?</p></li>
 </ol>
-<figure class="figure figure-like" id="fig-cubie-names"><div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="./images/cubie_names.svg" class="contained" alt=""></div>
-<figcaption><span class="type">Figure</span><span class="space"> </span><span class="codenumber">1.2.8<span class="period">.</span></span><span class="space"> </span>A scrambled cube.</figcaption></figure></article><p id="p-38">We are most interested in using our new notation to describe <em class="emphasis">moves</em> of the various faces. We thus make the following definition.</p>
-<article class="definition definition-like" id="def-face-moves"><h6 class="heading">
-<span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.2.9</span><span class="period">.</span>
-</h6>
-<p id="p-39">A given face name, e.g., \(R\text{,}\) describes a \(90^\circ\) clockwise turn of that face, <em class="emphasis">as you look at the face</em>. A given face name with prime symbol, e.g., \(R'\text{,}\) denotes a \(90^\circ\) counterclockwise turn of that face, <em class="emphasis">as you look at the face</em>. A sequence of face moves is written multiplicatively, left to right. We may use parentheses and exponents to write our moves more compactly.</p></article><article class="exploration project-like" id="expl-turning-faces"><h6 class="heading">
-<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">1.2.3</span><span class="period">.</span>
-</h6>
-<p id="p-40">Consider the following questions in the context of a completely solved cube as pictured in <a class="xref" data-knowl="./knowl/fig-solved-cube.html" title="Figure 1.2.10">Figure 1.2.10</a>.</p>
+<figure class="figure figure-like" id="fig-cubie-names"><div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="./images/cubie_names.svg" class="contained"></div>
+<figcaption><span class="type">Figure</span><span class="space"> </span><span class="codenumber">1.2.10<span class="period">.</span></span><span class="space"> </span>A scrambled cube.</figcaption></figure></article><p id="p-38">We are most interested in using our new notation to describe <em class="emphasis">moves</em> of the various faces. We thus make the following definition.</p>
+<article class="definition definition-like" id="def-face-moves"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.2.11</span><span class="period">.</span>
+</h4>
+<p id="p-39">A given face name, e.g., <span class="process-math">\(R\text{,}\)</span> describes a <span class="process-math">\(90^\circ\)</span> clockwise turn of that face, <em class="emphasis">as you look at the face</em>. A given face name with prime symbol, e.g., <span class="process-math">\(R'\text{,}\)</span> denotes a <span class="process-math">\(90^\circ\)</span> counterclockwise turn of that face, <em class="emphasis">as you look at the face</em>. A sequence of face moves is written multiplicatively, left to right. We may use parentheses and exponents to write our moves more compactly.</p></article><article class="exploration project-like" id="expl-turning-faces"><h4 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">1.2.12</span><span class="period">.</span>
+</h4>
+<p id="p-40">Consider the following questions in the context of a completely solved cube as pictured in <a href="" class="xref" data-knowl="./knowl/fig-solved-cube.html" title="Figure 1.2.13">Figure 1.2.13</a>.</p>
 <ol class="decimal">
-<li id="li-34">After performing the move \(R\text{,}\) what color(s) will be on the Up face?</li>
-<li id="li-35">Again starting from a solved cube, perform the move \(L\text{.}\) What color(s) are on the Up face?</li>
-<li id="li-36">Explain the difference in your answers to the first two questions.</li>
-<li id="li-37">How are \(F^3\) and \(F'\) related?</li>
-<li id="li-38">Consider the Cube move \(RF^2 U (LDR)^3\text{.}\) Which face will you turn first: the left face, or the front face?</li>
-<li id="li-39">Again consider the Cube move \(RF^2 U (LDR)^3\text{.}\) How many times in this move will we turn the right face?</li>
-<li id="li-40">What would it mean for two cube moves to be <dfn class="terminology">equal</dfn>? Test your definition by determining whether \(LD = DL\text{.}\)</li>
-<li id="li-41">Suppose \(X\) and \(Y\) are two cube moves. When, if ever, is \(XY = YX\text{?}\)</li>
+<li id="li-34"><p id="p-derived-li-34">After performing the move <span class="process-math">\(R\text{,}\)</span> what color(s) will be on the Up face?</p></li>
+<li id="li-35"><p id="p-derived-li-35">Again starting from a solved cube, perform the move <span class="process-math">\(L\text{.}\)</span> What color(s) are on the Up face?</p></li>
+<li id="li-36"><p id="p-derived-li-36">Explain the difference in your answers to the first two questions.</p></li>
+<li id="li-37"><p id="p-derived-li-37">How are <span class="process-math">\(F^3\)</span> and <span class="process-math">\(F'\)</span> related?</p></li>
+<li id="li-38"><p id="p-derived-li-38">Consider the Cube move <span class="process-math">\(RF^2 U (LDR)^3\text{.}\)</span> Which face will you turn first: the left face, or the front face?</p></li>
+<li id="li-39"><p id="p-derived-li-39">Again consider the Cube move <span class="process-math">\(RF^2 U (LDR)^3\text{.}\)</span> How many times in this move will we turn the right face?</p></li>
+<li id="li-40"><p id="p-derived-li-40">What would it mean for two cube moves to be <dfn class="terminology">equal</dfn>? Test your definition by determining whether <span class="process-math">\(LD = DL\text{.}\)</span></p></li>
+<li id="li-41"><p id="p-derived-li-41">Suppose <span class="process-math">\(X\)</span> and <span class="process-math">\(Y\)</span> are two cube moves. When, if ever, is <span class="process-math">\(XY = YX\text{?}\)</span></p></li>
 </ol>
-<figure class="figure figure-like" id="fig-solved-cube"><div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="./images/solved_cube_sf.svg" class="contained" alt=""></div>
-<figcaption><span class="type">Figure</span><span class="space"> </span><span class="codenumber">1.2.10<span class="period">.</span></span><span class="space"> </span>A solved cube.</figcaption></figure></article></section><section class="subsection" id="subsection-5"><h3 class="heading hide-type">
+<figure class="figure figure-like" id="fig-solved-cube"><div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="./images/solved_cube_sf.svg" class="contained"></div>
+<figcaption><span class="type">Figure</span><span class="space"> </span><span class="codenumber">1.2.13<span class="period">.</span></span><span class="space"> </span>A solved cube.</figcaption></figure></article></section><section class="subsection" id="subsection-5"><h3 class="heading hide-type">
 <span class="type">Subsection</span> <span class="codenumber">1.2.3</span> <span class="title">Order</span>
 </h3>
 <p id="p-41">A useful algebraic concept for describing Cube moves is that of <em class="emphasis">order</em>.</p>
-<article class="definition definition-like" id="def-order"><h6 class="heading">
-<span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.2.11</span><span class="period">.</span>
-</h6>
-<p id="p-42">The <dfn class="terminology">order</dfn> of a cube move \(M\) is the least number of times \(n \gt 1\) that \(M\) can be repeated before a solved Cube is solved again. We write \(|M| = n\text{.}\)</p></article><article class="example example-like" id="example-1"><h6 class="heading">
-<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.12</span><span class="period">.</span>
-</h6>
-<p id="p-43">The order of \(R\) is 4, since 4 clockwise quarter-turns of the right face of a solved Cube results in a solved Cube, and no fewer number of turns results in a solved Cube.</p></article><article class="exploration project-like" id="exploration-3"><h6 class="heading">
-<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">1.2.4</span><span class="period">.</span>
-</h6>
+<article class="definition definition-like" id="def-order"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.2.14</span><span class="period">.</span>
+</h4>
+<p id="p-42">The <dfn class="terminology">order</dfn> of a cube move <span class="process-math">\(M\)</span> is the least number of times <span class="process-math">\(n \gt 1\)</span> that <span class="process-math">\(M\)</span> can be repeated before a solved Cube is solved again. We write <span class="process-math">\(|M| = n\text{.}\)</span></p></article><article class="example example-like" id="example-1"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.15</span><span class="period">.</span>
+</h4>
+<p id="p-43">The order of <span class="process-math">\(R\)</span> is 4, since 4 clockwise quarter-turns of the right face of a solved Cube results in a solved Cube, and no fewer number of turns results in a solved Cube.</p></article><article class="exploration project-like" id="exploration-3"><h4 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">1.2.16</span><span class="period">.</span>
+</h4>
 <ol class="decimal">
-<li id="li-42">What is \(|U^2|\text{?}\)</li>
-<li id="li-43">Calculate \(|R^3|\text{.}\) Why does this make sense?</li>
-<li id="li-44">Calculate \(|RUR^{-1} U^{-1}|\text{?}\)</li>
-</ol></article></section><section class="conclusion" id="conclusion-1"><h6 class="heading">Conclusion.<span></span>
-</h6>
+<li id="li-42"><p id="p-derived-li-42">What is <span class="process-math">\(|U^2|\text{?}\)</span></p></li>
+<li id="li-43"><p id="p-derived-li-43">Calculate <span class="process-math">\(|R^3|\text{.}\)</span> Why does this make sense?</p></li>
+<li id="li-44"><p id="p-derived-li-44">Calculate <span class="process-math">\(|RUR' U '|\text{.}\)</span></p></li>
+</ol></article></section><section class="conclusion" id="conclusion-1"><h3 class="heading">Conclusion.<span></span>
+</h3>
 <p id="p-44">In this section, we began a systematic exploration of the properties of the Cube. First, we described the need for a notational shorthand in solving the white face and layer.</p>
-<p id="p-45">The standard notation refers to each face <em class="emphasis">as you look at it</em>, ignoring color, and describes a \(90^\circ\) clockwise turn of the face. So, \(FR\) means to first turn the front face \(90^\circ\) clockwise, then the right face \(90^\circ\) clockwise. We then noted that we can refer to a cubie by describing the face(s) on which it sits (using lowercase letters to distinguish cubies from faces): three letters refer to a corner, as it sits at the intersection of three faces; two letters refer to an edge, and one to a center.</p>
+<p id="p-45">The standard notation refers to each face <em class="emphasis">as you look at it</em>, ignoring color, and describes a <span class="process-math">\(90^\circ\)</span> clockwise turn of the face. So, <span class="process-math">\(FR\)</span> means to first turn the front face <span class="process-math">\(90^\circ\)</span> clockwise, then the right face <span class="process-math">\(90^\circ\)</span> clockwise. We then noted that we can refer to a cubie by describing the face(s) on which it sits (using lowercase letters to distinguish cubies from faces): three letters refer to a corner, as it sits at the intersection of three faces; two letters refer to an edge, and one to a center.</p>
 <p id="p-46">We concluded by introducing the idea of order, which will help us analyze and understand more complex sequences of Cube moves in the next section.</p></section></section></div></main>
 </div>
 </body>

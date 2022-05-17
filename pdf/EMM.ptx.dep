@@ -58,6 +58,10 @@
   *{package}{lmodern}     {2015/05/01 v1.6.1}
   *{package}{fontenc}     {0000/00/00 v0.0}
   *{file}   {t1lmr.fd}    {2015/05/01 v1.6.1}
+  *{package}{inconsolata} {2019/05/17 v1.12}
+  *{package}{textcomp}    {2020/02/02 v2.0n}
+  *{package}{xkeyval}     {2020/11/20 v2.8}
+  *{file}   {xkeyval.tex} {2014/12/03 v2.7a}
   *{package}{microtype}   {2021/03/14 v2.8c}
   *{file}   {microtype-pdftex.def}{2021/03/14 v2.8c}
   *{file}   {microtype.cfg}{2021/03/14 v2.8c}
@@ -72,16 +76,20 @@
   *{package}{titlesec}    {2019/10/16 v2.13}
   *{package}{titleps}     {0000/00/00 v0.0}
   *{package}{titletoc}    {2019/10/16 v2.13}
+  *{package}{listings}    {2020/03/24 v1.8d}
+  *{package}{lstmisc}     {2020/03/24 v1.8d}
+  *{file}   {listings.cfg}{2020/03/24 v1.8d}
+  *{package}{pdftexcmds}  {2020-06-27 v0.33}
+  *{package}{shellesc}    {2019/11/08 v1.0c}
+  *{package}{listingsutf8}{2019-12-10 v1.5}
+  *{package}{stringenc}   {2019/11/29 v1.12}
+  *{package}{pdfescape}   {2019/12/09 v1.15}
   *{package}{enumitem}    {2019/06/20 v3.9}
   *{package}{imakeidx}    {2016/10/15 v1.3e}
-  *{package}{xkeyval}     {2020/11/20 v2.8}
-  *{file}   {xkeyval.tex} {2014/12/03 v2.7a}
   *{package}{multicol}    {2019/12/09 v1.8y}
   *{package}{hyperref}    {2021-02-27 v7.00k}
-  *{package}{pdftexcmds}  {2020-06-27 v0.33}
   *{package}{kvsetkeys}   {2019/12/15 v1.18}
   *{package}{kvdefinekeys}{2019-12-19 v1.6}
-  *{package}{pdfescape}   {2019/12/09 v1.15}
   *{package}{hycolor}     {2020-01-27 v1.10}
   *{package}{letltxmacro} {2019/12/03 v1.6}
   *{package}{auxhook}     {2019-12-17 v1.6}
@@ -135,10 +143,13 @@
   *{file}   {umsa.fd}     {2013/01/14 v3.01}
   *{file}   {umsb.fd}     {2013/01/14 v3.01}
   *{file}   {Ustmry.fd}   {0000/00/00 v0.0}
+  *{file}   {t1zi4.fd}    {2018/01/14 v1/zi4}
+  *{file}   {ts1zi4.fd}   {2018/01/14 v1/zi4}
   *{-------}{Document-specific files:}{----}
   *{file}   {supp-pdf.mkii}{0000/00/00 v0.0}
   *{package}{epstopdf-base}{2020-01-24 v2.11}
   *{file}   {epstopdf-sys.cfg}{2010/07/13 v1.3}
+  *{package}{upquote}     {2012/04/19 v1.3}
   *{file}   {mt-cmr.cfg}  {2013/05/19 v2.2}
   *{package}{nameref}     {2021-04-02 v2.47}
   *{package}{refcount}    {2019/12/15 v3.6}
@@ -147,26 +158,14 @@
   *{file}   {EMM.ptx.out} {0000/00/00 v0.0}
   *{file}   {mt-msa.cfg}  {2006/02/04 v1.1}
   *{file}   {mt-msb.cfg}  {2005/06/01 v1.0}
-  *{file}   {./images/moving_cubies.pdf}{0000/00/00 v0.0}
-  *{file}   {./images/moving_cubies.pdf}{0000/00/00 v0.0}
-  *{file}   {./images/moving_cubies.pdf}{0000/00/00 v0.0}
-  *{file}   {./images/faces.pdf}{0000/00/00 v0.0}
-  *{file}   {./images/cubie_names.pdf}{0000/00/00 v0.0}
-  *{file}   {./images/solved_cube_sf.pdf}{0000/00/00 v0.0}
-  *{file}   {./images/grey_cube.pdf}{0000/00/00 v0.0}
-  *{file}   {./images/solved_cube.pdf}{0000/00/00 v0.0}
-  *{file}   {./images/middle_slice.pdf}{0000/00/00 v0.0}
-  *{file}   {./images/grey_cube.pdf}{0000/00/00 v0.0}
-  *{file}   {./images/scrambled_edges.pdf}{0000/00/00 v0.0}
-  *{file}   {./images/edges-corners.pdf}{0000/00/00 v0.0}
-  *{file}   {./images/edge_on_bottom.pdf}{0000/00/00 v0.0}
-  *{file}   {./images/scrambled_corners.pdf}{0000/00/00 v0.0}
-  *{file}   {./images/grey_cube.pdf}{0000/00/00 v0.0}
-  *{file}   {./images/grey_cube.pdf}{0000/00/00 v0.0}
-  *{file}   {./images/co.pdf}{0000/00/00 v0.0}
-  *{file}   {./images/eo-exer.pdf}{0000/00/00 v0.0}
-  *{file}   {./images/co02.pdf}{0000/00/00 v0.0}
-  *{file}   {./images/superflip.pdf}{0000/00/00 v0.0}
-  *{file}   {./images/dot-game-example.pdf}{0000/00/00 v0.0}
+  *{file}   {./images/x.pdf}{0000/00/00 v0.0}
+  *{file}   {./images/triangular.pdf}{0000/00/00 v0.0}
+  *{package}{lstlang1}    {2020/03/24 v1.8d}
+  *{file}   {EMM.ptx.listing}{0000/00/00 v0.0}
+  *{file}   {EMM.ptx.listing}{0000/00/00 v0.0}
+  *{file}   {EMM.ptx.listing}{0000/00/00 v0.0}
+  *{file}   {EMM.ptx.listing}{0000/00/00 v0.0}
+  *{file}   {EMM.ptx.listing}{0000/00/00 v0.0}
+  *{file}   {EMM.ptx.listing}{0000/00/00 v0.0}
   *{file}   {EMM.ptx.ind} {0000/00/00 v0.0}
 }

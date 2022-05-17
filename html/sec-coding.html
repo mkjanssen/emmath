@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*       on 2022-04-29T09:49:18-05:00       *-->
+<!--*   A recent stable commit (2020-08-09):   *-->
+<!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US">
+<head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Coding Theory</title>
+<meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="book">
+<meta property="book:title" content="Explorations in Modern Mathematics">
+<meta property="book:author" content="Mike Janssen">
+<script src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script>window.MathJax = {
+  tex: {
+    inlineMath: [['\\(','\\)']],
+    tags: "none",
+    tagSide: "right",
+    tagIndent: ".8em",
+    packages: {'[+]': ['base', 'extpfeil', 'ams', 'amscd', 'newcommand', 'knowl']}
+  },
+  options: {
+    ignoreHtmlClass: "tex2jax_ignore|ignore-math",
+    processHtmlClass: "process-math",
+    renderActions: {
+        findScript: [10, function (doc) {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(function(node) {
+                var display = !!node.type.match(/; *mode=display/);
+                var math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                var text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = {node: text, delim: '', n: 0};
+                math.end = {node: text, delim: '', n: 0};
+                doc.math.push(math);
+            });
+        }, '']
+    },
+  },
+  chtml: {
+    scale: 0.88,
+    mtextInheritFont: true
+  },
+  loader: {
+    load: ['input/asciimath', '[tex]/extpfeil', '[tex]/amscd', '[tex]/newcommand', '[pretext]/mathjaxknowl3.js'],
+    paths: {pretext: "https://pretextbook.org/js/lib"},
+  },
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script src="https://pretextbook.org/js/lib/jquery.min.js"></script><script src="https://pretextbook.org/js/lib/jquery.sticky.js"></script><script src="https://pretextbook.org/js/lib/jquery.espy.min.js"></script><script src="https://pretextbook.org/js/0.13/pretext.js"></script><script>miniversion=0.674</script><script src="https://pretextbook.org/js/0.13/pretext_add_on.js?x=1"></script><script src="https://pretextbook.org/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
+</script><link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/pretext.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/pretext_add_on.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/banner_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/toc_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/knowls_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/style_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/colors_blue_grey.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/setcolors.css" rel="stylesheet" type="text/css">
+<!-- 2019-10-12: Temporary - CSS file for experiments with styling --><link href="developer.css" rel="stylesheet" type="text/css">
+<!--*** Runestone Services ***-->
+<script type="text/javascript" src="_static/runtime.44deab00544cc8fc.bundle.js"></script><script type="text/javascript" src="_static/637.d54be67956c5c660.bundle.js"></script><script type="text/javascript" src="_static/runestone.a1a8707963a337ef.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/637.fafafbd97df8a0d1.css">
+<link rel="stylesheet" type="text/css" href="_static/runestone.d062db89aaf1dddd.css">
+</head>
+<body class="pretext-book ignore-math has-toc has-sidebar-left">
+<a class="assistive" href="#content">Skip to main content</a><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\({\labelitemi}{$\diamond$}
+\def\arraystretch{1.5}
+\newcommand{\contentsfinish}{}
+\newcommand{\separator}{\begin{center}\rule{\columnwidth}{\arrayrulewidth}\end{center}}
+\newcommand{\tosay}[1]{\begin{center}\text{\fbox{\scriptsize{#1}}}\end{center}}
+\renewcommand{\cftsecfont}{}
+\renewcommand{\cftsecpagefont}{}
+\renewcommand{\descriptionlabel}[1]{\hspace{\labelsep}\smallcaps{#1}}
+\def\oldequation{\equation}
+\def\endoldequation{\endequation}
+\newcommand{\nl}{
+}
+\newcommand{\runin}[1]{\textls[50]{\otherscshape #1}}
+\renewcommand{\sectionmark}[1]{}
+\renewcommand{\subsectionmark}[1]{}
+\renewcommand{\sectionmark}[1]{\markboth{{\thesection}.\ \smallcaps{#1}}{\thesection.\ \smallcaps{#1}}}
+\renewcommand{\subsectionmark}[1]{}
+\renewcommand{\sectionmark}[1]{\markboth{{\scriptsize\thesection}.\ \smallcaps{#1}}{}}
+\renewcommand{\subsectionmark}[1]{}
+\newcommand{\makedefaultsection}[2][true]{
+}
+\newcommand{\timestamp}{{\color{red}Last updated: {\currenttime\ (UTC), \today}}}
+\renewcommand{\le}{\leqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\ge}{\geqslant}
+\newcommand{\ideal}[1]{\left\langle\, #1 \,\right\rangle}
+\newcommand{\subgp}[1]{\left\langle\, #1 \,\right\rangle}
+\def\p{\varphi}
+\def\isomorphic{\cong}
+\def\Gal{\text{Gal}}
+\def\im{\text{im}}
+\def\normal{\vartriangleleft}
+\renewcommand{\qedsymbol}{$\checkmark$}
+\def\lcm{{\text{lcm}\,}}
+\newcommand{\q}[1]{{\color{red} {#1}}}
+\newcommand{\startimportant}[1]{\end{[{Hint:} #1]\end}}
+\renewcommand{\textcircled}[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=2pt,color=red] (char) {#1};}}
+\newcommand{\crossout}[1]{\tikz[baseline=(char.base)]{\node[mynode, cross out,draw] (char) {#1};}}
+\newcommand{\set}[1]{\left\{ {#1} \right\}}
+\newcommand{\setof}[2]{{\left\{#1\,\colon\,#2\right\}}}
+\def\C{{\mathbb C}}
+\def\Z{{\mathbb Z}}
+\def\bF{{\mathbb F}}
+\def\Q{{\mathbb Q}}
+\def\N{{\mathbb N}}
+\def\R{{\mathbb R}}
+\newcommand{\h}[1]{{\textbf{#1}}}
+\def\presnotes{}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\)</span></div>
+<header id="masthead" class="smallbuttons"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><a href="book-1.html"><span class="title">Explorations in Modern Mathematics</span></a></h1>
+<p class="byline">Mike Janssen</p>
+</div>
+</div></div>
+<nav id="primary-navbar" class="navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active" aria-label="Show or hide table of contents sidebar">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
+<a class="index-button toolbar-item button" href="index-62.html" title="Index">Index</a><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="sec-intro-to-mod-arithmetic.html" title="Previous">Prev</a><a id="upbutton" class="up-button button toolbar-item" href="chap-coding.html" title="Up">Up</a><a id="nextbutton" class="next-button button toolbar-item" href="sec-cryptography.html" title="Next">Next</a></span>
+</div>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="sec-intro-to-mod-arithmetic.html" title="Previous">Prev</a><a class="up-button button toolbar-item" href="chap-coding.html" title="Up">Up</a><a class="next-button button toolbar-item" href="sec-cryptography.html" title="Next">Next</a>
+</div>
+</div></nav></header><div class="page">
+<div id="sidebar-left" class="sidebar" role="navigation"><div class="sidebar-content">
+<nav id="toc"><ul>
+<li class="link frontmatter">
+<a href="frontmatter-1.html" data-scroll="frontmatter-1" class="internal"><span class="title">Front Matter</span></a><ul>
+<li><a href="colophon-1.html" data-scroll="colophon-1" class="internal">Colophon</a></li>
+<li><a href="Sec-Introduction.html" data-scroll="Sec-Introduction" class="internal">Introduction</a></li>
+<li><a href="sec-NoteToStudents.html" data-scroll="sec-NoteToStudents" class="internal">A Note to Students</a></li>
+<li><a href="sec-NoteToInstructors.html" data-scroll="sec-NoteToInstructors" class="internal">A Note to Instructors</a></li>
+</ul>
+</li>
+<li class="link part"><a href="part-play.html" data-scroll="part-play" class="internal"><span class="codenumber">I</span> <span class="title">Play</span></a></li>
+<li class="link">
+<a href="chap-cube.html" data-scroll="chap-cube" class="internal"><span class="codenumber">1</span> <span class="title">The Cube</span></a><ul>
+<li><a href="sec-play-intro.html" data-scroll="sec-play-intro" class="internal">Introduction and Background</a></li>
+<li><a href="sec-play-exploring-the-cube.html" data-scroll="sec-play-exploring-the-cube" class="internal">Exploring and Describing the Cube</a></li>
+<li><a href="sec-play-moving-cubies.html" data-scroll="sec-play-moving-cubies" class="internal">Moving Cubies</a></li>
+<li><a href="sec-play-reorienting-cubies.html" data-scroll="sec-play-reorienting-cubies" class="internal">Reorienting Cubies</a></li>
+</ul>
+</li>
+<li class="link part"><a href="part-truth.html" data-scroll="part-truth" class="internal"><span class="codenumber">II</span> <span class="title">Truth</span></a></li>
+<li class="link">
+<a href="chap-reasoning.html" data-scroll="chap-reasoning" class="internal"><span class="codenumber">2</span> <span class="title">Inductive and Deductive Reasoning</span></a><ul>
+<li><a href="section-5.html" data-scroll="section-5" class="internal">Inductive Reasoning</a></li>
+<li><a href="section-6.html" data-scroll="section-6" class="internal">Deductive Reasoning</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="chap-logic.html" data-scroll="chap-logic" class="internal"><span class="codenumber">3</span> <span class="title">Modern Mathematical Logic</span></a><ul>
+<li><a href="sec-connectives.html" data-scroll="sec-connectives" class="internal">Logical Connectives and Rules of Inference</a></li>
+<li><a href="sec-formal-systems-incompleteness.html" data-scroll="sec-formal-systems-incompleteness" class="internal">Formal Systems and Incompleteness</a></li>
+</ul>
+</li>
+<li class="link part"><a href="part-power.html" data-scroll="part-power" class="internal"><span class="codenumber">III</span> <span class="title">Power</span></a></li>
+<li class="link">
+<a href="chap-dynamical-systems.html" data-scroll="chap-dynamical-systems" class="internal"><span class="codenumber">4</span> <span class="title">Discrete Dynamical Systems</span></a><ul>
+<li><a href="sec-intro-to-dds.html" data-scroll="sec-intro-to-dds" class="internal">Sequences</a></li>
+<li><a href="sec-dds.html" data-scroll="sec-dds" class="internal">Discrete Dynamical Systems</a></li>
+</ul>
+</li>
+<li class="link"><a href="chap-graphs.html" data-scroll="chap-graphs" class="internal"><span class="codenumber">5</span> <span class="title">Graphs and Networks</span></a></li>
+<li class="link">
+<a href="chap-coding.html" data-scroll="chap-coding" class="internal"><span class="codenumber">6</span> <span class="title">Modular Arithmetic and Coding Theory</span></a><ul>
+<li><a href="sec-intro-to-mod-arithmetic.html" data-scroll="sec-intro-to-mod-arithmetic" class="internal">Adding in Circles</a></li>
+<li><a href="sec-coding.html" data-scroll="sec-coding" class="active">Coding Theory</a></li>
+<li><a href="sec-cryptography.html" data-scroll="sec-cryptography" class="internal">Opkpun Tlzzhnlz: Hu Vclycpld vm Jyfwavnyhwof</a></li>
+</ul>
+</li>
+<li class="link part"><a href="part-justice.html" data-scroll="part-justice" class="internal"><span class="codenumber">IV</span> <span class="title">Justice</span></a></li>
+<li class="link">
+<a href="chap-voting.html" data-scroll="chap-voting" class="internal"><span class="codenumber">7</span> <span class="title">Voting</span></a><ul>
+<li><a href="sec-voting-intro.html" data-scroll="sec-voting-intro" class="internal">Elections with Two Candidates</a></li>
+<li><a href="sec-more-voting-systems.html" data-scroll="sec-more-voting-systems" class="internal">Elections with More than Two Candidates I</a></li>
+<li><a href="sec-evaluating-voting-systems.html" data-scroll="sec-evaluating-voting-systems" class="internal"></a></li>
+<li><a href="sec-more-voting-systems-iii.html" data-scroll="sec-more-voting-systems-iii" class="internal">Elections with More Than Two Candidates III</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="chap-apportionment.html" data-scroll="chap-apportionment" class="internal"><span class="codenumber">8</span> <span class="title">Apportionment</span></a><ul>
+<li><a href="sec-apportionment-intro.html" data-scroll="sec-apportionment-intro" class="internal">Apportionment and Divisor Methods</a></li>
+<li><a href="sec-apportionment-paradoxes.html" data-scroll="sec-apportionment-paradoxes" class="internal">Apportionment Paradoxes and Hills' Method</a></li>
+</ul>
+</li>
+<li class="link"><a href="chap-redistricting.html" data-scroll="chap-redistricting" class="internal"><span class="codenumber">9</span> <span class="title">Redistricting</span></a></li>
+<li class="link part"><a href="part-beauty.html" data-scroll="part-beauty" class="internal"><span class="codenumber">V</span> <span class="title">Beauty</span></a></li>
+<li class="link"><a href="chap-fibonacci.html" data-scroll="chap-fibonacci" class="internal"><span class="codenumber">10</span> <span class="title">The Fibonacci Sequence</span></a></li>
+<li class="link"><a href="chap-fractals.html" data-scroll="chap-fractals" class="internal"><span class="codenumber">11</span> <span class="title">Fractal Geometry</span></a></li>
+<li class="link"><a href="chap-art.html" data-scroll="chap-art" class="internal"><span class="codenumber">12</span> <span class="title">Mathematics and the Arts</span></a></li>
+<li class="link backmatter"><a href="backmatter-1.html" data-scroll="backmatter-1" class="internal"><span class="title">Back Matter</span></a></li>
+<li class="link"><a href="index-62.html" data-scroll="index-62" class="internal"><span class="title">Index</span></a></li>
+</ul></nav><div class="extras"><nav><a class="pretext-link" href="https://pretextbook.org">Authored in PreTeXt</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/badge.gif" alt="Powered by MathJax"></a></nav></div>
+</div></div>
+<main class="main"><div id="content" class="pretext-content"><section class="section" id="sec-coding"><h2 class="heading hide-type">
+<span class="type">Section</span> <span class="codenumber">6.2</span> <span class="title">Coding Theory</span>
+</h2>
+<article class="assemblage assemblage-like" id="assemblage-18"><h3 class="heading"><span class="title">Motivating Questions.</span></h3>
+<p id="p-259">In this section, we will explore the following questions. <ol class="decimal">
+<li id="li-296"><p id="p-derived-li-296">How can modular arithmetic be applied to the transmission of information?</p></li>
+<li id="li-297"><p id="p-derived-li-297">How does the UPC check digit scheme work? What errors can it detect? What errors can it correct?</p></li>
+</ol></p></article><p id="p-260">In <a href="sec-intro-to-mod-arithmetic.html" class="internal" title="Section 6.1: Adding in Circles">Section 6.1</a>, we learned about modular arithmetic, which works by considering the remainders obtained upon division by a fixed number <span class="process-math">\(m\text{.}\)</span> In this section, we'll consider a relatively recent application of modular arithmetic to <dfn class="terminology">coding theory</dfn>, which is the mathematical study of transmitting information.</p>
+<p id="p-261">The basic problem of coding theory is as follows: in order to send information from one entity to another, it needs to be encoded in some form by the <em class="emphasis">sender</em> (e.g., written, recorded, etc) and transmitted across a <em class="emphasis">channel</em> (e.g., mailed, emailed, uploaded/downloaded, etc) to the <em class="emphasis">receiver</em>. However, errors can creep into the process—written messages can be smudged, physical defects or packet loss can corrupt digital messages, and so on, resulting in information that either cannot be read at all, or can be misread. How can we be reasonably sure that common errors can be detected, and, if possible, corrected?</p>
+<article class="activity project-like" id="warmup-coding"><h3 class="heading">
+<span class="type">Activity</span><span class="space"> </span><span class="codenumber">6.2.1</span><span class="period">.</span>
+</h3>
+<p id="p-262">Alice wants to send a bit of information to her friend Bob; for simplicity's sake, let's assume she seeks to send a 0 or 1. To ensure that the digit is received correctly, she decides to send it three times in a row. Bob will then read the intended digit as the digit that appears most often.</p>
+<ol class="decimal">
+<li id="li-298"><p id="p-derived-li-298">How would Bob interpret Alice's message if he received <span class="process-math">\(111\text{?}\)</span> What if he received <span class="process-math">\(010\text{?}\)</span></p></li>
+<li id="li-299"><p id="p-derived-li-299">What strengths and weaknesses do you see in Alice's system? How could you improve upon it?</p></li>
+<li id="li-300"><p id="p-derived-li-300">Perhaps you decided that Alice's system isn't sure enough, so you decide she should send the digit seven times. In what way(s) is this revised system better? Worse?</p></li>
+</ol></article><p id="p-263">Lots of information is encoded using numbers, which makes the reliable transmission of numbers an important problem to solve. A fundamental example is alluded to in <a href="" class="xref" data-knowl="./knowl/warmup-coding.html" title="Activity 6.2.1">Activity 6.2.1</a>, wherein we consider the transmission of a binary digit, 0 or 1—this is the language of digital computers. The actual codes that are used to transmit digital signals over the internet rely on lots of sophisticated mathematics and so are beyond the scope of our work here.</p>
+<p id="p-264">However, certain codes are within the grasp of those familiar with modular arithmetic. We turn to one such example now: the UPC check digit scheme.</p>
+<p id="p-265">Universal Product Codes (UPCs) are found on most items available for sale (though books have their own identifiers called International Standard Book Numbers, or ISBNs)UPCs are often encoded with <em class="emphasis">barcodes</em> so as to be machine-readable. We will concern ourselves only with the digits, not the barcodes.</p>
+<p id="p-266">Let's consider the UPC from a copy of the game “The Resistance”:</p>
+<div class="displaymath process-math">
+\begin{equation*}
+7-22301-92617-8.
+\end{equation*}
+</div>
+<p id="p-267">The first digit (7) indicates a product type. This is typically 0, 1, or 6-9 (other digits are reserved for coupons, loyalty cards, etc). The first group of five digits (22301) is a manufacturer number, while the second group of five digits (92617) describes the product. The last digit (8) is known as the <dfn class="terminology">check digit</dfn>; it is chosen so that</p>
+<div class="displaymath process-math">
+\begin{equation*}
+(3\cdot 7 + 2 + 3\cdot 2 + 3 + 3\cdot 0 + 1 + 3\cdot 9 + 2 + 3\cdot 6 + 1 + 3\cdot 7 + 8)\equiv 0\mod 10.
+\end{equation*}
+</div>
+<p id="p-268">More generally, if the digits of a UPC are <span class="process-math">\(d_1 - d_2 d_3 d_4 d_5 d_6 - d_7 d_8 d_9 d_{10} d_{11} - d_{12}\text{,}\)</span> the check digit <span class="process-math">\(d_{12}\)</span> is chosen so that</p>
+<div class="displaymath process-math">
+\begin{equation*}
+(3\cdot d_1 + d_2 + 3\cdot d_3 + d_4 + 3\cdot d_5 + d_6 + 3\cdot d_7 + d_8 + 3\cdot d_9 + d_{10} + 3\cdot d_{11} + d_{12})\equiv 0\mod 10.
+\end{equation*}
+</div>
+<p id="p-269">The check digit is called thus as it is an extra bit of information which helps validate everything that came before it. Recall that our primary question is: how can we send information reliably over a channel? That is, how can we send information in such a way that we can (a) if the information received is the same as what we sent, and (b) if not, (ideally) correct the information?</p>
+<article class="activity project-like" id="act-upc-first"><h3 class="heading">
+<span class="type">Activity</span><span class="space"> </span><span class="codenumber">6.2.2</span><span class="period">.</span>
+</h3>
+<p id="p-270">Consider the following questions.</p>
+<ol class="decimal">
+<li id="li-301"><p id="p-derived-li-301">Calculate the check digit <span class="process-math">\(d\)</span> for the UPC <span class="process-math">\(1-03792 -19302-d\text{.}\)</span></p></li>
+<li id="li-302"><p id="p-derived-li-302">Is <span class="process-math">\(8-62069-00678-9\)</span> a valid UPC? Explain. If it is invalid, change it to be a valid UPC.</p></li>
+</ol></article><p id="p-271">We saw in <a href="" class="xref" data-knowl="./knowl/act-upc-first.html" title="Activity 6.2.2">Activity 6.2.2</a> that the check digit scheme can determine that a given propsoed UPC is invalid. However, we have no clear understanding of what went wrong. Were two (or more) digits transposed? Did we simply record a digit incorrectly? In <a href="" class="xref" data-knowl="./knowl/expl-upc-errors.html" title="Exploration 6.2.3">Exploration 6.2.3</a>, we'll see what sorts of errors can be detected.</p>
+<article class="exploration project-like" id="expl-upc-errors"><h3 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">6.2.3</span><span class="period">.</span>
+</h3>
+<p id="p-272">As best you can, answer the following questions.</p>
+<ol class="decimal">
+<li id="li-303"><p id="p-derived-li-303">Consider the following UPC with missing digit <span class="process-math">\(d\text{:}\)</span><div class="displaymath process-math">
+\begin{equation*}
+7-2d920-16431-8.
+\end{equation*}
+</div>Can you determine the value of <span class="process-math">\(d\text{?}\)</span></p></li>
+<li id="li-304"><p id="p-derived-li-304">A certain box of chalk has UPC <span class="process-math">\(6-15867-28380-2\text{.}\)</span> Choose two adjacent digits (e.g., 6 and 1) and switch their places. Is the resulting 12-digit number still a valid UPC? How can you tell?</p></li>
+<li id="li-305"><p id="p-derived-li-305">A certain product has UPC <span class="process-math">\(0-55005-00550-5\text{.}\)</span> Choose two adjacent digits and switch their places. Is the resulting 12-digit number still a valid UPC? How can you tell?</p></li>
+</ol></article><article class="exploration project-like" id="exploration-22"><h3 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">6.2.4</span><span class="period">.</span>
+</h3>
+<p id="p-273">A friend with lousy handwriting writes down a UPC. Unfortunately, you can't tell his 4's from his 9's or his 1's from his 7's. If the code <em class="emphasis">looks like</em></p>
+<div class="displaymath process-math">
+\begin{equation*}
+9-03068-82351-7
+\end{equation*}
+</div>
+<p id="p-274">is there any way to deal with the ambiguity? If so, what is the actual UPC? If it is not possible to determine the correct UPC, explain why.</p></article></section></div></main>
+</div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*       on 2022-04-29T09:49:21-05:00       *-->
+<!--*   A recent stable commit (2020-08-09):   *-->
+<!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="definition definition-like"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">4.2.9</span><span class="period">.</span>
+</h4>
+<p>Consider a population of <span class="process-math">\(N\)</span> people through which a disease is spreading. For some discrete time <span class="process-math">\(t \ge 0\text{,}\)</span> let <span class="process-math">\(S_t\)</span> denote the number of individuals <em class="emphasis">susceptible</em> to the disease, <span class="process-math">\(I_t\)</span> the number of individuals <em class="emphasis">infected</em> with the disease, and <span class="process-math">\(R_t\)</span> the number of individuals who have <em class="emphasis">recovered</em> from the disease. We assume that that people move through the compartments as follows:</p>
+<div class="displaymath process-math">
+\begin{equation}
+S \to I \to R.\tag{4.2.1}
+\end{equation}
+</div>
+<p>For <span class="process-math">\(t\ge 1\text{,}\)</span> the model is given by the following equations.</p>
+<div class="displaymath process-math">
+\begin{align*}
+N \amp = S_t + I_t + R_t\\
+S_{t+1} \amp = S_t -b S_t I_t\\
+I_{t+1} \amp = I_t + b S_t I_t - a I_t\\
+R_{t+1} \amp = R_t + a I_t.
+\end{align*}
+</div>
+<p>The constant <span class="process-math">\(a\)</span> is known as the <em class="emphasis">recovery rate</em> parameter, which roughly describes how fast someone moves from the infected compartment to the recovered compartment. The constant <span class="process-math">\(b\)</span> is known as the <em class="emphasis">infection rate</em>, and roughly describes how fast someone moves from the susceptible compartment to the infected compartment.</p></article><span class="incontext"><a href="sec-dds.html#definition-20" class="internal">in-context</a></span>
+</body>
+</html>

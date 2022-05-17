@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*       on 2022-04-29T09:49:18-05:00       *-->
+<!--*   A recent stable commit (2020-08-09):   *-->
+<!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US">
+<head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Adding in Circles</title>
+<meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="book">
+<meta property="book:title" content="Explorations in Modern Mathematics">
+<meta property="book:author" content="Mike Janssen">
+<script src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script>window.MathJax = {
+  tex: {
+    inlineMath: [['\\(','\\)']],
+    tags: "none",
+    tagSide: "right",
+    tagIndent: ".8em",
+    packages: {'[+]': ['base', 'extpfeil', 'ams', 'amscd', 'newcommand', 'knowl']}
+  },
+  options: {
+    ignoreHtmlClass: "tex2jax_ignore|ignore-math",
+    processHtmlClass: "process-math",
+    renderActions: {
+        findScript: [10, function (doc) {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(function(node) {
+                var display = !!node.type.match(/; *mode=display/);
+                var math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                var text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = {node: text, delim: '', n: 0};
+                math.end = {node: text, delim: '', n: 0};
+                doc.math.push(math);
+            });
+        }, '']
+    },
+  },
+  chtml: {
+    scale: 0.88,
+    mtextInheritFont: true
+  },
+  loader: {
+    load: ['input/asciimath', '[tex]/extpfeil', '[tex]/amscd', '[tex]/newcommand', '[pretext]/mathjaxknowl3.js'],
+    paths: {pretext: "https://pretextbook.org/js/lib"},
+  },
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script src="https://pretextbook.org/js/lib/jquery.min.js"></script><script src="https://pretextbook.org/js/lib/jquery.sticky.js"></script><script src="https://pretextbook.org/js/lib/jquery.espy.min.js"></script><script src="https://pretextbook.org/js/0.13/pretext.js"></script><script>miniversion=0.674</script><script src="https://pretextbook.org/js/0.13/pretext_add_on.js?x=1"></script><script src="https://pretextbook.org/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
+</script><link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/pretext.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/pretext_add_on.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/banner_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/toc_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/knowls_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/style_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/colors_blue_grey.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/setcolors.css" rel="stylesheet" type="text/css">
+<!-- 2019-10-12: Temporary - CSS file for experiments with styling --><link href="developer.css" rel="stylesheet" type="text/css">
+<!--*** Runestone Services ***-->
+<script type="text/javascript" src="_static/runtime.44deab00544cc8fc.bundle.js"></script><script type="text/javascript" src="_static/637.d54be67956c5c660.bundle.js"></script><script type="text/javascript" src="_static/runestone.a1a8707963a337ef.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/637.fafafbd97df8a0d1.css">
+<link rel="stylesheet" type="text/css" href="_static/runestone.d062db89aaf1dddd.css">
+</head>
+<body class="pretext-book ignore-math has-toc has-sidebar-left">
+<a class="assistive" href="#content">Skip to main content</a><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\({\labelitemi}{$\diamond$}
+\def\arraystretch{1.5}
+\newcommand{\contentsfinish}{}
+\newcommand{\separator}{\begin{center}\rule{\columnwidth}{\arrayrulewidth}\end{center}}
+\newcommand{\tosay}[1]{\begin{center}\text{\fbox{\scriptsize{#1}}}\end{center}}
+\renewcommand{\cftsecfont}{}
+\renewcommand{\cftsecpagefont}{}
+\renewcommand{\descriptionlabel}[1]{\hspace{\labelsep}\smallcaps{#1}}
+\def\oldequation{\equation}
+\def\endoldequation{\endequation}
+\newcommand{\nl}{
+}
+\newcommand{\runin}[1]{\textls[50]{\otherscshape #1}}
+\renewcommand{\sectionmark}[1]{}
+\renewcommand{\subsectionmark}[1]{}
+\renewcommand{\sectionmark}[1]{\markboth{{\thesection}.\ \smallcaps{#1}}{\thesection.\ \smallcaps{#1}}}
+\renewcommand{\subsectionmark}[1]{}
+\renewcommand{\sectionmark}[1]{\markboth{{\scriptsize\thesection}.\ \smallcaps{#1}}{}}
+\renewcommand{\subsectionmark}[1]{}
+\newcommand{\makedefaultsection}[2][true]{
+}
+\newcommand{\timestamp}{{\color{red}Last updated: {\currenttime\ (UTC), \today}}}
+\renewcommand{\le}{\leqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\ge}{\geqslant}
+\newcommand{\ideal}[1]{\left\langle\, #1 \,\right\rangle}
+\newcommand{\subgp}[1]{\left\langle\, #1 \,\right\rangle}
+\def\p{\varphi}
+\def\isomorphic{\cong}
+\def\Gal{\text{Gal}}
+\def\im{\text{im}}
+\def\normal{\vartriangleleft}
+\renewcommand{\qedsymbol}{$\checkmark$}
+\def\lcm{{\text{lcm}\,}}
+\newcommand{\q}[1]{{\color{red} {#1}}}
+\newcommand{\startimportant}[1]{\end{[{Hint:} #1]\end}}
+\renewcommand{\textcircled}[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=2pt,color=red] (char) {#1};}}
+\newcommand{\crossout}[1]{\tikz[baseline=(char.base)]{\node[mynode, cross out,draw] (char) {#1};}}
+\newcommand{\set}[1]{\left\{ {#1} \right\}}
+\newcommand{\setof}[2]{{\left\{#1\,\colon\,#2\right\}}}
+\def\C{{\mathbb C}}
+\def\Z{{\mathbb Z}}
+\def\bF{{\mathbb F}}
+\def\Q{{\mathbb Q}}
+\def\N{{\mathbb N}}
+\def\R{{\mathbb R}}
+\newcommand{\h}[1]{{\textbf{#1}}}
+\def\presnotes{}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\)</span></div>
+<header id="masthead" class="smallbuttons"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><a href="book-1.html"><span class="title">Explorations in Modern Mathematics</span></a></h1>
+<p class="byline">Mike Janssen</p>
+</div>
+</div></div>
+<nav id="primary-navbar" class="navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active" aria-label="Show or hide table of contents sidebar">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
+<a class="index-button toolbar-item button" href="index-62.html" title="Index">Index</a><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="chap-coding.html" title="Previous">Prev</a><a id="upbutton" class="up-button button toolbar-item" href="chap-coding.html" title="Up">Up</a><a id="nextbutton" class="next-button button toolbar-item" href="sec-coding.html" title="Next">Next</a></span>
+</div>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="chap-coding.html" title="Previous">Prev</a><a class="up-button button toolbar-item" href="chap-coding.html" title="Up">Up</a><a class="next-button button toolbar-item" href="sec-coding.html" title="Next">Next</a>
+</div>
+</div></nav></header><div class="page">
+<div id="sidebar-left" class="sidebar" role="navigation"><div class="sidebar-content">
+<nav id="toc"><ul>
+<li class="link frontmatter">
+<a href="frontmatter-1.html" data-scroll="frontmatter-1" class="internal"><span class="title">Front Matter</span></a><ul>
+<li><a href="colophon-1.html" data-scroll="colophon-1" class="internal">Colophon</a></li>
+<li><a href="Sec-Introduction.html" data-scroll="Sec-Introduction" class="internal">Introduction</a></li>
+<li><a href="sec-NoteToStudents.html" data-scroll="sec-NoteToStudents" class="internal">A Note to Students</a></li>
+<li><a href="sec-NoteToInstructors.html" data-scroll="sec-NoteToInstructors" class="internal">A Note to Instructors</a></li>
+</ul>
+</li>
+<li class="link part"><a href="part-play.html" data-scroll="part-play" class="internal"><span class="codenumber">I</span> <span class="title">Play</span></a></li>
+<li class="link">
+<a href="chap-cube.html" data-scroll="chap-cube" class="internal"><span class="codenumber">1</span> <span class="title">The Cube</span></a><ul>
+<li><a href="sec-play-intro.html" data-scroll="sec-play-intro" class="internal">Introduction and Background</a></li>
+<li><a href="sec-play-exploring-the-cube.html" data-scroll="sec-play-exploring-the-cube" class="internal">Exploring and Describing the Cube</a></li>
+<li><a href="sec-play-moving-cubies.html" data-scroll="sec-play-moving-cubies" class="internal">Moving Cubies</a></li>
+<li><a href="sec-play-reorienting-cubies.html" data-scroll="sec-play-reorienting-cubies" class="internal">Reorienting Cubies</a></li>
+</ul>
+</li>
+<li class="link part"><a href="part-truth.html" data-scroll="part-truth" class="internal"><span class="codenumber">II</span> <span class="title">Truth</span></a></li>
+<li class="link">
+<a href="chap-reasoning.html" data-scroll="chap-reasoning" class="internal"><span class="codenumber">2</span> <span class="title">Inductive and Deductive Reasoning</span></a><ul>
+<li><a href="section-5.html" data-scroll="section-5" class="internal">Inductive Reasoning</a></li>
+<li><a href="section-6.html" data-scroll="section-6" class="internal">Deductive Reasoning</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="chap-logic.html" data-scroll="chap-logic" class="internal"><span class="codenumber">3</span> <span class="title">Modern Mathematical Logic</span></a><ul>
+<li><a href="sec-connectives.html" data-scroll="sec-connectives" class="internal">Logical Connectives and Rules of Inference</a></li>
+<li><a href="sec-formal-systems-incompleteness.html" data-scroll="sec-formal-systems-incompleteness" class="internal">Formal Systems and Incompleteness</a></li>
+</ul>
+</li>
+<li class="link part"><a href="part-power.html" data-scroll="part-power" class="internal"><span class="codenumber">III</span> <span class="title">Power</span></a></li>
+<li class="link">
+<a href="chap-dynamical-systems.html" data-scroll="chap-dynamical-systems" class="internal"><span class="codenumber">4</span> <span class="title">Discrete Dynamical Systems</span></a><ul>
+<li><a href="sec-intro-to-dds.html" data-scroll="sec-intro-to-dds" class="internal">Sequences</a></li>
+<li><a href="sec-dds.html" data-scroll="sec-dds" class="internal">Discrete Dynamical Systems</a></li>
+</ul>
+</li>
+<li class="link"><a href="chap-graphs.html" data-scroll="chap-graphs" class="internal"><span class="codenumber">5</span> <span class="title">Graphs and Networks</span></a></li>
+<li class="link">
+<a href="chap-coding.html" data-scroll="chap-coding" class="internal"><span class="codenumber">6</span> <span class="title">Modular Arithmetic and Coding Theory</span></a><ul>
+<li><a href="sec-intro-to-mod-arithmetic.html" data-scroll="sec-intro-to-mod-arithmetic" class="active">Adding in Circles</a></li>
+<li><a href="sec-coding.html" data-scroll="sec-coding" class="internal">Coding Theory</a></li>
+<li><a href="sec-cryptography.html" data-scroll="sec-cryptography" class="internal">Opkpun Tlzzhnlz: Hu Vclycpld vm Jyfwavnyhwof</a></li>
+</ul>
+</li>
+<li class="link part"><a href="part-justice.html" data-scroll="part-justice" class="internal"><span class="codenumber">IV</span> <span class="title">Justice</span></a></li>
+<li class="link">
+<a href="chap-voting.html" data-scroll="chap-voting" class="internal"><span class="codenumber">7</span> <span class="title">Voting</span></a><ul>
+<li><a href="sec-voting-intro.html" data-scroll="sec-voting-intro" class="internal">Elections with Two Candidates</a></li>
+<li><a href="sec-more-voting-systems.html" data-scroll="sec-more-voting-systems" class="internal">Elections with More than Two Candidates I</a></li>
+<li><a href="sec-evaluating-voting-systems.html" data-scroll="sec-evaluating-voting-systems" class="internal"></a></li>
+<li><a href="sec-more-voting-systems-iii.html" data-scroll="sec-more-voting-systems-iii" class="internal">Elections with More Than Two Candidates III</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="chap-apportionment.html" data-scroll="chap-apportionment" class="internal"><span class="codenumber">8</span> <span class="title">Apportionment</span></a><ul>
+<li><a href="sec-apportionment-intro.html" data-scroll="sec-apportionment-intro" class="internal">Apportionment and Divisor Methods</a></li>
+<li><a href="sec-apportionment-paradoxes.html" data-scroll="sec-apportionment-paradoxes" class="internal">Apportionment Paradoxes and Hills' Method</a></li>
+</ul>
+</li>
+<li class="link"><a href="chap-redistricting.html" data-scroll="chap-redistricting" class="internal"><span class="codenumber">9</span> <span class="title">Redistricting</span></a></li>
+<li class="link part"><a href="part-beauty.html" data-scroll="part-beauty" class="internal"><span class="codenumber">V</span> <span class="title">Beauty</span></a></li>
+<li class="link"><a href="chap-fibonacci.html" data-scroll="chap-fibonacci" class="internal"><span class="codenumber">10</span> <span class="title">The Fibonacci Sequence</span></a></li>
+<li class="link"><a href="chap-fractals.html" data-scroll="chap-fractals" class="internal"><span class="codenumber">11</span> <span class="title">Fractal Geometry</span></a></li>
+<li class="link"><a href="chap-art.html" data-scroll="chap-art" class="internal"><span class="codenumber">12</span> <span class="title">Mathematics and the Arts</span></a></li>
+<li class="link backmatter"><a href="backmatter-1.html" data-scroll="backmatter-1" class="internal"><span class="title">Back Matter</span></a></li>
+<li class="link"><a href="index-62.html" data-scroll="index-62" class="internal"><span class="title">Index</span></a></li>
+</ul></nav><div class="extras"><nav><a class="pretext-link" href="https://pretextbook.org">Authored in PreTeXt</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/badge.gif" alt="Powered by MathJax"></a></nav></div>
+</div></div>
+<main class="main"><div id="content" class="pretext-content"><section class="section" id="sec-intro-to-mod-arithmetic"><h2 class="heading hide-type">
+<span class="type">Section</span> <span class="codenumber">6.1</span> <span class="title">Adding in Circles</span>
+</h2>
+<article class="assemblage assemblage-like" id="assemblage-15"><h3 class="heading"><span class="title">Motivating Questions.</span></h3>
+<p id="p-238">In this section, we will explore the following questions. <ol class="decimal">
+<li id="li-265"><p id="p-derived-li-265">What is congruence modulo <span class="process-math">\(m\text{?}\)</span></p></li>
+<li id="li-266"><p id="p-derived-li-266">What are some real-world examples of congruence?</p></li>
+<li id="li-267"><p id="p-derived-li-267">How can we do arithemtic modulo <span class="process-math">\(m\text{?}\)</span></p></li>
+</ol></p></article><p id="p-239">This topic comes to us from the realm of mathematics known as <em class="emphasis">number theory</em>, which is all about the properties of the integers: positive whole numbers, negatives of whole numbers, and zero. Number theory is one of the oldest branches of mathematics; some of its hallmark theorems, still vital and taught today, have been known for thousands of years. And many of the deep structural features of the integers have found modern application in the hiding and transmitting of information. It is toward this last application that we now turn.</p>
+<p id="p-240">First, however, we need to be reminded of a suprisingly important result from school mathematics. We begin with some warmup questions.</p>
+<article class="hypothesis theorem-like" id="warmup-long-division"><h3 class="heading">
+<span class="type">Warmup</span><span class="space"> </span><span class="codenumber">6.1.1</span><span class="period">.</span>
+</h3>
+<p id="p-241">For each pair of positive integers given below, perform long division to divide the first number by the second.</p>
+<ol class="decimal">
+<li id="li-268"><p id="p-derived-li-268">42, 6</p></li>
+<li id="li-269"><p id="p-derived-li-269">42, 8</p></li>
+<li id="li-270"><p id="p-derived-li-270">71, 9</p></li>
+<li id="li-271"><p id="p-derived-li-271">0, 17</p></li>
+<li id="li-272"><p id="p-derived-li-272">9, 71</p></li>
+<li id="li-273"><p id="p-derived-li-273">8675309, 627</p></li>
+</ol></article><article class="assemblage assemblage-like" id="thm-divalg"><h3 class="heading"><span class="title">The Division Algorithm.</span></h3>
+<p id="p-242">Let <span class="process-math">\(a\)</span> and <span class="process-math">\(m\)</span> be integers, with <span class="process-math">\(m\gt 0\text{.}\)</span> Then there exist unique integers <span class="process-math">\(q,r\text{,}\)</span> <span class="process-math">\(0\le r \lt m\text{,}\)</span> such that<div class="displaymath process-math">
+\begin{equation*}
+a = m\cdot q + r.
+\end{equation*}
+</div>We call <span class="process-math">\(a\)</span> the <dfn class="terminology">dividend</dfn>, <span class="process-math">\(m\)</span> the <dfn class="terminology">divisor</dfn>, <span class="process-math">\(q\)</span> the <dfn class="terminology">quotient</dfn>, and <span class="process-math">\(r\)</span> the <dfn class="terminology">remainder</dfn>.</p></article><article class="activity project-like" id="activity-18"><h3 class="heading">
+<span class="type">Activity</span><span class="space"> </span><span class="codenumber">6.1.2</span><span class="period">.</span>
+</h3>
+<p id="p-243">For each long division problem from <a href="" class="xref" data-knowl="./knowl/warmup-long-division.html" title="Warmup 6.1.1">Warmup 6.1.1</a>, identify the dividend, divisor, quotient, and remainder as described in <a href="" class="xref" data-knowl="./knowl/thm-divalg.html" title="Assemblage: The Division Algorithm">the Division Algorithm</a>. What do you notice? What do you wonder?</p></article><article class="principle theorem-like" id="principle-8"><h3 class="heading">
+<span class="type">Discussion</span><span class="space"> </span><span class="codenumber">6.1.3</span><span class="period">.</span>
+</h3>
+<p id="p-244">What is meant by the word “unique” in <a href="" class="xref" data-knowl="./knowl/thm-divalg.html" title="Assemblage: The Division Algorithm">the Division Algorithm</a>? Or, put slightly differently, when dividing 71 by 9, why do you think we do we not give a quotient of 6 and remainder of 17?</p></article><p id="p-245">Of primary importance for us will be a consideration of the remainders obtained by dividing by a fixed positive integer <span class="process-math">\(m\gt 1\text{.}\)</span></p>
+<article class="activity project-like" id="act-remainders"><h3 class="heading">
+<span class="type">Activity</span><span class="space"> </span><span class="codenumber">6.1.4</span><span class="period">.</span>
+</h3>
+<p id="p-246">Throughout this activity, we will be dividing by <span class="process-math">\(m = 5\text{.}\)</span> However, you should be thinking about how the answers might differ if we divide by a different integer <span class="process-math">\(m\text{.}\)</span></p>
+<ol class="decimal">
+<li id="li-274"><p id="p-derived-li-274">What remainders do you obtain when dividing the integers <span class="process-math">\(12, 16, 20, 24, 33\)</span> by 5?</p></li>
+<li id="li-275"><p id="p-derived-li-275">What remainders do you obtain when dividing the integers <span class="process-math">\(39, 52, 80, 108, 166\)</span> by 5?</p></li>
+<li id="li-276"><p id="p-derived-li-276">What remainders are <em class="emphasis">possible</em> upon division by 5? How do you know?</p></li>
+<li id="li-277"><p id="p-derived-li-277">What remainders do you expect to be possible upon division by 103? How do you know?</p></li>
+<li id="li-278"><p id="p-derived-li-278">For each of the five integers from the first question, find the integer from the second question whose remainder upon division by 5 is the same and write the pairs in a list.</p></li>
+<li id="li-279"><p id="p-derived-li-279">For each pair in the list you made in the previous question, find the difference between the two integers and divide <em class="emphasis">that number</em> by <span class="process-math">\(m=5\text{.}\)</span> What do you notice? What do you wonder?</p></li>
+</ol></article><p id="p-247">The work you did in <a href="" class="xref" data-knowl="./knowl/act-remainders.html" title="Activity 6.1.4">Activity 6.1.4</a> provides motivation for the following definition.</p>
+<article class="definition definition-like" id="def-congruence"><h3 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">6.1.5</span><span class="period">.</span>
+</h3>
+<p id="p-248">Let <span class="process-math">\(a,b\)</span> be integers and <span class="process-math">\(m \gt 1\)</span> an integer. We say that <span class="process-math">\(a\)</span> and <span class="process-math">\(b\)</span> are <dfn class="terminology">congruent modulo <span class="process-math">\(m\)</span></dfn> if <span class="process-math">\(a\)</span> and <span class="process-math">\(b\)</span> have the same remainder upon division by <span class="process-math">\(m\text{.}\)</span> In this case, we write <span class="process-math">\(a\equiv b\mod m\)</span> and call <span class="process-math">\(m\)</span> the <dfn class="terminology">modulus</dfn>.</p>
+<p id="p-249">Equivalently, we say <span class="process-math">\(a\)</span> and <span class="process-math">\(b\)</span> are congruent modulo <span class="process-math">\(m\)</span> if <span class="process-math">\(m\)</span> evenly divides <span class="process-math">\(b-a\text{.}\)</span></p></article><p id="p-250">Let's explore this definition a bit more.</p>
+<article class="activity project-like" id="activity-20"><h3 class="heading">
+<span class="type">Activity</span><span class="space"> </span><span class="codenumber">6.1.6</span><span class="period">.</span>
+</h3>
+<p id="p-251">For the given values below, determine whether <span class="process-math">\(a \equiv b\mod m\text{.}\)</span></p>
+<ol class="decimal">
+<li id="li-280"><p id="p-derived-li-280"><span class="process-math">\(a = 71\text{,}\)</span> <span class="process-math">\(b = 39\text{,}\)</span> <span class="process-math">\(m= 16\)</span></p></li>
+<li id="li-281"><p id="p-derived-li-281"><span class="process-math">\(a = 17\text{,}\)</span> <span class="process-math">\(b = 19\text{,}\)</span> <span class="process-math">\(m = 4\)</span></p></li>
+<li id="li-282"><p id="p-derived-li-282"><span class="process-math">\(a = 832\text{,}\)</span> <span class="process-math">\(b = 584\text{,}\)</span> <span class="process-math">\(m= 31\)</span></p></li>
+</ol></article><p id="p-252">Congruence modulo <span class="process-math">\(m\)</span> possesses several important properties. We highlight three of them in the following theorem.</p>
+<article class="theorem theorem-like" id="thm-congruence-equiv-relation"><h3 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">6.1.7</span><span class="period">.</span>
+</h3>
+<p id="p-253">Let <span class="process-math">\(m\gt 1\)</span> be an integer, and suppose <span class="process-math">\(a,b,c\)</span> are integers.</p>
+<ul class="disc">
+<li id="li-283"><p id="p-derived-li-283">Congruence is <dfn class="terminology">reflexive</dfn>: <span class="process-math">\(a\equiv a\mod m\)</span></p></li>
+<li id="li-284"><p id="p-derived-li-284">Congruence is <dfn class="terminology">symmetric</dfn>: If <span class="process-math">\(a\equiv b\mod m\text{,}\)</span> then <span class="process-math">\(b\equiv a\mod m\text{.}\)</span></p></li>
+<li id="li-285"><p id="p-derived-li-285">Congruence is <dfn class="terminology">transitive</dfn>: If <span class="process-math">\(a\equiv b\mod m\)</span> and <span class="process-math">\(b\equiv c\mod m\text{,}\)</span> then <span class="process-math">\(a\equiv c\mod m\text{.}\)</span></p></li>
+</ul></article><p id="p-254">Now that we are a bit more familiar with the definition, let's test its limits.</p>
+<article class="exploration project-like" id="expl-arithmetic-mod-m"><h3 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">6.1.8</span><span class="period">.</span>
+</h3>
+<p id="p-255">Choose two different values of <span class="process-math">\(m\text{,}\)</span> and for each value you choose, find two values of <span class="process-math">\(a\)</span> and <span class="process-math">\(b\)</span> so that <span class="process-math">\(a\equiv b\mod m\text{.}\)</span></p>
+<ol class="decimal">
+<li id="li-286"><p id="p-derived-li-286">Now choose a third integer <span class="process-math">\(c\text{.}\)</span> For the integers you chose, is it true that <span class="process-math">\(a+c \equiv b+c\mod m\text{?}\)</span> Is it true that <span class="process-math">\(a-c \equiv b-c\mod m\text{?}\)</span> What about <span class="process-math">\(a\cdot c\equiv b\cdot c\mod m\text{?}\)</span></p></li>
+<li id="li-287"><p id="p-derived-li-287">For each integer <span class="process-math">\(c\)</span> you chose, find an integer <span class="process-math">\(d\)</span> such that <span class="process-math">\(c\equiv d\mod m\text{.}\)</span> Is it true that <span class="process-math">\(a+c \equiv b+d\mod m\text{?}\)</span> Is it true that <span class="process-math">\(a-c \equiv b-d\mod m\text{?}\)</span> What about <span class="process-math">\(a\cdot c \equiv b\cdot d\mod m\text{?}\)</span></p></li>
+<li id="li-288"><p id="p-derived-li-288">Finally, note that <span class="process-math">\(5\cdot 2 \equiv 3\cdot 2\mod 4\text{.}\)</span> Does it follow that <span class="process-math">\(5\equiv 3\mod 4\text{?}\)</span></p></li>
+</ol></article><p id="p-256">Our discoveries in <a href="" class="xref" data-knowl="./knowl/expl-arithmetic-mod-m.html" title="Exploration 6.1.8">Exploration 6.1.8</a> delineate the operations known as <dfn class="terminology">modular arithmetic</dfn>: we may add, subtract, and multipy integers mod <span class="process-math">\(m\text{,}\)</span> but we may not divide.</p>
+<article class="activity project-like" id="activity-21"><h3 class="heading">
+<span class="type">Activity</span><span class="space"> </span><span class="codenumber">6.1.9</span><span class="period">.</span>
+</h3>
+<p id="p-257">Find the smallest nonnegative integer <span class="process-math">\(x\)</span> satisfying:</p>
+<ol class="decimal">
+<li id="li-289"><p id="p-derived-li-289"><span class="process-math">\(\displaystyle x\equiv 9\cdot 4\mod 5\)</span></p></li>
+<li id="li-290"><p id="p-derived-li-290"><span class="process-math">\(\displaystyle x\equiv 103+405\mod 10\)</span></p></li>
+<li id="li-291"><p id="p-derived-li-291"><span class="process-math">\(\displaystyle x \equiv 56 + 6\mod 7\)</span></p></li>
+<li id="li-292"><p id="p-derived-li-292"><span class="process-math">\(\displaystyle x \equiv 9\cdot 99\mod 5\)</span></p></li>
+</ol></article><article class="assemblage assemblage-like" id="assemblage-17"><h3 class="heading"><span class="title">Questions.</span></h3>
+<p id="p-258">Consider the following questions, and what they have to do with modular arithmetic. <ol class="decimal">
+<li id="li-293"><p id="p-derived-li-293">What day of the week will it be 62 days from now?</p></li>
+<li id="li-294"><p id="p-derived-li-294">What month will it be 40 months from now?</p></li>
+<li id="li-295"><p id="p-derived-li-295">What time will it be 27 hours from now?</p></li>
+</ol></p></article></section></div></main>
+</div>
+</body>
+</html>

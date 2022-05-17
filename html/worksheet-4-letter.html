@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*       on 2022-04-29T09:49:19-05:00       *-->
+<!--*   A recent stable commit (2020-08-09):   *-->
+<!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US">
+<head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Worksheet</title>
+<meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="book">
+<meta property="book:title" content="Explorations in Modern Mathematics">
+<meta property="book:author" content="Mike Janssen">
+<script src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script>window.MathJax = {
+  tex: {
+    inlineMath: [['\\(','\\)']],
+    tags: "none",
+    tagSide: "right",
+    tagIndent: ".8em",
+    packages: {'[+]': ['base', 'extpfeil', 'ams', 'amscd', 'newcommand', 'knowl']}
+  },
+  options: {
+    ignoreHtmlClass: "tex2jax_ignore|ignore-math",
+    processHtmlClass: "process-math",
+    renderActions: {
+        findScript: [10, function (doc) {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(function(node) {
+                var display = !!node.type.match(/; *mode=display/);
+                var math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                var text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = {node: text, delim: '', n: 0};
+                math.end = {node: text, delim: '', n: 0};
+                doc.math.push(math);
+            });
+        }, '']
+    },
+  },
+  chtml: {
+    scale: 0.88,
+    mtextInheritFont: true
+  },
+  loader: {
+    load: ['input/asciimath', '[tex]/extpfeil', '[tex]/amscd', '[tex]/newcommand', '[pretext]/mathjaxknowl3.js'],
+    paths: {pretext: "https://pretextbook.org/js/lib"},
+  },
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script src="https://pretextbook.org/js/lib/jquery.min.js"></script><script src="https://pretextbook.org/js/lib/jquery.sticky.js"></script><script src="https://pretextbook.org/js/lib/jquery.espy.min.js"></script><script src="https://pretextbook.org/js/0.13/pretext.js"></script><script>miniversion=0.674</script><script src="https://pretextbook.org/js/0.13/pretext_add_on.js?x=1"></script><script src="https://pretextbook.org/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
+</script><link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/pretext.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/pretext_add_on.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/banner_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/toc_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/knowls_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/style_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/colors_blue_grey.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/setcolors.css" rel="stylesheet" type="text/css">
+<!-- 2019-10-12: Temporary - CSS file for experiments with styling --><link href="developer.css" rel="stylesheet" type="text/css">
+<!--*** Runestone Services ***-->
+<script type="text/javascript" src="_static/runtime.44deab00544cc8fc.bundle.js"></script><script type="text/javascript" src="_static/637.d54be67956c5c660.bundle.js"></script><script type="text/javascript" src="_static/runestone.a1a8707963a337ef.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/637.fafafbd97df8a0d1.css">
+<link rel="stylesheet" type="text/css" href="_static/runestone.d062db89aaf1dddd.css">
+</head>
+<body class="pretext-book ignore-math has-toc has-sidebar-left standalone worksheet letter">
+<a class="assistive" href="#content">Skip to main content</a><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\({\labelitemi}{$\diamond$}
+\def\arraystretch{1.5}
+\newcommand{\contentsfinish}{}
+\newcommand{\separator}{\begin{center}\rule{\columnwidth}{\arrayrulewidth}\end{center}}
+\newcommand{\tosay}[1]{\begin{center}\text{\fbox{\scriptsize{#1}}}\end{center}}
+\renewcommand{\cftsecfont}{}
+\renewcommand{\cftsecpagefont}{}
+\renewcommand{\descriptionlabel}[1]{\hspace{\labelsep}\smallcaps{#1}}
+\def\oldequation{\equation}
+\def\endoldequation{\endequation}
+\newcommand{\nl}{
+}
+\newcommand{\runin}[1]{\textls[50]{\otherscshape #1}}
+\renewcommand{\sectionmark}[1]{}
+\renewcommand{\subsectionmark}[1]{}
+\renewcommand{\sectionmark}[1]{\markboth{{\thesection}.\ \smallcaps{#1}}{\thesection.\ \smallcaps{#1}}}
+\renewcommand{\subsectionmark}[1]{}
+\renewcommand{\sectionmark}[1]{\markboth{{\scriptsize\thesection}.\ \smallcaps{#1}}{}}
+\renewcommand{\subsectionmark}[1]{}
+\newcommand{\makedefaultsection}[2][true]{
+}
+\newcommand{\timestamp}{{\color{red}Last updated: {\currenttime\ (UTC), \today}}}
+\renewcommand{\le}{\leqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\ge}{\geqslant}
+\newcommand{\ideal}[1]{\left\langle\, #1 \,\right\rangle}
+\newcommand{\subgp}[1]{\left\langle\, #1 \,\right\rangle}
+\def\p{\varphi}
+\def\isomorphic{\cong}
+\def\Gal{\text{Gal}}
+\def\im{\text{im}}
+\def\normal{\vartriangleleft}
+\renewcommand{\qedsymbol}{$\checkmark$}
+\def\lcm{{\text{lcm}\,}}
+\newcommand{\q}[1]{{\color{red} {#1}}}
+\newcommand{\startimportant}[1]{\end{[{Hint:} #1]\end}}
+\renewcommand{\textcircled}[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=2pt,color=red] (char) {#1};}}
+\newcommand{\crossout}[1]{\tikz[baseline=(char.base)]{\node[mynode, cross out,draw] (char) {#1};}}
+\newcommand{\set}[1]{\left\{ {#1} \right\}}
+\newcommand{\setof}[2]{{\left\{#1\,\colon\,#2\right\}}}
+\def\C{{\mathbb C}}
+\def\Z{{\mathbb Z}}
+\def\bF{{\mathbb F}}
+\def\Q{{\mathbb Q}}
+\def\N{{\mathbb N}}
+\def\R{{\mathbb R}}
+\newcommand{\h}[1]{{\textbf{#1}}}
+\def\presnotes{}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\)</span></div>
+<header id="masthead" class="smallbuttons"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><a href="book-1.html"><span class="title">Explorations in Modern Mathematics</span></a></h1>
+<p class="byline">Mike Janssen</p>
+</div>
+</div></div>
+<nav id="primary-navbar" class="navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active" aria-label="Show or hide table of contents sidebar">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
+<a class="index-button toolbar-item button" href="index-62.html" title="Index">Index</a><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="sec-apportionment-paradoxes.html" title="Previous">Prev</a><a id="upbutton" class="up-button button toolbar-item" href="sec-apportionment-paradoxes.html" title="Up">Up</a><a id="nextbutton" class="next-button button toolbar-item" href="chap-redistricting.html" title="Next">Next</a></span>
+</div>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="sec-apportionment-paradoxes.html" title="Previous">Prev</a><a class="up-button button toolbar-item" href="sec-apportionment-paradoxes.html" title="Up">Up</a><a class="next-button button toolbar-item" href="chap-redistricting.html" title="Next">Next</a>
+</div>
+</div></nav></header><div class="page">
+<div id="sidebar-left" class="sidebar" role="navigation"><div class="sidebar-content">
+<nav id="toc"><ul>
+<li class="link frontmatter">
+<a href="frontmatter-1.html" data-scroll="frontmatter-1" class="internal"><span class="title">Front Matter</span></a><ul>
+<li><a href="colophon-1.html" data-scroll="colophon-1" class="internal">Colophon</a></li>
+<li><a href="Sec-Introduction.html" data-scroll="Sec-Introduction" class="internal">Introduction</a></li>
+<li><a href="sec-NoteToStudents.html" data-scroll="sec-NoteToStudents" class="internal">A Note to Students</a></li>
+<li><a href="sec-NoteToInstructors.html" data-scroll="sec-NoteToInstructors" class="internal">A Note to Instructors</a></li>
+</ul>
+</li>
+<li class="link part"><a href="part-play.html" data-scroll="part-play" class="internal"><span class="codenumber">I</span> <span class="title">Play</span></a></li>
+<li class="link">
+<a href="chap-cube.html" data-scroll="chap-cube" class="internal"><span class="codenumber">1</span> <span class="title">The Cube</span></a><ul>
+<li><a href="sec-play-intro.html" data-scroll="sec-play-intro" class="internal">Introduction and Background</a></li>
+<li><a href="sec-play-exploring-the-cube.html" data-scroll="sec-play-exploring-the-cube" class="internal">Exploring and Describing the Cube</a></li>
+<li><a href="sec-play-moving-cubies.html" data-scroll="sec-play-moving-cubies" class="internal">Moving Cubies</a></li>
+<li><a href="sec-play-reorienting-cubies.html" data-scroll="sec-play-reorienting-cubies" class="internal">Reorienting Cubies</a></li>
+</ul>
+</li>
+<li class="link part"><a href="part-truth.html" data-scroll="part-truth" class="internal"><span class="codenumber">II</span> <span class="title">Truth</span></a></li>
+<li class="link">
+<a href="chap-reasoning.html" data-scroll="chap-reasoning" class="internal"><span class="codenumber">2</span> <span class="title">Inductive and Deductive Reasoning</span></a><ul>
+<li><a href="section-5.html" data-scroll="section-5" class="internal">Inductive Reasoning</a></li>
+<li><a href="section-6.html" data-scroll="section-6" class="internal">Deductive Reasoning</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="chap-logic.html" data-scroll="chap-logic" class="internal"><span class="codenumber">3</span> <span class="title">Modern Mathematical Logic</span></a><ul>
+<li><a href="sec-connectives.html" data-scroll="sec-connectives" class="internal">Logical Connectives and Rules of Inference</a></li>
+<li><a href="sec-formal-systems-incompleteness.html" data-scroll="sec-formal-systems-incompleteness" class="internal">Formal Systems and Incompleteness</a></li>
+</ul>
+</li>
+<li class="link part"><a href="part-power.html" data-scroll="part-power" class="internal"><span class="codenumber">III</span> <span class="title">Power</span></a></li>
+<li class="link">
+<a href="chap-dynamical-systems.html" data-scroll="chap-dynamical-systems" class="internal"><span class="codenumber">4</span> <span class="title">Discrete Dynamical Systems</span></a><ul>
+<li><a href="sec-intro-to-dds.html" data-scroll="sec-intro-to-dds" class="internal">Sequences</a></li>
+<li><a href="sec-dds.html" data-scroll="sec-dds" class="internal">Discrete Dynamical Systems</a></li>
+</ul>
+</li>
+<li class="link"><a href="chap-graphs.html" data-scroll="chap-graphs" class="internal"><span class="codenumber">5</span> <span class="title">Graphs and Networks</span></a></li>
+<li class="link">
+<a href="chap-coding.html" data-scroll="chap-coding" class="internal"><span class="codenumber">6</span> <span class="title">Modular Arithmetic and Coding Theory</span></a><ul>
+<li><a href="sec-intro-to-mod-arithmetic.html" data-scroll="sec-intro-to-mod-arithmetic" class="internal">Adding in Circles</a></li>
+<li><a href="sec-coding.html" data-scroll="sec-coding" class="internal">Coding Theory</a></li>
+<li><a href="sec-cryptography.html" data-scroll="sec-cryptography" class="internal">Opkpun Tlzzhnlz: Hu Vclycpld vm Jyfwavnyhwof</a></li>
+</ul>
+</li>
+<li class="link part"><a href="part-justice.html" data-scroll="part-justice" class="internal"><span class="codenumber">IV</span> <span class="title">Justice</span></a></li>
+<li class="link">
+<a href="chap-voting.html" data-scroll="chap-voting" class="internal"><span class="codenumber">7</span> <span class="title">Voting</span></a><ul>
+<li><a href="sec-voting-intro.html" data-scroll="sec-voting-intro" class="internal">Elections with Two Candidates</a></li>
+<li><a href="sec-more-voting-systems.html" data-scroll="sec-more-voting-systems" class="internal">Elections with More than Two Candidates I</a></li>
+<li><a href="sec-evaluating-voting-systems.html" data-scroll="sec-evaluating-voting-systems" class="internal"></a></li>
+<li><a href="sec-more-voting-systems-iii.html" data-scroll="sec-more-voting-systems-iii" class="internal">Elections with More Than Two Candidates III</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="chap-apportionment.html" data-scroll="chap-apportionment" class="internal"><span class="codenumber">8</span> <span class="title">Apportionment</span></a><ul>
+<li><a href="sec-apportionment-intro.html" data-scroll="sec-apportionment-intro" class="internal">Apportionment and Divisor Methods</a></li>
+<li><a href="sec-apportionment-paradoxes.html" data-scroll="sec-apportionment-paradoxes" class="internal">Apportionment Paradoxes and Hills' Method</a></li>
+</ul>
+</li>
+<li class="link"><a href="chap-redistricting.html" data-scroll="chap-redistricting" class="internal"><span class="codenumber">9</span> <span class="title">Redistricting</span></a></li>
+<li class="link part"><a href="part-beauty.html" data-scroll="part-beauty" class="internal"><span class="codenumber">V</span> <span class="title">Beauty</span></a></li>
+<li class="link"><a href="chap-fibonacci.html" data-scroll="chap-fibonacci" class="internal"><span class="codenumber">10</span> <span class="title">The Fibonacci Sequence</span></a></li>
+<li class="link"><a href="chap-fractals.html" data-scroll="chap-fractals" class="internal"><span class="codenumber">11</span> <span class="title">Fractal Geometry</span></a></li>
+<li class="link"><a href="chap-art.html" data-scroll="chap-art" class="internal"><span class="codenumber">12</span> <span class="title">Mathematics and the Arts</span></a></li>
+<li class="link backmatter"><a href="backmatter-1.html" data-scroll="backmatter-1" class="internal"><span class="title">Back Matter</span></a></li>
+<li class="link"><a href="index-62.html" data-scroll="index-62" class="internal"><span class="title">Index</span></a></li>
+</ul></nav><div class="extras"><nav><a class="pretext-link" href="https://pretextbook.org">Authored in PreTeXt</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/badge.gif" alt="Powered by MathJax"></a></nav></div>
+</div></div>
+<main class="main"><div id="content" class="pretext-content"><section class="worksheet" id="worksheet-4"><h3 class="heading hide-type">
+<span class="type">Worksheet</span> <span class="codenumber">8.2.1</span> <span class="title">Worksheet</span><div class="print-links">
+<a href="worksheet-4-a4.html" class="a4">A4</a><a href="worksheet-4-letter.html" class="us">US</a>
+</div>
+</h3>
+<article class="assemblage assemblage-like" id="assemblage-28"><h4 class="heading"><span class="title">Motivating Questions.</span></h4>
+<p id="p-405">In this section, we will explore the following questions. <ol class="lower-alpha">
+<li id="li-436"><p id="p-derived-li-436">What surprising results can arise from the apportionment process?</p></li>
+<li id="li-437"><p id="p-derived-li-437">What does the Balinski-Young theorem say?</p></li>
+<li id="li-438"><p id="p-derived-li-438">What method of apportionment is used today?</p></li>
+</ol></p></article><p id="p-406">We've already seen that apportionment is a trickier subject than it might seem at first. However, things are about to get downright weird as we study three apportionment <em class="emphasis">paradoxes</em>, by which we mean surprising or counterintuitive results. While these might seem farfetched, we'll see that they arose naturally in the history of apportionment in the U.S. and helped lead to the apportionment process we use today.</p>
+<section class="subsection" id="subsection-16"><h4 class="heading hide-type">
+<span class="type">Subsection</span> <span class="codenumber">8.2.1.1</span> <span class="title">The Alabama Paradox</span>
+</h4>
+<p id="p-407">In the course of apportioning the House seats in 1882, the U.S. Census Bureau calculated apportionments using Hamilton's method for all sizes of House between 275 and 350 seats. Something strange was afoot for Alabama.</p>
+<article class="exploration project-like" id="expl-alabama-paradox"><h5 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">8.2.1</span><span class="period">.</span><span class="space"> </span><span class="title">The Apportionment of 1882.</span>
+</h5>
+<p id="p-408">With a House size of 299 seats, Alabama's standard quota was 7.646, Illinois' was 18.640, and Texas's was 9.640. Ranked from largest to smallest by decimal part, Alabama was 20th on the list. With 299 seats, there were 20 surplus seats to dole out.</p>
+<p id="p-409">With 300 seats, the standard quotas for all states increased a bit. (Why?) Alabama's increased to 7.671, Illinois' to 18.702, and Texas' to 9.672. This moved Illinois into the 20th spot in line, with Texas next, and then Alabama. With a House of size 300, there were 21 surplus seats to be doled out, rather than 20.</p>
+<ol class="lower-alpha">
+<li id="li-439"><p id="p-derived-li-439">How many seats would Hamilton's method give to each of these states with 299 seats?</p></li>
+<li id="li-440"><p id="p-derived-li-440">How many seats would Hamilton's method give to each of these states with 300 seats?</p></li>
+<li id="li-441"><p id="p-derived-li-441">Does anything about these two potential apportionments strike you as strange? Unfair? Explain your thinking.</p></li>
+</ol></article><article class="definition definition-like" id="definition-34"><h5 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">8.2.2</span><span class="period">.</span>
+</h5>
+<p id="p-410">The phenomenon you observed in <a href="" class="xref" data-knowl="./knowl/expl-alabama-paradox.html" title="Exploration 8.2.1: The Apportionment of 1882">Exploration 8.2.1</a>, in which a state loses a seat when the total number of seats increases, is known as the <dfn class="terminology">Alabama paradox</dfn>.</p></article><p id="p-411">While it didn't present itself in the first few uses of Hamilton's method, the Alabama paradox can happen fairly regularly, and perhaps validates Washington's veto of Hamilton's method (though it is unlikely that Washington actually observed this phenomenon before deciding to veto Hamilton's method). Congress resolved this paradox by choosing a new House size of 325, a size at which the paradox did not occur.</p>
+<article class="exploration project-like" id="exploration-35"><h5 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">8.2.3</span><span class="period">.</span><span class="space"> </span><span class="title">The Apportionment of 1902.</span>
+</h5>
+<p id="p-412">For the 1902 apportionment, the Census Bureau gave Congress a table showing the apportionments under Hamilton's method for all House sizes from 350 to 400.</p>
+<ul class="disc">
+<li id="li-442"><p id="p-derived-li-442">When the number of seats in the House was 350-382, 386, 389, and 390, Maine would be given three seats, but for all other sizes Maine would be given four.</p></li>
+<li id="li-443"><p id="p-derived-li-443">When the number of House seats was 357, Colorado would be given two seats, but for all other House sizes Colorado would be given three seats.</p></li>
+</ul>
+<p id="p-413">Based only on these data, would the Alabama paradox have occurred for at least one House size between 350 and 400 seats (under Hamilton's method)? If so, for which House sizes and which states?</p></article><p id="p-414">In the end, this was the end of Hamilton's method in apportioning House sizes. Congress used Webster's method on a final House size of 386 seats. However, Hamilton's method has been a fruitful source of additional paradoxes and so has remained a subject of study (in addition to its seemingly intuitive way of dealing with decimal parts).</p></section><section class="subsection" id="subsection-17"><h4 class="heading hide-type">
+<span class="type">Subsection</span> <span class="codenumber">8.2.1.2</span> <span class="title">The Population Paradox</span>
+</h4>
+<article class="definition definition-like" id="definition-35"><h5 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">8.2.4</span><span class="period">.</span>
+</h5>
+<p id="p-415">The <dfn class="terminology">population paradox</dfn> occurs when a small state with rapid population growth can lose a seat to a larger state with slower growth.</p></article><article class="exploration project-like" id="expl-pop-paradox1"><h5 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">8.2.5</span><span class="period">.</span>
+</h5>
+<p id="p-416">According to the Census Bureau, the population of Nevada grew from 1,998,257 in 2000 to 2,700,551 in 2010, and the population of Illinois grew from 12,419,293 in 2000 to 12,830,632 in 2010. In the 2012 apportionment, which was based on the these 2010 numbers, Nevada gained a seat in the House while Illinois lost a seat. Can you conclude that the population paradox occurred in 2012? Why or why not?</p></article><article class="exploration project-like" id="exploration-37"><h5 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">8.2.6</span><span class="period">.</span>
+</h5>
+<p id="p-417">According to the Census Bureau, the population of Nevada grew from 1,201,598 in 1990 to 1,998,257 in 2000, and the population of Illinois grew from 11,435,813 in 1990 to 12,419,293 in 2000. In the 2002 apportionment, which was based on the these 2000 numbers, Nevada gained a seat in the House while Illinois lost a seat. Can you conclude that the population paradox occurred in 2002? Why or why not? And why is this more interesting that <a href="" class="xref" data-knowl="./knowl/expl-pop-paradox1.html" title="Exploration 8.2.5">Exploration 8.2.5</a>.</p></article></section><section class="subsection" id="subsection-18"><h4 class="heading hide-type">
+<span class="type">Subsection</span> <span class="codenumber">8.2.1.3</span> <span class="title">The New-States Paradox and the Balinski-Young Theorem</span>
+</h4>
+<article class="exploration project-like" id="exploration-38"><h5 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">8.2.7</span><span class="period">.</span>
+</h5>
+<p id="p-418">In 1907, Oklahoma was the 46th state to join the Union. Rather than completely reapportion the seats, Congress decided to give Oklahoma 5 seats, as this was in proportion to its share of the country's population. This increased the House size from 386 to 391. However, the following hypothetical apportionments were noted under Hamilton's method:</p>
+<ul class="disc">
+<li id="li-444"><p id="p-derived-li-444">With 45 states (pre-Oklahoma) and 386 seats, New York would have been awarded 38 seats and Maine 4 seats.</p></li>
+<li id="li-445"><p id="p-derived-li-445">With 46 seats (including Oklahoma) and 391 seats, New York would have been awarded 37 seats and Maine 5 seats.</p></li>
+</ul>
+<p id="p-419">Explain why this is yet another paradox (called the <dfn class="terminology">new-states paradox</dfn>).</p></article><p id="p-420">As it turns out, divisor methods (like Jefferson's, Adams', and Webster's) are not susceptible to these paradoxes. However, as we saw, they can violate quota. This is in contrast to Hamilton's method, which does not violate quota but is susceptible to these paradoxes. A reasonable person might wonder if there isn't some better method that both satisfies quota <em class="emphasis">and</em> cannot fall victim to these paradoxes. Fascinatingly, the answer is a resounding <em class="emphasis">no</em>.</p>
+<article class="theorem theorem-like" id="theorem-6"><h5 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">8.2.8</span><span class="space"> </span><span class="creator">(Balinski-Young (1983))</span><span class="period">.</span>
+</h5>
+<p id="p-421">It is impossible for an apportionment method that divides representation among three or more states to satisfy quota and be incapable of producing paradoxes.</p></article></section><section class="subsection" id="subsection-19"><h4 class="heading hide-type">
+<span class="type">Subsection</span> <span class="codenumber">8.2.1.4</span> <span class="title">Hill's Method</span>
+</h4>
+<p id="p-422">The last method we'll consider is the one used today. It was originally proposed by Joseph Hill, Chief Statistician of the U.S. Census Bureau, in the early 1900s and was eventually signed into law by FDR following the apportionment of 1942.</p>
+<p id="p-423">To understand Hill's method, a new perspective on conventional rounding is helpful. When we consider rounding a number like 11.494, we usually compare it to 11.5, which is halfway between the whole numbers 11 and 12. Another way to think of 11.5, though, is as the <em class="emphasis">mean</em> of 11 and 12: <span class="process-math">\(\frac{11+12}{2} = 11.5\text{.}\)</span> But this mean is more properly known as the <em class="emphasis">arithmetic mean</em>. Another mean exists: the <em class="emphasis">geometric mean</em>.</p>
+<p id="p-424">Given whole numbers <span class="process-math">\(m,n\text{,}\)</span> the geometric mean is the number <span class="process-math">\(\sqrt{m\cdot n}\text{.}\)</span> In our example, <span class="process-math">\(\sqrt{11\cdot 12} = 11.4891\text{;}\)</span> this, then, is the number to which we'll compare our standard quotas in Hill's method. And thus, a standard quota of 11.494 would be rounded <em class="emphasis">up</em> to 12 rather than down to 11.</p>
+<article class="assemblage assemblage-like" id="assemblage-29"><h5 class="heading"><span class="title">Hill's Method.</span></h5>
+<p id="p-425"><ol class="lower-alpha">
+<li id="li-446"><p id="p-derived-li-446">Find the standard quota for each state.</p></li>
+<li id="li-447"><p id="p-derived-li-447">Round each standard quota based on the geometric mean of the two whole numbers between which the standard quota sits. If the sum of the rounded quotas equals the total number of seats being apportioned, we are done. Otherwise continue to the next step.</p></li>
+<li id="li-448"><p id="p-derived-li-448">Choose a modified divisor different from the standard divisor, and use it to calculate modified quotas for each state by dividing the state's population by the modified divisor.</p></li>
+<li id="li-449"><p id="p-derived-li-449">Round each modified quota based on the geometric mean of the two whole numbers between which the modified quota sits. If the sum of the rounded quotas equals the total number of seats being apportioned, we are done. Otherwise, repeat Step 3 with a different modified divisor.</p></li>
+</ol></p></article><article class="exploration project-like" id="exploration-39"><h5 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">8.2.9</span><span class="period">.</span>
+</h5>
+<p id="p-426">Recall the population table from 1790:</p>
+<figure class="table table-like" id="table-1790-population4"><figcaption><span class="type">Table</span><span class="space"> </span><span class="codenumber">8.2.10<span class="period">.</span></span><span class="space"> </span>Population totals by state, Census of 1790</figcaption><div class="tabular-box natural-width"><table class="tabular">
+<tr>
+<td class="l m b2 r2 l0 t0 lines">State</td>
+<td class="r m b2 r0 l0 t0 lines">Population</td>
+</tr>
+<tr>
+<td class="l m b0 r2 l0 t0 lines">Connecticut</td>
+<td class="r m b0 r0 l0 t0 lines">237,655</td>
+</tr>
+<tr>
+<td class="l m b0 r2 l0 t0 lines">Delaware</td>
+<td class="r m b0 r0 l0 t0 lines">59,096</td>
+</tr>
+<tr>
+<td class="l m b0 r2 l0 t0 lines">Georgia</td>
+<td class="r m b0 r0 l0 t0 lines">82,548</td>
+</tr>
+<tr>
+<td class="l m b0 r2 l0 t0 lines">Kentucky</td>
+<td class="r m b0 r0 l0 t0 lines">73,677</td>
+</tr>
+<tr>
+<td class="l m b0 r2 l0 t0 lines">Maryland</td>
+<td class="r m b0 r0 l0 t0 lines">319,728</td>
+</tr>
+<tr>
+<td class="l m b0 r2 l0 t0 lines">Massachusetts</td>
+<td class="r m b0 r0 l0 t0 lines">475,199</td>
+</tr>
+<tr>
+<td class="l m b0 r2 l0 t0 lines">New Hampshire</td>
+<td class="r m b0 r0 l0 t0 lines">141,899</td>
+</tr>
+<tr>
+<td class="l m b0 r2 l0 t0 lines">New Jersey</td>
+<td class="r m b0 r0 l0 t0 lines">184,139</td>
+</tr>
+<tr>
+<td class="l m b0 r2 l0 t0 lines">New York</td>
+<td class="r m b0 r0 l0 t0 lines">340,241</td>
+</tr>
+<tr>
+<td class="l m b0 r2 l0 t0 lines">North Carolina</td>
+<td class="r m b0 r0 l0 t0 lines">395,005</td>
+</tr>
+<tr>
+<td class="l m b0 r2 l0 t0 lines">Pennsylvania</td>
+<td class="r m b0 r0 l0 t0 lines">433,611</td>
+</tr>
+<tr>
+<td class="l m b0 r2 l0 t0 lines">Rhode Island</td>
+<td class="r m b0 r0 l0 t0 lines">69,112</td>
+</tr>
+<tr>
+<td class="l m b0 r2 l0 t0 lines">South Carolina</td>
+<td class="r m b0 r0 l0 t0 lines">249,073</td>
+</tr>
+<tr>
+<td class="l m b0 r2 l0 t0 lines">Vermont</td>
+<td class="r m b0 r0 l0 t0 lines">85,341</td>
+</tr>
+<tr>
+<td class="l m b2 r2 l0 t0 lines">Virginia</td>
+<td class="r m b2 r0 l0 t0 lines">747,550</td>
+</tr>
+<tr>
+<td class="l m b0 r2 l0 t0 lines">Total:</td>
+<td class="r m b0 r0 l0 t0 lines">3,893,874</td>
+</tr>
+</table></div></figure><ol class="lower-alpha">
+<li id="li-450"><p id="p-derived-li-450">Use Hill's method to apportion 105 seats to the fifteen states with population figures shown in <a href="" class="xref" data-knowl="./knowl/table-1790-population4.html" title="Table 8.2.10: Population totals by state, Census of 1790">Table 8.2.10</a>. Write down the apportionment that results from each modified divisor you try, including those that fail to give away exactly 105 seats.</p></li>
+<li id="li-451"><p id="p-derived-li-451">In your apportionment from question 1, which states were treated the best? Worst?</p></li>
+<li id="li-452"><p id="p-derived-li-452">How does this apportionment compare to what you found using Hamilton's, Jefferson's, Adams', and Webster's methods?</p></li>
+</ol></article></section></section></div></main>
+</div>
+</body>
+</html>

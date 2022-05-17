@@ -1,6 +1,6 @@
 %********************************************%
 %*       Generated from PreTeXt source      *%
-%*       on 2021-10-18T10:38:05-05:00       *%
+%*       on 2022-02-17T14:12:35-06:00       *%
 %*   A recent stable commit (2020-08-09):   *%
 %* 98f21740783f166a773df4dc83cab5293ab63a4a *%
 %*                                          *%
@@ -56,6 +56,10 @@ colback=white, colbacktitle=white, coltitle=black, opacityfill=0.0} }
 %% this is a necessity for isolating styling and behavior
 %% The tcolorbox library of the same name loads the base library
 \tcbuselibrary{xparse}
+%% The tcolorbox library loads TikZ, its calc package is generally useful,
+%% and is necessary for some smaller documents that use partial tcolor boxes
+%% See:  https://github.com/rbeezer/mathbook/issues/1624
+\usetikzlibrary{calc}
 %% Hyperref should be here, but likes to be loaded late
 %%
 %% Inline math delimiters, \(, \), need to be robust
@@ -109,6 +113,21 @@ colback=white, colbacktitle=white, coltitle=black, opacityfill=0.0} }
 %% Default Text Font: The Latin Modern fonts are
 %% "enhanced versions of the [original TeX] Computer Modern fonts."
 %% We use them as the default text font for PreTeXt output.
+%% Default Monospace font: Inconsolata (aka zi4)
+%% Sponsored by TUG: http://levien.com/type/myfonts/inconsolata.html
+%% Loaded for documents with intentional objects requiring monospace
+%% See package documentation for excellent instructions
+%% fontspec will work universally if we use filename to locate OTF files
+%% Loads the "upquote" package as needed, so we don't have to
+%% Upright quotes might come from the  textcomp  package, which we also use
+%% We employ the shapely \ell to match Google Font version
+%% pdflatex: "varl" package option produces shapely \ell
+%% pdflatex: "var0" package option produces plain zero (not used)
+%% pdflatex: "varqu" package option produces best upright quotes
+%% xelatex,lualatex: add OTF StylisticSet 1 for shapely \ell
+%% xelatex,lualatex: add OTF StylisticSet 2 for plain zero (not used)
+%% xelatex,lualatex: add OTF StylisticSet 3 for upright quotes
+%%
 %% Automatic Font Control
 %% Portions of a document, are, or may, be affected by defined commands
 %% These are perhaps more flexible when using  xelatex  rather than  pdflatex
@@ -151,6 +170,10 @@ colback=white, colbacktitle=white, coltitle=black, opacityfill=0.0} }
 %% end:   xelatex main font ("font-xelatex-main" template)
 %% begin: xelatex mono font ("font-xelatex-mono" template)
 %% (conditional on non-trivial uses being present in source)
+\IfFontExistsTF{Inconsolatazi4-Regular.otf}{}{\GenericError{}{The font "Inconsolatazi4-Regular.otf" requested by PreTeXt output is not available.  Either a file cannot be located in default locations via a filename, or a font is not known by its name as part of your system.}{Consult the PreTeXt Guide for help with LaTeX fonts.}{}}
+\IfFontExistsTF{Inconsolatazi4-Bold.otf}{}{\GenericError{}{The font "Inconsolatazi4-Bold.otf" requested by PreTeXt output is not available.  Either a file cannot be located in default locations via a filename, or a font is not known by its name as part of your system.}{Consult the PreTeXt Guide for help with LaTeX fonts.}{}}
+\usepackage{zi4}
+\setmonofont[BoldFont=Inconsolatazi4-Bold.otf,StylisticSet={1,3}]{Inconsolatazi4-Regular.otf}
 %% end:   xelatex mono font ("font-xelatex-mono" template)
 %% begin: xelatex font adjustments ("font-xelatex-style" template)
 %% end:   xelatex font adjustments ("font-xelatex-style" template)
@@ -173,6 +196,7 @@ colback=white, colbacktitle=white, coltitle=black, opacityfill=0.0} }
 %% end:   pdflatex main font ("font-pdflatex-main" template)
 %% begin: pdflatex mono font ("font-pdflatex-mono" template)
 %% (conditional on non-trivial uses being present in source)
+\usepackage[varqu,varl]{inconsolata}
 %% end:   pdflatex mono font ("font-pdflatex-mono" template)
 %% begin: pdflatex font adjustments ("font-pdflatex-style" template)
 %% end:   pdflatex font adjustments ("font-pdflatex-style" template)
@@ -329,31 +353,6 @@ colback=white, colbacktitle=white, coltitle=black, opacityfill=0.0} }
 \addcontentsline{toc}{subsection}{#3}
 \label{#6}%
 }{}%
-%% Environment for a PTX "references" at the level of a LaTeX "section"
-\NewDocumentEnvironment{references-section}{mmmmmm}
-{%
-\renewcommand{\divisionnameptx}{References}%
-\renewcommand{\titleptx}{#1}%
-\renewcommand{\subtitleptx}{#2}%
-\renewcommand{\shortitleptx}{#3}%
-\renewcommand{\authorsptx}{#4}%
-\renewcommand{\epigraphptx}{#5}%
-\section[{#3}]{#1}%
-\label{#6}%
-}{}%
-%% Environment for a PTX "references" at the level of a LaTeX "section"
-\NewDocumentEnvironment{references-section-numberless}{mmmmmm}
-{%
-\renewcommand{\divisionnameptx}{References}%
-\renewcommand{\titleptx}{#1}%
-\renewcommand{\subtitleptx}{#2}%
-\renewcommand{\shortitleptx}{#3}%
-\renewcommand{\authorsptx}{#4}%
-\renewcommand{\epigraphptx}{#5}%
-\section*{#1}%
-\addcontentsline{toc}{section}{#3}
-\label{#6}%
-}{}%
 %%
 %% Styles for six traditional LaTeX divisions
 \titleformat{\part}[display]
@@ -431,7 +430,7 @@ colback=white, colbacktitle=white, coltitle=black, opacityfill=0.0} }
 %% Experimentally this seems just barely sufficient for a bold "888."
 %% Division exercises, not in exercise group
 \tcbset{ divisionexercisestyle/.style={bwminimalstyle, runintitlestyle, exercisespacingstyle, left=5ex, breakable, parbox=false } }
-\newtcolorbox{divisionexercise}[4]{divisionexercisestyle, before title={\hspace{-5ex}\makebox[5ex][l]{#1.}}, title={\notblank{#2}{#2\space}{}}, phantom={\hypertarget{#4}{}}, after={\notblank{#3}{\newline\rule{\workspacestrutwidth}{#3}\newline}{}}}
+\newtcolorbox{divisionexercise}[4]{divisionexercisestyle, before title={\hspace{-5ex}\makebox[5ex][l]{#1.}}, title={\notblank{#2}{#2\space}{}}, phantom={\hypertarget{#4}{}}, after={\notblank{#3}{\newline\rule{\workspacestrutwidth}{#3}\newline\vfill}{\par}}}
 %% Localize LaTeX supplied names (possibly none)
 \renewcommand*{\partname}{Part}
 \renewcommand*{\chaptername}{Chapter}
@@ -484,6 +483,42 @@ colback=white, colbacktitle=white, coltitle=black, opacityfill=0.0} }
 %% Undo counter reset by chapter for a book
 \counterwithout{footnote}{chapter}
 \counterwithin*{footnote}{section}
+%% Program listing support: for listings, programs, consoles, and Sage code
+\ifthenelse{\boolean{xetex} \or \boolean{luatex}}%
+  {\tcbuselibrary{listings}}%
+  {\tcbuselibrary{listingsutf8}}%
+%% We define the listings font style to be the default "ttfamily"
+%% To fix hyphens/dashes rendered in PDF as fancy minus signs by listing
+%% http://tex.stackexchange.com/questions/33185/listings-package-changes-hyphens-to-minus-signs
+\makeatletter
+\lst@CCPutMacro\lst@ProcessOther {"2D}{\lst@ttfamily{-{}}{-{}}}
+\@empty\z@\@empty
+\makeatother
+%% We define a null language, free of any formatting or style
+%% for use when a language is not supported, or pseudo-code, or consoles
+%% Not necessary for Sage code, so in limited cases included unnecessarily
+\lstdefinelanguage{none}{identifierstyle=,commentstyle=,stringstyle=,keywordstyle=}
+\ifthenelse{\boolean{xetex}}{}{%
+%% begin: pdflatex-specific listings configuration
+%% translate U+0080 - U+00F0 to their textmode LaTeX equivalents
+%% Data originally from https://www.w3.org/Math/characters/unicode.xml, 2016-07-23
+%% Lines marked in XSL with "$" were converted from mathmode to textmode
+\lstset{extendedchars=true}
+\lstset{literate={ }{{~}}{1}{¡}{{\textexclamdown }}{1}{¢}{{\textcent }}{1}{£}{{\textsterling }}{1}{¤}{{\textcurrency }}{1}{¥}{{\textyen }}{1}{¦}{{\textbrokenbar }}{1}{§}{{\textsection }}{1}{¨}{{\textasciidieresis }}{1}{©}{{\textcopyright }}{1}{ª}{{\textordfeminine }}{1}{«}{{\guillemotleft }}{1}{¬}{{\textlnot }}{1}{­}{{\-}}{1}{®}{{\textregistered }}{1}{¯}{{\textasciimacron }}{1}{°}{{\textdegree }}{1}{±}{{\textpm }}{1}{²}{{\texttwosuperior }}{1}{³}{{\textthreesuperior }}{1}{´}{{\textasciiacute }}{1}{µ}{{\textmu }}{1}{¶}{{\textparagraph }}{1}{·}{{\textperiodcentered }}{1}{¸}{{\c{}}}{1}{¹}{{\textonesuperior }}{1}{º}{{\textordmasculine }}{1}{»}{{\guillemotright }}{1}{¼}{{\textonequarter }}{1}{½}{{\textonehalf }}{1}{¾}{{\textthreequarters }}{1}{¿}{{\textquestiondown }}{1}{À}{{\`{A}}}{1}{Á}{{\'{A}}}{1}{Â}{{\^{A}}}{1}{Ã}{{\~{A}}}{1}{Ä}{{\"{A}}}{1}{Å}{{\AA }}{1}{Æ}{{\AE }}{1}{Ç}{{\c{C}}}{1}{È}{{\`{E}}}{1}{É}{{\'{E}}}{1}{Ê}{{\^{E}}}{1}{Ë}{{\"{E}}}{1}{Ì}{{\`{I}}}{1}{Í}{{\'{I}}}{1}{Î}{{\^{I}}}{1}{Ï}{{\"{I}}}{1}{Ð}{{\DH }}{1}{Ñ}{{\~{N}}}{1}{Ò}{{\`{O}}}{1}{Ó}{{\'{O}}}{1}{Ô}{{\^{O}}}{1}{Õ}{{\~{O}}}{1}{Ö}{{\"{O}}}{1}{×}{{\texttimes }}{1}{Ø}{{\O }}{1}{Ù}{{\`{U}}}{1}{Ú}{{\'{U}}}{1}{Û}{{\^{U}}}{1}{Ü}{{\"{U}}}{1}{Ý}{{\'{Y}}}{1}{Þ}{{\TH }}{1}{ß}{{\ss }}{1}{à}{{\`{a}}}{1}{á}{{\'{a}}}{1}{â}{{\^{a}}}{1}{ã}{{\~{a}}}{1}{ä}{{\"{a}}}{1}{å}{{\aa }}{1}{æ}{{\ae }}{1}{ç}{{\c{c}}}{1}{è}{{\`{e}}}{1}{é}{{\'{e}}}{1}{ê}{{\^{e}}}{1}{ë}{{\"{e}}}{1}{ì}{{\`{\i}}}{1}{í}{{\'{\i}}}{1}{î}{{\^{\i}}}{1}{ï}{{\"{\i}}}{1}{ð}{{\dh }}{1}{ñ}{{\~{n}}}{1}{ò}{{\`{o}}}{1}{ó}{{\'{o}}}{1}{ô}{{\^{o}}}{1}{õ}{{\~{o}}}{1}{ö}{{\"{o}}}{1}{÷}{{\textdiv }}{1}{ø}{{\o }}{1}{ù}{{\`{u}}}{1}{ú}{{\'{u}}}{1}{û}{{\^{u}}}{1}{ü}{{\"{u}}}{1}{ý}{{\'{y}}}{1}{þ}{{\th }}{1}{ÿ}{{\"{y}}}{1}}
+%% end: pdflatex-specific listings configuration
+}
+%% End of generic listing adjustments
+%% The listings package as tcolorbox for Sage code
+%% We do as much styling as possible with tcolorbox, not listings
+%% Sage's blue is 50%, we go way lighter (blue!05 would also work)
+%% Note that we defuse listings' default "aboveskip" and "belowskip"
+\definecolor{sageblue}{rgb}{0.95,0.95,1}
+\tcbset{ sagestyle/.style={left=0pt, right=0pt, top=0ex, bottom=0ex, middle=0pt, toptitle=0pt, bottomtitle=0pt,
+boxsep=4pt, listing only, fontupper=\small\ttfamily,
+breakable, parbox=false, 
+listing options={language=Python,breaklines=true,breakatwhitespace=true, extendedchars=true, aboveskip=0pt, belowskip=0pt}} }
+\newtcblisting{sageinput}{sagestyle, colback=sageblue, sharp corners, boxrule=0.5pt, toprule at break=-0.3pt, bottomrule at break=-0.3pt, }
+\newtcblisting{sageoutput}{sagestyle, colback=white, colframe=white, frame empty, before skip=0pt, after skip=0pt, }
 %% More flexible list management, esp. for references
 %% But also for specifying labels (i.e. custom order) on nested lists
 \usepackage{enumitem}
@@ -503,9 +538,9 @@ colback=white, colbacktitle=white, coltitle=black, opacityfill=0.0} }
 %% hyperref, so it is necessary to turn off all linking
 %% It *must* be given as a package option, not with \hypersetup
 \usepackage[hyperfootnotes=false]{hyperref}
-%% configure hyperref's  \url  to match listings' inline verbatim
+%% configure hyperref's  \href{}{}  and  \nolinkurl  to match listings' inline verbatim
 \renewcommand\UrlFont{\small\ttfamily}
-%% Hyperlinking active in electronic PDFs, all links solid and blue
+%% Hyperlinking active in electronic PDFs, all links without surrounding boxes and blue
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,filecolor=blue,urlcolor=blue}
 \hypersetup{pdftitle={Explorations in Modern Mathematics}}
 %% If you manually remove hyperref, leave in this next command
@@ -527,11 +562,6 @@ colback=white, colbacktitle=white, coltitle=black, opacityfill=0.0} }
 %% facilities for most blocks (possibly not projects, 2D displays)
 %% Controlled by  numbering.theorems.level  processing parameter
 \newtcolorbox[auto counter, number within=section]{block}{}
-%%
-%% This document is set to number PROJECT-LIKE on a separate numbering scheme
-%% So, a faux tcolorbox whose only purpose is to provide this numbering
-%% Controlled by  numbering.projects.level  processing parameter
-\newtcolorbox[auto counter, number within=section]{project-distinct}{}
 %% A faux tcolorbox whose only purpose is to provide common numbering
 %% facilities for 2D displays which are subnumbered as part of a "sidebyside"
 \makeatletter
@@ -572,13 +602,13 @@ colback=white, colbacktitle=white, coltitle=black, opacityfill=0.0} }
 %%
 %% exploration: fairly simple numbered block/structure
 \tcbset{ explorationstyle/.style={bwminimalstyle, runintitlestyle, blockspacingstyle, after title={\space}, } }
-\newtcolorbox[use counter from=project-distinct]{exploration}[2]{title={{Exploration~\thetcbcounter\notblank{#1}{\space\space#1}{}}}, phantomlabel={#2}, breakable, parbox=false, after={\par}, explorationstyle, }
+\newtcolorbox[use counter from=block]{exploration}[2]{title={{Exploration~\thetcbcounter\notblank{#1}{\space\space#1}{}}}, phantomlabel={#2}, breakable, parbox=false, after={\par}, explorationstyle, }
 %% investigation: fairly simple numbered block/structure
 \tcbset{ investigationstyle/.style={bwminimalstyle, runintitlestyle, blockspacingstyle, after title={\space}, } }
-\newtcolorbox[use counter from=project-distinct]{investigation}[2]{title={{Investigation~\thetcbcounter\notblank{#1}{\space\space#1}{}}}, phantomlabel={#2}, breakable, parbox=false, after={\par}, investigationstyle, }
+\newtcolorbox[use counter from=block]{investigation}[2]{title={{Investigation~\thetcbcounter\notblank{#1}{\space\space#1}{}}}, phantomlabel={#2}, breakable, parbox=false, after={\par}, investigationstyle, }
 %% activity: fairly simple numbered block/structure
 \tcbset{ activitystyle/.style={bwminimalstyle, runintitlestyle, blockspacingstyle, after title={\space}, } }
-\newtcolorbox[use counter from=project-distinct]{activity}[2]{title={{Activity~\thetcbcounter\notblank{#1}{\space\space#1}{}}}, phantomlabel={#2}, breakable, parbox=false, after={\par}, activitystyle, }
+\newtcolorbox[use counter from=block]{activity}[2]{title={{Activity~\thetcbcounter\notblank{#1}{\space\space#1}{}}}, phantomlabel={#2}, breakable, parbox=false, after={\par}, activitystyle, }
 %%
 %% tcolorbox, with styles, for ASIDE-LIKE
 %%
@@ -657,7 +687,7 @@ colback=white, colbacktitle=white, coltitle=black, opacityfill=0.0} }
 %% End: Author-provided packages
 %% Begin: Author-provided macros
 %% (From  docinfo/macros  element)
-%% Plus three from MBX for XML characters
+%% Plus three from PTX for XML characters
 {\labelitemi}{$\diamond$}
 \def\arraystretch{1.5}
 \newcommand{\contentsfinish}{}
@@ -712,6 +742,8 @@ colback=white, colbacktitle=white, coltitle=black, opacityfill=0.0} }
 \newcommand{\amp}{&}
 %% End: Author-provided macros
 \begin{document}
+%% bottom alignment is explicit, since it normally depends on oneside, twoside
+\raggedbottom
 \frontmatter
 %% begin: half-title
 \thispagestyle{empty}
@@ -726,7 +758,7 @@ colback=white, colbacktitle=white, coltitle=black, opacityfill=0.0} }
 {\titlepagefont\centering
 \vspace*{0.14\textheight}
 %% Target for xref to top-level element is ToC
-\addtocontents{toc}{\protect\hypertarget{g:book:idm3404627320}{}}
+\addtocontents{toc}{\protect\hypertarget{g:book:idp105544712088848}{}}
 {\Huge Explorations in Modern Mathematics}\\[3\baselineskip]
 {\Large Mike Janssen}\\[0.5\baselineskip]
 {\Large Dordt University}\\}
@@ -734,7 +766,7 @@ colback=white, colbacktitle=white, coltitle=black, opacityfill=0.0} }
 %% end:   title page
 %% begin: copyright-page
 \thispagestyle{empty}
-\hypertarget{g:colophon:idm3404625000}{}\vspace*{\stretch{2}}
+\hypertarget{g:colophon:idp105544711894416}{}\vspace*{\stretch{2}}
 \noindent{\bfseries Edition}: Spring 2022 Beta Edition\par\medskip
 \noindent{\bfseries Website}: \href{https:\slash{}\slash{}emmath.org}{https:\slash{}\slash{}emmath.org}\par\medskip
 \noindent\textcopyright{}2022\textendash{}\quad{}\\[0.5\baselineskip]
@@ -743,7 +775,7 @@ Permission is granted to copy and (re)distribute this material in any format and
 \includegraphics[width=\linewidth]{./images/CC-BY-SA-license.svg}
 \end{sbspanel}%
 \end{sidebyside}%
- that may appear in other locations in the text shows that the work is licensed with the Creative Commons and that the work may be used for free by any party so long as attribution is given to the author(s) and if the material is modified, the resulting contributions are distributed under the same license as this original. Full details may be found by visiting \href{https://creativecommons.org/licenses/by-sa/4.0/}{https:\slash{}\slash{}creativecommons.org\slash{}licenses\slash{}by-sa\slash{}4.0\slash{}}  or sending a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.\par\medskip
+ that may appear in other locations in the text shows that the work is licensed with the Creative Commons and that the work may be used for free by any party so long as attribution is given to the author(s) and if the material is modified, the resulting contributions are distributed under the same license as this original. Full details may be found by visiting \href{https://creativecommons.org/licenses/by-sa/4.0/}{https:\slash{}\slash{}creativecommons.org\slash{}licenses\slash{}by-sa\slash{}4.0\slash{}}\footnote{\nolinkurl{https://creativecommons.org/licenses/by-sa/4.0/}\label{g:fn:idp105544711898896}}  or sending a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.\par\medskip
 \vspace*{\stretch{1}}
 \null\clearpage
 %% end:   copyright-page
@@ -754,7 +786,7 @@ Permission is granted to copy and (re)distribute this material in any format and
 \typeout{************************************************}
 %
 \begin{preface}{Introduction}{}{Introduction}{}{}{x:preface:Sec-Introduction}
-In January 2017, Dr. Francis E. Su, president of the Mathematical Association of America, gave his retiring presidential address, \emph{\href{https://mathyawp.wordpress.com/2017/01/08/mathematics-for-human-flourishing/}{Mathematics for Human Flourishing}}\footnote{In 2018, he gave an expanded version of this talk as a First Mondays address at Dordt College.\label{g:fn:idm3404616792}}. In this address and the subsequent book \hyperlink{x:biblio:Su2020}{[{\xreffont 1}]}, Su describes ways that the practice of mathematics can help human beings cultivate virtues which in turn enable us live the good life. He identifies several desires that encourage the cultivation of virtue, among them \emph{exploration}, \emph{play}, \emph{truth}, \emph{justice}, and \emph{beauty}.%
+In January 2017, Dr. Francis E. Su, president of the Mathematical Association of America, gave his retiring presidential address, \emph{\href{https://mathyawp.wordpress.com/2017/01/08/mathematics-for-human-flourishing/}{Mathematics for Human Flourishing}\footnote{\nolinkurl{https://mathyawp.wordpress.com/2017/01/08/mathematics-for-human-flourishing/}\label{g:fn:idp105544711900816}}}\footnote{In 2018, he gave an expanded version of this talk as a First Mondays address at Dordt College.\label{g:fn:idp105544711901072}}. In this address and the subsequent book \hyperlink{x:biblio:Su2020}{[{\xreffont 1}]}, Su describes ways that the practice of mathematics can help human beings cultivate virtues which in turn enable us live the good life. He identifies several desires that encourage the cultivation of virtue, among them \emph{exploration}, \emph{play}, \emph{truth}, \emph{justice}, and \emph{beauty}.%
 \par
 This book uses guided exploration to investigate mathematical topics that specifically meet those desires. We will explore the Rubik's cube and other puzzles and thus \emph{play} with mathematics. We'll see how deductive reasoning can be used to argue for \emph{truth}, while also exploring its limitations. \emph{Justice} will be explored by application of mathematics to democracy and the networks used to exploit our fellow image-bearers. And we'll finish the semester with projects that explore \emph{beauty} in mathematics.%
 %
@@ -763,7 +795,7 @@ This book uses guided exploration to investigate mathematical topics that specif
 \typeout{References  References}
 \typeout{************************************************}
 %
-\begin{references--numberless}{References}{}{References}{}{}{g:references:idm3404610776}
+\begin{references--numberless}{References}{}{References}{}{}{g:references:idp105544711905808}
 F. E. Su, C. Jackson, \emph{Mathematics for Human Flourishing}. Yale University Press, 2020.\end{references--numberless}
 \end{preface}
 %
@@ -811,11 +843,11 @@ The second is that most people's ideas of what counts as a mathematical question
 %
 \begin{chapterptx}{The Cube}{}{The Cube}{}{}{x:chapter:chap-cube}
 \begin{introduction}{}%
-We begin our mathematical explorations in a place that may seem unusual. The Rubik's Cube, invented\footnote{Or, to use Rubik's word, \emph{discovered}.\label{g:fn:idm3404603496}} in the 1970s by Hungarian architecture professor Erno Rubik, is the best-selling toy of all time. It is also a rich mathematical playscape, a tactile means of exploring and challenging our fundamental ideas around what counts as an arithmetic operation.%
+We begin our mathematical explorations in a place that may seem unusual. The Rubik's Cube, invented\footnote{Or, to use Rubik's word, \emph{discovered}.\label{g:fn:idp105544711912208}} in the 1970s by Hungarian architecture professor Erno Rubik, is the best-selling toy of all time. It is also a rich mathematical playscape, a tactile means of exploring and challenging our fundamental ideas around what counts as an arithmetic operation.%
 \par
-The Cube's colorful, playful nature also underscores our purpose in beginning by exploring it. Specifically, exploring the Cube will help us develop some of the virtues Francis Su identifies in \hyperlink{x:biblio:Su2020}{[{\xreffont 1}]} under the desire of \emph{play}: exploring the Cube will hopefuly pique your \emph{curiosity} and build your \emph{patience} and \emph{perseverance}. Solving it will require you to \emph{change perspectives} and build \emph{confidence in struggle}. And, I hope, the satisfaction and joy you experience in finally solving it will engender an \emph{openness of spirit} that we will carry into further explorations for the rest of the text.%
+The Cube's colorful, playful nature also underscores our purpose in beginning with it. Specifically, exploring the Cube will help us develop some of the virtues Francis Su identifies in \hyperlink{x:biblio:Su2020}{[{\xreffont 1}]} under the desire of \emph{play}: exploring the Cube will hopefuly pique your \emph{curiosity} and build your \emph{patience} and \emph{perseverance}. Solving it will require you to \emph{change perspectives} and build \emph{confidence in struggle}. And, I hope, the satisfaction and joy you experience in finally solving it will engender an \emph{openness of spirit} that we will carry into further explorations for the rest of the text.%
 \par
-As we begin, I also wish to acknowledge the efforts of the \emph{\href{https://www.artofmathematics.org/}{Discovering the Art of Mathematics}} project, especially the \href{https://www.artofmathematics.org/books/games-and-puzzles}{Games and Puzzles} book. I learned the Rubik's Cube by reading and teaching their work, and it is impossible to overstate their influence on this chapter.%
+As we begin, I also wish to acknowledge the efforts of the \emph{\href{https://www.artofmathematics.org/}{Discovering the Art of Mathematics}\footnote{\nolinkurl{https://www.artofmathematics.org/}\label{g:fn:idp105544711917072}}} project, especially the \href{https://www.artofmathematics.org/books/games-and-puzzles}{Games and Puzzles}\footnote{\nolinkurl{https://www.artofmathematics.org/books/games-and-puzzles}\label{g:fn:idp105544711917840}} book. I learned the Rubik's Cube by reading and teaching their work, and it is impossible to overstate their influence on this chapter.%
 \end{introduction}%
 %
 %
@@ -825,7 +857,7 @@ As we begin, I also wish to acknowledge the efforts of the \emph{\href{https://w
 %
 \begin{sectionptx}{Introduction and Background}{}{Introduction and Background}{}{}{x:section:sec-play-intro}
 \begin{introduction}{}%
-\begin{assemblage}{Motivating Questions.}{g:assemblage:idm3404595128}%
+\begin{assemblage}{Motivating Questions.}{g:assemblage:idp105544711919504}%
 In this section, we will explore the following questions. %
 \begin{enumerate}
 \item{}What does it mean to play?%
@@ -841,7 +873,7 @@ In this section, we will explore the following questions. %
 \typeout{Subsection 1.1.1 Thinking about Play}
 \typeout{************************************************}
 %
-\begin{subsectionptx}{Thinking about Play}{}{Thinking about Play}{}{}{g:subsection:idm3404595544}
+\begin{subsectionptx}{Thinking about Play}{}{Thinking about Play}{}{}{g:subsection:idp105544711921680}
 \begin{exploration}{}{x:exploration:expl_intro}%
 First, introduce yourself to the members of your group. Then, consider the questions: %
 \begin{enumerate}
@@ -852,18 +884,21 @@ First, introduce yourself to the members of your group. Then, consider the quest
 \end{enumerate}
  Write your answers in your notes. We'll discuss your responses before working on \hyperref[x:investigation:invest-firstquestionsaboutthecube]{Investigation~{\xreffont\ref{x:investigation:invest-firstquestionsaboutthecube}}}.%
 \end{exploration}%
- QUALITIES OF PLAY from SU AND HUIZINGA here-{}-{}perhaps another question?\end{subsectionptx}
+The Dutch historian and cultural theorist Johan Huizinga identified four elements of play: it should be \emph{voluntary}; it should be distinct from ordinary life, taking place within its circumscribed time and locality, since dubbed the ``magic circle''; and it, like a game of chess or solve of a Rubik's cube, can be repeated.%
+\par
+It is the goal of this text to make mathematics playful, inasmuch as is possible. We recognize that you may be reading this for a class which was not voluntary, and you are constrained in your mathematical play by the requirements put upon you by your instructor. However, we encourage you to approach not only the solution of the Rubik's cube from a playful posture, but subsequent explorations as well.%
+\end{subsectionptx}
 %
 %
 \typeout{************************************************}
 \typeout{Subsection 1.1.2 Exploring the Cube}
 \typeout{************************************************}
 %
-\begin{subsectionptx}{Exploring the Cube}{}{Exploring the Cube}{}{}{g:subsection:idm3404587224}
+\begin{subsectionptx}{Exploring the Cube}{}{Exploring the Cube}{}{}{g:subsection:idp105544711862544}
 \begin{investigation}{}{x:investigation:invest-firstquestionsaboutthecube}%
 In your groups, investigate your Cubes. What do you notice? What do you wonder? Make a list of as many observations and questions as you can, and write them in your notes.%
 \end{investigation}%
-\begin{definition}{}{g:definition:idm3404586360}%
+\begin{definition}{}{g:definition:idp105544711863952}%
 \index{cubie}%
 \index{cubiecenter}%
 \index{cubiecorner}%
@@ -880,10 +915,9 @@ In this investigation we'll consider the corner cubies. Hold your Cube with the 
 \end{enumerate}
 As always, make sure you can explain your answers.%
 \begin{image}{0.25}{0.5}{0.25}%
-\includegraphics[width=\linewidth]{./images/moving_cubies.pdf}
+\includegraphics[width=\linewidth]{./images/moving_cubies.svg}
 \end{image}%
-\par\smallskip%
-\noindent\textbf{\blocktitlefont Solution}.\hypertarget{g:solution:idm3404577592}{}\quad{}There are 8 corners, with three stickers each. Since all corners have three stickers, and other cubies have fewer stickers, we can't move a corner cubie to any location other than another corner. But we \emph{can} move a given corner to any other corner.\end{investigation}%
+\end{investigation}%
 \begin{investigation}{}{x:investigation:invest-edge-cubies}%
 In this investigation we'll consider the edge cubies. Hold your Cube with the white center cubie facing up and the red center cubie facing you.%
 \begin{enumerate}
@@ -894,10 +928,9 @@ In this investigation we'll consider the edge cubies. Hold your Cube with the wh
 \end{enumerate}
 As always, make sure you can explain your answers.%
 \begin{image}{0.25}{0.5}{0.25}%
-\includegraphics[width=\linewidth]{./images/moving_cubies.pdf}
+\includegraphics[width=\linewidth]{./images/moving_cubies.svg}
 \end{image}%
-\par\smallskip%
-\noindent\textbf{\blocktitlefont Solution}.\hypertarget{g:solution:idm3404572936}{}\quad{}There are twelve edge cubies, with two stickers each. As was the case with corners, we can only put edge cubies in other edge locations, but we can move a given edge cubie to any other edge.\end{investigation}%
+\end{investigation}%
 \begin{investigation}{}{x:investigation:invest-center-cubies}%
 In this investigation we'll consider the center cubies. Hold your Cube with the white center cubie facing up and the red center cubie facing you.%
 \begin{enumerate}
@@ -908,14 +941,13 @@ In this investigation we'll consider the center cubies. Hold your Cube with the 
 \end{enumerate}
 As always, make sure you can explain your answers.%
 \begin{image}{0.25}{0.5}{0.25}%
-\includegraphics[width=\linewidth]{./images/moving_cubies.pdf}
+\includegraphics[width=\linewidth]{./images/moving_cubies.svg}
 \end{image}%
-\par\smallskip%
-\noindent\textbf{\blocktitlefont Solution}.\hypertarget{g:solution:idm3404568696}{}\quad{}Finally, we saw that the six corners (each with one sticker) cannot move relative to the others.\end{investigation}%
-\begin{assemblage}{Question.}{g:assemblage:idm3404568216}%
+\end{investigation}%
+\begin{assemblage}{Question.}{g:assemblage:idp105544711876752}%
 How can you tell when a cubie is in the correct \emph{location}? How can you tell when it is \emph{oriented} correctly? Is there a difference?\footnotemark{}%
 \end{assemblage}
-\footnotetext[1]{Does it depend on the cubie?\label{g:fn:idm3404566440}}%
+\footnotetext[1]{Does it depend on the cubie?\label{g:fn:idp105544711878160}}%
 \end{subsectionptx}
 \end{sectionptx}
 %
@@ -925,7 +957,7 @@ How can you tell when a cubie is in the correct \emph{location}? How can you tel
 \typeout{************************************************}
 %
 \begin{sectionptx}{Exploring and Describing the Cube}{}{Exploring and Describing the Cube}{}{}{x:section:sec-play-exploring-the-cube}
-\begin{assemblage}{Motivating Questions.}{g:assemblage:idm3404564056}%
+\begin{assemblage}{Motivating Questions.}{g:assemblage:idp105544711879952}%
 In this section, we will explore the following questions. %
 \begin{enumerate}
 \item{}What are faces and layers, and what methods exist for solving them?%
@@ -935,7 +967,7 @@ In this section, we will explore the following questions. %
 %
 \end{assemblage}
 \begin{introduction}{}%
-In this section, we'll define a few terms and work on an initial exploration of the Cube's white layer. Then, we'll discuss the need for notation for communicating about our Cubes and introduce some standard notation.%
+In this section, we'll define a few terms and work on an initial exploration of the Cube's white layer. Then, we'll discuss the need for a precise method communicating about our Cubes, and introduce some standard notation.%
 \end{introduction}%
 %
 %
@@ -943,14 +975,14 @@ In this section, we'll define a few terms and work on an initial exploration of 
 \typeout{Subsection 1.2.1 Faces and Layers}
 \typeout{************************************************}
 %
-\begin{subsectionptx}{Faces and Layers}{}{Faces and Layers}{}{}{g:subsection:idm3404560872}
+\begin{subsectionptx}{Faces and Layers}{}{Faces and Layers}{}{}{g:subsection:idp105544711882512}
 We begin with a definition.%
 \begin{definition}{}{x:definition:def-cube-face}%
 \index{Cube facesolved}%
 A \terminology{face} of the Cube refers to one of its sides. We say a face is \terminology{solved} if all the stickers on that side are the same color.%
 \end{definition}
 There are many ways to solve the Cube, and we'll explore one approach later in this chapter. A crucial step in learning to solve the Cube is learning to solve one face.%
-\begin{assemblage}{Challenge.}{g:assemblage:idm3404558008}%
+\begin{assemblage}{Challenge.}{g:assemblage:idp105544711885840}%
 Scramble your Cube. Then solve the white face. If you have not done this before (or even if you have), this may take hours or days, not minutes! Avoid relying on any outside resources (including websites, friends, etc.). When you solve it, congratulations! Then scramble the face and solve it again. Repeat this process until you can reliably do it in just a few minutes. Once you can reliably solve the white face, describe, in writing, your methods as clearly and precisely as you can. What challenges did you have to overcome? How did you overcome them?%
 \end{assemblage}
 Congratulations on solving a face of your Cube! But a question comes to mind. When your white face is in its solved state, are all the cubies on the white face in the correct location?%
@@ -958,7 +990,7 @@ Congratulations on solving a face of your Cube! But a question comes to mind. Wh
 \index{Cube layersolved}%
 A \terminology{layer} of the Cube consists of a face and all of the stickers on Cubies which compose the face. A layer is \terminology{solved} if all of the Cubies in the layer are in the correct location with the correct orientation.%
 \end{definition}
-\begin{assemblage}{Challenge.}{g:assemblage:idm3404551784}%
+\begin{assemblage}{Challenge.}{g:assemblage:idp105544711890064}%
 Scramble your Cube and then solve the white layer. As before, this may take hours or days. When you solve it, congratulations! Scramble it and do it again. Once you can reliably solve the white layer, describe, in writing, your methods as clearly and precisely as you can.%
 \end{assemblage}
 \end{subsectionptx}
@@ -968,14 +1000,14 @@ Scramble your Cube and then solve the white layer. As before, this may take hour
 \typeout{Subsection 1.2.2 The Need for Notation}
 \typeout{************************************************}
 %
-\begin{subsectionptx}{The Need for Notation}{}{The Need for Notation}{}{}{g:subsection:idm3404550440}
+\begin{subsectionptx}{The Need for Notation}{}{The Need for Notation}{}{}{g:subsection:idp105544711891088}
 \begin{principle}{}{}{x:principle:discussion-verbal-cubie-moves}%
-Find a partner. Take turns describing verbally and without pointing to your Cube your method for moving a corner cubie to its proper position. Similarly, verbally describe your edge cubie to its proper position.%
+Find a partner. Take turns describing verbally and without pointing to your Cube your method for moving a corner cubie to its proper position. Similarly, verbally describe your method for moving an edge cubie to its proper position.%
 \end{principle}
 \begin{principle}{}{}{x:principle:discussion-written-cubie-moves}%
 As you probably noticed, it is challenging to orally describe complex\slash{}technical ideas in much detail without becoming lost. Is it easier to describe your cubie movements in writing? Why or why not?%
 \end{principle}
-Every area of inquiry has an associated collection of terminology and shorthand notation. At its best, this terminology enables efficient and clear communication. However, terminology can often be a barrier. Thus, we want to avoid introducing unnecessary or confusing jargon whenever possible. However, as I hope \hyperref[x:principle:discussion-verbal-cubie-moves]{Discussion~{\xreffont\ref{x:principle:discussion-verbal-cubie-moves}}} and \hyperref[x:principle:discussion-written-cubie-moves]{Discussion~{\xreffont\ref{x:principle:discussion-written-cubie-moves}}} underscore, a lack of terminology or shorthand notation severely impairs our ability to communicate deep technical ideas. It is with this background that we introduce the following notation, which has become standard in the Cubing community.\begin{aside}{}{g:aside:idm3404545560}%
+Every area of inquiry has an associated collection of terminology and shorthand notation. At its best, this terminology enables efficient and clear communication. However, terminology can often be a barrier. Thus, we want to avoid introducing unnecessary or confusing jargon whenever possible. However, as I hope \hyperref[x:principle:discussion-verbal-cubie-moves]{Discussion~{\xreffont\ref{x:principle:discussion-verbal-cubie-moves}}} and \hyperref[x:principle:discussion-written-cubie-moves]{Discussion~{\xreffont\ref{x:principle:discussion-written-cubie-moves}}} underscore, a lack of terminology or shorthand notation severely impairs our ability to communicate deep technical ideas. It is with this background that we introduce the following notation, which has become standard in the Cubing community.\begin{aside}{}{g:aside:idp105544711959568}%
 \end{aside}
 %
 \begin{definition}{}{x:definition:def-face-names}%
@@ -991,15 +1023,15 @@ Hold the Cube in such a way that you are looking at one of the faces.%
 A graphical version appears in \hyperref[x:figure:fig-cube-faces]{Figure~{\xreffont\ref{x:figure:fig-cube-faces}}}.%
 \begin{figureptx}{}{x:figure:fig-cube-faces}{}%
 \begin{image}{0.25}{0.5}{0.25}%
-\includegraphics[width=\linewidth]{./images/faces.pdf}
+\includegraphics[width=\linewidth]{./images/faces.svg}
 \end{image}%
 \tcblower
 \end{figureptx}%
 \end{definition}
-\begin{activity}{}{g:activity:idm3404537160}%
+\begin{activity}{}{g:activity:idp105544711966096}%
 List the colors of each of the six faces in \hyperref[x:figure:fig-cube-faces]{Figure~{\xreffont\ref{x:figure:fig-cube-faces}}}.%
 \end{activity}%
-As we we will see momentarily, the names described in \hyperref[x:definition:def-face-names]{Definition~{\xreffont\ref{x:definition:def-face-names}}} not only help us refer to faces, but also moves of the Cube which help us solve it. In order to understand what moves do, we will have a need to refer to certain cubies by location. The following definition enables this.%
+As we we will see momentarily, the names described in \hyperref[x:definition:def-face-names]{Definition~{\xreffont\ref{x:definition:def-face-names}}} not only help us refer to faces, but also moves of the Cube which help us solve it. In order to understand what a given move does to the Cube, we will need to refer to certain cubies by location. The following definition enables this.%
 \begin{definition}{}{x:definition:def-cubie-names}%
 A cubie is named by the face(s) on which it sits, using lowercase letters.%
 \end{definition}
@@ -1015,7 +1047,7 @@ Consider the scrambled Cube in \hyperref[x:figure:fig-cubie-names]{Figure~{\xref
 \end{enumerate}
 \begin{figureptx}{A scrambled cube.}{x:figure:fig-cubie-names}{}%
 \begin{image}{0.25}{0.5}{0.25}%
-\includegraphics[width=\linewidth]{./images/cubie_names.pdf}
+\includegraphics[width=\linewidth]{./images/cubie_names.svg}
 \end{image}%
 \tcblower
 \end{figureptx}%
@@ -1040,7 +1072,7 @@ Consider the following questions in the context of a completely solved cube as p
 \end{enumerate}
 \begin{figureptx}{A solved cube.}{x:figure:fig-solved-cube}{}%
 \begin{image}{0.25}{0.5}{0.25}%
-\includegraphics[width=\linewidth]{./images/solved_cube_sf.pdf}
+\includegraphics[width=\linewidth]{./images/solved_cube_sf.svg}
 \end{image}%
 \tcblower
 \end{figureptx}%
@@ -1052,26 +1084,26 @@ Consider the following questions in the context of a completely solved cube as p
 \typeout{Subsection 1.2.3 Order}
 \typeout{************************************************}
 %
-\begin{subsectionptx}{Order}{}{Order}{}{}{g:subsection:idm3404550312}
+\begin{subsectionptx}{Order}{}{Order}{}{}{g:subsection:idp105544711985424}
 A useful algebraic concept for describing Cube moves is that of \emph{order}.%
 \begin{definition}{}{x:definition:def-order}%
 \index{Cube moveorder}%
 The \terminology{order} of a cube move \(M\) is the least number of times \(n \gt 1\) that \(M\) can be repeated before a solved Cube is solved again. We write \(|M| = n\).%
 \end{definition}
-\begin{example}{}{g:example:idm3404510440}%
+\begin{example}{}{g:example:idp105544711990032}%
 The order of \(R\) is 4, since 4 clockwise quarter-turns of the right face of a solved Cube results in a solved Cube, and no fewer number of turns results in a solved Cube.%
 \end{example}
-\begin{exploration}{}{g:exploration:idm3404506968}%
+\begin{exploration}{}{g:exploration:idp105544711990928}%
 %
 \begin{enumerate}
 \item{}What is \(|U^2|\)?%
 \item{}Calculate \(|R^3|\). Why does this make sense?%
-\item{}Calculate \(|RUR^{-1} U^{-1}|\)?%
+\item{}Calculate \(|RUR' U '|\).%
 \end{enumerate}
 \end{exploration}%
 \end{subsectionptx}
 \begin{conclusion}{Conclusion.}%
-In this section, we began a systematic exploration of the properties of the Cube. First, we described the need for a notational shorthand for describing our approaches to solving the white face and layer.%
+In this section, we began a systematic exploration of the properties of the Cube. First, we described the need for a notational shorthand in solving the white face and layer.%
 \par
 The standard notation refers to each face \emph{as you look at it}, ignoring color, and describes a \(90^\circ\) clockwise turn of the face. So, \(FR\) means to first turn the front face \(90^\circ\) clockwise, then the right face \(90^\circ\) clockwise. We then noted that we can refer to a cubie by describing the face(s) on which it sits (using lowercase letters to distinguish cubies from faces): three letters refer to a corner, as it sits at the intersection of three faces; two letters refer to an edge, and one to a center.%
 \par
@@ -1085,7 +1117,7 @@ We concluded by introducing the idea of order, which will help us analyze and un
 \typeout{************************************************}
 %
 \begin{sectionptx}{Moving Cubies}{}{Moving Cubies}{}{}{x:section:sec-play-moving-cubies}
-\begin{assemblage}{Motivating Questions.}{g:assemblage:idm3404499704}%
+\begin{assemblage}{Motivating Questions.}{g:assemblage:idp105544711931664}%
 In this section, we will explore the following questions. %
 \begin{enumerate}
 \item{}How can we move the corner cubies so they are in the correct location?%
@@ -1095,7 +1127,7 @@ In this section, we will explore the following questions. %
 %
 \end{assemblage}
 \begin{introduction}{}%
-Our goal in this chapter is to explore, and eventually solve, the Cube. To do this, every cubie must be in the correct \emph{location} with the correct \emph{orientation}. In this section, we focus on two moves which will allow us to put the cubies in the correct location. Once they are in the correct location, we'll see moves in the next section which will enable us to orient them correctly, enabling us to (finally) solve the Cube.%
+Our goal in this chapter is to explore, and eventually solve, the Cube. To do this, every cubie must be in the correct \emph{location} with the correct \emph{orientation}. In this section, we focus on two moves which will allow us to put the cubies in the correct location. Once they are in the correct location, we'll see moves in the next section which will help us orient them correctly, enabling us to (finally) solve the Cube.%
 \end{introduction}%
 We begin by considering \hyperref[x:heuristic:cube-move-cr]{Cube Move~{\xreffont\ref{x:heuristic:cube-move-cr}}}.%
 \begin{heuristic}{Moving Corners.}{}{x:heuristic:cube-move-cr}%
@@ -1110,14 +1142,14 @@ The Cube move described in \hyperref[x:heuristic:cube-move-cr]{Cube Move~{\xreff
 %
 \begin{enumerate}
 \item{}By performing this move several times, identify on the blank Cube below what is happening to the front face of the Cube.%
-\item{}Using the cubie notation described in \hyperref[x:definition:def-cubie-names]{Definition~{\xreffont\ref{x:definition:def-cubie-names}}}, describe what is happens to the front face of the Cube after performing this move.%
+\item{}Using the cubie notation described in \hyperref[x:definition:def-cubie-names]{Definition~{\xreffont\ref{x:definition:def-cubie-names}}}, describe what happens to the front face of the Cube after performing this move.%
 \item{}Given what happens to the front face, exercise your human creativity and suggest a short name\slash{}abbreviation for this move.%
 \item{}What is the order of the move?%
 \item{}Practice the move until you can reliably execute it.%
 \end{enumerate}
 \begin{figureptx}{A blank cube.}{x:figure:fig-cube-move-cr}{}%
 \begin{image}{0.25}{0.5}{0.25}%
-\includegraphics[width=\linewidth]{./images/grey_cube.pdf}
+\includegraphics[width=\linewidth]{./images/grey_cube.svg}
 \end{image}%
 \tcblower
 \end{figureptx}%
@@ -1131,7 +1163,7 @@ In order to move the edges, it will be helpful to add one more type of fundament
 By \(S_R\) we mean a clockwise rotation of the (vertical) middle slice \emph{as we look at the right face}.%
 \begin{sidebyside}{3}{0.0416666666666667}{0.0416666666666667}{0.0833333333333333}%
 \begin{sbspanel}{0.3}[center]%
-\includegraphics[width=\linewidth]{./images/solved_cube.pdf}
+\includegraphics[width=\linewidth]{./images/solved_cube.svg}
 \end{sbspanel}%
 \begin{sbspanel}{0.15}[center]%
 %
@@ -1141,7 +1173,7 @@ By \(S_R\) we mean a clockwise rotation of the (vertical) middle slice \emph{as 
 %
 \end{sbspanel}%
 \begin{sbspanel}{0.3}[center]%
-\includegraphics[width=\linewidth]{./images/middle_slice.pdf}
+\includegraphics[width=\linewidth]{./images/middle_slice.svg}
 \end{sbspanel}%
 \end{sidebyside}%
 \end{definition}
@@ -1165,7 +1197,7 @@ The Cube move described in \hyperref[x:heuristic:cube-move-er]{Cube Move~{\xreff
 \end{enumerate}
 \begin{figureptx}{A blank cube.}{x:figure:fig-cube-move-e}{}%
 \begin{image}{0.25}{0.5}{0.25}%
-\includegraphics[width=\linewidth]{./images/grey_cube.pdf}
+\includegraphics[width=\linewidth]{./images/grey_cube.svg}
 \end{image}%
 \tcblower
 \end{figureptx}%
@@ -1182,39 +1214,39 @@ In this section, we focused on two moves that enable us to put our cubies in the
 \typeout{Exercises 1.3 Exercises}
 \typeout{************************************************}
 %
-\begin{exercises-subsection-numberless}{Exercises}{}{Exercises}{}{}{g:exercises:idm3404468648}
+\begin{exercises-subsection-numberless}{Exercises}{}{Exercises}{}{}{g:exercises:idp105544711955216}
 \begin{divisionexercise}{1}{}{}{x:exercise:exer-scrambled-edges}%
 Consider the state of Lila's Cube in \hyperref[x:figure:fig-scrambled-edges]{Figure~{\xreffont\ref{x:figure:fig-scrambled-edges}}}. She is so close to solving it! Can you help her finish?%
 \begin{figureptx}{}{x:figure:fig-scrambled-edges}{}%
 \begin{image}{0.25}{0.5}{0.25}%
-\includegraphics[width=\linewidth]{./images/scrambled_edges.pdf}
+\includegraphics[width=\linewidth]{./images/scrambled_edges.svg}
 \end{image}%
 \tcblower
 \end{figureptx}%
 \end{divisionexercise}%
-\begin{divisionexercise}{2}{}{}{g:exercise:idm3404466040}%
+\begin{divisionexercise}{2}{}{}{g:exercise:idp105544711957264}%
 Sam is nearly done with his Cube; it's pictured in \hyperref[x:figure:fig-edges-corners]{Figure~{\xreffont\ref{x:figure:fig-edges-corners}}}. Can you help him finish?%
 \begin{figureptx}{}{x:figure:fig-edges-corners}{}%
 \begin{image}{0.25}{0.5}{0.25}%
-\includegraphics[width=\linewidth]{./images/edges-corners.pdf}
+\includegraphics[width=\linewidth]{./images/edges-corners.svg}
 \end{image}%
 \tcblower
 \end{figureptx}%
 \end{divisionexercise}%
-\begin{divisionexercise}{3}{}{}{g:exercise:idm3404463928}%
+\begin{divisionexercise}{3}{}{}{g:exercise:idp105544711958672}%
 Thanks to your help, Lila solved her Cube in \hyperlink{x:exercise:exer-scrambled-edges}{Exercise~{\xreffont 1.3.1}}, but now she needs more help! Can you help her finish the Cube pictured in \hyperref[x:figure:fig-edge-on-bottom]{Figure~{\xreffont\ref{x:figure:fig-edge-on-bottom}}}?%
 \begin{figureptx}{}{x:figure:fig-edge-on-bottom}{}%
 \begin{image}{0.25}{0.5}{0.25}%
-\includegraphics[width=\linewidth]{./images/edge_on_bottom.pdf}
+\includegraphics[width=\linewidth]{./images/edge_on_bottom.svg}
 \end{image}%
 \tcblower
 \end{figureptx}%
 \end{divisionexercise}%
-\begin{divisionexercise}{4}{}{}{g:exercise:idm3404462568}%
+\begin{divisionexercise}{4}{}{}{g:exercise:idp105544713336720}%
 Consider the situation in \hyperref[x:figure:fig-scrambled-corners]{Figure~{\xreffont\ref{x:figure:fig-scrambled-corners}}}. Why will \hyperref[x:heuristic:cube-move-cr]{Cube Move~{\xreffont\ref{x:heuristic:cube-move-cr}}} alone be insufficient for putting the corners in their correct locations? Devise a strategy for putting the corners in the correct locations.%
 \begin{figureptx}{}{x:figure:fig-scrambled-corners}{}%
 \begin{image}{0.25}{0.5}{0.25}%
-\includegraphics[width=\linewidth]{./images/scrambled_corners.pdf}
+\includegraphics[width=\linewidth]{./images/scrambled_corners.svg}
 \end{image}%
 \tcblower
 \end{figureptx}%
@@ -1228,7 +1260,7 @@ Consider the situation in \hyperref[x:figure:fig-scrambled-corners]{Figure~{\xre
 \typeout{************************************************}
 %
 \begin{sectionptx}{Reorienting Cubies}{}{Reorienting Cubies}{}{}{x:section:sec-play-reorienting-cubies}
-\begin{assemblage}{Motivating Questions.}{g:assemblage:idm3404457816}%
+\begin{assemblage}{Motivating Questions.}{g:assemblage:idp105544713339664}%
 In this section, we will explore the following questions. %
 \begin{enumerate}
 \item{}How can we change the orientation of the corner cubies?%
@@ -1238,9 +1270,9 @@ In this section, we will explore the following questions. %
 %
 \end{assemblage}
 \begin{introduction}{}%
-In \hyperref[x:section:sec-play-moving-cubies]{Section~{\xreffont\ref{x:section:sec-play-moving-cubies}}}, we considered ways of moving certain edge and corner cubies. The key that allows us to use \hyperref[x:heuristic:cube-move-cr]{Cube Move~{\xreffont\ref{x:heuristic:cube-move-cr}}} and \hyperref[x:heuristic:cube-move-er]{Cube Move~{\xreffont\ref{x:heuristic:cube-move-er}}} to put your cubies in the correct location is that, when executed correctly, they affect precisely three cubies each, leaving the rest in the same place with the same orientation at the end of the move.%
+In \hyperref[x:section:sec-play-moving-cubies]{Section~{\xreffont\ref{x:section:sec-play-moving-cubies}}}, we considered ways of moving certain edge and corner cubies. The key that allows us to use \hyperref[x:heuristic:cube-move-cr]{Cube Move~{\xreffont\ref{x:heuristic:cube-move-cr}}} and \hyperref[x:heuristic:cube-move-er]{Cube Move~{\xreffont\ref{x:heuristic:cube-move-er}}} to put your cubies in the correct location is that each move affects precisely three cubies. All others are left unmoved. By using just \hyperref[x:heuristic:cube-move-cr]{Cube Move~{\xreffont\ref{x:heuristic:cube-move-cr}}} and \hyperref[x:heuristic:cube-move-er]{Cube Move~{\xreffont\ref{x:heuristic:cube-move-er}}}, we can thus put each cubie in the correct location. However, even if a cubie is in the correct location, it may be that its stickers are on the wrong faces\textemdash{}in this case, it needs to be \emph{reoriented}.%
 \par
-As we embark on learning our last two Cube moves, it's worth taking some time to practice what we already know. Each unsolved Cube is a puzzle, solvable by clever application of these moves.%
+In this section, we will see how to reorient cubies once they are in the correct location. To do so, we'll learn two moves: one that reorients corners, and one that reorients edges. Once we are able to put each cubie in the correct location, and then orient it correctly, each scrambled Cube becomes a puzzle, solvable by clever application of these moves.%
 \end{introduction}%
 We begin by exploring a move that reorients two corners.%
 \begin{heuristic}{}{}{x:heuristic:cube-move-co}%
@@ -1263,7 +1295,7 @@ The Cube move described in \hyperref[x:heuristic:cube-move-co]{Cube Move~{\xreff
 \end{enumerate}
 \begin{figureptx}{A blank cube.}{x:figure:fig-cube-move-e}{}%
 \begin{image}{0.25}{0.5}{0.25}%
-\includegraphics[width=\linewidth]{./images/grey_cube.pdf}
+\includegraphics[width=\linewidth]{./images/grey_cube.svg}
 \end{image}%
 \tcblower
 \end{figureptx}%
@@ -1289,12 +1321,12 @@ The Cube move described in \hyperref[x:heuristic:cube-move-co]{Cube Move~{\xreff
 \end{enumerate}
 \begin{figureptx}{A blank cube.}{x:figure:fig-cube-move-e}{}%
 \begin{image}{0.25}{0.5}{0.25}%
-\includegraphics[width=\linewidth]{./images/grey_cube.pdf}
+\includegraphics[width=\linewidth]{./images/grey_cube.svg}
 \end{image}%
 \tcblower
 \end{figureptx}%
 \end{exploration}%
-\begin{assemblage}{Solving the Cube.}{g:assemblage:idm3404437512}%
+\begin{assemblage}{Solving the Cube.}{g:assemblage:idp105544713356560}%
 When you can consistently perform \hyperref[x:heuristic:cube-move-cr]{Cube Move~{\xreffont\ref{x:heuristic:cube-move-cr}}}, \hyperref[x:heuristic:cube-move-co]{Cube Move~{\xreffont\ref{x:heuristic:cube-move-co}}}, \hyperref[x:heuristic:cube-move-er]{Cube Move~{\xreffont\ref{x:heuristic:cube-move-er}}}, and \hyperref[x:heuristic:cube-move-eo]{Cube Move~{\xreffont\ref{x:heuristic:cube-move-eo}}}, you can use them to solve the Cube. You can use any strategy you want, but here is one to consider.%
 \begin{enumerate}
 \item{}Put the corners in the correct \emph{location}.%
@@ -1324,55 +1356,47 @@ There are advantages and disadvantages to all solution methods. Advantages to co
 \typeout{Exercises 1.4 Exercises}
 \typeout{************************************************}
 %
-\begin{exercises-subsection-numberless}{Exercises}{}{Exercises}{}{}{g:exercises:idm3404426568}
-\begin{divisionexercise}{1}{}{}{g:exercise:idm3404426344}%
+\begin{exercises-subsection-numberless}{Exercises}{}{Exercises}{}{}{g:exercises:idp105544713365008}
+\begin{divisionexercise}{1}{}{}{g:exercise:idp105544713365520}%
 Sam is nearly done with his Cube! Which of the Cube moves from this section does he need? How many times will he have to perform it?%
 \begin{figureptx}{}{x:figure:fig-exercise-co}{}%
 \begin{image}{0.25}{0.5}{0.25}%
-\includegraphics[width=\linewidth]{./images/co.pdf}
+\includegraphics[width=\linewidth]{./images/co.svg}
 \end{image}%
 \tcblower
 \end{figureptx}%
 \end{divisionexercise}%
-\begin{divisionexercise}{2}{}{}{g:exercise:idm3404424808}%
+\begin{divisionexercise}{2}{}{}{g:exercise:idp105544713366544}%
 Lila is nearly done with her Cube! Which move from this section will be helpful? How should she use it?%
 \begin{figureptx}{}{x:figure:fig-exercise-eo}{}%
 \begin{image}{0.25}{0.5}{0.25}%
-\includegraphics[width=\linewidth]{./images/eo-exer.pdf}
+\includegraphics[width=\linewidth]{./images/eo-exer.svg}
 \end{image}%
 \tcblower
 \end{figureptx}%
 \end{divisionexercise}%
-\begin{divisionexercise}{3}{}{}{g:exercise:idm3404423256}%
+\begin{divisionexercise}{3}{}{}{g:exercise:idp105544713367696}%
 Sam has gotten himself into a bit of a pickle. How can he apply our moves to solve his Cube?%
 \begin{figureptx}{}{x:figure:fig-exercise-co-move}{}%
 \begin{image}{0.25}{0.5}{0.25}%
-\includegraphics[width=\linewidth]{./images/co02.pdf}
+\includegraphics[width=\linewidth]{./images/co02.svg}
 \end{image}%
 \tcblower
 \end{figureptx}%
 \end{divisionexercise}%
-\begin{divisionexercise}{4}{}{}{g:exercise:idm3404421720}%
+\begin{divisionexercise}{4}{}{}{g:exercise:idp105544713303184}%
 This configuration is known as the \terminology{superflip}. Describe what you see. Can you achieve this on your Cube?%
 \begin{figureptx}{}{x:figure:fig-exer-superflip}{}%
 \begin{image}{0.25}{0.5}{0.25}%
-\includegraphics[width=\linewidth]{./images/superflip.pdf}
+\includegraphics[width=\linewidth]{./images/superflip.svg}
 \end{image}%
 \tcblower
 \end{figureptx}%
 \end{divisionexercise}%
 \end{exercises-subsection-numberless}
 \end{sectionptx}
-%
-%
-\typeout{************************************************}
-\typeout{References 1.5 References}
-\typeout{************************************************}
-%
-\begin{references-section}{References}{}{References}{}{}{g:references:idm3404458328}
-F. E. Su, C. Jackson, \emph{Mathematics for Human Flourishing}. Yale University Press, 2020.\end{references-section}
 \end{chapterptx}
- \end{partptx}
+\end{partptx}
 %
 %
 \typeout{************************************************}
@@ -1386,7 +1410,7 @@ Mathematics is often thought of as one of the last bastions of objective truth. 
 \par
 In this unit, we'll explore inductive and deductive reasoning, as well as formal logic. We'll explore the shortcomings of mathematical thinking in addition to its strengths.%
 \par
-This chapter is heavily influenced by \emph{\href{https://www.artofmathematics.org/books/truth-reasoning-certainty-and-proof}{Discovering the Art of Mathematics: Truth, Reasoning, Certainty, and Proof}} by Fleron, Hotchkiss, Ecke, and von Renesse.%
+This chapter is heavily influenced by \emph{\href{https://www.artofmathematics.org/books/truth-reasoning-certainty-and-proof}{Discovering the Art of Mathematics: Truth, Reasoning, Certainty, and Proof}\footnote{\nolinkurl{https://www.artofmathematics.org/books/truth-reasoning-certainty-and-proof}\label{g:fn:idp105544713309200}}} by Fleron, Hotchkiss, Ecke, and von Renesse.%
  %
 %
 \typeout{************************************************}
@@ -1405,8 +1429,8 @@ WRITE MORE HERE%
 \typeout{Section 2.1 Inductive Reasoning}
 \typeout{************************************************}
 %
-\begin{sectionptx}{Inductive Reasoning}{}{Inductive Reasoning}{}{}{g:section:idm3404410552}
-\begin{assemblage}{Motivating Questions.}{g:assemblage:idm3404410136}%
+\begin{sectionptx}{Inductive Reasoning}{}{Inductive Reasoning}{}{}{g:section:idp105544713311760}
+\begin{assemblage}{Motivating Questions.}{g:assemblage:idp105544713312528}%
 In this section, we will explore the following questions. %
 \begin{enumerate}
 \item{}What is truth? What is fact? Is there a difference?%
@@ -1415,17 +1439,15 @@ In this section, we will explore the following questions. %
 %
 \end{assemblage}
 We'll begin by attempting to define \emph{truth} and \emph{fact}, and compare them. We'll then explore \emph{inductive reasoning} in depth, considering its benefits shortcomings.%
-\begin{principle}{}{}{g:principle:idm3404406616}%
+\begin{principle}{}{}{g:principle:idp105544713315600}%
 What is truth? What is fact? How are the two concepts related? How are they different? Under which category does the sentence \(1+1=2\) fall?%
 \end{principle}
 \begin{activity}{What's my world?}{x:activity:act-whats-my-world}%
 In the game \emph{What's my World?}, one person thinks of a single law that defines a hypothetical world (e.g., ``My world does not contain things that start with the letter 'C'.''). The other players attempt to guess this governing law by taking turns asking questions of the creator, such as ``Does your world contain dogs? Does it contain cats?'' and so on. When one of the guessers believe they can identify the governing law, they ask the creator.%
 \par
 Play a few rounds of this game, taking turns in the role of creator. \emph{Other than asking the creator directly}, how could you be \emph{certain} that you had determined the law of the world?%
-\par\smallskip%
-\noindent\textbf{\blocktitlefont Solution}.\hypertarget{g:solution:idm3404400472}{}\quad{}We played various rounds of this game, but the only way we identified that we could know \emph{for certain} that we had guessed the governing law correctly is by asking the creator. We can amass evidence and develop facts and a theory based on those facts, but we can only know for certain by asking the creator directly.%
 \end{activity}%
-\begin{definition}{}{g:definition:idm3404399208}%
+\begin{definition}{}{g:definition:idp105544713319696}%
 \index{inductive reasoning}%
 \terminology{Inductive reasoning} is the process of drawing general conclusions from particular instances, generally known as \terminology{data}.%
 \end{definition}
@@ -1443,7 +1465,7 @@ Let's play a game with dots and lines. We'll start with at least two dots (thoug
 So, if I label four dots as \(X, Y, Z, W\), \emph{one possible} drawing is given in \hyperref[x:figure:fig-dot-game-example]{Figure~{\xreffont\ref{x:figure:fig-dot-game-example}}}.%
 \begin{figureptx}{}{x:figure:fig-dot-game-example}{}%
 \begin{image}{0.325}{0.35}{0.325}%
-\includegraphics[width=\linewidth]{./images/dot-game-example.pdf}
+\includegraphics[width=\linewidth]{./images/dot-game-example.svg}
 \end{image}%
 \tcblower
 \end{figureptx}%
@@ -1462,7 +1484,7 @@ Now consider the following questions.%
 \item{}Based on your work here, do you think it will always be possible to draw these pictures so that none of the lines cross? Explain your thinking.%
 \end{enumerate}
 \end{exploration}%
-\begin{principle}{}{}{g:principle:idm3404383192}%
+\begin{principle}{}{}{g:principle:idp105544713332240}%
 Based on our work in this section, what are some strengths of inductive reasoning? What are some possible pitfalls? How can we minimize these potential downsides?%
 \end{principle}
 %
@@ -1471,8 +1493,8 @@ Based on our work in this section, what are some strengths of inductive reasonin
 \typeout{Exercises 2.1 Exercises}
 \typeout{************************************************}
 %
-\begin{exercises-subsection-numberless}{Exercises}{}{Exercises}{}{}{g:exercises:idm3404382488}
-\begin{divisionexercise}{1}{}{}{g:exercise:idm3404382360}%
+\begin{exercises-subsection-numberless}{Exercises}{}{Exercises}{}{}{g:exercises:idp105544713333008}
+\begin{divisionexercise}{1}{}{}{g:exercise:idp105544713333520}%
 Do some internet research on the \terminology{Twin Prime Conjecture}. What is it? When was it first formulated? Is it true? Likely true?%
 \end{divisionexercise}%
 \end{exercises-subsection-numberless}
@@ -1483,8 +1505,8 @@ Do some internet research on the \terminology{Twin Prime Conjecture}. What is it
 \typeout{Section 2.2 Deductive Reasoning}
 \typeout{************************************************}
 %
-\begin{sectionptx}{Deductive Reasoning}{}{Deductive Reasoning}{}{}{g:section:idm3404410424}
-\begin{assemblage}{Motivating Questions.}{g:assemblage:idm3404381000}%
+\begin{sectionptx}{Deductive Reasoning}{}{Deductive Reasoning}{}{}{g:section:idp105544713334288}
+\begin{assemblage}{Motivating Questions.}{g:assemblage:idp105544713335056}%
 In this section, we will explore the following questions. %
 \begin{enumerate}
 \item{}What is deductive reasoning? How does it differ from inductive reasoning?%
@@ -1494,8 +1516,8 @@ In this section, we will explore the following questions. %
 %
 \end{assemblage}
 Formal mathematical reasoning is deductive (defined momentarily), and begins with \terminology{axioms}, which are statements that should be self-evident and taken to be true. Note that while axioms are not always explicitly stated, they \emph{can} be when necessary.%
-\begin{investigation}{}{g:investigation:idm3404377576}%
-The most famous set of axioms are Euclid's postulates for geometry, defined in \emph{\href{https://en.wikipedia.org/wiki/Euclid's_Elements}{The Elements}}, which not only shaped thousands of years of geometry, but solidified the deductive approach to doing and explaining mathematics that we will explore in this unit. At the beginning of Book I of \emph{The Elements}, Euclid identified five postulates and five axioms.%
+\begin{investigation}{}{g:investigation:idp105544713403280}%
+The most famous set of axioms are Euclid's postulates for geometry, defined in \emph{\href{https://en.wikipedia.org/wiki/Euclid's_Elements}{The Elements}\footnotemark{}}, which not only shaped thousands of years of geometry, but solidified the deductive approach to doing and explaining mathematics that we will explore in this unit. At the beginning of Book I of \emph{The Elements}, Euclid identified five postulates and five axioms.%
 \par
 Euclid's \emph{postulates} are:%
 %
@@ -1523,12 +1545,9 @@ The desired qualities of a system of axioms are:%
 \item{}\terminology{completeness}: the system can answer every question we can think to ask%
 \end{enumerate}
 In your groups, discuss Euclid's postulates and common notions, perhaps in view of the desired qualities of an axiomatic system. What strikes you as being interesting or noteworthy? Make a list of at least 2-3 observations. Then consider: on what axioms or assumptions do you make decisions (e.g., about how to spend your time, resources, etc)?%
-\par\smallskip%
-\noindent\textbf{\blocktitlefont Solution}.\hypertarget{g:solution:idm3404366856}{}\quad{}Axioms are unproved, self-evident propositions on top of which logical deductions can be made, and entire fields of study rest. They should be as simple as possible; all except Euclid's fifth postulate (the parallel postulate) are considered quite straightforward. The parallel postulate has a fascinating history; it turns out be independent of the other postulates, and one can create new geometries (on the surface of a sphere, for instance), by rejecting it.%
-\par
-There are lots of unproved assumptions that we make in life. Many Christian mathematicians make explicit that they view the authority of Scripture as an axiom; they can't use logic to conclusively deduce that Scripture is the only authority for Christian faith and life, but they \emph{assume} it in order to draw conclusions \emph{about} faith and life.%
 \end{investigation}%
-The process of \terminology{deductive reasoning} in mathematics begins from a set of generally agreed-upon axioms of \href{https://en.wikipedia.org/wiki/Zermelo–Fraenkel_set_theory}{set theory}\footnote{It should be noted that there is disagreement about the Axiom of Choice, mostly due to some of its surprising consequences.\label{g:fn:idm3404363384}} and uses logic to make inevitable conclusions from those axioms. These conclusions are generally called \terminology{theorems}. They are usually given as conditional statements of the form ``If \(P\), then \(Q\),'' where \(P\) and \(Q\) are sensible\begin{aside}{}{g:aside:idm3404360200}%
+\footnotetext[1]{\nolinkurl{https://en.wikipedia.org/wiki/Euclid's_Elements}\label{g:fn:idp105544713404304}}%
+The process of \terminology{deductive reasoning} in mathematics begins from a set of generally agreed-upon axioms of \href{https://en.wikipedia.org/wiki/Zermelo–Fraenkel_set_theory}{set theory}\footnote{\nolinkurl{https://en.wikipedia.org/wiki/Zermelo–Fraenkel_set_theory}\label{g:fn:idp105544713414288}}\footnote{It should be noted that there is disagreement about the Axiom of Choice, mostly due to some of its surprising consequences.\label{g:fn:idp105544713414544}} and uses logic to make inevitable conclusions from those axioms. These conclusions are generally called \terminology{theorems}. They are usually given as conditional statements of the form ``If \(P\), then \(Q\),'' where \(P\) and \(Q\) are sensible\begin{aside}{}{g:aside:idp105544713417360}%
 \end{aside}
  statements. Moreover, since most deductive statements are presented in conditional form, their scope is generally limited. That is, the statement ``if it is Monday, then we have math class'' is only making a claim about what happens on Mondays; it says nothing whatsoever about any other day of the week. We will explore the consequences of this more in \hyperref[x:chapter:chap-logic]{Chapter~{\xreffont\ref{x:chapter:chap-logic}}}.%
 \par
@@ -1561,22 +1580,19 @@ There are several observations which are worth a moment of our time in the proof
 \item{}Finally, note that our proof concludes with a conclusion: all kittens with whiskers are teachable. This is good practice and sends an unmistakable signal to the reader that you are done.%
 \end{itemize}
 Now, prove the theorems that follow using \hyperref[x:axiom:axiom-kittens]{Axiom~{\xreffont\ref{x:axiom:axiom-kittens}}}.%
-\begin{theorem}{}{}{g:theorem:idm3404342920}%
+\begin{theorem}{}{}{g:theorem:idp105544713430288}%
 If a kitten has green eyes, then it does not love fish.%
 \end{theorem}
-\begin{theorem}{}{}{g:theorem:idm3404343336}%
+\begin{theorem}{}{}{g:theorem:idp105544713430800}%
 If a kitten has a tail, then it does not have green eyes.%
 \end{theorem}
-\begin{proof}{}{g:proof:idm3404341688}
-TBD! We tried some things, but there are issues. We'll look at it again after we study \hyperref[x:definition:def-implications]{Definition~{\xreffont\ref{x:definition:def-implications}}}.%
-\end{proof}
-\begin{theorem}{}{}{g:theorem:idm3404340584}%
+\begin{theorem}{}{}{g:theorem:idp105544713432080}%
 Every kitten with green eyes will play with a gorilla.%
 \end{theorem}
-\begin{activity}{}{g:activity:idm3404339976}%
+\begin{activity}{}{g:activity:idp105544713432592}%
 Compare and contrast the structures of the proofs of the preceding theorems. Can you clarify the general reasoning patterns you used to prove them?%
 \end{activity}%
-\begin{principle}{}{}{g:principle:idm3404339288}%
+\begin{principle}{}{}{g:principle:idp105544713433104}%
 We have now explored both inductive and deductive reasoning. How are they similar? How are they different? How might you decide which type of reasoning to employ in a given situation? What are their strengths and weaknesses?%
 \end{principle}
 \begin{conclusion}{Conclusion.}%
@@ -1592,8 +1608,8 @@ A second drawback having to do with scope concerns the premises of a conditional
 \typeout{Exercises 2.2 Exercises}
 \typeout{************************************************}
 %
-\begin{exercises-subsection-numberless}{Exercises}{}{Exercises}{}{}{g:exercises:idm3404335512}
-\begin{divisionexercise}{1}{}{}{g:exercise:idm3404335288}%
+\begin{exercises-subsection-numberless}{Exercises}{}{Exercises}{}{}{g:exercises:idp105544713370256}
+\begin{divisionexercise}{1}{}{}{g:exercise:idp105544713370768}%
 Invent one or two additional theorems that can be deduced from \hyperref[x:axiom:axiom-kittens]{Axiom~{\xreffont\ref{x:axiom:axiom-kittens}}}. Prove them.%
 \end{divisionexercise}%
 \end{exercises-subsection-numberless}
@@ -1618,7 +1634,7 @@ It is this method of calculating that we explore in this chapter.%
 \typeout{************************************************}
 %
 \begin{sectionptx}{Logical Connectives and Rules of Inference}{}{Logical Connectives and Rules of Inference}{}{}{x:section:sec-connectives}
-\begin{assemblage}{Motivating Questions.}{g:assemblage:idm3404330536}%
+\begin{assemblage}{Motivating Questions.}{g:assemblage:idp105544713375248}%
 In this section, we will explore the following questions. %
 \begin{enumerate}
 \item{}What is a proposition?%
@@ -1628,7 +1644,7 @@ In this section, we will explore the following questions. %
 %
 \end{assemblage}
 In the late 19th and early 20th centuries, mathematicians began mathematize and formalize logic itself. Today we begin to explore these foundational issues. We'll start with some definitions.%
-\begin{definition}{}{g:definition:idm3404327608}%
+\begin{definition}{}{g:definition:idp105544713377424}%
 \index{proposition}%
 \index{propositionelementary}%
 \index{logical connectives}%
@@ -1646,20 +1662,9 @@ Determine which of the following are propositions (elementary or otherwise). If 
 \item{}A group of crows is called a murder.%
 \item{}Everyone likes cats.%
 \end{enumerate}
-\par\smallskip%
-\noindent\textbf{\blocktitlefont Solution}.\hypertarget{g:solution:idm3404321192}{}\quad{}%
-\begin{enumerate}
-\item{}This is a true proposition.%
-\item{}This is a false proposition. As an example, \(\sqrt{21}\) is not a whole number.%
-\item{}This one is harder (though it's an easy "true" from your instructor). But it's likely either a false proposition (due to the Packers not having the worst record in the league) or not a proposition at all, as agreement with the sentence is a matter of subjective taste.%
-\item{}This is an interrogative, not a declaration.%
-\item{}This is a declarative sentence, but it's neither true nor false; it's a paradox.%
-\item{}This is a true proposition! Who knew?%
-\item{}This is a false proposition.%
-\end{enumerate}
 \end{activity}%
 Now that we have a sense for what a proposition is, we'll take old propositions and make new ones using \emph{logical connectives}. In order to describe how the connectives work, mathematicians define the truth values of the new propositions \emph{formally}\textemdash{}that is, without regard to the content of the propositions themselves\textemdash{}in terms of the possible combinations of truth values from the constituent propositions. This gives us an abstract way of considering the truth values of propositions.%
-\begin{definition}{}{g:definition:idm3404315720}%
+\begin{definition}{}{g:definition:idp105544713386512}%
 \index{negation}%
 \index{logical connectivesnegation}%
 Suppose \(P\) and \(Q\) are statements (e.g., like those in \hyperref[x:activity:act-propositions]{Activity~{\xreffont\ref{x:activity:act-propositions}}}). The \terminology{negation} of \(P\), denoted \(\neg P\) and read "not \(P\)", has the opposite truth value of \(P\) and is defined by \hyperref[x:table:table-negation]{Table~{\xreffont\ref{x:table:table-negation}}}.%
@@ -1674,7 +1679,7 @@ Suppose \(P\) and \(Q\) are statements (e.g., like those in \hyperref[x:activity
 }%
 \end{tableptx}%
 \end{definition}
-\begin{definition}{}{g:definition:idm3404304840}%
+\begin{definition}{}{g:definition:idp105544713395984}%
 \index{and}%
 \index{logical connectivesand}%
 The \terminology{conjunction} of \(P\) and \(Q\), denoted \(P \land Q\) and read ``\(P\) and \(Q\)'', is true when both \(P\) and \(Q\) are true, and false otherwise. See \hyperref[x:table:table-and]{Table~{\xreffont\ref{x:table:table-and}}}.%
@@ -1691,7 +1696,7 @@ The \terminology{conjunction} of \(P\) and \(Q\), denoted \(P \land Q\) and read
 }%
 \end{tableptx}%
 \end{definition}
-\begin{definition}{}{g:definition:idm3404287176}%
+\begin{definition}{}{g:definition:idp105544713213328}%
 \index{or}%
 \index{logical connectivesor}%
 The \terminology{disjunction} of \(P\) and \(Q\), denoted \(P \lor Q\) and read ``\(P\) or \(Q\)'', is true when \(P\) is true, \(Q\) is true, or both are true, and false otherwise. See \hyperref[x:table:table-or]{Table~{\xreffont\ref{x:table:table-or}}}.%
@@ -1708,7 +1713,7 @@ The \terminology{disjunction} of \(P\) and \(Q\), denoted \(P \lor Q\) and read 
 }%
 \end{tableptx}%
 \end{definition}
-\begin{activity}{}{g:activity:idm3404270232}%
+\begin{activity}{}{g:activity:idp105544713227280}%
 Meaningfully negate the following propositions (without just saying "It is not the case that...").%
 %
 \begin{enumerate}
@@ -1724,21 +1729,13 @@ Meaningfully negate the following propositions (without just saying "It is not t
 \item{}17 is a composite number.%
 \end{enumerate}
 \end{activity}%
-\begin{exploration}{}{g:exploration:idm3404267000}%
+\begin{exploration}{}{g:exploration:idp105544713230352}%
 Determine the truth values of the following propositions.%
 %
 \begin{enumerate}
 \item{}Math 149 meets on Mondays and the capital of Iowa is Des Moines.%
 \item{}Math 149 meets on Mondays and the capital of Minnesota is Minneapolis.%
 \item{}Math 149 meets on Mondays or the capital of Minnesota is Minneapolis.%
-\end{enumerate}
-\par\smallskip%
-\noindent\textbf{\blocktitlefont Solution}.\hypertarget{g:solution:idm3404265432}{}\quad{}We want to emphasize that the truth of the conjunction or disjunction depends \emph{only on the truth of the constituent statements}. It doesn't matter whether it makes sense semantically to combine the constituents this way.%
-%
-\begin{enumerate}
-\item{}This is true, as both constituents are true.%
-\item{}This is false; the capital of Minnesota is St. Paul, not Minneapolis.%
-\item{}This is true, since it's a disjunctive statement and one of the constituents is true (Math 149 meets on Mondays).%
 \end{enumerate}
 \end{exploration}%
 The last connective we'll consider (for now) is \emph{implication}.%
@@ -1761,27 +1758,27 @@ Let \(P\) and \(Q\) be statements. The \terminology{implication}, "\(P\) implies
 }%
 \end{tableptx}%
 \end{definition}
-\begin{exploration}{}{g:exploration:idm3404244264}%
+\begin{exploration}{}{g:exploration:idp105544713183376}%
 Determine the truth values of the following statements. Identify which row of \hyperref[x:table:table-implication]{Table~{\xreffont\ref{x:table:table-implication}}} you are in.%
 %
 \begin{enumerate}
-\item{}If \(x\) is negative, then \(-5x\) is positive.%
+\item{}If \(x\) is a negative real number, then \(-5x\) is a positive real number.%
 \item{}If we have Math 149 today, then it is Wednesday.%
 \item{}If \(9 > 5\), then dogs do not have wings.%
-\item{}If \(2=4\), then Calvin Coolidge is our greatest president.%
+\item{}If \(2=4\), then dogs do have wings.%
 \end{enumerate}
 \end{exploration}%
 The formalization of mathematical logic ramps up a bit when we consider conditional statements. It is important to remember that we define the truth value of the proposition \(P \Rightarrow Q\) \emph{purely formally} based on the structure of the conditional statement and the truth values of the constituents \(P\) and \(Q\). There need not be a causal relationship between \(P\) and \(Q\)!%
 \par
-The last two rows of \hyperref[x:table:table-implication]{Table~{\xreffont\ref{x:table:table-implication}}} are also worth a moment of our time. They state that if the statement \(P\)\footnote{Often called the \emph{antecedent.}\label{g:fn:idm3404235480}} is false, then the \emph{implication} \(P\Rightarrow Q\) is \emph{true}. Note that this is different than saying that \(Q\)\footnote{Often called the \emph{consequent.}\label{g:fn:idm3404233160}} is true. When the implication \(P\Rightarrow Q\) is true because \(P\) is false, we usually say that \(P\Rightarrow Q\) is \terminology{vacuously true}.%
-\begin{activity}{}{g:activity:idm3404236664}%
+The last two rows of \hyperref[x:table:table-implication]{Table~{\xreffont\ref{x:table:table-implication}}} are also worth a moment of our time. They state that if the statement \(P\)\footnote{Often called the \emph{antecedent.}\label{g:fn:idp105544713190544}} is false, then the \emph{implication} \(P\Rightarrow Q\) is \emph{true}. Note that this is different than saying that \(Q\)\footnote{Often called the \emph{consequent.}\label{g:fn:idp105544713192592}} is true. When the implication \(P\Rightarrow Q\) is true because \(P\) is false, we usually say that \(P\Rightarrow Q\) is \terminology{vacuously true}.%
+\begin{activity}{}{g:activity:idp105544713194768}%
 Suppose Dr. Janssen promises that, if everyone has solved their Rubik's Cube by Friday, then he will bring Defender sandwiches (on pretzel buns, with everything, as God intended) to class\footnotemark{}. Unfortunately, a few students do not solve the Cube by Friday, so Dr. Janssen does not bring Defenders.%
 \par
 Decide the truth value of the implication "If everyone can solve their Cubes by Friday, Dr. Janssen will bring Defenders to class". How does this help you think about vacuous truth?%
 \end{activity}%
-\footnotetext[3]{This is purely hypothetical.\label{g:fn:idm3404229848}}%
+\footnotetext[3]{This is purely hypothetical.\label{g:fn:idp105544713195536}}%
 An important tool in our logical toolkit is one you likely employed in the theorems you deduced from \hyperref[x:axiom:axiom-kittens]{Axiom~{\xreffont\ref{x:axiom:axiom-kittens}}}.%
-\begin{exploration}{}{g:exploration:idm3404228040}%
+\begin{exploration}{}{g:exploration:idp105544713196944}%
 Let \(P\) and \(Q\) be statements. The \terminology{contrapositive} of the implication \(P\Rightarrow Q\) is the implication \((\neg Q) \Rightarrow (\neg P)\). Complete \hyperref[x:table:table-contrap]{Table~{\xreffont\ref{x:table:table-contrap}}}. Is the contrapositive equivalent to anything we've looked at thus far?%
 \begin{tableptx}{\textbf{The contrapositive of \(P\Rightarrow Q\).}}{x:table:table-contrap}{}%
 \centering%
@@ -1808,7 +1805,7 @@ Let \(P\) and \(Q\) be statements. The \terminology{contrapositive} of the impli
 }%
 \end{tableptx}%
 \end{exploration}%
-\begin{activity}{}{g:activity:idm3404202040}%
+\begin{activity}{}{g:activity:idp105544713282832}%
 Write the contrapositives of the following statements. Be ready to explain why the contrapositives are equivalent to the original implications.%
 %
 \begin{enumerate}
@@ -1840,11 +1837,12 @@ A closely related rule of inference is known as \terminology{modus tollens}, and
 \typeout{Exercises 3.1 Exercises}
 \typeout{************************************************}
 %
-\begin{exercises-subsection-numberless}{Exercises}{}{Exercises}{}{}{g:exercises:idm3404192696}
-\begin{divisionexercise}{1}{}{}{g:exercise:idm3404192568}%
-an awesome exercise written by Anika%
+\begin{exercises-subsection-numberless}{Exercises}{}{Exercises}{}{}{g:exercises:idp105544713291280}
+\begin{divisionexercise}{1}{}{}{g:exercise:idp105544713291792}%
+%
 \end{divisionexercise}%
-\begin{divisionexercise}{2}{}{}{g:exercise:idm3404191976}%
+\begin{divisionexercise}{2}{}{}{g:exercise:idp105544713292560}%
+%
 \end{divisionexercise}%
 \end{exercises-subsection-numberless}
 \end{sectionptx}
@@ -1855,7 +1853,7 @@ an awesome exercise written by Anika%
 \typeout{************************************************}
 %
 \begin{sectionptx}{Formal Systems and Incompleteness}{}{Formal Systems and Incompleteness}{}{}{x:section:sec-formal-systems-incompleteness}
-\begin{assemblage}{Motivating Questions.}{g:assemblage:idm3404191416}%
+\begin{assemblage}{Motivating Questions.}{g:assemblage:idp105544713294224}%
 In this section, we will explore the following questions. %
 \begin{enumerate}
 \item{}What are formal systems?%
@@ -1878,17 +1876,13 @@ We have seen thus far a way of formalizing logic so that we can think about the 
 along with a \terminology{logical calculus}, which govern the rules of inference that can be used on the axioms to deduce new theorems.%
 \par
 Further, mathematicians had long assumed there were consistent foundational axioms for their discipline. Newly discovered paradoxes challenged this view.%
-\begin{exploration}{Russell's Paradox.}{g:exploration:idm3404185864}%
+\begin{exploration}{Russell's Paradox.}{g:exploration:idp105544713298960}%
 In a certain town lives a barber who only cuts the hair of \emph{all} people who do not cut their own hair. Who cuts the barber's hair?%
-\par\smallskip%
-\noindent\hypertarget{g:solution:idm3404184600}{}This is a paradox: if the barber cuts his own hair, we reach a contradiction, as he only cuts the hair of those who do not cut their own hair. On the other hand, if the barber does not cut his own hair, he does by definition.%
-\par
-This sort of self-referential paradox is exactly the sort that we'll study later in this section that led to the foundational crisis referred to in the section title.%
 \end{exploration}%
 Two main schools of mathematical philosophy sprung up in the wake of these discoveries. The \terminology{formalists} argued that statements of mathematics and logic are really just about the rules and consequences for manipulating symbols and strings of letters. That is, mathematics does not have a subject matter at all-{}-{}just empty symbols, which may be given an interpretation in particular situations and thus have meaning.%
 \par
 The response came from the \terminology{intuitionists}. Intuitionism is an approach that consideres mathematics to be purely the result of the constructive mental activity of humans rather than the discovery of any principles which we can reasonably claim exist in an objective reality. Thus, in some sense, mathematics is up to whoever is doing the mathematics. To the intuitionists, the formalists were reducing mathematics to a meaningless game with symbols.%
-\begin{principle}{}{}{g:principle:idm3404181224}%
+\begin{principle}{}{}{g:principle:idp105544713301392}%
 Do you resonate more with a formalist approach to mathematics, or an intuitionist approach? Relatedly: do you believe mathematics is something humans invent, or something we discover in the world around us? Why?%
 \end{principle}
 In 1900, at the second International Congress of Mathematicians in Paris, the esteemed mathematician David Hilbert posed 23 theretofore unanswered problems in mathematics that he thought were important to guide the development of mathematics in the 20th century. We've already seen one of them (the 8th): the Goldbach conjecture. Most of Hilbert's problems have been solved, but three are unresolved, two are thought to be too vague to ever get consensus on what a solution would look like, and one is the subject of much debate.%
@@ -1908,10 +1902,10 @@ That is, Hilbert wanted mathematicians to prove that the axioms on which mathema
 In \hyperref[x:subsection:subsec-formal-systems]{Subsection~{\xreffont\ref{x:subsection:subsec-formal-systems}}}, we learned about the push from mathematicians in the late 19th\slash{}early 20th century were trying to show that the axioms, the very foundations on which mathematics was built, were both \emph{complete} (the truth of every sensible statement could be decided via deductions from the axioms) and \emph{consistent} (one could never deduce contradictory statements from the axioms).%
 \par
 For reasons which are hopefully clear, we'll assume that the axioms are consistent, that is, no contradictions will arise from them. (If contradictions \emph{can} arise, we are in trouble indeed.) But if the axioms are consistent, can it be shown that they're complete? To answer this question, we dive into the realm of infinity.%
-\begin{definition}{}{g:definition:idm3404174680}%
+\begin{definition}{}{g:definition:idp105544713240080}%
 Let \(S\) and \(T\) be \terminology{sets}, which we may think of as collections of objects. We say that \(S\) and \(T\) have the same \terminology{cardinality} if there is a one-to-one correspondence between the objects of \(S\) and those of \(T\), i.e., if each element of \(S\) can be paired up with one and only one unique element of \(T\). In this case, we write \(|S| = |T|\).%
 \end{definition}
-\begin{activity}{}{g:activity:idm3404174248}%
+\begin{activity}{}{g:activity:idp105544713244688}%
 Let \(S = \{1,2,3,4\}\), \(T=\{\square,\circ,\bigstar,\triangle\}\), and \(U = \{\diamondsuit,\spadesuit,\clubsuit\}\).%
 %
 \begin{enumerate}
@@ -1933,7 +1927,7 @@ We define the following sets of numbers.%
 \item{}The set of \terminology{real numbers} is denoted by \(\mathbb{R}\) and is given by all positive and negative infinite decimals (alternatively, every point on the number line).%
 \end{enumerate}
 \end{definition}
-\begin{activity}{}{g:activity:idm3404154184}%
+\begin{activity}{}{g:activity:idp105544713257616}%
 For the numbers that follow, identify all sets described in \hyperref[x:definition:def-number_sets]{Definition~{\xreffont\ref{x:definition:def-number_sets}}} they live in.%
 %
 \begin{enumerate}
@@ -1995,11 +1989,11 @@ The question in \hyperref[x:principle:disc-ch]{Discussion~{\xreffont\ref{x:princ
 \typeout{Exercises 3.2.3 Exercises}
 \typeout{************************************************}
 %
-\begin{exercises-subsection}{Exercises}{}{Exercises}{}{}{g:exercises:idm3404178264}
-\begin{divisionexercise}{1}{}{}{g:exercise:idm3404119512}%
+\begin{exercises-subsection}{Exercises}{}{Exercises}{}{}{g:exercises:idp105544713615248}
+\begin{divisionexercise}{1}{}{}{g:exercise:idp105544713615760}%
 How have mathematicians reacted to Godel's incompleteness theorems? What consequences, if any, have there been for the work of discovering new mathematics?%
 \end{divisionexercise}%
-\begin{divisionexercise}{2}{}{}{g:exercise:idm3404118648}%
+\begin{divisionexercise}{2}{}{}{g:exercise:idp105544713616272}%
 The existence of undecidable statements in mathematics, such as the continuum hypothesis, may seem like an esoteric quirk without any real consequences. However, there have been similar undecidable statements discovered in related disciplines such as computer science and physics. Find such a statement and, as best you can, describe it.%
 \end{divisionexercise}%
 \end{exercises-subsection}
@@ -2013,6 +2007,12 @@ The existence of undecidable statements in mathematics, such as the continuum hy
 \typeout{************************************************}
 %
 \begin{partptx}{Power}{}{Power}{}{}{x:part:part-power}
+ In the \hyperref[x:preface:Sec-Introduction]{Introduction~} to this book, we cited Francis Su's retiring MAA presidential address, \emph{Mathematics for Human Flourishing}. In his address, Su argues that the practice of mathematics can cultivate virtues that help humans live lives of fullness and flourishing. We've explored the ways in which mathematics enables us to play and discern truth. We will next explore the ways in which the \emph{power} of mathematics can be brought to bear to help us understand phenomena such as the current (as of this writing) coronavirus pandemic.%
+\par
+As Su writes in his follow-up book \hyperlink{x:biblio:Su2020}{[{\xreffont 1}]}, \emph{power} "often sounds like a bad word," especially when applied to humans. Yet Su means power in the sense in which Andy Crouch defines it in his book, \href{https://www.ivpress.com/playing-god}{\emph{Playing God: Redeeming the Gift of Power}}\footnote{\nolinkurl{https://www.ivpress.com/playing-god}\label{g:fn:idp105544713621136}}:%
+\begin{quote}%
+Power is the ability to make something of the world...the ability to participate in that stuff-making, sense-making process that is the most distinctive thing that human beings do.\end{quote}
+In this unit, we will focus particularly on the \emph{sense-making} component of power and ask: how do mathematical explorers make sense of the physical world via mathematics? We will explore some increasingly advanced discrete mathematical models, with the ultimate goal of understanding a basic model of how infectious disease spreads through a population. Let's get started.%
  %
 %
 \typeout{************************************************}
@@ -2020,6 +2020,425 @@ The existence of undecidable statements in mathematics, such as the continuum hy
 \typeout{************************************************}
 %
 \begin{chapterptx}{Discrete Dynamical Systems}{}{Discrete Dynamical Systems}{}{}{x:chapter:chap-dynamical-systems}
+%
+%
+\typeout{************************************************}
+\typeout{Section 4.1 Sequences}
+\typeout{************************************************}
+%
+\begin{sectionptx}{Sequences}{}{Sequences}{}{}{x:section:sec-intro-to-dds}
+\begin{assemblage}{Motivating Questions.}{g:assemblage:idp105544713624848}%
+In this section, we will explore the following questions. %
+\begin{enumerate}
+\item{}What is a sequence?%
+\item{}How can we use discrete sequences to describe real-world phenomena?%
+\item{}What is the difference between a recursive definition and an explicit formula for a discrete sequence?%
+\end{enumerate}
+%
+\end{assemblage}
+We begin our study with an exploration of \emph{sequences}.%
+\begin{definition}{}{x:definition:def-sequence}%
+\index{sequence}%
+\index{sequenceterms of}%
+A \terminology{sequence} is an ordered list of numbers, called \terminology{terms}.%
+\end{definition}
+That's it! Typically, we explore sequences which continue forever; these are generally called \terminology{infinite sequences}. Such sequences are typically described using a mathematical rule of some sort. Let's look at an example.%
+\begin{example}{}{x:example:example-recursive}%
+Joris is a collector of board games. His collection currently has 37 games, and each year he budgets enough to acquire 8 new games. We'll use the notation \(G_t\) to describe how many games Joris has in year \(t\), where we consider \(G_0\) (that is, in year \(t=0\)) to be the number of games he currently has. Thus, \(G_0 = 37\). We would also expect \(G_1 = 37 + 8 = 45\), and \(G_2 = 45 + 8 = 53\). We say that \(37, 45, 53\ldots\) are the first three \terminology{terms} of the sequence.%
+\par
+This way of describing the number of games Joris has is known as a \terminology{recursive} description, where each term depends on previous terms. That is, the recursive description is given by the formula%
+\begin{equation}
+G_0 = 37, \ G_{t+1} = G_t + 8, t \ge 1.\label{x:men:eq-recursive-games}
+\end{equation}
+%
+\end{example}
+Since the sequence above only allows for whole number inputs, it cannot estimate the number of board games Joris will have in 1.3 years, or \(\pi/4\) years; the system's prediction changes by 8 as the elapsed time changes from 1 to 2, 5 to 6, and so on. This makes the sequence \terminology{discrete}.%
+\par
+We also note the recursive nature of the definition of the sequence in \hyperref[x:example:example-recursive]{Example~{\xreffont\ref{x:example:example-recursive}}}. But there are other ways to describe sequences, and we turn to those now.%
+\begin{activity}{}{x:activity:act-games}%
+A recursive definition is nice because it is reasonably intuitive and fits with our usual understanding of how things change over time: they start from where they are now, and then change a little every so often. But perhaps we'd like to know how long it will take Joris to accumulate 500 games. %
+%
+\begin{enumerate}
+\item{}Clearly describe in 2-3 sentences \emph{a process} for using the recursive definition in \hyperref[x:example:example-recursive]{Example~{\xreffont\ref{x:example:example-recursive}}} that would allow you to determine how many years it would take Joris to accumulate 500 board games. Please do not use this process to answer the question!%
+\item{}In 2-3 sentences, describe the disadvantage in the process you used in Question 1 for finding how long it would take Joris to accumulate 500 games.%
+\item{}What we want is a \terminology{explicit formula} for \(G_t\). That is, we want a formula that allows us to plug in a value for \(t\) that will give us the number of games \(G_t\) that Joris has in year \(t\) without having to know any of the previous terms in the sequence. Find such a formula, and compute the first three terms to convince your group that your formula produces the same sequence as \hyperref[x:men:eq-recursive-games]{({\xreffont\ref{x:men:eq-recursive-games}})}.%
+\end{enumerate}
+\end{activity}%
+The sequence described in \hyperref[x:activity:act-games]{Activity~{\xreffont\ref{x:activity:act-games}}} is known as a \terminology{linear} sequence. This is because, like a line, it grows at a constant rate. Linear growth is extremely useful because it is straightforward to understand and apply. However, it has its shortcomings as well.%
+\begin{activity}{}{x:activity:act-linear-growth}%
+Lila is 6 years old, and is 43.5 inches tall. Her parents are told to expect her to grow at approximately 2.25 inches\slash{}year. Let \(H_t, t\ge 0\) denote Lila's height \(t\) years from now.%
+%
+\begin{enumerate}
+\item{}Predict Lila's height when she turns 8.%
+\item{}Give a recursive description for Lila's height.%
+\item{}Give an explicit formula for Lila's height.%
+\item{}How tall will Lila be when she is 50? Give your answer in feet (remember: there are 12 inches in a foot).%
+\item{}In 2-3 sentences, clearly articulate at least one shortcoming of extrapolating using linear models.%
+\end{enumerate}
+\end{activity}%
+\begin{conclusion}{Conclusion.}%
+In this section, we explored the idea of a (discrete) sequence. A sequence is just a list of numbers, and we considered sequences which are (in theory, at least) infinite. We saw two ways of describing a sequence other than just listing the numbers in order: recursively, and with an explicit formula. The recursive definition fits with our intuition about how quantities change over time, but it can be tedious to calculate terms that appear late in the sequence, as you need to calculate every term leading up to the one in which you're interested. Explicit formulas, on the other hand, give us shortcuts to calculating any term we want, but can often be hard to find and can obscure the actual behavior of the sequence.%
+\par
+Next time, we'll take a look at the ways in which we can combine multiple sequences to create \emph{systems}. These systems can be used to describe the behavior of real-world interactions. In particular, we'll explore a basic predator-prey model (involving two populations, the predators and the prey), and then a system of three sequences that describes the basic dynamics of the spread of a disease.%
+\end{conclusion}%
+%
+%
+\typeout{************************************************}
+\typeout{Exercises 4.1 Exercises}
+\typeout{************************************************}
+%
+\begin{exercises-subsection-numberless}{Exercises}{}{Exercises}{}{}{g:exercises:idp105544713590288}
+\begin{divisionexercise}{1}{}{}{g:exercise:idp105544713590800}%
+Find an explicit formula for each of the following.%
+%
+\begin{enumerate}[label=(\alph*)]
+\item{}\(\displaystyle 2, 5, 8, 11, 14, \ldots\)%
+\item{}\(\displaystyle 50, 43, 36, 29, \ldots\)%
+\end{enumerate}
+\end{divisionexercise}%
+\begin{divisionexercise}{2}{}{}{g:exercise:idp105544713592208}%
+The first three terms in a sequence are listed below as numbers of dots. Determine a recursive description for the sequence. If possible, determine an explicit formula for the sequence.%
+\begin{figureptx}{}{x:figure:fig-x-seq}{}%
+\begin{image}{0}{1}{0}%
+\includegraphics[width=\linewidth]{./images/x.pdf}
+\end{image}%
+\tcblower
+\end{figureptx}%
+\end{divisionexercise}%
+\begin{divisionexercise}{3}{}{}{g:exercise:idp105544713593488}%
+The first four terms in a sequence are listed below as numbers of dots. Determine a recursive description for the sequence. If possible, determine an explicit formula for the sequence.%
+\begin{figureptx}{}{x:figure:fig-triangular-seq}{}%
+\begin{image}{0}{1}{0}%
+\includegraphics[width=\linewidth]{./images/triangular.pdf}
+\end{image}%
+\tcblower
+\end{figureptx}%
+\end{divisionexercise}%
+\end{exercises-subsection-numberless}
+\end{sectionptx}
+%
+%
+\typeout{************************************************}
+\typeout{Section 4.2 Discrete Dynamical Systems}
+\typeout{************************************************}
+%
+\begin{sectionptx}{Discrete Dynamical Systems}{}{Discrete Dynamical Systems}{}{}{x:section:sec-dds}
+\begin{assemblage}{Motivating Questions.}{g:assemblage:idp105544713595664}%
+In this section, we will explore the following questions. %
+\begin{enumerate}
+\item{}What is a discrete dynamical system? How do they relate to sequences?%
+\item{}How can we use discrete dynamical systems to describe real-world phenomena like predator-prey interactions, or the spread of a disease in a population?%
+\end{enumerate}
+%
+\end{assemblage}
+\begin{introduction}{}%
+In \hyperref[x:section:sec-intro-to-dds]{Section~{\xreffont\ref{x:section:sec-intro-to-dds}}}, we introduced the notion of a sequence. In this section, we will focus on situations in which our sequences represent a quantity changing over discrete, consistent periods of time. We will also consider \emph{systems} of sequences: two or more interrelated sequences which describe the behavior of multiple changing quantities all at once. Before we dive into such systems, we consider another type of growth.%
+\end{introduction}%
+%
+%
+\typeout{************************************************}
+\typeout{Subsection 4.2.1 Exponential Growth}
+\typeout{************************************************}
+%
+\begin{subsectionptx}{Exponential Growth}{}{Exponential Growth}{}{}{x:subsection:subsec-exponential-growth}
+Populations of people and animals do not grow linearly. Instead, they usually grow by a percentage of the whatever the current population is. So, if that percentage is, say, 10\%, and the current population of a group of fish in a pond is 1000, this model predicts a population of \(1000 + 10\%\cdot 1000 = 1000 + 100 = 1100\) fish for next year.%
+\par
+In symbols, if \(P_t\) represents the number of fish \(t\) years from now, then \(P_0 = 1000\), \(P_1 = P_0 + 0.1\cdot P_0 = (1+0.1)P_0 = 1.1 P_0\). The number 0.1 is called the \terminology{growth rate}, \(r\), and the number 1.1 is the \terminology{growth multiplier}.%
+\par
+In what follows, I will occasionally provide Sage cells in which you can do basic computations (and in which I may help get you started). To see how this works, click "Evaluate" in the Sage cell below to see what happens.%
+\begin{sageinput}
+P_0 = 1000
+P_1 = 1.1*P_0
+P_1
+\end{sageinput}
+\begin{exploration}{}{x:exploration:expl-exponential-growth}%
+Consider a population of 1000 fish growing at 10\% per year.%
+%
+\begin{enumerate}
+\item{}Give a formula for \(P_2\) in terms of \(P_1\), and then a formula for \(P_3\) in terms of \(P_2\).%
+\item{}Using your answer to the previous part as a guide, give a formula for \(P_t\) in terms of \(P_{t-1}\).%
+\item{}Again, using your answer to Question 1 and the work in the paragraph preceding this activity, give a formula for \(P_2\) in terms of \(P_0\). Use this formula to find \(P_3\) in terms of \(P_0\). Why might these formulas be more useful than the ones you found in Question 1?%
+\item{}State your best guess for a formula for \(P_t\) in terms of \(P_0\). Use your formula to estimate the number of fish in the pond after 10, 20, and 50 years. What is this model missing?%
+\item{}Press 'Evaluate' below to confirm your response to Question 4. What happens if you increase or decrease the growth rate, \(r\)? Try it, and reevaluate.%
+\end{enumerate}
+\begin{sageinput}
+P_0 = 1000
+r = 0.1
+P(t) = (1+r)^t*P_0
+tt = range(50)
+PP = [P(t) for t in tt]
+tP = list(zip(tt, PP))
+P_dots = points(tP, color='red')
+P_dots
+\end{sageinput}
+\end{exploration}%
+The type of growth explored in \hyperref[x:exploration:expl-exponential-growth]{Exploration~{\xreffont\ref{x:exploration:expl-exponential-growth}}} called \terminology{exponential}, as the growth comes from taking the growth multiplier to larger and larger powers (exponents). We saw the danger of extrapolation with linear models in \hyperref[x:activity:act-linear-growth]{Activity~{\xreffont\ref{x:activity:act-linear-growth}}}, and we note a similar danger in extrapolating with exponential models. If nothing else, it's likely that the pond cannot \emph{hold} 100,000 fish. Thankfully, we can modify our exponential growth model by introducing an upper limit for what the habitat can hold.%
+\begin{exploration}{}{x:exploration:expl-carrying-capacity}%
+Suppose our pond can hold 5000 fish. This is known as the \emph{carrying capacity}, and we'll denote it with the letter \(K\)\begin{aside}{}{g:aside:idp105544713685264}%
+\end{aside}
+. We'll now let \(r = 0.1\) be our \emph{maximum} growth rate, but we'll let it slowly reduce as the population grows.%
+%
+\begin{enumerate}
+\item{}As \(P_t\) increases and gets closer and closer to \(K\) over time, what happens to the ratio \(P_t/K\)? What number does it get close to?%
+\item{}Thus, what happens to the expression \(1-\frac{P_t}{K}\) as \(P_t\) increases and gets closer and closer to \(K\)?%
+\item{}Ecologically speaking, what does it mean for \(P_t\) to get closer and closer to \(K\)?%
+\item{}As the phenomena described in Question 3 occurs, what do we expect the graph of \(P_t\) over time to look like?%
+\item{}Test your suspicion by evaluating the Sage code below.%
+\end{enumerate}
+\begin{sageinput}
+P_0=1000
+r = 0.1
+K = 5000
+maxterm = 100
+P(t)= K/(1+(K-P_0)/P_0*e^(-r*t))
+tt = range(maxterm)
+PP = [P(t) for t in tt]
+tP = list(zip(tt, PP))
+P_dots = points(tP, color='red')
+P_dots
+\end{sageinput}
+\end{exploration}%
+\end{subsectionptx}
+%
+%
+\typeout{************************************************}
+\typeout{Subsection 4.2.2 A discrete predator-prey model}
+\typeout{************************************************}
+%
+\begin{subsectionptx}{A discrete predator-prey model}{}{A discrete predator-prey model}{}{}{g:subsection:idp105544713631504}
+We now consider systems of discrete sequences, called \terminology{discrete dynamical systems}.%
+\begin{definition}{}{x:definition:def-dynamical-system}%
+A \terminology{dynamical system} refers to any fixed mathematical rule which describes how a system changes over time. A \terminology{discrete} dynamical system changes at fixed intervals in time (e.g., each hour), and does not change between the fixed points in time (e.g., a system that changes each hour will view the changing quantity as static between the hours of 1:00pm and 2:00pm).%
+\end{definition}
+There are two main types of dynamical systems: discrete and continuous. The study of continuous dynamical systems is the domain of calculus and its related disciplines (e.g., differential equations). Continuous dynamical systems treat time as infinitely divisible; discrete dynamical systems do not. Typically, a dynamical \emph{system} involves multiple related quantities that change over time.%
+\par
+We begin with a classic predator-prey model adapted from the \href{https://www.cds.caltech.edu/\~murray/amwiki/index.php/Predator_prey}{Feedback Systems Wiki}\footnote{\nolinkurl{https://www.cds.caltech.edu/\~murray/amwiki/index.php/Predator_prey}\label{g:fn:idp105544713635472}} at Caltech. For historical reasons, we let \(L_t\) be the size of a population of Canadian lynxes in year \(t\) and \(H_t\) be the size of a population of snowshoe hares, the lynx's primary prey. \begin{aside}{}{g:aside:idp105544713637008}%
+\end{aside}
+%
+\begin{definition}{}{x:definition:def-lotkavolterra}%
+Let \(H_0\) be the initial population of hares, and \(L_0\) the initial population of lynxes. For \(t\ge 1\), the \terminology{discrete Lotka-Volterra model} for the lynx\slash{}hare population is given by:%
+%
+\begin{align*}
+H_{t+1} \amp = H_t + b(u) H_t - a L_t H_t\\
+L_{t+1} \amp = L_t + c L_t H_t - d L_t,
+\end{align*}
+where \(b\) is the hare birth rate per unit time as a function of the food supply \(u\), \(d\) is the lynx mortality rate, and \(a\) and \(c\) are interaction coefficients.%
+\end{definition}
+Note the interrelationship between the two equations: the formula for calculating \(H_{t+1}\) requires knowing not only \(H_t\), but also \(L_t\). This makes sense! These populations interact, so the presence (or absence) of lynx should reasonably affect the hare population. Let's further analyze this model.%
+\begin{exploration}{}{g:exploration:idp105544713643664}%
+Consider the predator\slash{}prey model introduced in \hyperref[x:definition:def-lotkavolterra]{Definition~{\xreffont\ref{x:definition:def-lotkavolterra}}}.%
+%
+\begin{enumerate}
+\item{}What do the terms \(L_t\) and \(H_t\) represent?%
+\item{}Which term in the model represents an increase in the hare population? Which term represents a decrease in the hare population? Explain how you know.%
+\item{}Which term in the model represents an increase in the lynx population? Which term represents a decrease in the lynx population? Explain how you know.%
+\item{}What does the product \(L_t H_t\) represent? (The \href{https://en.wikipedia.org/wiki/Rule_of_product}{multiplication principle}\footnotemark{} may be helpful here; also consider what \(a\) is described to be.)%
+\item{}What simplifying assumptions does this model make about how the populations increase and decrease?%
+\end{enumerate}
+\end{exploration}%
+\footnotetext[2]{\nolinkurl{https://en.wikipedia.org/wiki/Rule_of_product}\label{g:fn:idp105544713646992}}%
+\begin{activity}{}{g:activity:idp105544713648016}%
+Let's start by assuming that \(H_0 20\) and \(L_0 = 35\). That is, we begin with 20 hares and 35 lynxes. Let's further assume that \(a = c = 0.001167\), \(b = 0.05\), and \(d = 0.0583\) (parameters scaled by 12 months).%
+%
+\begin{enumerate}
+\item{}Compute \(H_1, H_2, L_1,\) and \(L_2\). What seems to be happening to the two populations? Confirm using the Sage cell below, which will display the first ten months' worth of predictions, or explore \href{https://docs.google.com/spreadsheets/d/1sFOHJ-LNA39Ydj_GDg69XhtNwWVtpWNweBT5IBzjJGo/edit?usp=sharing}{this spreadsheet}\footnotemark{}. Note that the hare population is given by the blue dots and the lynx population by the red. \begin{sageinput}
+H_0 = 10 # This is the initial hare population
+L_0 = 10 # This is the initial lynx population
+a = 0.014 # This represents the predation rate
+b=0.6 # Growth rate of hares
+c=a # This represents the predation rate
+d=0.7 # death rate of lynx
+nperiod = 12 # number of time periods in a year
+def H(n):
+	if n==0:
+		return H_0
+	else:
+		return H(n-1) + (b*H(n-1)-a*L(n-1)*H(n-1))/nperiod
+
+def L(n):
+	if n==0:
+		return L_0
+	else:
+		return L(n-1) + *c*L(n-1)*H(n-1)-d*L(n-1))/nperiod
+time=10
+nn=range(time)
+HH = [H(n) for n in nn]
+LL = [L(n) for n in nn]
+nH = list(zip(nn, HH))
+nL = list(zip(nn, LL))
+H_dots = points(nH, color='blue')
+L_dots = points(nL, color='red')
+p = H_dots + L_dots
+p
+\end{sageinput}
+%
+\item{}The interaction coefficients translate to a decrease in the lynx population and an increase in the hare population. What do you expect to happen if we increase it from 0.014 to 0.05?%
+\item{}Test your suspicion using the Sage cell below, or \href{https://docs.google.com/spreadsheets/d/1sFOHJ-LNA39Ydj_GDg69XhtNwWVtpWNweBT5IBzjJGo/edit?usp=sharing}{this spreadsheet}\footnotemark{}. \begin{sageinput}
+H_0 = 10 # This is the initial hare population
+L_0 = 10 # This is the initial lynx population
+a = 0.05 # This represents the predation rate
+b=0.6 # Growth rate of hares
+c=a # This represents the predation rate
+d=0.7 # death rate of lynx
+nperiod=12
+def H(n):
+	if n==0:
+		return H_0
+	else:
+		return H(n-1) + (b*H(n-1)-a*L(n-1)*H(n-1))/nperiod
+
+def L(n):
+	if n==0:
+		return L_0
+	else:
+		return L(n-1) + (c*L(n-1)*H(n-1)-d*L(n-1))/nperiod
+time=10
+nn=range(time)
+HH = [H(n) for n in nn]
+LL = [L(n) for n in nn]
+nH = list(zip(nn, HH))
+nL = list(zip(nn, LL))
+H_dots = points(nH, color='blue')
+L_dots = points(nL, color='red')
+p = H_dots + L_dots
+p
+\end{sageinput}
+%
+\item{}Qualitatively describe the dynamics displayed in the Sage output in the previous question.%
+\end{enumerate}
+\end{activity}%
+\footnotetext[3]{\nolinkurl{https://docs.google.com/spreadsheets/d/1sFOHJ-LNA39Ydj_GDg69XhtNwWVtpWNweBT5IBzjJGo/edit?usp=sharing}\label{g:fn:idp105544713651984}}%
+\footnotetext[4]{\nolinkurl{https://docs.google.com/spreadsheets/d/1sFOHJ-LNA39Ydj_GDg69XhtNwWVtpWNweBT5IBzjJGo/edit?usp=sharing}\label{g:fn:idp105544713653776}}%
+One might reasonably wonder how such a simple model does in making predictions about the long-term dynamics of these populations. The answer is: surprisingly well! In \hyperref[x:figure:fig-harelynxdata]{Figure~{\xreffont\ref{x:figure:fig-harelynxdata}}}, observe the actual collected data on hare and lynx populations over 90 years, from 1845 to 1935. In \hyperref[x:figure:fig-harelynxmodel]{Figure~{\xreffont\ref{x:figure:fig-harelynxmodel}}}, we see dynamics predicted by the model. Note the same cyclical patterns of an increase in the hare population followed by an increase in the lynx population, which in turn causes a decrease in the hare population, etc.%
+\begin{figureptx}{Data on hare and lynx populations over time. (\href{https://www.cds.caltech.edu/\~murray/amwiki/index.php/Predator_prey}{Source}\protect\footnotemark{})}{x:figure:fig-harelynxdata}{}%
+\begin{image}{0.25}{0.5}{0.25}%
+\includegraphics[width=\linewidth]{https://www.cds.caltech.edu/~murray/amwiki/images/0/08/Predprey-graph.png}
+\end{image}%
+\tcblower
+\end{figureptx}%
+\footnotetext[5]{\nolinkurl{https://www.cds.caltech.edu/\~murray/amwiki/index.php/Predator_prey}\label{g:fn:idp105544713657104}}%
+\begin{figureptx}{The predicted dynamics of hare and lynx populations over time. (\href{https://www.cds.caltech.edu/\~murray/amwiki/index.php/Predator_prey}{Source}\protect\footnotemark{})}{x:figure:fig-harelynxmodel}{}%
+\begin{image}{0.25}{0.5}{0.25}%
+\includegraphics[width=\linewidth]{https://www.cds.caltech.edu/~murray/amwiki/images/9/9a/Predprey-discrete.png}
+\end{image}%
+\tcblower
+\end{figureptx}%
+\footnotetext[6]{\nolinkurl{https://www.cds.caltech.edu/\~murray/amwiki/index.php/Predator_prey}\label{g:fn:idp105544713658896}}%
+To be clear, the purpose of the model is not to make absolutely certain predictions about the precise numbers of hares and lynxes present in the Canadian wilderness. Instead, we want to understand the broad dynamics of how the populations change relative to one another. Mathematical ecologists can then use these models to understand how small changes in the parameters (say, an increase in the rate of predation) affect the broader dynamics of the ecological system.%
+\end{subsectionptx}
+%
+%
+\typeout{************************************************}
+\typeout{Subsection 4.2.3 The discrete SIR epidemiological model}
+\typeout{************************************************}
+%
+\begin{subsectionptx}{The discrete SIR epidemiological model}{}{The discrete SIR epidemiological model}{}{}{g:subsection:idp105544713660304}
+We now arrive at the main focus of this two-week unit: a basic mathematical model for the spread of an infectious disease. We'll first present the model itself and examine its features and assumptions. As was the case with the predator-prey model, we'll see that while it does make simplifying assumptions, it still allows us to analyze the broader dynamics of the disease transmission. We'll then look at ways of reducing the rate of infection, including the so-called "flattening the curve" method.%
+\par
+We begin with the model. It is known as a \emph{compartmental model}, as it divides the population into compartments and assumes that every individual in the same compartment has the same characteristics (at least as far as the transmission of the disease is concerned). We'll look at the simplest such model, the discrete SIR model. Many more complex models are built on the SIR model.%
+\begin{definition}{}{g:definition:idp105544713661968}%
+Consider a population of \(N\) people through which a disease is spreading. For some discrete time \(t \ge 0\), let \(S_t\) denote the number of individuals \emph{susceptible} to the disease, \(I_t\) the number of individuals \emph{infected} with the disease, and \(R_t\) the number of individuals who have \emph{recovered} from the disease. We assume that that people move through the compartments as follows:%
+%
+\begin{equation}
+S \to I \to R.\label{x:men:eq-compartments}
+\end{equation}
+For \(t\ge 1\), the model is given by the following equations.%
+%
+\begin{align*}
+N \amp = S_t + I_t + R_t\\
+S_{t+1} \amp = S_t -b S_t I_t\\
+I_{t+1} \amp = I_t + b S_t I_t - a I_t\\
+R_{t+1} \amp = R_t + a I_t.
+\end{align*}
+The constant \(a\) is known as the \emph{recovery rate} parameter, which roughly describes how fast someone moves from the infected compartment to the recovered compartment. The constant \(b\) is known as the \emph{infection rate}, and roughly describes how fast someone moves from the susceptible compartment to the infected compartment.%
+\end{definition}
+Let's explore the equations.%
+\begin{exploration}{}{g:exploration:idp105544713472912}%
+%
+\begin{enumerate}
+\item{}What does \hyperref[x:men:eq-compartments]{({\xreffont\ref{x:men:eq-compartments}})} mean? What assumptions does this make? How does it simplify our analysis?%
+\item{}What does the first equation in the set of four mean? What assumptions does it make about the population?%
+\item{}The second equation describes how the susceptible population changes over time. It contains the term \(-b S_t I_t\). Based on our work above with a predator-prey model and the definition of \(b\), what epidemiological event is this term describing?%
+\item{}Explain why it makes sense that we add \(b S_t I_t\) in the equation defining \(I_{t+1}\).%
+\item{}What does the term \(-a I_t\) mean in the equation for \(I_{t+1}\)? Why does it make sense to \emph{add} \(a I_t\) in the equation for \(R_{t+1}\)?%
+\item{}Note that there are no terms being subtracted in the equation for \(R_{t+1}\). What assumption does this tell us that the model is making?%
+\end{enumerate}
+\end{exploration}%
+\begin{activity}{}{x:activity:act-sirnumbers}%
+Let's see what happens when we plug in some numbers. Assume that \(N = 10,000\), \(R_0 = 0\), and \(I_0 = 50\).%
+%
+\begin{enumerate}
+\item{}Why does it make sense that we have \(R_0 = 0\) (assuming we have a new disease entering a population).%
+\item{}What is \(S_0\)?%
+\item{}Let's assume that \(a = 0.1\) and \(b = 0.0001\). Compute \(S_1, I_1\), and \(R_1\).%
+\item{}Use your answer to the previous part to compute \(S_2, I_2\), and \(R_2\).%
+\item{}Now check your work using \href{https://docs.google.com/spreadsheets/d/153LO2O21_TwEYyODq2Km90oRrilLEpfYmgb8w3AJSQo/edit?usp=sharing}{this spreadsheet}\footnotemark{} (download a copy to your device and edit it there).%
+\end{enumerate}
+\end{activity}%
+\footnotetext[7]{\nolinkurl{https://docs.google.com/spreadsheets/d/153LO2O21_TwEYyODq2Km90oRrilLEpfYmgb8w3AJSQo/edit?usp=sharing}\label{g:fn:idp105544713485712}}%
+\begin{investigation}{}{g:investigation:idp105544713486096}%
+In this and the following activity, we'll use the spreadsheet \href{https://docs.google.com/spreadsheets/d/153LO2O21_TwEYyODq2Km90oRrilLEpfYmgb8w3AJSQo/edit?usp=sharing}{found here}\footnotemark{}. Download the file and play around with the numbers at the top of the sheet to change some of the features; e.g., how does increasing\slash{}decreasing the number of initial infected individuals change the shape of the curves? What do you notice? What do you wonder? Give at least 2-3 observations or questions.%
+\end{investigation}%
+\footnotetext[8]{\nolinkurl{https://docs.google.com/spreadsheets/d/153LO2O21_TwEYyODq2Km90oRrilLEpfYmgb8w3AJSQo/edit?usp=sharing}\label{g:fn:idp105544713486992}}%
+The COVID-19 pandemic introduced many people to a quantity called \(r_0\). \begin{aside}{}{g:aside:idp105544713488016}%
+\end{aside}
+ This is known as the \terminology{basic reproduction number}, and is the expected number of new infections \emph{directly generated} by a single case. So, if I were to get COVID-19, \(r_0\) would be the expected number of people I would \emph{directly} infect. We would then expect each of \emph{them} to infect another \(r_0\) people, and so on.%
+\par
+Generally, if \(r_0 \gt 1\), we expect the disease to spread. If \(r_0 \lt 1\), we expect it to die out.%
+\par
+The next activity explores the ways in which varying \(r_0\) impacts new cases of the disease caused both directly and indirectly by a single person.%
+\begin{activity}{}{x:activity:act-r0}%
+In this activity, we assume different values for \(r_0\). However, we will make two assumptions that don't change.%
+\par
+First, assume that all direct infections are done within a 5-day period. Second, assume that that those infected don't infect others until the next five day period.%
+\par
+Let \(C_t\) be the number of cases I've caused after \(t\) five-day periods. Assume \(C_0 = 1\) (me).%
+%
+\begin{enumerate}
+\item{}Explain why \(C_1 = r_0 C_0 = r_0\).%
+\item{}Explain why \(C_2 = C_1 + r_0 C_1 = r_0 + r_0^2\).%
+\item{}After 30 days, six five-day periods will have passed. Explain why%
+\begin{equation*}
+C_6 = r_0 + r_0^2 + r_0^3 + \cdots + r_0^6.
+\end{equation*}
+%
+\item{}Our SIR model approximates \(r_0\) by the formula%
+\begin{equation}
+r_0 \approx \frac{bN}{a}.\label{x:men:eq-r0}
+\end{equation}
+Using that formula, what is the approximate \(r_0\) for the situation described in \hyperref[x:activity:act-sirnumbers]{Activity~{\xreffont\ref{x:activity:act-sirnumbers}}}?%
+\item{}Given that value of \(r_0\), use the Sage cell below (replacing the ? with the value you found) to estimate how many cases I am responsible for over a 30-day period.%
+\item{}The practice of \href{https://en.wikipedia.org/wiki/Social_distancing}{social distancing}\footnotemark{} is intended to reduce \(r_0\). Assume that strict social distancing is observed, and this reduces \(r_0\) to approximately 1.25 (one direct infection fewer). Now how many cases are you responsible for over the course of a 30-day period?%
+\item{}As the COVID-19 situation is ongoing, estimates for \(r_0\) vary significantly. \href{https://academic.oup.com/jtm/article/27/2/taaa021/5735319}{One study from February 2020}\footnotemark{} found an average \(r_0\) of 3.28. If that is the true number, approximately how many cases will a typical infected person be responsible for over the course of a month? Use the Sage cell to determine your answer.%
+\item{}Other studies suggest that, in the absence of any social interventions, the COVID-19 has \(r_0 \approx 2.38\). In that case, how many cases would an infected person be responsible for over the course of a month?%
+\item{}The Delta variant of COVID-19 has a \(r_0 \approx 5.1\). If I am infected with the Delta variant, approximately how many new cases will I cause within a month?%
+\item{}The Omicron variant of COVID-19 has an estimated \(r_0 \approx 10\)\footnotemark{}. If I am infected with the Omicron variant, approximately how many new cases will I cause within a month?%
+\end{enumerate}
+\begin{sageinput}
+r_0 = ?
+r_0 + r_0^2 + r_0^3 + r_0^4 + r_0^5 + r_0^6
+\end{sageinput}
+\end{activity}%
+\footnotetext[9]{\nolinkurl{https://en.wikipedia.org/wiki/Social_distancing}\label{g:fn:idp105544713434640}}%
+\footnotetext[10]{\nolinkurl{https://academic.oup.com/jtm/article/27/2/taaa021/5735319}\label{g:fn:idp105544713436816}}%
+\footnotetext[11]{This is being written in February 2022, just as the first major Omicron wave is subsiding; it should therefore be treated as preliminary.\label{g:fn:idp105544713439376}}%
+For our last activity, we'll explore how reducing \(r_0\) "flattens" the curve of infected people at time \(t\), \(I_t\). There are two main advantages of a flattened infected curve. First, this often corresponds to fewer infected people overall. Second, the lack of a spike in infected persons makes it easier for the healthcare system to effectively treat those who \emph{are} infected (not to mention anyone with other medical concerns).%
+\begin{exploration}{}{g:exploration:idp105544713441936}%
+One last time, consider the values for the variables we used in \hyperref[x:activity:act-sirnumbers]{Activity~{\xreffont\ref{x:activity:act-sirnumbers}}}; for reference, this was \(S_0 = 10000\), \(I_0 = 50\), \(R_0 = 0\), \(a = 0.1\), and \(b = 0.0001\). We'll again use the \href{https://drive.google.com/file/d/1xSJ6KM8x9HVdo9-P4QoUOoSmmfpKmmIQ/view?usp=sharing}{Google sheet}\footnotemark{} to answer these questions.%
+%
+\begin{enumerate}
+\item{}What is \(r_0\)? (Recall \hyperref[x:men:eq-r0]{({\xreffont\ref{x:men:eq-r0}})} from Question 4 of \hyperref[x:activity:act-r0]{Activity~{\xreffont\ref{x:activity:act-r0}}}.)%
+\item{}This value is pretty high (though it is approximately the \(r_0\) of diseases like measles and chicken pox!), but is convenient for our purposes as everything fits more nicely into the. Nonetheless, we can still explore the ways in which changes in \(r_0\) affect the shape of the curves; our qualitative observations will still apply to real-world situations like the current coronavirus pandemic.%
+\par
+Recall that \(r_0 \approx \frac{bN}{a}\) and assume our population size \(N = 10000\) and recovery rate \(a = 0.1\) are constant. Compute the three values of \(r_0\) that result from infection rates of \(b = 0.00005, 0.0001\), and \(0.0002\). In turn, plug these values into the \href{https://drive.google.com/file/d/1xSJ6KM8x9HVdo9-P4QoUOoSmmfpKmmIQ/view?usp=sharing}{Google sheet}\footnotemark{} and comment on the shape of the infection curve: how tall is the spike of infected individuals, and at what time \(t\) is it at its highest point?%
+\item{}Similarly, assuming \(N = 10000\) and \(b = 0.0001\) are constant, compute the values of \(r_0\) that result from \(a = 0.05, 0.1\), and \(0.2\). In turn, plug these values into the \href{https://drive.google.com/file/d/1xSJ6KM8x9HVdo9-P4QoUOoSmmfpKmmIQ/view?usp=sharing}{Google sheet}\footnotemark{} and comment on the shape of the (green) infection curve: how tall is the spike of infected individuals, and at what time \(t\) is it at its highest point?%
+\end{enumerate}
+\end{exploration}%
+\footnotetext[12]{\nolinkurl{https://drive.google.com/file/d/1xSJ6KM8x9HVdo9-P4QoUOoSmmfpKmmIQ/view?usp=sharing}\label{g:fn:idp105544713445136}}%
+\footnotetext[13]{\nolinkurl{https://drive.google.com/file/d/1xSJ6KM8x9HVdo9-P4QoUOoSmmfpKmmIQ/view?usp=sharing}\label{g:fn:idp105544713451280}}%
+\footnotetext[14]{\nolinkurl{https://drive.google.com/file/d/1xSJ6KM8x9HVdo9-P4QoUOoSmmfpKmmIQ/view?usp=sharing}\label{g:fn:idp105544713454736}}%
+\end{subsectionptx}
+\end{sectionptx}
 \end{chapterptx}
  %
 %
@@ -2052,6 +2471,30 @@ The existence of undecidable statements in mathematics, such as the continuum hy
 \typeout{************************************************}
 %
 \begin{chapterptx}{Voting}{}{Voting}{}{}{x:chapter:chap-voting}
+%
+%
+\typeout{************************************************}
+\typeout{Section 7.1 Introduction to Voting}
+\typeout{************************************************}
+%
+\begin{sectionptx}{Introduction to Voting}{}{Introduction to Voting}{}{}{x:section:sec-voting-intro}
+\end{sectionptx}
+%
+%
+\typeout{************************************************}
+\typeout{Section 7.2 More Voting Systems}
+\typeout{************************************************}
+%
+\begin{sectionptx}{More Voting Systems}{}{More Voting Systems}{}{}{x:section:sec-more-voting-systems}
+\end{sectionptx}
+%
+%
+\typeout{************************************************}
+\typeout{Section 7.3 Evaluating Systems of Voting}
+\typeout{************************************************}
+%
+\begin{sectionptx}{Evaluating Systems of Voting}{}{Evaluating Systems of Voting}{}{}{x:section:sec-evaluating-voting-systems}
+\end{sectionptx}
 \end{chapterptx}
  %
 %
@@ -2060,6 +2503,22 @@ The existence of undecidable statements in mathematics, such as the continuum hy
 \typeout{************************************************}
 %
 \begin{chapterptx}{Apportionment}{}{Apportionment}{}{}{x:chapter:chap-apportionment}
+%
+%
+\typeout{************************************************}
+\typeout{Section 8.1 Introduction to Apportionment}
+\typeout{************************************************}
+%
+\begin{sectionptx}{Introduction to Apportionment}{}{Introduction to Apportionment}{}{}{x:section:sec-apportionment-intro}
+\end{sectionptx}
+%
+%
+\typeout{************************************************}
+\typeout{Section 8.2 More Apportionment Methods}
+\typeout{************************************************}
+%
+\begin{sectionptx}{More Apportionment Methods}{}{More Apportionment Methods}{}{}{x:section:sec-apportionment-methods}
+\end{sectionptx}
 \end{chapterptx}
  %
 %

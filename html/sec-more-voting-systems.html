@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--********************************************-->
 <!--*       Generated from PreTeXt source      *-->
-<!--*       on 2022-01-10T13:39:06-06:00       *-->
+<!--*       on 2022-04-29T09:49:18-05:00       *-->
 <!--*   A recent stable commit (2020-08-09):   *-->
 <!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
 <!--*                                          *-->
@@ -9,55 +9,66 @@
 <!--*                                          *-->
 <!--********************************************-->
 <html lang="en-US">
-<head>
+<head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>More Voting Systems</title>
+<title>Elections with More than Two Candidates I</title>
 <meta name="Keywords" content="Authored in PreTeXt">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [['\\(','\\)']]
+<meta property="og:type" content="book">
+<meta property="book:title" content="Explorations in Modern Mathematics">
+<meta property="book:author" content="Mike Janssen">
+<script src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script>window.MathJax = {
+  tex: {
+    inlineMath: [['\\(','\\)']],
+    tags: "none",
+    tagSide: "right",
+    tagIndent: ".8em",
+    packages: {'[+]': ['base', 'extpfeil', 'ams', 'amscd', 'newcommand', 'knowl']}
+  },
+  options: {
+    ignoreHtmlClass: "tex2jax_ignore|ignore-math",
+    processHtmlClass: "process-math",
+    renderActions: {
+        findScript: [10, function (doc) {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(function(node) {
+                var display = !!node.type.match(/; *mode=display/);
+                var math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                var text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = {node: text, delim: '', n: 0};
+                math.end = {node: text, delim: '', n: 0};
+                doc.math.push(math);
+            });
+        }, '']
     },
-    asciimath2jax: {
-        ignoreClass: ".*",
-        processClass: "has_am"
-    },
-    jax: ["input/AsciiMath"],
-    extensions: ["asciimath2jax.js"],
-    TeX: {
-        extensions: ["extpfeil.js", "autobold.js", "https://pretextbook.org/js/lib/mathjaxknowl.js", "AMScd.js", ],
-        // scrolling to fragment identifiers is controlled by other Javascript
-        positionToHash: false,
-        equationNumbers: { autoNumber: "none", useLabelIds: true, },
-        TagSide: "right",
-        TagIndent: ".8em",
-    },
-    // HTML-CSS output Jax to be dropped for MathJax 3.0
-    "HTML-CSS": {
-        scale: 88,
-        mtextFontInherit: true,
-    },
-    CommonHTML: {
-        scale: 88,
-        mtextFontInherit: true,
-    },
-});
-</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML-full"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.min.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.sticky.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.espy.min.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/0.13/pretext.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/0.13/pretext_add_on.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script xmlns:svg="http://www.w3.org/2000/svg">sagecellEvalName='Evaluate (Sage)';
-</script><link xmlns:svg="http://www.w3.org/2000/svg" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic" rel="stylesheet" type="text/css">
-<link xmlns:svg="http://www.w3.org/2000/svg" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
-<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/pretext.css" rel="stylesheet" type="text/css">
-<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/pretext_add_on.css" rel="stylesheet" type="text/css">
-<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/banner_default.css" rel="stylesheet" type="text/css">
-<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/toc_default.css" rel="stylesheet" type="text/css">
-<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/knowls_default.css" rel="stylesheet" type="text/css">
-<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/style_default.css" rel="stylesheet" type="text/css">
-<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/colors_blue_grey.css" rel="stylesheet" type="text/css">
-<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/setcolors.css" rel="stylesheet" type="text/css">
-<!-- 2019-10-12: Temporary - CSS file for experiments with styling --><link xmlns:svg="http://www.w3.org/2000/svg" href="developer.css" rel="stylesheet" type="text/css">
+  },
+  chtml: {
+    scale: 0.88,
+    mtextInheritFont: true
+  },
+  loader: {
+    load: ['input/asciimath', '[tex]/extpfeil', '[tex]/amscd', '[tex]/newcommand', '[pretext]/mathjaxknowl3.js'],
+    paths: {pretext: "https://pretextbook.org/js/lib"},
+  },
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script src="https://pretextbook.org/js/lib/jquery.min.js"></script><script src="https://pretextbook.org/js/lib/jquery.sticky.js"></script><script src="https://pretextbook.org/js/lib/jquery.espy.min.js"></script><script src="https://pretextbook.org/js/0.13/pretext.js"></script><script>miniversion=0.674</script><script src="https://pretextbook.org/js/0.13/pretext_add_on.js?x=1"></script><script src="https://pretextbook.org/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
+</script><link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/pretext.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/pretext_add_on.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/banner_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/toc_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/knowls_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/style_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/colors_blue_grey.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/setcolors.css" rel="stylesheet" type="text/css">
+<!-- 2019-10-12: Temporary - CSS file for experiments with styling --><link href="developer.css" rel="stylesheet" type="text/css">
+<!--*** Runestone Services ***-->
+<script type="text/javascript" src="_static/runtime.44deab00544cc8fc.bundle.js"></script><script type="text/javascript" src="_static/637.d54be67956c5c660.bundle.js"></script><script type="text/javascript" src="_static/runestone.a1a8707963a337ef.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/637.fafafbd97df8a0d1.css">
+<link rel="stylesheet" type="text/css" href="_static/runestone.d062db89aaf1dddd.css">
 </head>
-<body class="mathbook-book has-toc has-sidebar-left">
-<a class="assistive" href="#content">Skip to main content</a><div xmlns:svg="http://www.w3.org/2000/svg" id="latex-macros" class="hidden-content" style="display:none">\({\labelitemi}{$\diamond$}
+<body class="pretext-book ignore-math has-toc has-sidebar-left">
+<a class="assistive" href="#content">Skip to main content</a><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\({\labelitemi}{$\diamond$}
 \def\arraystretch{1.5}
 \newcommand{\contentsfinish}{}
 \newcommand{\separator}{\begin{center}\rule{\columnwidth}{\arrayrulewidth}\end{center}}
@@ -109,85 +120,308 @@ MathJax.Hub.Config({
 \newcommand{\lt}{&lt;}
 \newcommand{\gt}{&gt;}
 \newcommand{\amp}{&amp;}
-\)</div>
+\)</span></div>
 <header id="masthead" class="smallbuttons"><div class="banner"><div class="container">
 <a id="logo-link" href=""></a><div class="title-container">
 <h1 class="heading"><a href="book-1.html"><span class="title">Explorations in Modern Mathematics</span></a></h1>
 <p class="byline">Mike Janssen</p>
 </div>
 </div></div>
-<nav xmlns:svg="http://www.w3.org/2000/svg" id="primary-navbar" class="navbar"><div class="container">
+<nav id="primary-navbar" class="navbar"><div class="container">
 <div class="navbar-top-buttons">
 <button class="sidebar-left-toggle-button button active" aria-label="Show or hide table of contents sidebar">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
-<a class="index-button toolbar-item button" href="index-31.html" title="Index">Index</a><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="sec-voting-intro.html" title="Previous">Prev</a><a id="upbutton" class="up-button button toolbar-item" href="chap-voting.html" title="Up">Up</a><a id="nextbutton" class="next-button button toolbar-item" href="sec-evaluating-voting-systems.html" title="Next">Next</a></span>
+<a class="index-button toolbar-item button" href="index-62.html" title="Index">Index</a><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="sec-voting-intro.html" title="Previous">Prev</a><a id="upbutton" class="up-button button toolbar-item" href="chap-voting.html" title="Up">Up</a><a id="nextbutton" class="next-button button toolbar-item" href="sec-evaluating-voting-systems.html" title="Next">Next</a></span>
 </div>
 </div>
 <div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
 <button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="sec-voting-intro.html" title="Previous">Prev</a><a class="up-button button toolbar-item" href="chap-voting.html" title="Up">Up</a><a class="next-button button toolbar-item" href="sec-evaluating-voting-systems.html" title="Next">Next</a>
 </div>
 </div></nav></header><div class="page">
-<div xmlns:svg="http://www.w3.org/2000/svg" id="sidebar-left" class="sidebar" role="navigation"><div class="sidebar-content">
+<div id="sidebar-left" class="sidebar" role="navigation"><div class="sidebar-content">
 <nav id="toc"><ul>
 <li class="link frontmatter">
-<a href="frontmatter-1.html" data-scroll="frontmatter-1"><span class="title">Front Matter</span></a><ul>
-<li><a href="colophon-1.html" data-scroll="colophon-1">Colophon</a></li>
-<li><a href="Sec-Introduction.html" data-scroll="Sec-Introduction">Introduction</a></li>
-<li><a href="sec-NoteToStudents.html" data-scroll="sec-NoteToStudents">A Note to Students</a></li>
-<li><a href="sec-NoteToInstructors.html" data-scroll="sec-NoteToInstructors">A Note to Instructors</a></li>
+<a href="frontmatter-1.html" data-scroll="frontmatter-1" class="internal"><span class="title">Front Matter</span></a><ul>
+<li><a href="colophon-1.html" data-scroll="colophon-1" class="internal">Colophon</a></li>
+<li><a href="Sec-Introduction.html" data-scroll="Sec-Introduction" class="internal">Introduction</a></li>
+<li><a href="sec-NoteToStudents.html" data-scroll="sec-NoteToStudents" class="internal">A Note to Students</a></li>
+<li><a href="sec-NoteToInstructors.html" data-scroll="sec-NoteToInstructors" class="internal">A Note to Instructors</a></li>
 </ul>
 </li>
-<li class="link part"><a href="part-play.html" data-scroll="part-play"><span class="codenumber">I</span> <span class="title">Play</span></a></li>
+<li class="link part"><a href="part-play.html" data-scroll="part-play" class="internal"><span class="codenumber">I</span> <span class="title">Play</span></a></li>
 <li class="link">
-<a href="chap-cube.html" data-scroll="chap-cube"><span class="codenumber">1</span> <span class="title">The Cube</span></a><ul>
-<li><a href="sec-play-intro.html" data-scroll="sec-play-intro">Introduction and Background</a></li>
-<li><a href="sec-play-exploring-the-cube.html" data-scroll="sec-play-exploring-the-cube">Exploring and Describing the Cube</a></li>
-<li><a href="sec-play-moving-cubies.html" data-scroll="sec-play-moving-cubies">Moving Cubies</a></li>
-<li><a href="sec-play-reorienting-cubies.html" data-scroll="sec-play-reorienting-cubies">Reorienting Cubies</a></li>
+<a href="chap-cube.html" data-scroll="chap-cube" class="internal"><span class="codenumber">1</span> <span class="title">The Cube</span></a><ul>
+<li><a href="sec-play-intro.html" data-scroll="sec-play-intro" class="internal">Introduction and Background</a></li>
+<li><a href="sec-play-exploring-the-cube.html" data-scroll="sec-play-exploring-the-cube" class="internal">Exploring and Describing the Cube</a></li>
+<li><a href="sec-play-moving-cubies.html" data-scroll="sec-play-moving-cubies" class="internal">Moving Cubies</a></li>
+<li><a href="sec-play-reorienting-cubies.html" data-scroll="sec-play-reorienting-cubies" class="internal">Reorienting Cubies</a></li>
 </ul>
 </li>
-<li class="link part"><a href="part-truth.html" data-scroll="part-truth"><span class="codenumber">II</span> <span class="title">Truth</span></a></li>
+<li class="link part"><a href="part-truth.html" data-scroll="part-truth" class="internal"><span class="codenumber">II</span> <span class="title">Truth</span></a></li>
 <li class="link">
-<a href="chap-reasoning.html" data-scroll="chap-reasoning"><span class="codenumber">2</span> <span class="title">Inductive and Deductive Reasoning</span></a><ul>
-<li><a href="section-5.html" data-scroll="section-5">Inductive Reasoning</a></li>
-<li><a href="section-6.html" data-scroll="section-6">Deductive Reasoning</a></li>
-</ul>
-</li>
-<li class="link">
-<a href="chap-logic.html" data-scroll="chap-logic"><span class="codenumber">3</span> <span class="title">Modern Mathematical Logic</span></a><ul>
-<li><a href="sec-connectives.html" data-scroll="sec-connectives">Logical Connectives and Rules of Inference</a></li>
-<li><a href="sec-formal-systems-incompleteness.html" data-scroll="sec-formal-systems-incompleteness">Formal Systems and Incompleteness</a></li>
-</ul>
-</li>
-<li class="link part"><a href="part-power.html" data-scroll="part-power"><span class="codenumber">III</span> <span class="title">Power</span></a></li>
-<li class="link"><a href="chap-dynamical-systems.html" data-scroll="chap-dynamical-systems"><span class="codenumber">4</span> <span class="title">Discrete Dynamical Systems</span></a></li>
-<li class="link"><a href="chap-graphs.html" data-scroll="chap-graphs"><span class="codenumber">5</span> <span class="title">Graphs and Networks</span></a></li>
-<li class="link"><a href="chap-coding.html" data-scroll="chap-coding"><span class="codenumber">6</span> <span class="title">Modular Arithmetic and Coding Theory</span></a></li>
-<li class="link part"><a href="part-justice.html" data-scroll="part-justice"><span class="codenumber">IV</span> <span class="title">Justice</span></a></li>
-<li class="link">
-<a href="chap-voting.html" data-scroll="chap-voting"><span class="codenumber">7</span> <span class="title">Voting</span></a><ul>
-<li><a href="sec-voting-intro.html" data-scroll="sec-voting-intro">Introduction to Voting</a></li>
-<li><a href="sec-more-voting-systems.html" data-scroll="sec-more-voting-systems" class="active">More Voting Systems</a></li>
-<li><a href="sec-evaluating-voting-systems.html" data-scroll="sec-evaluating-voting-systems">Evaluating Systems of Voting</a></li>
+<a href="chap-reasoning.html" data-scroll="chap-reasoning" class="internal"><span class="codenumber">2</span> <span class="title">Inductive and Deductive Reasoning</span></a><ul>
+<li><a href="section-5.html" data-scroll="section-5" class="internal">Inductive Reasoning</a></li>
+<li><a href="section-6.html" data-scroll="section-6" class="internal">Deductive Reasoning</a></li>
 </ul>
 </li>
 <li class="link">
-<a href="chap-apportionment.html" data-scroll="chap-apportionment"><span class="codenumber">8</span> <span class="title">Apportionment</span></a><ul>
-<li><a href="sec-apportionment-intro.html" data-scroll="sec-apportionment-intro">Introduction to Apportionment</a></li>
-<li><a href="sec-apportionment-methods.html" data-scroll="sec-apportionment-methods">More Apportionment Methods</a></li>
+<a href="chap-logic.html" data-scroll="chap-logic" class="internal"><span class="codenumber">3</span> <span class="title">Modern Mathematical Logic</span></a><ul>
+<li><a href="sec-connectives.html" data-scroll="sec-connectives" class="internal">Logical Connectives and Rules of Inference</a></li>
+<li><a href="sec-formal-systems-incompleteness.html" data-scroll="sec-formal-systems-incompleteness" class="internal">Formal Systems and Incompleteness</a></li>
 </ul>
 </li>
-<li class="link"><a href="chap-redistricting.html" data-scroll="chap-redistricting"><span class="codenumber">9</span> <span class="title">Redistricting</span></a></li>
-<li class="link part"><a href="part-beauty.html" data-scroll="part-beauty"><span class="codenumber">V</span> <span class="title">Beauty</span></a></li>
-<li class="link"><a href="chap-fibonacci.html" data-scroll="chap-fibonacci"><span class="codenumber">10</span> <span class="title">The Fibonacci Sequence</span></a></li>
-<li class="link"><a href="chap-fractals.html" data-scroll="chap-fractals"><span class="codenumber">11</span> <span class="title">Fractal Geometry</span></a></li>
-<li class="link"><a href="chap-art.html" data-scroll="chap-art"><span class="codenumber">12</span> <span class="title">Mathematics and the Arts</span></a></li>
-<li class="link backmatter"><a href="backmatter-1.html" data-scroll="backmatter-1"><span class="title">Back Matter</span></a></li>
-<li class="link"><a href="index-31.html" data-scroll="index-31"><span class="title">Index</span></a></li>
-</ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://pretextbook.org">Authored in PreTeXt</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/badge.gif" alt="Powered by MathJax"></a></nav></div>
+<li class="link part"><a href="part-power.html" data-scroll="part-power" class="internal"><span class="codenumber">III</span> <span class="title">Power</span></a></li>
+<li class="link">
+<a href="chap-dynamical-systems.html" data-scroll="chap-dynamical-systems" class="internal"><span class="codenumber">4</span> <span class="title">Discrete Dynamical Systems</span></a><ul>
+<li><a href="sec-intro-to-dds.html" data-scroll="sec-intro-to-dds" class="internal">Sequences</a></li>
+<li><a href="sec-dds.html" data-scroll="sec-dds" class="internal">Discrete Dynamical Systems</a></li>
+</ul>
+</li>
+<li class="link"><a href="chap-graphs.html" data-scroll="chap-graphs" class="internal"><span class="codenumber">5</span> <span class="title">Graphs and Networks</span></a></li>
+<li class="link">
+<a href="chap-coding.html" data-scroll="chap-coding" class="internal"><span class="codenumber">6</span> <span class="title">Modular Arithmetic and Coding Theory</span></a><ul>
+<li><a href="sec-intro-to-mod-arithmetic.html" data-scroll="sec-intro-to-mod-arithmetic" class="internal">Adding in Circles</a></li>
+<li><a href="sec-coding.html" data-scroll="sec-coding" class="internal">Coding Theory</a></li>
+<li><a href="sec-cryptography.html" data-scroll="sec-cryptography" class="internal">Opkpun Tlzzhnlz: Hu Vclycpld vm Jyfwavnyhwof</a></li>
+</ul>
+</li>
+<li class="link part"><a href="part-justice.html" data-scroll="part-justice" class="internal"><span class="codenumber">IV</span> <span class="title">Justice</span></a></li>
+<li class="link">
+<a href="chap-voting.html" data-scroll="chap-voting" class="internal"><span class="codenumber">7</span> <span class="title">Voting</span></a><ul>
+<li><a href="sec-voting-intro.html" data-scroll="sec-voting-intro" class="internal">Elections with Two Candidates</a></li>
+<li><a href="sec-more-voting-systems.html" data-scroll="sec-more-voting-systems" class="active">Elections with More than Two Candidates I</a></li>
+<li><a href="sec-evaluating-voting-systems.html" data-scroll="sec-evaluating-voting-systems" class="internal"></a></li>
+<li><a href="sec-more-voting-systems-iii.html" data-scroll="sec-more-voting-systems-iii" class="internal">Elections with More Than Two Candidates III</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="chap-apportionment.html" data-scroll="chap-apportionment" class="internal"><span class="codenumber">8</span> <span class="title">Apportionment</span></a><ul>
+<li><a href="sec-apportionment-intro.html" data-scroll="sec-apportionment-intro" class="internal">Apportionment and Divisor Methods</a></li>
+<li><a href="sec-apportionment-paradoxes.html" data-scroll="sec-apportionment-paradoxes" class="internal">Apportionment Paradoxes and Hills' Method</a></li>
+</ul>
+</li>
+<li class="link"><a href="chap-redistricting.html" data-scroll="chap-redistricting" class="internal"><span class="codenumber">9</span> <span class="title">Redistricting</span></a></li>
+<li class="link part"><a href="part-beauty.html" data-scroll="part-beauty" class="internal"><span class="codenumber">V</span> <span class="title">Beauty</span></a></li>
+<li class="link"><a href="chap-fibonacci.html" data-scroll="chap-fibonacci" class="internal"><span class="codenumber">10</span> <span class="title">The Fibonacci Sequence</span></a></li>
+<li class="link"><a href="chap-fractals.html" data-scroll="chap-fractals" class="internal"><span class="codenumber">11</span> <span class="title">Fractal Geometry</span></a></li>
+<li class="link"><a href="chap-art.html" data-scroll="chap-art" class="internal"><span class="codenumber">12</span> <span class="title">Mathematics and the Arts</span></a></li>
+<li class="link backmatter"><a href="backmatter-1.html" data-scroll="backmatter-1" class="internal"><span class="title">Back Matter</span></a></li>
+<li class="link"><a href="index-62.html" data-scroll="index-62" class="internal"><span class="title">Index</span></a></li>
+</ul></nav><div class="extras"><nav><a class="pretext-link" href="https://pretextbook.org">Authored in PreTeXt</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/badge.gif" alt="Powered by MathJax"></a></nav></div>
 </div></div>
-<main class="main"><div id="content" class="pretext-content"><section xmlns:svg="http://www.w3.org/2000/svg" class="section" id="sec-more-voting-systems"><h2 class="heading hide-type">
-<span class="type">Section</span> <span class="codenumber">7.2</span> <span class="title">More Voting Systems</span>
-</h2></section></div></main>
+<main class="main"><div id="content" class="pretext-content"><section class="section" id="sec-more-voting-systems"><h2 class="heading hide-type">
+<span class="type">Section</span> <span class="codenumber">7.2</span> <span class="title">Elections with More than Two Candidates I</span>
+</h2>
+<article class="assemblage assemblage-like" id="assemblage-20"><h3 class="heading"><span class="title">Motivating Questions.</span></h3>
+<p id="p-308">In this section, we will explore the following questions. <ol class="decimal">
+<li id="li-324"><p id="p-derived-li-324">How are elections with two candidates different from those with more than two?</p></li>
+<li id="li-325"><p id="p-derived-li-325">What is a plurality, and how is it different than a majority?</p></li>
+<li id="li-326"><p id="p-derived-li-326">How can we fairly evaluate voting systems with multiple candidates?</p></li>
+</ol></p></article><section class="subsection" id="subsection-11"><h3 class="heading hide-type">
+<span class="type">Subsection</span> <span class="codenumber">7.2.1</span> <span class="title">Describing the Problem</span>
+</h3>
+<p id="p-309">Let's begin with a warmup activity.</p>
+<article class="activity project-like" id="activity-25"><h4 class="heading">
+<span class="type">Activity</span><span class="space"> </span><span class="codenumber">7.2.1</span><span class="period">.</span>
+</h4>
+<p id="p-310">The popular vote totals from the state of Florida in the 2000 U.S. presidential election are given in <a href="" class="xref" data-knowl="./knowl/table-FLvote2000.html" title="Table 7.2.2: The Florida popular vote in 2000.">Table 7.2.2</a>.</p>
+<figure class="table table-like" id="table-FLvote2000"><figcaption><span class="type">Table</span><span class="space"> </span><span class="codenumber">7.2.2<span class="period">.</span></span><span class="space"> </span>The Florida popular vote in 2000.</figcaption><div class="tabular-box natural-width"><table class="tabular">
+<tr>
+<td class="c m b2 r2 l0 t0 lines">Candidate</td>
+<td class="c m b2 r0 l0 t0 lines">Popular Votes</td>
+</tr>
+<tr>
+<td class="c m b0 r2 l0 t0 lines">George W. Bush</td>
+<td class="c m b0 r0 l0 t0 lines">2,912,790</td>
+</tr>
+<tr>
+<td class="c m b0 r2 l0 t0 lines">Al Gore</td>
+<td class="c m b0 r0 l0 t0 lines">2,912,254</td>
+</tr>
+<tr>
+<td class="c m b0 r2 l0 t0 lines">Ralph Nader</td>
+<td class="c m b0 r0 l0 t0 lines">97,488</td>
+</tr>
+<tr>
+<td class="c m b0 r2 l0 t0 lines">Others</td>
+<td class="c m b0 r0 l0 t0 lines">40,579</td>
+</tr>
+</table></div></figure><ol class="decimal">
+<li id="li-327"><p id="p-derived-li-327">In this election, did any candidate receive a <em class="emphasis">majority</em> (more than half) of the popular votes cast in the state of Florida?</p></li>
+<li id="li-328"><p id="p-derived-li-328">If George W. Bush and Al Gore had been the only candidates on the ballot in Florida in 2000, do you think that Gore might have possibly received more popular votes than Bush in Florida?</p></li>
+</ol></article><p id="p-311"> In fact, many political scientists believe that Ralph Nader was a <em class="emphasis">spoiler candidate</em> for Gore in 2000; that is, they believe that a large percentage of the Nader voters likely would have voted for Gore if Nader had not been on the ballot. Moreover, since Florida was the deciding factor in the election (we'll talk more about the electoral college later), the razor-thin margin of 537 votes (0.009% of the popular vote in Florida) swung the election from Gore to Bush. In this section, we'll explore the wrinkles introduced by additional candidates, and develop alternative systems for choosing winners of elections.</p>
+<article class="definition definition-like" id="def-plurality"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">7.2.3</span><span class="period">.</span>
+</h4>
+<p id="p-312">A candidate in an election who receives more votes than any of the other candidates is said to receive a <dfn class="terminology">plurality</dfn> of the votes cast.</p></article><article class="principle theorem-like" id="principle-9"><h4 class="heading">
+<span class="type">Discussion</span><span class="space"> </span><span class="codenumber">7.2.4</span><span class="period">.</span>
+</h4>
+<ol class="decimal">
+<li id="li-329"><p id="p-derived-li-329">For elections with two candidates, explain why the words <em class="emphasis">plurality</em> and <em class="emphasis">majority</em> mean exactly the same thing.</p></li>
+<li id="li-330"><p id="p-derived-li-330">For elections with more than two candidates, explain why the words <em class="emphasis">plurality</em> and <em class="emphasis">majority</em> do not mean exactly the same thing.</p></li>
+</ol></article><p id="p-313">We adopt the following definitions.</p>
+<article class="definition definition-like" id="def-majoritypluralityrule"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">7.2.5</span><span class="period">.</span>
+</h4>
+<p id="p-314">Consider an election with more than two candidates.</p>
+<ul class="disc">
+<li id="li-331"><p id="p-derived-li-331"><dfn class="terminology">Majority rule</dfn> is the voting system that elects the candidate who receives more than half the votes, if such a candidate exists. If no such candidate exists, the election is declared a tie with no winner.</p></li>
+<li id="li-332"><p id="p-derived-li-332">The <dfn class="terminology">plurality method</dfn> is the voting system that elects the candidate that receives the largest number of votes. The plurality method only produces a tie when two candidates receive exactly the same number of votes, and this number is more than any other candidate.</p></li>
+</ul></article><article class="principle theorem-like" id="principle-10"><h4 class="heading">
+<span class="type">Discussion</span><span class="space"> </span><span class="codenumber">7.2.6</span><span class="period">.</span>
+</h4>
+<ol class="decimal">
+<li id="li-333"><p id="p-derived-li-333">Which of the two methods described in <a href="" class="xref" data-knowl="./knowl/def-majoritypluralityrule.html" title="Definition 7.2.5">Definition 7.2.5</a> is more likely to result in a tie?</p></li>
+<li id="li-334"><p id="p-derived-li-334">If a candidate wins an election under majority rule, would that candidate also be guaranteed to win under the plurality method?</p></li>
+<li id="li-335"><p id="p-derived-li-335">If a candidate wins an election under the plurality method, would that candidate also be guaranteed to win under majority rule?</p></li>
+</ol></article><p id="p-315">The plurality method is familiar, and so likely seems quite fair. But let's consider the next exploration, this time from the 2016 Republican presidential primary process.</p>
+<article class="exploration project-like" id="expl-GOPprimary"><h4 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">7.2.7</span><span class="period">.</span>
+</h4>
+<p id="p-316">Twenty-one people filed paperwork with the U.S. Federal Election Commission as candidates for the 2016 Republication nomination for president. There were 31,183,841 votes cast in the Republican primaries nationwide in 2016.</p>
+<ol class="decimal">
+<li id="li-336"><p id="p-derived-li-336">Donald Trump received 14,015,993 of these votes. Did he receive a majority of the votes cast in the Republican primaries?</p></li>
+<li id="li-337"><p id="p-derived-li-337">If the winner of the 2016 Republican nomination had been chosen by plurality from these 21 candidates, what is the smallest number of votes Trump could have received and still had a chance at winning the nomination? (Assume that the number of votes remains fixed at 31,183,841.)</p></li>
+<li id="li-338"><p id="p-derived-li-338">Under the same assumptions as Question 2, what is the maximum number of voters who could have preferred Trump the <em class="emphasis">least</em> among the 21 candidates in order for him to still have had a chance of winning the nomination?</p></li>
+<li id="li-339"><p id="p-derived-li-339">Using your answers to Questions 2 and 3, formulate a well-written criticism of the plurality method. You don't have to agree with your argument, but put yourself in the shoes of a critic and try to predict the type of argument that could be made.</p></li>
+</ol></article></section><section class="subsection" id="subsection-12"><h3 class="heading hide-type">
+<span class="type">Subsection</span> <span class="codenumber">7.2.2</span> <span class="title">A solution</span>
+</h3>
+<p id="p-317">As we saw in <a href="" class="xref" data-knowl="./knowl/expl-GOPprimary.html" title="Exploration 7.2.7">Exploration 7.2.7</a>, when there are <span class="process-math">\(N\)</span> candidates, it is possible for the vote to be split so thoroughly that one candidate can win with just over <span class="process-math">\(1/N\)</span>-th of the vote. In this case, a majority of the voters will prefer someone other than the person who is ultimately elected. But the situation is even worse than that—it's possible for the candidate who wins the plurality of the vote to be the <em class="emphasis">last</em> choice of a <em class="emphasis">majority</em> of voters, but still win! The main reason that the plurality method is susceptible to this is that it only takes a voter's first choice into account; there is no penalty for being a voter's last choice, and no benefit to being the voter's second choice.</p>
+<p id="p-318"> We will therefore explore methods of voting and fairness criteria that account for a full top-to-bottom ranking of candidates by voters, called a <dfn class="terminology">preference order</dfn>. If there are three candidates in an election, say Michael, Lindsay, and Buster, and my preference order is that Michael is my top candidate, Buster my second choice, and Lindsay my third, we may write <span class="process-math">\(M \succ B \succ L\text{,}\)</span> where the symbol <span class="process-math">\(\succ\)</span> means "is preferred to".</p>
+<article class="activity project-like" id="activity-26"><h4 class="heading">
+<span class="type">Activity</span><span class="space"> </span><span class="codenumber">7.2.8</span><span class="period">.</span>
+</h4>
+<ol class="decimal">
+<li id="li-340"><p id="p-derived-li-340">Consider a 3-candidate election for the presidency of the Bluth Company between Michael, Lindsay, and Buster. How many possible preference orders are there? In other words, in how many different ways could the voters rank them?</p></li>
+<li id="li-341"><p id="p-derived-li-341">Suppose their brother George enters the race, bringing the total number of candidates to 4. Now how many preference orders are possible now?</p></li>
+</ol></article><p id="p-319"> Since our voters will be casting <dfn class="terminology">preference ballots</dfn>, we need a different way of displaying the votes cast.</p>
+<article class="exploration project-like" id="expl-bcprez"><h4 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">7.2.9</span><span class="period">.</span>
+</h4>
+<p id="p-320">Suppose Buster, George, Lindsay, and Michael are running for the presidency of The Bluth Company (TBC), the premier real estate company in Sudden Valley. The preference orders for each of the 27 shareholders in the company are displayed in <a href="" class="xref" data-knowl="./knowl/table-bcprez.html" title="Table 7.2.10: Preference schedule for the presidency of The Bluth Company.">Table 7.2.10</a>, a visualization known as a <dfn class="terminology">preference schedule</dfn>. The column headings indicate the number of voters with the preference order displayed in the column. For instance, the first column shows that 12 shareholders have the preference order <span class="process-math">\(B \succ G \succ L \succ M\text{.}\)</span> Note that the preference orders displayed are the four that were cast as preference ballots in the election; there are many others that were not cast, and thus are not displayed.</p>
+<figure class="table table-like" id="table-bcprez"><figcaption><span class="type">Table</span><span class="space"> </span><span class="codenumber">7.2.10<span class="period">.</span></span><span class="space"> </span>Preference schedule for the presidency of The Bluth Company.</figcaption><div class="tabular-box natural-width"><table class="tabular">
+<tr>
+<td class="c m b2 r2 l0 t0 lines">Rank</td>
+<td class="c m b2 r0 l0 t0 lines">12</td>
+<td class="c m b2 r0 l0 t0 lines">7</td>
+<td class="c m b2 r0 l0 t0 lines">5</td>
+<td class="c m b2 r0 l0 t0 lines">3</td>
+</tr>
+<tr>
+<td class="c m b0 r2 l0 t0 lines">1</td>
+<td class="c m b0 r0 l0 t0 lines">B</td>
+<td class="c m b0 r0 l0 t0 lines">G</td>
+<td class="c m b0 r0 l0 t0 lines">L</td>
+<td class="c m b0 r0 l0 t0 lines">M</td>
+</tr>
+<tr>
+<td class="c m b0 r2 l0 t0 lines">2</td>
+<td class="c m b0 r0 l0 t0 lines">G</td>
+<td class="c m b0 r0 l0 t0 lines">L</td>
+<td class="c m b0 r0 l0 t0 lines">M</td>
+<td class="c m b0 r0 l0 t0 lines">L</td>
+</tr>
+<tr>
+<td class="c m b0 r2 l0 t0 lines">3</td>
+<td class="c m b0 r0 l0 t0 lines">L</td>
+<td class="c m b0 r0 l0 t0 lines">M</td>
+<td class="c m b0 r0 l0 t0 lines">B</td>
+<td class="c m b0 r0 l0 t0 lines">G</td>
+</tr>
+<tr>
+<td class="c m b0 r2 l0 t0 lines">4</td>
+<td class="c m b0 r0 l0 t0 lines">M</td>
+<td class="c m b0 r0 l0 t0 lines">B</td>
+<td class="c m b0 r0 l0 t0 lines">G</td>
+<td class="c m b0 r0 l0 t0 lines">B</td>
+</tr>
+</table></div></figure><ol class="decimal">
+<li id="li-342"><p id="p-derived-li-342">Under majority rule, what would the outcome of the election be?</p></li>
+<li id="li-343"><p id="p-derived-li-343">Under the plurality method, what would the outcome of the election be?</p></li>
+<li id="li-344"><p id="p-derived-li-344">Rank the candidates based on the outcome produced by the plurality method. The final ranking of candidates by a voting system is known as the <dfn class="terminology">societal preference order</dfn>.</p></li>
+<li id="li-345"><p id="p-derived-li-345">Do you think the plurality winner best represents the will and preferences of the voters? If so, explain why. If not, give a convincing argument for why you think some other candidate would be better.</p></li>
+</ol></article></section><section class="subsection" id="subsection-13"><h3 class="heading hide-type">
+<span class="type">Subsection</span> <span class="codenumber">7.2.3</span> <span class="title">The Borda Count</span>
+</h3>
+<p id="p-321">One very popular method for choosing the winner of a multi-candidate election is the Borda count.</p>
+<article class="definition definition-like" id="definition-25"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">7.2.11</span><span class="period">.</span>
+</h4>
+<p id="p-322">Consider an election with <span class="process-math">\(N\)</span> candidates. The <dfn class="terminology">Borda count</dfn> works as follows. Each voter submits a ballot that contains their entire preference order for all candidates in the election. For each ballot cast, points are awarded to each candidate according to the following rules:</p>
+<ul class="disc">
+<li id="li-346"><p id="p-derived-li-346">A last-place vote is worth 1 point.</p></li>
+<li id="li-347"><p id="p-derived-li-347">A second-to-last-place vote is worth 2 points.</p></li>
+<li id="li-348"><p id="p-derived-li-348"><span class="process-math">\(\displaystyle \vdots\)</span></p></li>
+<li id="li-349"><p id="p-derived-li-349">A third-place vote is worth <span class="process-math">\(N-2\)</span> points.</p></li>
+<li id="li-350"><p id="p-derived-li-350">A second-place vote is worth <span class="process-math">\(N-1\)</span> points.</p></li>
+<li id="li-351"><p id="p-derived-li-351">A first-place vote is worth <span class="process-math">\(N\)</span> points.</p></li>
+</ul>
+<p id="p-323">The candidate who accumulates the largest number of total points from all of the ballots is declared the winner, and the societal preference order is determined by listing the candidates in order of the number of points they received, largest to smallest. In the event that two or more candidates are tied with the largest number of points, they are all declared winners (or some suitable prearranged tiebreaking procedure is used).</p></article><article class="activity project-like" id="activity-27"><h4 class="heading">
+<span class="type">Activity</span><span class="space"> </span><span class="codenumber">7.2.12</span><span class="period">.</span>
+</h4>
+<p id="p-324">Under the Borda count, what would the outcome of the Bluth Company presidential election in <a href="" class="xref" data-knowl="./knowl/expl-bcprez.html" title="Exploration 7.2.9">Exploration 7.2.9</a> be?</p></article><p id="p-325">Consider the following interesting feature of the Borda count.</p>
+<article class="activity project-like" id="act-bcprez2"><h4 class="heading">
+<span class="type">Activity</span><span class="space"> </span><span class="codenumber">7.2.13</span><span class="period">.</span>
+</h4>
+<p id="p-326">Controversy at the Bluth Company! Due to some shenanigans involving a major shareholder, the election displayed in <a href="" class="xref" data-knowl="./knowl/table-bcprez.html" title="Table 7.2.10: Preference schedule for the presidency of The Bluth Company.">Table 7.2.10</a> has to be rerun. The following preference schedule is produced.</p>
+<figure class="table table-like" id="table-bcprez2"><figcaption><span class="type">Table</span><span class="space"> </span><span class="codenumber">7.2.14<span class="period">.</span></span><span class="space"> </span>Preference schedule for the presidency of The Bluth Company.</figcaption><div class="tabular-box natural-width"><table class="tabular">
+<tr>
+<td class="c m b2 r2 l0 t0 lines">Rank</td>
+<td class="c m b2 r0 l0 t0 lines">10</td>
+<td class="c m b2 r0 l0 t0 lines">3</td>
+<td class="c m b2 r0 l0 t0 lines">5</td>
+</tr>
+<tr>
+<td class="c m b0 r2 l0 t0 lines">1</td>
+<td class="c m b0 r0 l0 t0 lines">B</td>
+<td class="c m b0 r0 l0 t0 lines">G</td>
+<td class="c m b0 r0 l0 t0 lines">L</td>
+</tr>
+<tr>
+<td class="c m b0 r2 l0 t0 lines">2</td>
+<td class="c m b0 r0 l0 t0 lines">L</td>
+<td class="c m b0 r0 l0 t0 lines">L</td>
+<td class="c m b0 r0 l0 t0 lines">G</td>
+</tr>
+<tr>
+<td class="c m b0 r2 l0 t0 lines">3</td>
+<td class="c m b0 r0 l0 t0 lines">G</td>
+<td class="c m b0 r0 l0 t0 lines">M</td>
+<td class="c m b0 r0 l0 t0 lines">M</td>
+</tr>
+<tr>
+<td class="c m b0 r2 l0 t0 lines">4</td>
+<td class="c m b0 r0 l0 t0 lines">M</td>
+<td class="c m b0 r0 l0 t0 lines">B</td>
+<td class="c m b0 r0 l0 t0 lines">B</td>
+</tr>
+</table></div></figure><ol class="decimal">
+<li id="li-352"><p id="p-derived-li-352">Who wins under majority rule?</p></li>
+<li id="li-353"><p id="p-derived-li-353">Who wins under the Borda count? Does this seem strange to you?</p></li>
+</ol></article><p id="p-327">Lest you think this is a contrived example, be aware that things like this can happen in real life. A version of the Borda count is used by the Associated Press to rank the top 25 college football and basketball teams. In the 1971 AP preseason poll, my Nebraska Cornhuskers received 26 of 50 first-place votes, yet were ranked #2. The results of things like this AP polling anomaly or <a href="" class="xref" data-knowl="./knowl/act-bcprez2.html" title="Activity 7.2.13">Activity 7.2.13</a> suggest a new fairness criterion.</p>
+<article class="definition definition-like" id="def-majoritycriterion"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">7.2.15</span><span class="period">.</span>
+</h4>
+<p id="p-328">A voting system satisfies the <dfn class="terminology">majority criterion</dfn> if whenever a candidate is ranked first by a majority of voters, that candidate will be ranked first in the resulting societal preference order.</p></article><article class="principle theorem-like" id="principle-11"><h4 class="heading">
+<span class="type">Discussion</span><span class="space"> </span><span class="codenumber">7.2.16</span><span class="period">.</span>
+</h4>
+<p id="p-329">Of all the voting systems we've explored thus far, which must always satisfy the majority criterion?</p></article><p id="p-330">Our definitions from <a href="" class="xref" data-knowl="./knowl/def-fairness1.html" title="Definition 7.1.6">Definition 7.1.6</a> can be modified to extend in a natural way to elections with three or more candidates.</p>
+<article class="definition definition-like" id="def-fairness2"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">7.2.17</span><span class="period">.</span>
+</h4>
+<ul class="disc">
+<li id="li-354"><p id="p-derived-li-354">A voting system is <dfn class="terminology">anonymous</dfn> if it treats all of the voters equally, meaning that if any two voters traded <em class="emphasis">preference orders</em>, the outcome of the election (and the resulting societal preference order) would remain the same.</p></li>
+<li id="li-355"><p id="p-derived-li-355">A voting system is <dfn class="terminology">neutral</dfn> if it treats all of the candidates equally, meaning that if <em class="emphasis">every</em> voter switched the positions of two particular candidates in their individual preference orders, the positions of these two candidates would switch in the resulting societal preference order as well.</p></li>
+<li id="li-356"><p id="p-derived-li-356">A voting system is <dfn class="terminology">monotone</dfn> if changes favorable only to a particular candidate in individual preference orders cannot cause that candidate to be ranked lower in the resulting societal preference order.</p></li>
+</ul></article><article class="exploration project-like" id="exploration-26"><h4 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">7.2.18</span><span class="period">.</span>
+</h4>
+<ol class="decimal">
+<li id="li-357"><p id="p-derived-li-357">Which of the properties of anonymity, neutrality, and monotonicity are satisfied by plurality? Which are not satisfied? Give a convincing argument to justify each of your answers.</p></li>
+<li id="li-358"><p id="p-derived-li-358">Which of the properties of anonymity, neutrality, and monotonicity are satisfied by the Borda count? Which of these three properties are not satisfied? Give a convincing argument to justify each of your answers.</p></li>
+<li id="li-359"><p id="p-derived-li-359">Do either of your answers to Questions 1 or 2 contradict <a href="" class="xref" data-knowl="./knowl/thm-may.html" title="Theorem 7.1.12">Theorem 7.1.12</a>? Explain.</p></li>
+</ol></article><section class="conclusion" id="conclusion-7"><p id="p-331">In this section, we have seen that things become more complicated when we consider more than two candidates. In an election with only two candidates, a vote for one implicitly ranks the other candidate second. With more than two candidates, not only can societal preferences be more diffuse, but they are also more complex than can be captured with simple plurality voting. It is possible for a candidate who is the least desirable choice of an <em class="emphasis">overwhelming majority</em> of the voters to win if there are enough other candidates.</p>
+<p id="p-332">In the next section, we will explore additional voting systems and fairness criteria that attempt to overcome the shortcomings of the Borda count.</p></section></section></section></div></main>
 </div>
 </body>
 </html>

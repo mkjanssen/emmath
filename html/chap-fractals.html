@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--********************************************-->
 <!--*       Generated from PreTeXt source      *-->
-<!--*       on 2022-04-29T09:49:19-05:00       *-->
+<!--*       on 2022-05-17T09:27:11-05:00       *-->
 <!--*   A recent stable commit (2020-08-09):   *-->
 <!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
 <!--*                                          *-->
@@ -17,7 +17,7 @@
 <meta property="og:type" content="book">
 <meta property="book:title" content="Explorations in Modern Mathematics">
 <meta property="book:author" content="Mike Janssen">
-<script src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script>window.MathJax = {
+<script src="https://sagecell.sagemath.org/static/embedded_sagecell.js"></script><script>window.MathJax = {
   tex: {
     inlineMath: [['\\(','\\)']],
     tags: "none",
@@ -62,10 +62,6 @@
 <link href="https://pretextbook.org/css/0.4/style_default.css" rel="stylesheet" type="text/css">
 <link href="https://pretextbook.org/css/0.4/colors_blue_grey.css" rel="stylesheet" type="text/css">
 <link href="https://pretextbook.org/css/0.4/setcolors.css" rel="stylesheet" type="text/css">
-<!-- 2019-10-12: Temporary - CSS file for experiments with styling --><link href="developer.css" rel="stylesheet" type="text/css">
-<!--*** Runestone Services ***-->
-<script type="text/javascript" src="_static/runtime.44deab00544cc8fc.bundle.js"></script><script type="text/javascript" src="_static/637.d54be67956c5c660.bundle.js"></script><script type="text/javascript" src="_static/runestone.a1a8707963a337ef.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/637.fafafbd97df8a0d1.css">
-<link rel="stylesheet" type="text/css" href="_static/runestone.d062db89aaf1dddd.css">
 </head>
 <body class="pretext-book ignore-math has-toc has-sidebar-left">
 <a class="assistive" href="#content">Skip to main content</a><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\({\labelitemi}{$\diamond$}
@@ -130,7 +126,7 @@
 <nav id="primary-navbar" class="navbar"><div class="container">
 <div class="navbar-top-buttons">
 <button class="sidebar-left-toggle-button button active" aria-label="Show or hide table of contents sidebar">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
-<a class="index-button toolbar-item button" href="index-62.html" title="Index">Index</a><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="chap-fibonacci.html" title="Previous">Prev</a><a id="upbutton" class="up-button button toolbar-item" href="part-beauty.html" title="Up">Up</a><a id="nextbutton" class="next-button button toolbar-item" href="chap-art.html" title="Next">Next</a></span>
+<a class="index-button toolbar-item button" href="index-63.html" title="Index">Index</a><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="chap-fibonacci.html" title="Previous">Prev</a><a id="upbutton" class="up-button button toolbar-item" href="part-beauty.html" title="Up">Up</a><a id="nextbutton" class="next-button button toolbar-item" href="chap-art.html" title="Next">Next</a></span>
 </div>
 </div>
 <div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
@@ -176,12 +172,18 @@
 <li><a href="sec-dds.html" data-scroll="sec-dds" class="internal">Discrete Dynamical Systems</a></li>
 </ul>
 </li>
-<li class="link"><a href="chap-graphs.html" data-scroll="chap-graphs" class="internal"><span class="codenumber">5</span> <span class="title">Graphs and Networks</span></a></li>
+<li class="link">
+<a href="chap-graphs.html" data-scroll="chap-graphs" class="internal"><span class="codenumber">5</span> <span class="title">Graphs</span></a><ul>
+<li><a href="sec-intro-gt.html" data-scroll="sec-intro-gt" class="internal">Intro to Graph Theory</a></li>
+<li><a href="sec-planar-graphs.html" data-scroll="sec-planar-graphs" class="internal">April 9: Planar Graphs</a></li>
+<li><a href="sec-graph-coloring.html" data-scroll="sec-graph-coloring" class="internal">Apr. 12: Graph Coloring</a></li>
+<li><a href="sec-trees.html" data-scroll="sec-trees" class="internal">Intro to Trees</a></li>
+</ul>
+</li>
 <li class="link">
 <a href="chap-coding.html" data-scroll="chap-coding" class="internal"><span class="codenumber">6</span> <span class="title">Modular Arithmetic and Coding Theory</span></a><ul>
 <li><a href="sec-intro-to-mod-arithmetic.html" data-scroll="sec-intro-to-mod-arithmetic" class="internal">Adding in Circles</a></li>
 <li><a href="sec-coding.html" data-scroll="sec-coding" class="internal">Coding Theory</a></li>
-<li><a href="sec-cryptography.html" data-scroll="sec-cryptography" class="internal">Opkpun Tlzzhnlz: Hu Vclycpld vm Jyfwavnyhwof</a></li>
 </ul>
 </li>
 <li class="link part"><a href="part-justice.html" data-scroll="part-justice" class="internal"><span class="codenumber">IV</span> <span class="title">Justice</span></a></li>
@@ -193,23 +195,16 @@
 <li><a href="sec-more-voting-systems-iii.html" data-scroll="sec-more-voting-systems-iii" class="internal">Elections with More Than Two Candidates III</a></li>
 </ul>
 </li>
-<li class="link">
-<a href="chap-apportionment.html" data-scroll="chap-apportionment" class="internal"><span class="codenumber">8</span> <span class="title">Apportionment</span></a><ul>
-<li><a href="sec-apportionment-intro.html" data-scroll="sec-apportionment-intro" class="internal">Apportionment and Divisor Methods</a></li>
-<li><a href="sec-apportionment-paradoxes.html" data-scroll="sec-apportionment-paradoxes" class="internal">Apportionment Paradoxes and Hills' Method</a></li>
-</ul>
-</li>
-<li class="link"><a href="chap-redistricting.html" data-scroll="chap-redistricting" class="internal"><span class="codenumber">9</span> <span class="title">Redistricting</span></a></li>
 <li class="link part"><a href="part-beauty.html" data-scroll="part-beauty" class="internal"><span class="codenumber">V</span> <span class="title">Beauty</span></a></li>
-<li class="link"><a href="chap-fibonacci.html" data-scroll="chap-fibonacci" class="internal"><span class="codenumber">10</span> <span class="title">The Fibonacci Sequence</span></a></li>
-<li class="link active"><a href="chap-fractals.html" data-scroll="chap-fractals" class="internal"><span class="codenumber">11</span> <span class="title">Fractal Geometry</span></a></li>
-<li class="link"><a href="chap-art.html" data-scroll="chap-art" class="internal"><span class="codenumber">12</span> <span class="title">Mathematics and the Arts</span></a></li>
+<li class="link"><a href="chap-fibonacci.html" data-scroll="chap-fibonacci" class="internal"><span class="codenumber">8</span> <span class="title">The Fibonacci Sequence</span></a></li>
+<li class="link active"><a href="chap-fractals.html" data-scroll="chap-fractals" class="internal"><span class="codenumber">9</span> <span class="title">Fractal Geometry</span></a></li>
+<li class="link"><a href="chap-art.html" data-scroll="chap-art" class="internal"><span class="codenumber">10</span> <span class="title">Mathematics and the Arts</span></a></li>
 <li class="link backmatter"><a href="backmatter-1.html" data-scroll="backmatter-1" class="internal"><span class="title">Back Matter</span></a></li>
-<li class="link"><a href="index-62.html" data-scroll="index-62" class="internal"><span class="title">Index</span></a></li>
+<li class="link"><a href="index-63.html" data-scroll="index-63" class="internal"><span class="title">Index</span></a></li>
 </ul></nav><div class="extras"><nav><a class="pretext-link" href="https://pretextbook.org">Authored in PreTeXt</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/badge.gif" alt="Powered by MathJax"></a></nav></div>
 </div></div>
 <main class="main"><div id="content" class="pretext-content"><section class="chapter" id="chap-fractals"><h2 class="heading">
-<span class="type">Chapter</span> <span class="codenumber">11</span> <span class="title">Fractal Geometry</span>
+<span class="type">Chapter</span> <span class="codenumber">9</span> <span class="title">Fractal Geometry</span>
 </h2></section></div></main>
 </div>
 </body>

@@ -76,6 +76,7 @@
   *{package}{titlesec}    {2019/10/16 v2.13}
   *{package}{titleps}     {0000/00/00 v0.0}
   *{package}{titletoc}    {2019/10/16 v2.13}
+  *{package}{qrcode}      {2015/01/08 v1.51}
   *{package}{listings}    {2020/03/24 v1.8d}
   *{package}{lstmisc}     {2020/03/24 v1.8d}
   *{file}   {listings.cfg}{2020/03/24 v1.8d}
@@ -158,8 +159,6 @@
   *{file}   {EMM.ptx.out} {0000/00/00 v0.0}
   *{file}   {mt-msa.cfg}  {2006/02/04 v1.1}
   *{file}   {mt-msb.cfg}  {2005/06/01 v1.0}
-  *{file}   {./images/x.pdf}{0000/00/00 v0.0}
-  *{file}   {./images/triangular.pdf}{0000/00/00 v0.0}
   *{package}{lstlang1}    {2020/03/24 v1.8d}
   *{file}   {EMM.ptx.listing}{0000/00/00 v0.0}
   *{file}   {EMM.ptx.listing}{0000/00/00 v0.0}
@@ -167,5 +166,18 @@
   *{file}   {EMM.ptx.listing}{0000/00/00 v0.0}
   *{file}   {EMM.ptx.listing}{0000/00/00 v0.0}
   *{file}   {EMM.ptx.listing}{0000/00/00 v0.0}
+  *{file}   {images/graph01.png}{0000/00/00 v0.0}
+  *{file}   {images/graph02.png}{0000/00/00 v0.0}
+  *{file}   {images/graph03.png}{0000/00/00 v0.0}
+  *{file}   {./images/planarity.png}{0000/00/00 v0.0}
+  *{file}   {./images/subdivision.png}{0000/00/00 v0.0}
+  *{file}   {./images/usa.jpg}{0000/00/00 v0.0}
+  *{file}   {./images/map1.jpg}{0000/00/00 v0.0}
+  *{file}   {images/graph04.png}{0000/00/00 v0.0}
+  *{file}   {images/tree01.png}{0000/00/00 v0.0}
+  *{file}   {images/tree02.png}{0000/00/00 v0.0}
+  *{file}   {images/tree03.png}{0000/00/00 v0.0}
+  *{file}   {images/graph06.png}{0000/00/00 v0.0}
+  *{file}   {images/graph05.png}{0000/00/00 v0.0}
   *{file}   {EMM.ptx.ind} {0000/00/00 v0.0}
 }

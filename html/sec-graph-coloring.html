@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*       on 2022-05-18T12:43:04-05:00       *-->
+<!--*   A recent stable commit (2020-08-09):   *-->
+<!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US">
+<head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Apr. 12: Graph Coloring</title>
+<meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="book">
+<meta property="book:title" content="Explorations in Modern Mathematics">
+<meta property="book:author" content="Mike Janssen">
+<script src="https://sagecell.sagemath.org/static/embedded_sagecell.js"></script><script>window.MathJax = {
+  tex: {
+    inlineMath: [['\\(','\\)']],
+    tags: "none",
+    tagSide: "right",
+    tagIndent: ".8em",
+    packages: {'[+]': ['base', 'extpfeil', 'ams', 'amscd', 'newcommand', 'knowl']}
+  },
+  options: {
+    ignoreHtmlClass: "tex2jax_ignore|ignore-math",
+    processHtmlClass: "process-math",
+    renderActions: {
+        findScript: [10, function (doc) {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(function(node) {
+                var display = !!node.type.match(/; *mode=display/);
+                var math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                var text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = {node: text, delim: '', n: 0};
+                math.end = {node: text, delim: '', n: 0};
+                doc.math.push(math);
+            });
+        }, '']
+    },
+  },
+  chtml: {
+    scale: 0.88,
+    mtextInheritFont: true
+  },
+  loader: {
+    load: ['input/asciimath', '[tex]/extpfeil', '[tex]/amscd', '[tex]/newcommand', '[pretext]/mathjaxknowl3.js'],
+    paths: {pretext: "https://pretextbook.org/js/lib"},
+  },
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script src="https://pretextbook.org/js/lib/jquery.min.js"></script><script src="https://pretextbook.org/js/lib/jquery.sticky.js"></script><script src="https://pretextbook.org/js/lib/jquery.espy.min.js"></script><script src="https://pretextbook.org/js/0.13/pretext.js"></script><script>miniversion=0.674</script><script src="https://pretextbook.org/js/0.13/pretext_add_on.js?x=1"></script><script src="https://pretextbook.org/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
+</script><link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/pretext.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/pretext_add_on.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/banner_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/toc_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/knowls_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/style_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/colors_blue_grey.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/setcolors.css" rel="stylesheet" type="text/css">
+</head>
+<body class="pretext-book ignore-math has-toc has-sidebar-left">
+<a class="assistive" href="#content">Skip to main content</a><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\({\labelitemi}{$\diamond$}
+\def\arraystretch{1.5}
+\newcommand{\contentsfinish}{}
+\newcommand{\separator}{\begin{center}\rule{\columnwidth}{\arrayrulewidth}\end{center}}
+\newcommand{\tosay}[1]{\begin{center}\text{\fbox{\scriptsize{#1}}}\end{center}}
+\renewcommand{\cftsecfont}{}
+\renewcommand{\cftsecpagefont}{}
+\renewcommand{\descriptionlabel}[1]{\hspace{\labelsep}\smallcaps{#1}}
+\def\oldequation{\equation}
+\def\endoldequation{\endequation}
+\newcommand{\nl}{
+}
+\newcommand{\runin}[1]{\textls[50]{\otherscshape #1}}
+\renewcommand{\sectionmark}[1]{}
+\renewcommand{\subsectionmark}[1]{}
+\renewcommand{\sectionmark}[1]{\markboth{{\thesection}.\ \smallcaps{#1}}{\thesection.\ \smallcaps{#1}}}
+\renewcommand{\subsectionmark}[1]{}
+\renewcommand{\sectionmark}[1]{\markboth{{\scriptsize\thesection}.\ \smallcaps{#1}}{}}
+\renewcommand{\subsectionmark}[1]{}
+\newcommand{\makedefaultsection}[2][true]{
+}
+\newcommand{\timestamp}{{\color{red}Last updated: {\currenttime\ (UTC), \today}}}
+\renewcommand{\le}{\leqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\ge}{\geqslant}
+\newcommand{\ideal}[1]{\left\langle\, #1 \,\right\rangle}
+\newcommand{\subgp}[1]{\left\langle\, #1 \,\right\rangle}
+\def\p{\varphi}
+\def\isomorphic{\cong}
+\def\Gal{\text{Gal}}
+\def\im{\text{im}}
+\def\normal{\vartriangleleft}
+\renewcommand{\qedsymbol}{$\checkmark$}
+\def\lcm{{\text{lcm}\,}}
+\newcommand{\q}[1]{{\color{red} {#1}}}
+\newcommand{\startimportant}[1]{\end{[{Hint:} #1]\end}}
+\renewcommand{\textcircled}[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=2pt,color=red] (char) {#1};}}
+\newcommand{\crossout}[1]{\tikz[baseline=(char.base)]{\node[mynode, cross out,draw] (char) {#1};}}
+\newcommand{\set}[1]{\left\{ {#1} \right\}}
+\newcommand{\setof}[2]{{\left\{#1\,\colon\,#2\right\}}}
+\def\C{{\mathbb C}}
+\def\Z{{\mathbb Z}}
+\def\bF{{\mathbb F}}
+\def\Q{{\mathbb Q}}
+\def\N{{\mathbb N}}
+\def\R{{\mathbb R}}
+\newcommand{\h}[1]{{\textbf{#1}}}
+\def\presnotes{}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\)</span></div>
+<header id="masthead" class="smallbuttons"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><a href="book-1.html"><span class="title">Explorations in Modern Mathematics</span></a></h1>
+<p class="byline">Mike Janssen</p>
+</div>
+</div></div>
+<nav id="primary-navbar" class="navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active" aria-label="Show or hide table of contents sidebar">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
+<a class="index-button toolbar-item button" href="index-67.html" title="Index">Index</a><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="sec-planar-graphs.html" title="Previous">Prev</a><a id="upbutton" class="up-button button toolbar-item" href="chap-graphs.html" title="Up">Up</a><a id="nextbutton" class="next-button button toolbar-item" href="sec-trees.html" title="Next">Next</a></span>
+</div>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="sec-planar-graphs.html" title="Previous">Prev</a><a class="up-button button toolbar-item" href="chap-graphs.html" title="Up">Up</a><a class="next-button button toolbar-item" href="sec-trees.html" title="Next">Next</a>
+</div>
+</div></nav></header><div class="page">
+<div id="sidebar-left" class="sidebar" role="navigation"><div class="sidebar-content">
+<nav id="toc"><ul>
+<li class="link frontmatter">
+<a href="frontmatter-1.html" data-scroll="frontmatter-1" class="internal"><span class="title">Front Matter</span></a><ul>
+<li><a href="colophon-1.html" data-scroll="colophon-1" class="internal">Colophon</a></li>
+<li><a href="Sec-Introduction.html" data-scroll="Sec-Introduction" class="internal">Introduction</a></li>
+<li><a href="sec-NoteToStudents.html" data-scroll="sec-NoteToStudents" class="internal">A Note to Students</a></li>
+<li><a href="sec-NoteToInstructors.html" data-scroll="sec-NoteToInstructors" class="internal">A Note to Instructors</a></li>
+<li><a href="sec-versions.html" data-scroll="sec-versions" class="internal">Versions of this text</a></li>
+<li><a href="sec-acknowledgements.html" data-scroll="sec-acknowledgements" class="internal">Acknowledgments</a></li>
+</ul>
+</li>
+<li class="link part"><a href="part-play.html" data-scroll="part-play" class="internal"><span class="codenumber">I</span> <span class="title">Play</span></a></li>
+<li class="link">
+<a href="chap-cube.html" data-scroll="chap-cube" class="internal"><span class="codenumber">1</span> <span class="title">The Cube</span></a><ul>
+<li><a href="sec-play-intro.html" data-scroll="sec-play-intro" class="internal">Introduction and Background</a></li>
+<li><a href="sec-play-describing-the-cube.html" data-scroll="sec-play-describing-the-cube" class="internal">Describing the Cube</a></li>
+<li><a href="sec-play-moving-cubies.html" data-scroll="sec-play-moving-cubies" class="internal">Moving Cubies</a></li>
+<li><a href="sec-play-reorienting-cubies.html" data-scroll="sec-play-reorienting-cubies" class="internal">Reorienting Cubies</a></li>
+</ul>
+</li>
+<li class="link part"><a href="part-truth.html" data-scroll="part-truth" class="internal"><span class="codenumber">II</span> <span class="title">Truth</span></a></li>
+<li class="link">
+<a href="chap-reasoning.html" data-scroll="chap-reasoning" class="internal"><span class="codenumber">2</span> <span class="title">Inductive and Deductive Reasoning</span></a><ul>
+<li><a href="section-5.html" data-scroll="section-5" class="internal">Inductive Reasoning</a></li>
+<li><a href="section-6.html" data-scroll="section-6" class="internal">Deductive Reasoning</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="chap-logic.html" data-scroll="chap-logic" class="internal"><span class="codenumber">3</span> <span class="title">Modern Mathematical Logic</span></a><ul>
+<li><a href="sec-connectives.html" data-scroll="sec-connectives" class="internal">Logical Connectives and Rules of Inference</a></li>
+<li><a href="sec-formal-systems-incompleteness.html" data-scroll="sec-formal-systems-incompleteness" class="internal">Formal Systems and Incompleteness</a></li>
+</ul>
+</li>
+<li class="link part"><a href="part-power.html" data-scroll="part-power" class="internal"><span class="codenumber">III</span> <span class="title">Power</span></a></li>
+<li class="link">
+<a href="chap-dynamical-systems.html" data-scroll="chap-dynamical-systems" class="internal"><span class="codenumber">4</span> <span class="title">Discrete Dynamical Systems</span></a><ul>
+<li><a href="sec-intro-to-dds.html" data-scroll="sec-intro-to-dds" class="internal">Sequences</a></li>
+<li><a href="sec-dds.html" data-scroll="sec-dds" class="internal">Discrete Dynamical Systems</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="chap-graphs.html" data-scroll="chap-graphs" class="internal"><span class="codenumber">5</span> <span class="title">Graphs</span></a><ul>
+<li><a href="sec-intro-gt.html" data-scroll="sec-intro-gt" class="internal">Intro to Graph Theory</a></li>
+<li><a href="sec-planar-graphs.html" data-scroll="sec-planar-graphs" class="internal">April 9: Planar Graphs</a></li>
+<li><a href="sec-graph-coloring.html" data-scroll="sec-graph-coloring" class="active">Apr. 12: Graph Coloring</a></li>
+<li><a href="sec-trees.html" data-scroll="sec-trees" class="internal">Intro to Trees</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="chap-coding.html" data-scroll="chap-coding" class="internal"><span class="codenumber">6</span> <span class="title">Modular Arithmetic and Coding Theory</span></a><ul>
+<li><a href="sec-intro-to-mod-arithmetic.html" data-scroll="sec-intro-to-mod-arithmetic" class="internal">Adding in Circles</a></li>
+<li><a href="sec-coding.html" data-scroll="sec-coding" class="internal">Coding Theory</a></li>
+</ul>
+</li>
+<li class="link part"><a href="part-justice.html" data-scroll="part-justice" class="internal"><span class="codenumber">IV</span> <span class="title">Justice</span></a></li>
+<li class="link">
+<a href="chap-voting.html" data-scroll="chap-voting" class="internal"><span class="codenumber">7</span> <span class="title">Voting</span></a><ul>
+<li><a href="sec-voting-intro.html" data-scroll="sec-voting-intro" class="internal">Elections with Two Candidates</a></li>
+<li><a href="sec-more-voting-systems.html" data-scroll="sec-more-voting-systems" class="internal">Elections with More than Two Candidates I</a></li>
+<li><a href="sec-evaluating-voting-systems.html" data-scroll="sec-evaluating-voting-systems" class="internal">Elections with More than Two Candidates II</a></li>
+<li><a href="sec-more-voting-systems-iii.html" data-scroll="sec-more-voting-systems-iii" class="internal">Elections with More Than Two Candidates III</a></li>
+</ul>
+</li>
+<li class="link backmatter"><a href="backmatter-1.html" data-scroll="backmatter-1" class="internal"><span class="title">Back Matter</span></a></li>
+<li class="link"><a href="index-67.html" data-scroll="index-67" class="internal"><span class="title">Index</span></a></li>
+</ul></nav><div class="extras"><nav><a class="pretext-link" href="https://pretextbook.org">Authored in PreTeXt</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/badge.gif" alt="Powered by MathJax"></a></nav></div>
+</div></div>
+<main class="main"><div id="content" class="pretext-content">
+<section class="section" id="sec-graph-coloring"><h2 class="heading hide-type">
+<span class="type">Section</span> <span class="codenumber">5.3</span> <span class="title">Apr. 12: Graph Coloring</span>
+</h2>
+<p id="p-286">Another application of planar graphs arises when deciding how to color a map. A useful coloring must not color states that share a common border (that is, a part of their boundary) with the same color (otherwise it’s difficult to tell where one starts and another begins!). However, an efficient mapmaker might wonder how many colors are needed to color any world map so that no countries which share a border are given the same color.</p>
+<article class="exploration project-like" id="exploration-25"><h3 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">5.3.1</span><span class="period">.</span>
+</h3>
+<p id="p-287">Consider the <a class="external" href="./usa_map.pdf" target="_blank">blank map of the USA</a><a href="" data-knowl="" class="id-ref fn-knowl original" data-refid="hk-fn-37" id="fn-37"><sup> 1 </sup></a> displayed in <a href="" class="xref" data-knowl="./knowl/fig-usa-map.html" title="Figure 5.3.2">Figure 5.3.2</a>. How many different colors are <em class="emphasis">needed</em> in order to color the states so that no states that share a border are given the same color? How could we model this problem with a graph?</p>
+<figure class="figure figure-like" id="fig-usa-map"><div class="image-box" style="width: 65%; margin-left: 17.5%; margin-right: 17.5%;"><img src="./images/usa.jpg" class="contained"></div>
+<figcaption><span class="type">Figure</span><span class="space"> </span><span class="codenumber">5.3.2<span class="period">.</span></span><span class="space"> </span></figcaption></figure></article><article class="theorem theorem-like" id="theorem-5"><h3 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">5.3.3</span><span class="period">.</span><span class="space"> </span><span class="title">Four Color Theorem.</span>
+</h3>
+<p id="p-288">Four colors suffice to color any map such that any two countries which share a part of a border are given different colors.</p></article><p id="p-289">The proof was very controversial, as it involves the use of computers to check thousands of cases. The proof is generally accepted now, however.</p>
+<p id="p-290">We can use graphs to model maps. Here is the graph that corresponds to the following map.</p>
+<figure class="figure figure-like" id="figure-27"><div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="./images/map1.jpg" class="contained"></div>
+<figcaption><span class="type">Figure</span><span class="space"> </span><span class="codenumber">5.3.4<span class="period">.</span></span><span class="space"> </span></figcaption></figure><article class="question example-like" id="question-2"><h3 class="heading">
+<span class="type">Question</span><span class="space"> </span><span class="codenumber">5.3.5</span><span class="period">.</span>
+</h3>
+<p id="p-291">Why must the graph associated to a map be planar? Why must it have no loops or multiple edges?</p></article><p id="p-292">We can't prove the Four Color Theorem, but we can prove that six colors suffice.</p>
+<article class="theorem theorem-like" id="theorem-6"><h3 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">5.3.6</span><span class="period">.</span><span class="space"> </span><span class="title">The Six Color Theorem.</span>
+</h3>
+<p id="p-293">Six colors suffice to color any map such that any two countries which share a part of a border are given different colors.</p></article><p id="p-294">To do this, we need a definition.</p>
+<article class="definition definition-like" id="definition-24"><h3 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">5.3.7</span><span class="period">.</span>
+</h3>
+<p id="p-295">Let <span class="process-math">\(G\)</span> be a graph. The <dfn class="terminology">degree</dfn> of a vertex <span class="process-math">\(v\)</span> in <span class="process-math">\(G\)</span> is the number of edges incident to <span class="process-math">\(v\text{.}\)</span></p></article><article class="activity project-like" id="activity-20"><h3 class="heading">
+<span class="type">Activity</span><span class="space"> </span><span class="codenumber">5.3.8</span><span class="period">.</span>
+</h3>
+<p id="p-296">Suppose <span class="process-math">\(G\)</span> is a graph with <span class="process-math">\(n\)</span> vertices and that the vertex <span class="process-math">\(v_i\)</span> has degree <span class="process-math">\(d_i\text{.}\)</span> Explain why the following is true:</p>
+<div class="displaymath process-math" data-contains-math-knowls="">
+\begin{equation*}
+d_1 + d_2 + \cdots + d_n = 2\times (\text{the number of edges})
+\end{equation*}
+</div>
+<p class="continuation">(It may help to draw some examples!)</p></article><article class="proposition theorem-like" id="prop-planar-degree"><h3 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">5.3.9</span><span class="period">.</span>
+</h3>
+<p id="p-297">Suppose <span class="process-math">\(G\)</span> is a planar graph with <span class="process-math">\(n\)</span> vertices, <span class="process-math">\(e\)</span> edges, and has no loops or multiple edges between the same pair of vertices. Then</p>
+<div class="displaymath process-math" data-contains-math-knowls="">
+\begin{equation*}
+e \le 3n - 6.
+\end{equation*}
+</div></article><p id="p-298">We'll avoid proving this for now, but take it as true. (And it is!)</p>
+<p id="p-299">As a step on the way to proving the Six Color Theorem, consider the following exploration.</p>
+<article class="exploration project-like" id="exploration-26"><h3 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">5.3.10</span><span class="period">.</span>
+</h3>
+<p id="p-300">In this activity, we'll seek to understand the following claim: <blockquote class="blockquote" id="blockquote-4">Every planar graph <span class="process-math">\(G\)</span> with no loops or multiple edges must contain at least one vertex of degree less than or equal to 5.</blockquote> We'll approach this by assuming the conclusion is false and reaching a contradiction.</p>
+<ul class="disc">
+<li id="li-279"><p id="p-derived-li-279">To assume the conclusion is false, we should assume that each vertex of <span class="process-math">\(G\)</span> has degree at least what?</p></li>
+<li id="li-280"><p id="p-derived-li-280">Let <span class="process-math">\(v\)</span> denote the number of vertices in the graph. Since every edge has two ends, the number of edges <span class="process-math">\(e\)</span> in the graph is <span class="process-math">\(e =6v/2 = 3v\text{.}\)</span> Why is this a problem?</p></li>
+<li id="li-281"><p id="p-derived-li-281">What if there are vertices of degree larger than 6?</p></li>
+<li id="li-282"><p id="p-derived-li-282">Why can we conclude that every planar graph with no loops or multiple edges must have a vertex of degree 5 or less?</p></li>
+</ul></article><p id="p-301">We now explore the idea behind the proof of the Six Color Theorem.</p>
+<article class="exploration project-like" id="exploration-27"><h3 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">5.3.11</span><span class="period">.</span>
+</h3>
+<p id="p-302">Let <span class="process-math">\(G\)</span> be a planar graph with <span class="process-math">\(v\)</span> vertices and <span class="process-math">\(e\)</span> edges, and no loops or multiple edges.</p>
+<ol class="decimal">
+<li id="li-283"><p id="p-derived-li-283">If <span class="process-math">\(v \le 6\text{,}\)</span> why are we done?</p></li>
+<li id="li-284"><p id="p-derived-li-284">Now consider a graph with <span class="process-math">\(v = 7\text{.}\)</span> Why must we have a vertex <span class="process-math">\(v_0\)</span> of degree 5 or less?</p></li>
+<li id="li-285"><p id="p-derived-li-285">Temporarily remove <span class="process-math">\(v_0\)</span> and any associated edges. How many colors are required for what remains? How many of those colors were used on the neighbors of <span class="process-math">\(v_0\text{?}\)</span></p></li>
+<li id="li-286"><p id="p-derived-li-286">Explain why there is a 6-coloring of <span class="process-math">\(G\)</span> with <span class="process-math">\(v_0\)</span> added back in.</p></li>
+<li id="li-287"><p id="p-derived-li-287">What if our graph has 8 vertices?</p></li>
+<li id="li-288"><p id="p-derived-li-288">What if our graph has 9? Or <span class="process-math">\(n\text{,}\)</span> for any <span class="process-math">\(n\ge 1\text{?}\)</span></p></li>
+</ol></article><p id="p-303">Lest you think graph coloring is just a fun game, consider the following version of a very real situation.</p>
+<article class="activity project-like" id="activity-21"><h3 class="heading">
+<span class="type">Activity</span><span class="space"> </span><span class="codenumber">5.3.12</span><span class="period">.</span>
+</h3>
+<p id="p-304">Suppose your friendly local university is looking to schedule its final exams. Obviously, it can't schedule them so that someone in two different classes is scheduled for an exam at the same time. But how many times are actually required?</p>
+<ol class="decimal">
+<li id="li-289"><p id="p-derived-li-289">First, make up a list of at least 5 courses, and 10 students who are in some of these courses. Ensure that each course shares at least one student in common with at least two other courses (this is just to make the problem sufficiently interesting).</p></li>
+<li id="li-290"><p id="p-derived-li-290">Create a graph whose vertices are the courses. Draw an edge between any pair of courses for which a student is enrolled in both courses.</p></li>
+<li id="li-291"><p id="p-derived-li-291">How many colors are required to color the vertices so that no pair of adjacent vertices gets the same color? <em class="emphasis">Can</em> the answer be more than 4? Why or why not?</p></li>
+<li id="li-292"><p id="p-derived-li-292">How many final exam timeslots are required?</p></li>
+</ol></article></section><div class="hidden-content tex2jax_ignore" id="hk-fn-37"><div class="fn"><code class="code-inline tex2jax_ignore">./usa_map.pdf</code></div></div>
+</div></main>
+</div>
+</body>
+</html>

@@ -2,7 +2,7 @@
 <html lang="en-US">
 <!--********************************************-->
 <!--*       Generated from PreTeXt source      *-->
-<!--*       on 2022-04-29T09:49:21-05:00       *-->
+<!--*       on 2022-05-18T12:43:06-05:00       *-->
 <!--*   A recent stable commit (2020-08-09):   *-->
 <!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
 <!--*                                          *-->
@@ -12,14 +12,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="robots" content="noindex, nofollow">
-<script>$(function () {
-    // Make *any* div with class 'sagecell-sage' an executable Sage cell
-    // Their results will be linked, only within language type
-    sagecell.makeSagecell({inputLocation: 'div.sagecell-sage',
-                           linked: true,
-                           languages: ['sage'],
-                           evalButtonText: 'Evaluate (Sage)'});
-});
+<script>// Make *any* pre with class 'sagecell-sage' an executable Sage cell
+// Their results will be linked, only within language type
+sagecell.makeSagecell({inputLocation: 'pre.sagecell-sage',
+                       linked: true,
+                       languages: ['sage'],
+                       evalButtonText: 'Evaluate (Sage)'});
 </script>
 </head>
 <body class="ignore-math">
@@ -32,9 +30,9 @@
 <li><p>Using your answer to the previous part as a guide, give a formula for <span class="process-math">\(P_t\)</span> in terms of <span class="process-math">\(P_{t-1}\text{.}\)</span></p></li>
 <li><p>Again, using your answer to Question 1 and the work in the paragraph preceding this activity, give a formula for <span class="process-math">\(P_2\)</span> in terms of <span class="process-math">\(P_0\text{.}\)</span> Use this formula to find <span class="process-math">\(P_3\)</span> in terms of <span class="process-math">\(P_0\text{.}\)</span> Why might these formulas be more useful than the ones you found in Question 1?</p></li>
 <li><p>State your best guess for a formula for <span class="process-math">\(P_t\)</span> in terms of <span class="process-math">\(P_0\text{.}\)</span> Use your formula to estimate the number of fish in the pond after 10, 20, and 50 years. What is this model missing?</p></li>
-<li><p>Press 'Evaluate' below to confirm your response to Question 4. What happens if you increase or decrease the growth rate, <span class="process-math">\(r\text{?}\)</span> Try it, and reevaluate.</p></li>
+<li><p>Press “Evaluate” below to confirm your response to Question 4. What happens if you increase or decrease the growth rate, <span class="process-math">\(r\text{?}\)</span> Try it, and reevaluate.</p></li>
 </ol>
-<div class="sagecell-sage" id="sage-2"><script type="text/x-sage">P_0 = 1000
+<pre class="ptx-sagecell sagecell-sage" id="sage-2"><script type="text/x-sage">P_0 = 1000
 r = 0.1
 P(t) = (1+r)^t*P_0
 tt = range(50)
@@ -42,6 +40,6 @@ PP = [P(t) for t in tt]
 tP = list(zip(tt, PP))
 P_dots = points(tP, color='red')
 P_dots
-</script></div></article><span class="incontext"><a href="sec-dds.html#expl-exponential-growth" class="internal">in-context</a></span>
+</script></pre></article><span class="incontext"><a href="sec-dds.html#expl-exponential-growth" class="internal">in-context</a></span>
 </body>
 </html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*       on 2022-05-24T10:00:24-05:00       *-->
+<!--*   A recent stable commit (2020-08-09):   *-->
+<!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US">
+<head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Exercises</title>
+<meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="book">
+<meta property="book:title" content="Explorations in Modern Mathematics">
+<meta property="book:author" content="Mike Janssen">
+<script src="https://sagecell.sagemath.org/static/embedded_sagecell.js"></script><script>window.MathJax = {
+  tex: {
+    inlineMath: [['\\(','\\)']],
+    tags: "none",
+    tagSide: "right",
+    tagIndent: ".8em",
+    packages: {'[+]': ['base', 'extpfeil', 'ams', 'amscd', 'newcommand', 'knowl']}
+  },
+  options: {
+    ignoreHtmlClass: "tex2jax_ignore|ignore-math",
+    processHtmlClass: "process-math",
+    renderActions: {
+        findScript: [10, function (doc) {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(function(node) {
+                var display = !!node.type.match(/; *mode=display/);
+                var math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                var text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = {node: text, delim: '', n: 0};
+                math.end = {node: text, delim: '', n: 0};
+                doc.math.push(math);
+            });
+        }, '']
+    },
+  },
+  chtml: {
+    scale: 0.88,
+    mtextInheritFont: true
+  },
+  loader: {
+    load: ['input/asciimath', '[tex]/extpfeil', '[tex]/amscd', '[tex]/newcommand', '[pretext]/mathjaxknowl3.js'],
+    paths: {pretext: "https://pretextbook.org/js/lib"},
+  },
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script src="https://pretextbook.org/js/lib/jquery.min.js"></script><script src="https://pretextbook.org/js/lib/jquery.sticky.js"></script><script src="https://pretextbook.org/js/lib/jquery.espy.min.js"></script><script src="https://pretextbook.org/js/0.13/pretext.js"></script><script>miniversion=0.674</script><script src="https://pretextbook.org/js/0.13/pretext_add_on.js?x=1"></script><script src="https://pretextbook.org/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
+</script><link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/pretext.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/pretext_add_on.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/banner_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/toc_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/knowls_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/style_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/colors_blue_grey.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/setcolors.css" rel="stylesheet" type="text/css">
+</head>
+<body class="pretext-book ignore-math has-toc has-sidebar-left">
+<a class="assistive" href="#content">Skip to main content</a><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\({\labelitemi}{$\diamond$}
+\def\arraystretch{1.5}
+\newcommand{\contentsfinish}{}
+\newcommand{\separator}{\begin{center}\rule{\columnwidth}{\arrayrulewidth}\end{center}}
+\newcommand{\tosay}[1]{\begin{center}\text{\fbox{\scriptsize{#1}}}\end{center}}
+\renewcommand{\cftsecfont}{}
+\renewcommand{\cftsecpagefont}{}
+\renewcommand{\descriptionlabel}[1]{\hspace{\labelsep}\smallcaps{#1}}
+\def\oldequation{\equation}
+\def\endoldequation{\endequation}
+\newcommand{\nl}{
+}
+\newcommand{\runin}[1]{\textls[50]{\otherscshape #1}}
+\renewcommand{\sectionmark}[1]{}
+\renewcommand{\subsectionmark}[1]{}
+\renewcommand{\sectionmark}[1]{\markboth{{\thesection}.\ \smallcaps{#1}}{\thesection.\ \smallcaps{#1}}}
+\renewcommand{\subsectionmark}[1]{}
+\renewcommand{\sectionmark}[1]{\markboth{{\scriptsize\thesection}.\ \smallcaps{#1}}{}}
+\renewcommand{\subsectionmark}[1]{}
+\newcommand{\makedefaultsection}[2][true]{
+}
+\newcommand{\timestamp}{{\color{red}Last updated: {\currenttime\ (UTC), \today}}}
+\renewcommand{\le}{\leqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\ge}{\geqslant}
+\newcommand{\ideal}[1]{\left\langle\, #1 \,\right\rangle}
+\newcommand{\subgp}[1]{\left\langle\, #1 \,\right\rangle}
+\def\p{\varphi}
+\def\isomorphic{\cong}
+\def\Gal{\text{Gal}}
+\def\im{\text{im}}
+\def\normal{\vartriangleleft}
+\renewcommand{\qedsymbol}{$\checkmark$}
+\def\lcm{{\text{lcm}\,}}
+\newcommand{\q}[1]{{\color{red} {#1}}}
+\newcommand{\startimportant}[1]{\end{[{Hint:} #1]\end}}
+\renewcommand{\textcircled}[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=2pt,color=red] (char) {#1};}}
+\newcommand{\crossout}[1]{\tikz[baseline=(char.base)]{\node[mynode, cross out,draw] (char) {#1};}}
+\newcommand{\set}[1]{\left\{ {#1} \right\}}
+\newcommand{\setof}[2]{{\left\{#1\,\colon\,#2\right\}}}
+\def\C{{\mathbb C}}
+\def\Z{{\mathbb Z}}
+\def\bF{{\mathbb F}}
+\def\Q{{\mathbb Q}}
+\def\N{{\mathbb N}}
+\def\R{{\mathbb R}}
+\newcommand{\h}[1]{{\textbf{#1}}}
+\def\presnotes{}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\)</span></div>
+<header id="masthead" class="smallbuttons"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><a href="book-1.html"><span class="title">Explorations in Modern Mathematics</span></a></h1>
+<p class="byline">Mike Janssen</p>
+</div>
+</div></div>
+<nav id="primary-navbar" class="navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active" aria-label="Show or hide table of contents sidebar">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
+<a class="index-button toolbar-item button" href="index-67.html" title="Index">Index</a><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="sec-pwc-irv.html" title="Previous">Prev</a><a id="upbutton" class="up-button button toolbar-item" href="chap-voting.html" title="Up">Up</a><a id="nextbutton" class="next-button button toolbar-item" href="backmatter-1.html" title="Next">Next</a></span>
+</div>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="sec-pwc-irv.html" title="Previous">Prev</a><a class="up-button button toolbar-item" href="chap-voting.html" title="Up">Up</a><a class="next-button button toolbar-item" href="backmatter-1.html" title="Next">Next</a>
+</div>
+</div></nav></header><div class="page">
+<div id="sidebar-left" class="sidebar" role="navigation"><div class="sidebar-content">
+<nav id="toc"><ul>
+<li class="link frontmatter">
+<a href="frontmatter-1.html" data-scroll="frontmatter-1" class="internal"><span class="title">Front Matter</span></a><ul>
+<li><a href="colophon-1.html" data-scroll="colophon-1" class="internal">Colophon</a></li>
+<li><a href="Sec-Introduction.html" data-scroll="Sec-Introduction" class="internal">Introduction</a></li>
+<li><a href="sec-NoteToStudents.html" data-scroll="sec-NoteToStudents" class="internal">A Note to Students</a></li>
+<li><a href="sec-NoteToInstructors.html" data-scroll="sec-NoteToInstructors" class="internal">A Note to Instructors</a></li>
+<li><a href="sec-versions.html" data-scroll="sec-versions" class="internal">Versions of this text</a></li>
+<li><a href="sec-acknowledgements.html" data-scroll="sec-acknowledgements" class="internal">Acknowledgments</a></li>
+</ul>
+</li>
+<li class="link part"><a href="part-play.html" data-scroll="part-play" class="internal"><span class="codenumber">I</span> <span class="title">Play</span></a></li>
+<li class="link">
+<a href="chap-cube.html" data-scroll="chap-cube" class="internal"><span class="codenumber">1</span> <span class="title">The Cube</span></a><ul>
+<li><a href="sec-play-intro.html" data-scroll="sec-play-intro" class="internal">Introduction and Background</a></li>
+<li><a href="sec-play-describing-the-cube.html" data-scroll="sec-play-describing-the-cube" class="internal">Describing the Cube</a></li>
+<li><a href="sec-play-moving-cubies.html" data-scroll="sec-play-moving-cubies" class="internal">Moving Cubies</a></li>
+<li><a href="sec-play-reorienting-cubies.html" data-scroll="sec-play-reorienting-cubies" class="internal">Reorienting Cubies</a></li>
+</ul>
+</li>
+<li class="link part"><a href="part-truth.html" data-scroll="part-truth" class="internal"><span class="codenumber">II</span> <span class="title">Truth</span></a></li>
+<li class="link">
+<a href="chap-reasoning.html" data-scroll="chap-reasoning" class="internal"><span class="codenumber">2</span> <span class="title">Inductive and Deductive Reasoning</span></a><ul>
+<li><a href="section-5.html" data-scroll="section-5" class="internal">Inductive Reasoning</a></li>
+<li><a href="section-6.html" data-scroll="section-6" class="internal">Deductive Reasoning</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="chap-logic.html" data-scroll="chap-logic" class="internal"><span class="codenumber">3</span> <span class="title">Modern Mathematical Logic</span></a><ul>
+<li><a href="sec-connectives.html" data-scroll="sec-connectives" class="internal">Logical Connectives and Rules of Inference</a></li>
+<li><a href="sec-formal-systems-incompleteness.html" data-scroll="sec-formal-systems-incompleteness" class="internal">Formal Systems and Incompleteness</a></li>
+</ul>
+</li>
+<li class="link part"><a href="part-power.html" data-scroll="part-power" class="internal"><span class="codenumber">III</span> <span class="title">Power</span></a></li>
+<li class="link">
+<a href="chap-dynamical-systems.html" data-scroll="chap-dynamical-systems" class="internal"><span class="codenumber">4</span> <span class="title">Discrete Dynamical Systems</span></a><ul>
+<li><a href="sec-intro-to-dds.html" data-scroll="sec-intro-to-dds" class="internal">Sequences</a></li>
+<li><a href="sec-dds.html" data-scroll="sec-dds" class="internal">Discrete Dynamical Systems</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="chap-graphs.html" data-scroll="chap-graphs" class="internal"><span class="codenumber">5</span> <span class="title">Graphs</span></a><ul>
+<li><a href="sec-intro-gt.html" data-scroll="sec-intro-gt" class="internal">Intro to Graph Theory</a></li>
+<li><a href="sec-planar-graphs.html" data-scroll="sec-planar-graphs" class="internal">Planar Graphs and Graph Coloring</a></li>
+<li><a href="sec-trees.html" data-scroll="sec-trees" class="internal">Trees</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="chap-coding.html" data-scroll="chap-coding" class="internal"><span class="codenumber">6</span> <span class="title">Modular Arithmetic and Coding Theory</span></a><ul>
+<li><a href="sec-intro-to-mod-arithmetic.html" data-scroll="sec-intro-to-mod-arithmetic" class="internal">Adding in Circles</a></li>
+<li><a href="sec-coding.html" data-scroll="sec-coding" class="internal">Coding Theory</a></li>
+</ul>
+</li>
+<li class="link part"><a href="part-justice.html" data-scroll="part-justice" class="internal"><span class="codenumber">IV</span> <span class="title">Justice</span></a></li>
+<li class="link">
+<a href="chap-voting.html" data-scroll="chap-voting" class="internal"><span class="codenumber">7</span> <span class="title">Voting</span></a><ul>
+<li><a href="sec-voting-intro.html" data-scroll="sec-voting-intro" class="internal">Elections with Two Candidates</a></li>
+<li><a href="sec-plurality-borda.html" data-scroll="sec-plurality-borda" class="internal">Plurality and the Borda Count</a></li>
+<li><a href="sec-pwc-irv.html" data-scroll="sec-pwc-irv" class="internal">Pairwise Comparisons and Instant Runoff Voting</a></li>
+<li><a href="exercises-17.html" data-scroll="exercises-17" class="active">Exercises</a></li>
+</ul>
+</li>
+<li class="link backmatter"><a href="backmatter-1.html" data-scroll="backmatter-1" class="internal"><span class="title">Back Matter</span></a></li>
+<li class="link"><a href="index-67.html" data-scroll="index-67" class="internal"><span class="title">Index</span></a></li>
+</ul></nav><div class="extras"><nav><a class="pretext-link" href="https://pretextbook.org">Authored in PreTeXt</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/badge.gif" alt="Powered by MathJax"></a></nav></div>
+</div></div>
+<main class="main"><div id="content" class="pretext-content"><section class="exercises" id="exercises-17"><h2 class="heading hide-type">
+<span class="type">Exercises</span> <span class="codenumber">7.4</span> <span class="title">Exercises</span>
+</h2>
+<article class="exercise exercise-like" id="exercise-49"><h3 class="heading"><span class="codenumber">1<span class="period">.</span></span></h3>
+<p id="p-480">One criticism of non-plurality voting systems is that they are too complex, or ballots too difficult to understand. Find an article that makes this point and respond to it in a well-reasoned paragraph or two. Do you agree? Disagree?</p></article></section></div></main>
+</div>
+</body>
+</html>

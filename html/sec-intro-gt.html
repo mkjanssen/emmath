@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--********************************************-->
 <!--*       Generated from PreTeXt source      *-->
-<!--*       on 2022-05-18T12:43:04-05:00       *-->
+<!--*       on 2022-05-24T14:00:42-05:00       *-->
 <!--*   A recent stable commit (2020-08-09):   *-->
 <!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
 <!--*                                          *-->
@@ -126,7 +126,7 @@
 <nav id="primary-navbar" class="navbar"><div class="container">
 <div class="navbar-top-buttons">
 <button class="sidebar-left-toggle-button button active" aria-label="Show or hide table of contents sidebar">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
-<a class="index-button toolbar-item button" href="index-67.html" title="Index">Index</a><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="chap-graphs.html" title="Previous">Prev</a><a id="upbutton" class="up-button button toolbar-item" href="chap-graphs.html" title="Up">Up</a><a id="nextbutton" class="next-button button toolbar-item" href="sec-planar-graphs.html" title="Next">Next</a></span>
+<a class="index-button toolbar-item button" href="index-68.html" title="Index">Index</a><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="chap-graphs.html" title="Previous">Prev</a><a id="upbutton" class="up-button button toolbar-item" href="chap-graphs.html" title="Up">Up</a><a id="nextbutton" class="next-button button toolbar-item" href="sec-planar-graphs.html" title="Next">Next</a></span>
 </div>
 </div>
 <div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
@@ -177,9 +177,8 @@
 <li class="link">
 <a href="chap-graphs.html" data-scroll="chap-graphs" class="internal"><span class="codenumber">5</span> <span class="title">Graphs</span></a><ul>
 <li><a href="sec-intro-gt.html" data-scroll="sec-intro-gt" class="active">Intro to Graph Theory</a></li>
-<li><a href="sec-planar-graphs.html" data-scroll="sec-planar-graphs" class="internal">April 9: Planar Graphs</a></li>
-<li><a href="sec-graph-coloring.html" data-scroll="sec-graph-coloring" class="internal">Apr. 12: Graph Coloring</a></li>
-<li><a href="sec-trees.html" data-scroll="sec-trees" class="internal">Intro to Trees</a></li>
+<li><a href="sec-planar-graphs.html" data-scroll="sec-planar-graphs" class="internal">Planar Graphs and Graph Coloring</a></li>
+<li><a href="sec-trees.html" data-scroll="sec-trees" class="internal">Trees</a></li>
 </ul>
 </li>
 <li class="link">
@@ -192,71 +191,83 @@
 <li class="link">
 <a href="chap-voting.html" data-scroll="chap-voting" class="internal"><span class="codenumber">7</span> <span class="title">Voting</span></a><ul>
 <li><a href="sec-voting-intro.html" data-scroll="sec-voting-intro" class="internal">Elections with Two Candidates</a></li>
-<li><a href="sec-more-voting-systems.html" data-scroll="sec-more-voting-systems" class="internal">Elections with More than Two Candidates I</a></li>
-<li><a href="sec-evaluating-voting-systems.html" data-scroll="sec-evaluating-voting-systems" class="internal">Elections with More than Two Candidates II</a></li>
-<li><a href="sec-more-voting-systems-iii.html" data-scroll="sec-more-voting-systems-iii" class="internal">Elections with More Than Two Candidates III</a></li>
+<li><a href="sec-plurality-borda.html" data-scroll="sec-plurality-borda" class="internal">Plurality and the Borda Count</a></li>
+<li><a href="sec-pwc-irv.html" data-scroll="sec-pwc-irv" class="internal">Pairwise Comparisons and Instant Runoff Voting</a></li>
 </ul>
 </li>
 <li class="link backmatter"><a href="backmatter-1.html" data-scroll="backmatter-1" class="internal"><span class="title">Back Matter</span></a></li>
-<li class="link"><a href="index-67.html" data-scroll="index-67" class="internal"><span class="title">Index</span></a></li>
+<li class="link"><a href="index-68.html" data-scroll="index-68" class="internal"><span class="title">Index</span></a></li>
 </ul></nav><div class="extras"><nav><a class="pretext-link" href="https://pretextbook.org">Authored in PreTeXt</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/badge.gif" alt="Powered by MathJax"></a></nav></div>
 </div></div>
-<main class="main"><div id="content" class="pretext-content"><section class="section" id="sec-intro-gt"><h2 class="heading hide-type">
+<main class="main"><div id="content" class="pretext-content">
+<section class="section" id="sec-intro-gt"><h2 class="heading hide-type">
 <span class="type">Section</span> <span class="codenumber">5.1</span> <span class="title">Intro to Graph Theory</span>
 </h2>
-<section class="subsection" id="subsection-11"><h3 class="heading hide-type">
+<article class="assemblage assemblage-like" id="assemblage-15"><h3 class="heading"><span class="title">Motivating Questions.</span></h3>
+<p id="p-267">In this section, we will explore the following questions. <ol class="decimal">
+<li id="li-269"><p id="p-derived-li-269">What is a graph? What are some of the basic ideas and terminology used to describe graphs?</p></li>
+<li id="li-270"><p id="p-derived-li-270">What features of the world can graphs help us study?</p></li>
+</ol></p></article><section class="subsection" id="subsection-11"><h3 class="heading hide-type">
 <span class="type">Subsection</span> <span class="codenumber">5.1.1</span> <span class="title">The Bridges of Konigsberg</span>
 </h3>
+<p id="p-268">The study of graph theory often traces its roots to a historical problem known as the Seven Bridges of Königsberg, and its solution by the mathematician Leonhard Euler.</p>
 <article class="investigation project-like" id="dGT"><h4 class="heading">
 <span class="type">Investigation</span><span class="space"> </span><span class="codenumber">5.1.1</span><span class="period">.</span>
 </h4>
-<p id="uFe">In the town of Königsberg in Prussia, there was a river containing two islands. The islands were connected to the banks of the river by seven bridges (as seen below). On their days off, townspeople would play a little game with themselves as they walked over the bridges: was it possible to plan a walk so that you cross each bridge once and only once?</p>
-<div class="sidebyside"><div class="sbsrow" style="margin-left:10%;margin-right:10%;"><div class="sbspanel top" style="width:100%;"><img src="./images/gt-bridges-art.svg" class="contained"></div></div></div></article></section><section class="subsection" id="subsection-12"><h3 class="heading hide-type">
+<p id="uFe">In the town of Königsberg in Prussia, there was a river containing two islands. The islands were connected to the banks of the river by seven bridges as seen in <a href="" class="xref" data-knowl="./knowl/fig-bridges.html" title="Figure 5.1.2">Figure 5.1.2</a>. On their days off, townspeople would play a little game with themselves as they walked over the bridges: was it possible to plan a walk so that you cross each bridge once and only once?</p>
+<div class="sidebyside"><div class="sbsrow" style="margin-left:10%;margin-right:10%;"><div class="sbspanel top" style="width:100%;"><figure class="figure figure-like" id="fig-bridges"><img src="./images/gt-bridges-art.svg" class="contained"><figcaption><span class="type">Figure</span><span class="space"> </span><span class="codenumber">5.1.2<span class="period">.</span></span><span class="space"> </span>The seven bridges (credit: Oscar Levin)</figcaption></figure></div></div></div></article></section><section class="subsection" id="subsection-12"><h3 class="heading hide-type">
 <span class="type">Subsection</span> <span class="codenumber">5.1.2</span> <span class="title">Background and terminology</span>
 </h3>
-<p id="p-267">You've almost certainly encountered the word <em class="emphasis">graph</em> in a math class.</p>
+<p id="p-270">You've almost certainly encountered the word <em class="emphasis">graph</em> in a math class.</p>
 <article class="principle theorem-like" id="principle-8"><h4 class="heading">
-<span class="type">Discussion</span><span class="space"> </span><span class="codenumber">5.1.2</span><span class="period">.</span>
+<span class="type">Discussion</span><span class="space"> </span><span class="codenumber">5.1.3</span><span class="period">.</span>
 </h4>
-<p id="p-268">What is meant by the word <em class="emphasis">graph</em> in a mathematical context? Give as many answers as you can, and be as clear and precise as possible.</p></article><p id="p-269">A relatively new (by mathematical standards) use of the word <em class="emphasis">graph</em> in mathematics involves the notion of connection. It is this notion that we will be exploring in this unit. We present a formal definition below.</p>
+<p id="p-271">What is meant by the word <em class="emphasis">graph</em> in a mathematical context? Give as many answers as you can, and be as clear and precise as possible.</p></article><p id="p-272">A relatively new (by mathematical standards) use of the word <em class="emphasis">graph</em> in mathematics involves the notion of connection. It is this notion that we will be exploring in this unit. We present a formal definition below.</p>
 <article class="definition definition-like" id="definition-21"><h4 class="heading">
-<span class="type">Definition</span><span class="space"> </span><span class="codenumber">5.1.3</span><span class="period">.</span>
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">5.1.4</span><span class="period">.</span>
 </h4>
-<p id="p-270">A <dfn class="terminology">graph</dfn>, <span class="process-math">\(G\text{,}\)</span> is a collection of <dfn class="terminology">vertices</dfn> (or <dfn class="terminology">nodes</dfn>), <span class="process-math">\(V\text{,}\)</span> and a collection of edges, <span class="process-math">\(E\text{,}\)</span> which are pairs of vertices. We denote the graph as <span class="process-math">\(G(V,E)\text{.}\)</span></p></article><p id="p-271">This relatively simple, short definition nonetheless has deep consequences. We'll see an example below, but note that the primary defining features of a graph <span class="process-math">\(G\)</span> are some objects (vertices) and the connections between (some of) the objects (the edges). If a vertex <span class="process-math">\(v\)</span> is connected to another vertex <span class="process-math">\(u\)</span> by an edge <span class="process-math">\(vu\text{,}\)</span> we say <span class="process-math">\(uv\)</span> is <dfn class="terminology">incident</dfn> to <span class="process-math">\(v\text{,}\)</span> and we say <span class="process-math">\(u\)</span> is <dfn class="terminology">adjacent</dfn> to <span class="process-math">\(v\)</span> and is in the <dfn class="terminology">neighborhood</dfn> of <span class="process-math">\(v\text{.}\)</span></p>
+<p id="p-273">A <dfn class="terminology">graph</dfn>, <span class="process-math">\(G\text{,}\)</span> is a collection of <dfn class="terminology">vertices</dfn> (or <dfn class="terminology">nodes</dfn>), <span class="process-math">\(V\text{,}\)</span> and a collection of edges, <span class="process-math">\(E\text{,}\)</span> which are pairs of vertices. We denote the graph as <span class="process-math">\(G(V,E)\text{.}\)</span></p></article><p id="p-274">This relatively simple, short definition nonetheless has deep consequences. We'll see an example below, but note that the primary defining features of a graph <span class="process-math">\(G\)</span> are some objects (vertices) and the connections between (some of) the objects (the edges). If a vertex <span class="process-math">\(v\)</span> is connected to another vertex <span class="process-math">\(u\)</span> by an edge <span class="process-math">\(vu\text{,}\)</span> we say <span class="process-math">\(uv\)</span> is <dfn class="terminology">incident</dfn> to <span class="process-math">\(v\text{,}\)</span> and we say <span class="process-math">\(u\)</span> is <dfn class="terminology">adjacent</dfn> to <span class="process-math">\(v\)</span> and is in the <dfn class="terminology">neighborhood</dfn> of <span class="process-math">\(v\text{.}\)</span></p>
 <article class="example example-like" id="example-4"><h4 class="heading">
-<span class="type">Example</span><span class="space"> </span><span class="codenumber">5.1.4</span><span class="period">.</span>
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">5.1.5</span><span class="period">.</span>
 </h4>
-<p id="p-272">As a straightforward initial example, consider the graph <span class="process-math">\(G(V, E)\)</span> where <span class="process-math">\(V = \{a,b,c,d\}\)</span> and <span class="process-math">\(E = \{ab,ac,bd\}\text{.}\)</span> This graph has four vertices, and three edges. One <dfn class="terminology">representation</dfn> (drawing) of it is given in <a href="" class="xref" data-knowl="./knowl/fig-graphexample1.html" title="Figure 5.1.5">Figure 5.1.5</a>. <figure class="figure figure-like" id="fig-graphexample1"><div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="images/graph01.png" class="contained"></div>
-<figcaption><span class="type">Figure</span><span class="space"> </span><span class="codenumber">5.1.5<span class="period">.</span></span><span class="space"> </span>One (bad) drawing of <span class="process-math">\(G\text{.}\)</span></figcaption></figure> As stated above, the most important feature of a graph is the connections it describes. Thus, we would say the graph in <a href="" class="xref" data-knowl="./knowl/fig-graphexample2.html" title="Figure 5.1.6">Figure 5.1.6</a> <em class="emphasis">also</em> represents the graph <span class="process-math">\(G\)</span> from <a href="" class="xref" data-knowl="./knowl/fig-graphexample1.html" title="Figure 5.1.5">Figure 5.1.5</a>. <figure class="figure figure-like" id="fig-graphexample2"><div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="images/graph02.png" class="contained"></div>
-<figcaption><span class="type">Figure</span><span class="space"> </span><span class="codenumber">5.1.6<span class="period">.</span></span><span class="space"> </span>Another (bad) drawing of <span class="process-math">\(G\text{.}\)</span></figcaption></figure></p></article><article class="activity project-like" id="activity-18"><h4 class="heading">
-<span class="type">Activity</span><span class="space"> </span><span class="codenumber">5.1.7</span><span class="period">.</span>
+<p id="p-275">As a straightforward initial example, consider the graph <span class="process-math">\(G(V, E)\)</span> where <span class="process-math">\(V = \{a,b,c,d\}\)</span> and <span class="process-math">\(E = \{ab,ac,bd\}\text{.}\)</span> This graph has four vertices, and three edges. One <dfn class="terminology">representation</dfn> (drawing) of it is given in <a href="" class="xref" data-knowl="./knowl/fig-graphexample1.html" title="Figure 5.1.6">Figure 5.1.6</a>. <figure class="figure figure-like" id="fig-graphexample1"><div class="image-box" style="width: 35%; margin-left: 32.5%; margin-right: 32.5%;"><img src="images/graph01.svg" class="contained"></div>
+<figcaption><span class="type">Figure</span><span class="space"> </span><span class="codenumber">5.1.6<span class="period">.</span></span><span class="space"> </span>One drawing of <span class="process-math">\(G\text{.}\)</span></figcaption></figure> As stated above, the most important feature of a graph is the connections it describes. Thus, we would say the graph in <a href="" class="xref" data-knowl="./knowl/fig-graphexample2.html" title="Figure 5.1.7">Figure 5.1.7</a> <em class="emphasis">also</em> represents the graph <span class="process-math">\(G\)</span> from <a href="" class="xref" data-knowl="./knowl/fig-graphexample1.html" title="Figure 5.1.6">Figure 5.1.6</a>. <figure class="figure figure-like" id="fig-graphexample2"><div class="image-box" style="width: 35%; margin-left: 32.5%; margin-right: 32.5%;"><img src="images/graph02.svg" class="contained"></div>
+<figcaption><span class="type">Figure</span><span class="space"> </span><span class="codenumber">5.1.7<span class="period">.</span></span><span class="space"> </span>Another drawing of <span class="process-math">\(G\text{.}\)</span></figcaption></figure></p></article><article class="activity project-like" id="activity-18"><h4 class="heading">
+<span class="type">Activity</span><span class="space"> </span><span class="codenumber">5.1.8</span><span class="period">.</span>
 </h4>
-<p id="p-273">In this activity, your job is to invent a graph <span class="process-math">\(G\)</span> with the following properties. Draw it and be ready to share it. Then explain why your example meets the given criteria (e.g., for Question 4, which vertex has at least three neighbors?).</p>
+<p id="p-276">In this activity, your job is to invent a graph <span class="process-math">\(G\)</span> with the following properties. Draw it and be ready to share it. Then explain why your example meets the given criteria (e.g., for Question 4, which vertex has at least three neighbors?).</p>
 <ol class="decimal">
-<li id="li-269"><p id="p-derived-li-269">Your graph should have six vertices</p></li>
-<li id="li-270"><p id="p-derived-li-270">Your graph should have ten edges</p></li>
-<li id="li-271"><p id="p-derived-li-271">There should be at least one pair of vertices between which you cannot trace a path of edges</p></li>
-<li id="li-272"><p id="p-derived-li-272">One vertex should should have at least three others in its neighborhood</p></li>
+<li id="li-271"><p id="p-derived-li-271">Your graph should have six vertices</p></li>
+<li id="li-272"><p id="p-derived-li-272">Your graph should have ten edges</p></li>
+<li id="li-273"><p id="p-derived-li-273">There should be at least one pair of vertices between which you cannot trace a path of edges</p></li>
+<li id="li-274"><p id="p-derived-li-274">One vertex should should have at least three others in its neighborhood</p></li>
 </ol></article><article class="exploration project-like" id="exploration-20"><h4 class="heading">
-<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">5.1.8</span><span class="period">.</span>
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">5.1.9</span><span class="period">.</span>
 </h4>
-<p id="p-274">We saw in the last unit that we could model changing quantities over time using discrete dynamical systems. Graphs, on the other hand, describe connections between objects. Brainstorm or research at least two or three complex, real-world situations which graphs might be helpful to model. That is, can you think of at least two or three situations in which one of the fundamental properties is <em class="emphasis">connection</em>? Briefly describe each situation in 3-4 sentences, and make clear how graphs can be used to describe these situations. If you find examples of such graphs, be ready to share.</p></article><p id="p-275">In order to discuss the nuances of the connections modeled by a graph, we need a bit more terminology.</p>
+<p id="p-277">We saw in the last unit that we could model changing quantities over time using discrete dynamical systems. Graphs, on the other hand, describe connections between objects. Brainstorm or research at least two or three complex, real-world situations which graphs might be helpful to model. That is, can you think of at least two or three situations in which one of the fundamental properties is <em class="emphasis">connection</em>? Briefly describe each situation in 3-4 sentences, and make clear how graphs can be used to describe these situations. If you find examples of such graphs, be ready to share.</p></article><p id="p-278">In order to discuss the nuances of the connections modeled by a graph, we need a bit more terminology.</p>
 <article class="definition definition-like" id="def-deg"><h4 class="heading">
-<span class="type">Definition</span><span class="space"> </span><span class="codenumber">5.1.9</span><span class="period">.</span>
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">5.1.10</span><span class="period">.</span>
 </h4>
-<p id="p-276">Let <span class="process-math">\(G(V,E)\)</span> be a graph. A vertex <span class="process-math">\(v\)</span> in <span class="process-math">\(V\)</span> is <dfn class="terminology">isolated</dfn> if it has no neighbors. The number of edges incident to a vertex <span class="process-math">\(v\)</span> is known as the <dfn class="terminology">degree</dfn> of <span class="process-math">\(v\text{,}\)</span> denoted <span class="process-math">\(\deg(v)\text{.}\)</span> If between every pair of vertices in <span class="process-math">\(V\)</span> there is a path of edges, we say <span class="process-math">\(G\)</span> is <dfn class="terminology">connected</dfn>. Otherwise, we say <span class="process-math">\(G\)</span> is not connected. Each of the largest possible connected pieces of <span class="process-math">\(G\)</span> is known as a <dfn class="terminology">component</dfn> of <span class="process-math">\(G\text{.}\)</span></p></article><article class="exploration project-like" id="exploration-21"><h4 class="heading">
-<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">5.1.10</span><span class="period">.</span>
+<p id="p-279">Let <span class="process-math">\(G(V,E)\)</span> be a graph. A vertex <span class="process-math">\(v\)</span> in <span class="process-math">\(V\)</span> is <dfn class="terminology">isolated</dfn> if it has no neighbors. The number of edges incident to a vertex <span class="process-math">\(v\)</span> is known as the <dfn class="terminology">degree</dfn> of <span class="process-math">\(v\text{,}\)</span> denoted <span class="process-math">\(\deg(v)\text{.}\)</span> If between every pair of vertices in <span class="process-math">\(V\)</span> there is a path of edges, we say <span class="process-math">\(G\)</span> is <dfn class="terminology">connected</dfn>. Otherwise, we say <span class="process-math">\(G\)</span> is not connected. Each of the largest possible connected pieces of <span class="process-math">\(G\)</span> is known as a <dfn class="terminology">component</dfn> of <span class="process-math">\(G\text{.}\)</span></p></article><article class="exploration project-like" id="exploration-21"><h4 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">5.1.11</span><span class="period">.</span>
 </h4>
-<p id="p-277">For this exploration, we will consider the graph <span class="process-math">\(G(V,E)\)</span> in <a href="" class="xref" data-knowl="./knowl/fig-graphexample3.html" title="Figure 5.1.11">Figure 5.1.11</a>.</p>
-<figure class="figure figure-like" id="fig-graphexample3"><div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="images/graph03.png" class="contained"></div>
-<figcaption><span class="type">Figure</span><span class="space"> </span><span class="codenumber">5.1.11<span class="period">.</span></span><span class="space"> </span>A graph <span class="process-math">\(G\text{.}\)</span></figcaption></figure><ol class="decimal">
-<li id="li-273"><p id="p-derived-li-273">Is <span class="process-math">\(G\)</span> connected? How many components does it have?</p></li>
-<li id="li-274"><p id="p-derived-li-274">Does <span class="process-math">\(G\)</span> have any isolated vertices? If so, what are their degrees?</p></li>
-<li id="li-275"><p id="p-derived-li-275">What is the largest degree of a vertex in <span class="process-math">\(G\text{?}\)</span> Which vertex/vertices have that degree?</p></li>
-<li id="li-276"><p id="p-derived-li-276">Suppose that <span class="process-math">\(G\)</span> represents a social network; that is, the vertices represent people, and the edges represent friendship. Who are <span class="process-math">\(e\)</span>'s friends?</p></li>
-<li id="li-277"><p id="p-derived-li-277">Still viewing <span class="process-math">\(G\)</span> as the model of a network of friends, which pair of people do you think are more likely to become friends next: <span class="process-math">\(a\)</span> and <span class="process-math">\(b\text{,}\)</span> or <span class="process-math">\(c\)</span> and <span class="process-math">\(e\text{?}\)</span> Why?</p></li>
-<li id="li-278"><p id="p-derived-li-278">Still viewing <span class="process-math">\(G\)</span> as the model of a network of friends, which pair of people do you think are more likely to become friends next: <span class="process-math">\(a\)</span> and <span class="process-math">\(b\text{,}\)</span> or <span class="process-math">\(c\)</span> and <span class="process-math">\(h\text{?}\)</span> Why?</p></li>
-</ol></article><p id="p-278">Next time, we'll explore the underlying structure of connectedness in graphs in more depth. In particular, we'll search for minimal (in terms of numbers of edges) subgraphs called <em class="emphasis">trees</em> to help us see which edges are most important.</p></section></section></div></main>
+<p id="p-280">For this exploration, we will consider the graph <span class="process-math">\(G(V,E)\)</span> in <a href="" class="xref" data-knowl="./knowl/fig-graphexample3.html" title="Figure 5.1.12">Figure 5.1.12</a>.</p>
+<figure class="figure figure-like" id="fig-graphexample3"><div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="images/graph03.svg" class="contained"></div>
+<figcaption><span class="type">Figure</span><span class="space"> </span><span class="codenumber">5.1.12<span class="period">.</span></span><span class="space"> </span>A graph <span class="process-math">\(G\text{.}\)</span></figcaption></figure><ol class="decimal">
+<li id="li-275"><p id="p-derived-li-275">Is <span class="process-math">\(G\)</span> connected? How many components does it have?</p></li>
+<li id="li-276"><p id="p-derived-li-276">Does <span class="process-math">\(G\)</span> have any isolated vertices? If so, what are their degrees?</p></li>
+<li id="li-277"><p id="p-derived-li-277">What is the largest degree of a vertex in <span class="process-math">\(G\text{?}\)</span> Which vertex/vertices have that degree?</p></li>
+<li id="li-278"><p id="p-derived-li-278">Suppose that <span class="process-math">\(G\)</span> represents a social network; that is, the vertices represent people, and the edges represent friendship. Who are <span class="process-math">\(e\)</span>'s friends?</p></li>
+<li id="li-279"><p id="p-derived-li-279">Still viewing <span class="process-math">\(G\)</span> as the model of a network of friends, which pair of people do you think are more likely to become friends next: <span class="process-math">\(a\)</span> and <span class="process-math">\(b\text{,}\)</span> or <span class="process-math">\(c\)</span> and <span class="process-math">\(e\text{?}\)</span> Why?</p></li>
+<li id="li-280"><p id="p-derived-li-280">Still viewing <span class="process-math">\(G\)</span> as the model of a network of friends, which pair of people do you think are more likely to become friends next: <span class="process-math">\(a\)</span> and <span class="process-math">\(b\text{,}\)</span> or <span class="process-math">\(c\)</span> and <span class="process-math">\(h\text{?}\)</span> Why?</p></li>
+</ol></article></section><section class="conclusion" id="conclusion-11"><p id="p-281">In this section, we introduced the idea of a graph as essentially a network: a collection of <em class="emphasis">vertices</em> connected by <em class="emphasis">edges</em>. We thought about the types of situations that could be described with a graph, and learned some terminology that will help us ask and answer additional questions about graphs in future sections.</p></section><section class="exercises" id="exercises-11"><h3 class="heading hide-type">
+<span class="type">Exercises</span> <span class="codenumber">5.1.3</span> <span class="title">Exercises</span>
+</h3>
+<article class="exercise exercise-like" id="exercise-27"><h4 class="heading"><span class="codenumber">1<span class="period">.</span></span></h4>
+<p id="p-282">Do some internet research about (Kevin) <a class="external" href="https://www.oracleofbacon.org" target="_blank">Bacon numbers</a><a href="" data-knowl="" class="id-ref fn-knowl original" data-refid="hk-fn-41" id="fn-41"><sup> 1 </sup></a>. What are they? How could you use a graph to model the situation described by a Bacon number? Then look up two or three people and report their Bacon numbers.</p></article><article class="exercise exercise-like" id="exercise-28"><h4 class="heading"><span class="codenumber">2<span class="period">.</span></span></h4>
+<p id="p-283">Draw two different representations of the graph with vertices <span class="process-math">\(V = \set{a,b,c,d,e,f}\)</span> and edges <span class="process-math">\(E = \set{ab,ad,df,ef,cd,be,af}\text{.}\)</span></p></article><article class="exercise exercise-like" id="exercise-29"><h4 class="heading"><span class="codenumber">3<span class="period">.</span></span></h4>
+<p id="p-284">Do an internet search for “social graph”. What is it? How has it been used, and by whom?</p></article></section></section><div class="hidden-content tex2jax_ignore" id="hk-fn-41"><div class="fn"><code class="code-inline tex2jax_ignore">https://www.oracleofbacon.org</code></div></div>
+</div></main>
 </div>
 </body>
 </html>

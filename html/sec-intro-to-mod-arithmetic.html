@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--********************************************-->
 <!--*       Generated from PreTeXt source      *-->
-<!--*       on 2022-05-18T12:43:04-05:00       *-->
+<!--*       on 2022-05-24T14:00:42-05:00       *-->
 <!--*   A recent stable commit (2020-08-09):   *-->
 <!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
 <!--*                                          *-->
@@ -126,7 +126,7 @@
 <nav id="primary-navbar" class="navbar"><div class="container">
 <div class="navbar-top-buttons">
 <button class="sidebar-left-toggle-button button active" aria-label="Show or hide table of contents sidebar">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
-<a class="index-button toolbar-item button" href="index-67.html" title="Index">Index</a><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="chap-coding.html" title="Previous">Prev</a><a id="upbutton" class="up-button button toolbar-item" href="chap-coding.html" title="Up">Up</a><a id="nextbutton" class="next-button button toolbar-item" href="sec-coding.html" title="Next">Next</a></span>
+<a class="index-button toolbar-item button" href="index-68.html" title="Index">Index</a><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="chap-coding.html" title="Previous">Prev</a><a id="upbutton" class="up-button button toolbar-item" href="chap-coding.html" title="Up">Up</a><a id="nextbutton" class="next-button button toolbar-item" href="sec-coding.html" title="Next">Next</a></span>
 </div>
 </div>
 <div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
@@ -177,9 +177,8 @@
 <li class="link">
 <a href="chap-graphs.html" data-scroll="chap-graphs" class="internal"><span class="codenumber">5</span> <span class="title">Graphs</span></a><ul>
 <li><a href="sec-intro-gt.html" data-scroll="sec-intro-gt" class="internal">Intro to Graph Theory</a></li>
-<li><a href="sec-planar-graphs.html" data-scroll="sec-planar-graphs" class="internal">April 9: Planar Graphs</a></li>
-<li><a href="sec-graph-coloring.html" data-scroll="sec-graph-coloring" class="internal">Apr. 12: Graph Coloring</a></li>
-<li><a href="sec-trees.html" data-scroll="sec-trees" class="internal">Intro to Trees</a></li>
+<li><a href="sec-planar-graphs.html" data-scroll="sec-planar-graphs" class="internal">Planar Graphs and Graph Coloring</a></li>
+<li><a href="sec-trees.html" data-scroll="sec-trees" class="internal">Trees</a></li>
 </ul>
 </li>
 <li class="link">
@@ -192,120 +191,119 @@
 <li class="link">
 <a href="chap-voting.html" data-scroll="chap-voting" class="internal"><span class="codenumber">7</span> <span class="title">Voting</span></a><ul>
 <li><a href="sec-voting-intro.html" data-scroll="sec-voting-intro" class="internal">Elections with Two Candidates</a></li>
-<li><a href="sec-more-voting-systems.html" data-scroll="sec-more-voting-systems" class="internal">Elections with More than Two Candidates I</a></li>
-<li><a href="sec-evaluating-voting-systems.html" data-scroll="sec-evaluating-voting-systems" class="internal">Elections with More than Two Candidates II</a></li>
-<li><a href="sec-more-voting-systems-iii.html" data-scroll="sec-more-voting-systems-iii" class="internal">Elections with More Than Two Candidates III</a></li>
+<li><a href="sec-plurality-borda.html" data-scroll="sec-plurality-borda" class="internal">Plurality and the Borda Count</a></li>
+<li><a href="sec-pwc-irv.html" data-scroll="sec-pwc-irv" class="internal">Pairwise Comparisons and Instant Runoff Voting</a></li>
 </ul>
 </li>
 <li class="link backmatter"><a href="backmatter-1.html" data-scroll="backmatter-1" class="internal"><span class="title">Back Matter</span></a></li>
-<li class="link"><a href="index-67.html" data-scroll="index-67" class="internal"><span class="title">Index</span></a></li>
+<li class="link"><a href="index-68.html" data-scroll="index-68" class="internal"><span class="title">Index</span></a></li>
 </ul></nav><div class="extras"><nav><a class="pretext-link" href="https://pretextbook.org">Authored in PreTeXt</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/badge.gif" alt="Powered by MathJax"></a></nav></div>
 </div></div>
 <main class="main"><div id="content" class="pretext-content"><section class="section" id="sec-intro-to-mod-arithmetic"><h2 class="heading hide-type">
 <span class="type">Section</span> <span class="codenumber">6.1</span> <span class="title">Adding in Circles</span>
 </h2>
-<article class="assemblage assemblage-like" id="assemblage-15"><h3 class="heading"><span class="title">Motivating Questions.</span></h3>
-<p id="p-323">In this section, we will explore the following questions. <ol class="decimal">
-<li id="li-298"><p id="p-derived-li-298">What is congruence modulo <span class="process-math">\(m\text{?}\)</span></p></li>
-<li id="li-299"><p id="p-derived-li-299">How can we do arithemtic modulo <span class="process-math">\(m\text{?}\)</span></p></li>
-<li id="li-300"><p id="p-derived-li-300">What are some real-world examples of congruence?</p></li>
-</ol></p></article><p id="p-324">This topic comes to us from the realm of mathematics known as <em class="emphasis">number theory</em>, which is all about the properties of the integers: positive whole numbers, negatives of whole numbers, and zero. Number theory is one of the oldest branches of mathematics; some of its hallmark theorems, still vital and taught today, have been known for thousands of years. And many of the deep structural features of the integers have found modern application in the hiding and transmitting of information. It is toward this last application that we now turn.</p>
-<p id="p-325">First, however, we need to be reminded of a suprisingly important result from school mathematics. We begin with some warmup questions.</p>
+<article class="assemblage assemblage-like" id="assemblage-18"><h3 class="heading"><span class="title">Motivating Questions.</span></h3>
+<p id="p-333">In this section, we will explore the following questions. <ol class="decimal">
+<li id="li-302"><p id="p-derived-li-302">What is congruence modulo <span class="process-math">\(m\text{?}\)</span></p></li>
+<li id="li-303"><p id="p-derived-li-303">How can we do arithemtic modulo <span class="process-math">\(m\text{?}\)</span></p></li>
+<li id="li-304"><p id="p-derived-li-304">What are some real-world examples of congruence?</p></li>
+</ol></p></article><p id="p-334">This topic comes to us from the realm of mathematics known as <em class="emphasis">number theory</em>, which is all about the properties of the integers: positive whole numbers, negatives of whole numbers, and zero. Number theory is one of the oldest branches of mathematics; some of its hallmark theorems, still vital and taught today, have been known for thousands of years. And many of the deep structural features of the integers have found modern application in the hiding and transmitting of information. It is toward this last application that we now turn.</p>
+<p id="p-335">First, however, we need to be reminded of a suprisingly important result from school mathematics. We begin with some warmup questions.</p>
 <article class="hypothesis theorem-like" id="warmup-long-division"><h3 class="heading">
 <span class="type">Warmup</span><span class="space"> </span><span class="codenumber">6.1.1</span><span class="period">.</span>
 </h3>
-<p id="p-326">For each pair of positive integers given below, perform long division to divide the first number by the second.</p>
+<p id="p-336">For each pair of positive integers given below, perform long division to divide the first number by the second.</p>
 <ol class="decimal">
-<li id="li-301"><p id="p-derived-li-301">42, 6</p></li>
-<li id="li-302"><p id="p-derived-li-302">42, 8</p></li>
-<li id="li-303"><p id="p-derived-li-303">71, 9</p></li>
-<li id="li-304"><p id="p-derived-li-304">0, 17</p></li>
-<li id="li-305"><p id="p-derived-li-305">9, 71</p></li>
-<li id="li-306"><p id="p-derived-li-306">8675309, 627</p></li>
+<li id="li-305"><p id="p-derived-li-305">42, 6</p></li>
+<li id="li-306"><p id="p-derived-li-306">42, 8</p></li>
+<li id="li-307"><p id="p-derived-li-307">71, 9</p></li>
+<li id="li-308"><p id="p-derived-li-308">0, 17</p></li>
+<li id="li-309"><p id="p-derived-li-309">9, 71</p></li>
+<li id="li-310"><p id="p-derived-li-310">8675309, 627</p></li>
 </ol></article><article class="assemblage assemblage-like" id="thm-divalg"><h3 class="heading"><span class="title">The Division Algorithm.</span></h3>
-<p id="p-327">Let <span class="process-math">\(a\)</span> and <span class="process-math">\(m\)</span> be integers, with <span class="process-math">\(m\gt 0\text{.}\)</span> Then there exist unique integers <span class="process-math">\(q,r\text{,}\)</span> <span class="process-math">\(0\le r \lt m\text{,}\)</span> such that<div class="displaymath process-math" data-contains-math-knowls="">
+<p id="p-337">Let <span class="process-math">\(a\)</span> and <span class="process-math">\(m\)</span> be integers, with <span class="process-math">\(m\gt 0\text{.}\)</span> Then there exist unique integers <span class="process-math">\(q,r\text{,}\)</span> <span class="process-math">\(0\le r \lt m\text{,}\)</span> such that<div class="displaymath process-math" data-contains-math-knowls="">
 \begin{equation*}
 a = m\cdot q + r.
 \end{equation*}
-</div>We call <span class="process-math">\(a\)</span> the <dfn class="terminology">dividend</dfn>, <span class="process-math">\(m\)</span> the <dfn class="terminology">divisor</dfn>, <span class="process-math">\(q\)</span> the <dfn class="terminology">quotient</dfn>, and <span class="process-math">\(r\)</span> the <dfn class="terminology">remainder</dfn>.</p></article><article class="activity project-like" id="activity-23"><h3 class="heading">
+</div>We call <span class="process-math">\(a\)</span> the <dfn class="terminology">dividend</dfn>, <span class="process-math">\(m\)</span> the <dfn class="terminology">divisor</dfn>, <span class="process-math">\(q\)</span> the <dfn class="terminology">quotient</dfn>, and <span class="process-math">\(r\)</span> the <dfn class="terminology">remainder</dfn>.</p></article><article class="activity project-like" id="activity-22"><h3 class="heading">
 <span class="type">Activity</span><span class="space"> </span><span class="codenumber">6.1.2</span><span class="period">.</span>
 </h3>
-<p id="p-328">For each long division problem from <a href="" class="xref" data-knowl="./knowl/warmup-long-division.html" title="Warmup 6.1.1">Warmup 6.1.1</a>, identify the dividend, divisor, quotient, and remainder as described in <a href="" class="xref" data-knowl="./knowl/thm-divalg.html" title="Assemblage: The Division Algorithm">the Division Algorithm</a>. What do you notice? What do you wonder?</p></article><article class="principle theorem-like" id="principle-9"><h3 class="heading">
+<p id="p-338">For each long division problem from <a href="" class="xref" data-knowl="./knowl/warmup-long-division.html" title="Warmup 6.1.1">Warmup 6.1.1</a>, identify the dividend, divisor, quotient, and remainder as described in <a href="" class="xref" data-knowl="./knowl/thm-divalg.html" title="Assemblage: The Division Algorithm">the Division Algorithm</a>. What do you notice? What do you wonder?</p></article><article class="principle theorem-like" id="principle-9"><h3 class="heading">
 <span class="type">Discussion</span><span class="space"> </span><span class="codenumber">6.1.3</span><span class="period">.</span>
 </h3>
-<p id="p-329">What is meant by the word “unique” in <a href="" class="xref" data-knowl="./knowl/thm-divalg.html" title="Assemblage: The Division Algorithm">the Division Algorithm</a>? Or, put slightly differently, when dividing 71 by 9, why do you think we do we not give a quotient of 6 and remainder of 17?</p></article><p id="p-330">Of primary importance for us will be a consideration of the remainders obtained by dividing by a fixed positive integer <span class="process-math">\(m\gt 1\text{.}\)</span></p>
+<p id="p-339">What is meant by the word “unique” in <a href="" class="xref" data-knowl="./knowl/thm-divalg.html" title="Assemblage: The Division Algorithm">the Division Algorithm</a>? Or, put slightly differently, when dividing 71 by 9, why do you think we do we not give a quotient of 6 and remainder of 17?</p></article><p id="p-340">Of primary importance for us will be a consideration of the remainders obtained by dividing by a fixed positive integer <span class="process-math">\(m\gt 1\text{.}\)</span></p>
 <article class="activity project-like" id="act-remainders"><h3 class="heading">
 <span class="type">Activity</span><span class="space"> </span><span class="codenumber">6.1.4</span><span class="period">.</span>
 </h3>
-<p id="p-331">Throughout this activity, we will be dividing by <span class="process-math">\(m = 5\text{.}\)</span> However, you should be thinking about how the answers might differ if we divide by a different integer <span class="process-math">\(m\text{.}\)</span></p>
+<p id="p-341">Throughout this activity, we will be dividing by <span class="process-math">\(m = 5\text{.}\)</span> However, you should be thinking about how the answers might differ if we divide by a different integer <span class="process-math">\(m\text{.}\)</span></p>
 <ol class="decimal">
-<li id="li-307"><p id="p-derived-li-307">What remainders do you obtain when dividing the integers <span class="process-math">\(12, 16, 20, 24, 33\)</span> by 5?</p></li>
-<li id="li-308"><p id="p-derived-li-308">What remainders do you obtain when dividing the integers <span class="process-math">\(39, 52, 80, 108, 166\)</span> by 5?</p></li>
-<li id="li-309"><p id="p-derived-li-309">What remainders are <em class="emphasis">possible</em> upon division by 5? How do you know?</p></li>
-<li id="li-310"><p id="p-derived-li-310">What remainders do you expect to be possible upon division by 103? How do you know?</p></li>
-<li id="li-311"><p id="p-derived-li-311">For each of the five integers from the first question, find the integer from the second question whose remainder upon division by 5 is the same and write the pairs in a list.</p></li>
-<li id="li-312"><p id="p-derived-li-312">For each pair in the list you made in the previous question, find the difference between the two integers and divide <em class="emphasis">that number</em> by <span class="process-math">\(m=5\text{.}\)</span> What do you notice? What do you wonder?</p></li>
-</ol></article><p id="p-332">The work you did in <a href="" class="xref" data-knowl="./knowl/act-remainders.html" title="Activity 6.1.4">Activity 6.1.4</a> provides motivation for the following definition.</p>
+<li id="li-311"><p id="p-derived-li-311">What remainders do you obtain when dividing the integers <span class="process-math">\(12, 16, 20, 24, 33\)</span> by 5?</p></li>
+<li id="li-312"><p id="p-derived-li-312">What remainders do you obtain when dividing the integers <span class="process-math">\(39, 52, 80, 108, 166\)</span> by 5?</p></li>
+<li id="li-313"><p id="p-derived-li-313">What remainders are <em class="emphasis">possible</em> upon division by 5? How do you know?</p></li>
+<li id="li-314"><p id="p-derived-li-314">What remainders do you expect to be possible upon division by 103? How do you know?</p></li>
+<li id="li-315"><p id="p-derived-li-315">For each of the five integers from the first question, find the integer from the second question whose remainder upon division by 5 is the same and write the pairs in a list.</p></li>
+<li id="li-316"><p id="p-derived-li-316">For each pair in the list you made in the previous question, find the difference between the two integers and divide <em class="emphasis">that number</em> by <span class="process-math">\(m=5\text{.}\)</span> What do you notice? What do you wonder?</p></li>
+</ol></article><p id="p-342">The work you did in <a href="" class="xref" data-knowl="./knowl/act-remainders.html" title="Activity 6.1.4">Activity 6.1.4</a> provides motivation for the following definition.</p>
 <article class="definition definition-like" id="def-congruence"><h3 class="heading">
 <span class="type">Definition</span><span class="space"> </span><span class="codenumber">6.1.5</span><span class="period">.</span>
 </h3>
-<p id="p-333">Let <span class="process-math">\(a,b\)</span> be integers and <span class="process-math">\(m \gt 1\)</span> an integer. We say that <span class="process-math">\(a\)</span> and <span class="process-math">\(b\)</span> are <dfn class="terminology">congruent modulo <span class="process-math">\(m\)</span></dfn> if <span class="process-math">\(a\)</span> and <span class="process-math">\(b\)</span> have the same remainder upon division by <span class="process-math">\(m\text{.}\)</span> In this case, we write <span class="process-math">\(a\equiv b\mod m\)</span> and call <span class="process-math">\(m\)</span> the <dfn class="terminology">modulus</dfn>.</p>
-<p id="p-334">Equivalently, we say <span class="process-math">\(a\)</span> and <span class="process-math">\(b\)</span> are congruent modulo <span class="process-math">\(m\)</span> if <span class="process-math">\(m\)</span> evenly divides <span class="process-math">\(b-a\text{.}\)</span></p></article><p id="p-335">Let's explore this definition a bit more.</p>
-<article class="activity project-like" id="activity-25"><h3 class="heading">
+<p id="p-343">Let <span class="process-math">\(a,b\)</span> be integers and <span class="process-math">\(m \gt 1\)</span> an integer. We say that <span class="process-math">\(a\)</span> and <span class="process-math">\(b\)</span> are <dfn class="terminology">congruent modulo <span class="process-math">\(m\)</span></dfn> if <span class="process-math">\(a\)</span> and <span class="process-math">\(b\)</span> have the same remainder upon division by <span class="process-math">\(m\text{.}\)</span> In this case, we write <span class="process-math">\(a\equiv b\mod m\)</span> and call <span class="process-math">\(m\)</span> the <dfn class="terminology">modulus</dfn>.</p>
+<p id="p-344">Equivalently, we say <span class="process-math">\(a\)</span> and <span class="process-math">\(b\)</span> are congruent modulo <span class="process-math">\(m\)</span> if <span class="process-math">\(m\)</span> evenly divides <span class="process-math">\(b-a\text{.}\)</span></p></article><p id="p-345">Let's explore this definition a bit more.</p>
+<article class="activity project-like" id="activity-24"><h3 class="heading">
 <span class="type">Activity</span><span class="space"> </span><span class="codenumber">6.1.6</span><span class="period">.</span>
 </h3>
-<p id="p-336">For the given values below, determine whether <span class="process-math">\(a \equiv b\mod m\text{.}\)</span></p>
+<p id="p-346">For the given values below, determine whether <span class="process-math">\(a \equiv b\mod m\text{.}\)</span></p>
 <ol class="decimal">
-<li id="li-313"><p id="p-derived-li-313"><span class="process-math">\(a = 71\text{,}\)</span> <span class="process-math">\(b = 39\text{,}\)</span> <span class="process-math">\(m= 16\)</span></p></li>
-<li id="li-314"><p id="p-derived-li-314"><span class="process-math">\(a = 17\text{,}\)</span> <span class="process-math">\(b = 19\text{,}\)</span> <span class="process-math">\(m = 4\)</span></p></li>
-<li id="li-315"><p id="p-derived-li-315"><span class="process-math">\(a = 832\text{,}\)</span> <span class="process-math">\(b = 584\text{,}\)</span> <span class="process-math">\(m= 31\)</span></p></li>
-</ol></article><p id="p-337">Congruence modulo <span class="process-math">\(m\)</span> possesses several important properties. We highlight three of them in the following theorem.</p>
+<li id="li-317"><p id="p-derived-li-317"><span class="process-math">\(a = 71\text{,}\)</span> <span class="process-math">\(b = 39\text{,}\)</span> <span class="process-math">\(m= 16\)</span></p></li>
+<li id="li-318"><p id="p-derived-li-318"><span class="process-math">\(a = 17\text{,}\)</span> <span class="process-math">\(b = 19\text{,}\)</span> <span class="process-math">\(m = 4\)</span></p></li>
+<li id="li-319"><p id="p-derived-li-319"><span class="process-math">\(a = 832\text{,}\)</span> <span class="process-math">\(b = 584\text{,}\)</span> <span class="process-math">\(m= 31\)</span></p></li>
+</ol></article><p id="p-347">Congruence modulo <span class="process-math">\(m\)</span> possesses several important properties. We highlight three of them in the following theorem.</p>
 <article class="theorem theorem-like" id="thm-congruence-equiv-relation"><h3 class="heading">
 <span class="type">Theorem</span><span class="space"> </span><span class="codenumber">6.1.7</span><span class="period">.</span>
 </h3>
-<p id="p-338">Let <span class="process-math">\(m\gt 1\)</span> be an integer, and suppose <span class="process-math">\(a,b,c\)</span> are integers.</p>
+<p id="p-348">Let <span class="process-math">\(m\gt 1\)</span> be an integer, and suppose <span class="process-math">\(a,b,c\)</span> are integers.</p>
 <ul class="disc">
-<li id="li-316"><p id="p-derived-li-316">Congruence is <dfn class="terminology">reflexive</dfn>: <span class="process-math">\(a\equiv a\mod m\)</span></p></li>
-<li id="li-317"><p id="p-derived-li-317">Congruence is <dfn class="terminology">symmetric</dfn>: If <span class="process-math">\(a\equiv b\mod m\text{,}\)</span> then <span class="process-math">\(b\equiv a\mod m\text{.}\)</span></p></li>
-<li id="li-318"><p id="p-derived-li-318">Congruence is <dfn class="terminology">transitive</dfn>: If <span class="process-math">\(a\equiv b\mod m\)</span> and <span class="process-math">\(b\equiv c\mod m\text{,}\)</span> then <span class="process-math">\(a\equiv c\mod m\text{.}\)</span></p></li>
-</ul></article><p id="p-339">Now that we are a bit more familiar with the definition, let's test its limits.</p>
+<li id="li-320"><p id="p-derived-li-320">Congruence is <dfn class="terminology">reflexive</dfn>: <span class="process-math">\(a\equiv a\mod m\)</span></p></li>
+<li id="li-321"><p id="p-derived-li-321">Congruence is <dfn class="terminology">symmetric</dfn>: If <span class="process-math">\(a\equiv b\mod m\text{,}\)</span> then <span class="process-math">\(b\equiv a\mod m\text{.}\)</span></p></li>
+<li id="li-322"><p id="p-derived-li-322">Congruence is <dfn class="terminology">transitive</dfn>: If <span class="process-math">\(a\equiv b\mod m\)</span> and <span class="process-math">\(b\equiv c\mod m\text{,}\)</span> then <span class="process-math">\(a\equiv c\mod m\text{.}\)</span></p></li>
+</ul></article><p id="p-349">Now that we are a bit more familiar with the definition, let's test its limits.</p>
 <article class="exploration project-like" id="expl-arithmetic-mod-m"><h3 class="heading">
 <span class="type">Exploration</span><span class="space"> </span><span class="codenumber">6.1.8</span><span class="period">.</span>
 </h3>
-<p id="p-340">Choose two different values of <span class="process-math">\(m\text{,}\)</span> and for each value you choose, find two values of <span class="process-math">\(a\)</span> and <span class="process-math">\(b\)</span> so that <span class="process-math">\(a\equiv b\mod m\text{.}\)</span></p>
+<p id="p-350">Choose two different values of <span class="process-math">\(m\text{,}\)</span> and for each value you choose, find two values of <span class="process-math">\(a\)</span> and <span class="process-math">\(b\)</span> so that <span class="process-math">\(a\equiv b\mod m\text{.}\)</span></p>
 <ol class="decimal">
-<li id="li-319"><p id="p-derived-li-319">Now choose a third integer <span class="process-math">\(c\text{.}\)</span> For the integers you chose, is it true that <span class="process-math">\(a+c \equiv b+c\mod m\text{?}\)</span> Is it true that <span class="process-math">\(a-c \equiv b-c\mod m\text{?}\)</span> What about <span class="process-math">\(a\cdot c\equiv b\cdot c\mod m\text{?}\)</span></p></li>
-<li id="li-320"><p id="p-derived-li-320">For each integer <span class="process-math">\(c\)</span> you chose, find an integer <span class="process-math">\(d\)</span> such that <span class="process-math">\(c\equiv d\mod m\text{.}\)</span> Is it true that <span class="process-math">\(a+c \equiv b+d\mod m\text{?}\)</span> Is it true that <span class="process-math">\(a-c \equiv b-d\mod m\text{?}\)</span> What about <span class="process-math">\(a\cdot c \equiv b\cdot d\mod m\text{?}\)</span></p></li>
-<li id="li-321"><p id="p-derived-li-321">Finally, note that <span class="process-math">\(5\cdot 2 \equiv 3\cdot 2\mod 4\text{.}\)</span> Does it follow that <span class="process-math">\(5\equiv 3\mod 4\text{?}\)</span></p></li>
-</ol></article><p id="p-341">Our discoveries in <a href="" class="xref" data-knowl="./knowl/expl-arithmetic-mod-m.html" title="Exploration 6.1.8">Exploration 6.1.8</a> delineate the operations known as <dfn class="terminology">modular arithmetic</dfn>: we may add, subtract, and multipy integers mod <span class="process-math">\(m\text{,}\)</span> but we may not divide.</p>
-<article class="activity project-like" id="activity-26"><h3 class="heading">
+<li id="li-323"><p id="p-derived-li-323">Now choose a third integer <span class="process-math">\(c\text{.}\)</span> For the integers you chose, is it true that <span class="process-math">\(a+c \equiv b+c\mod m\text{?}\)</span> Is it true that <span class="process-math">\(a-c \equiv b-c\mod m\text{?}\)</span> What about <span class="process-math">\(a\cdot c\equiv b\cdot c\mod m\text{?}\)</span></p></li>
+<li id="li-324"><p id="p-derived-li-324">For each integer <span class="process-math">\(c\)</span> you chose, find an integer <span class="process-math">\(d\)</span> such that <span class="process-math">\(c\equiv d\mod m\text{.}\)</span> Is it true that <span class="process-math">\(a+c \equiv b+d\mod m\text{?}\)</span> Is it true that <span class="process-math">\(a-c \equiv b-d\mod m\text{?}\)</span> What about <span class="process-math">\(a\cdot c \equiv b\cdot d\mod m\text{?}\)</span></p></li>
+<li id="li-325"><p id="p-derived-li-325">Finally, note that <span class="process-math">\(5\cdot 2 \equiv 3\cdot 2\mod 4\text{.}\)</span> Does it follow that <span class="process-math">\(5\equiv 3\mod 4\text{?}\)</span></p></li>
+</ol></article><p id="p-351">Our discoveries in <a href="" class="xref" data-knowl="./knowl/expl-arithmetic-mod-m.html" title="Exploration 6.1.8">Exploration 6.1.8</a> delineate the operations known as <dfn class="terminology">modular arithmetic</dfn>: we may add, subtract, and multipy integers mod <span class="process-math">\(m\text{,}\)</span> but we may not divide.</p>
+<article class="activity project-like" id="activity-25"><h3 class="heading">
 <span class="type">Activity</span><span class="space"> </span><span class="codenumber">6.1.9</span><span class="period">.</span>
 </h3>
-<p id="p-342">Find the smallest nonnegative integer <span class="process-math">\(x\)</span> satisfying:</p>
+<p id="p-352">Find the smallest nonnegative integer <span class="process-math">\(x\)</span> satisfying:</p>
 <ol class="decimal">
-<li id="li-322"><p id="p-derived-li-322"><span class="process-math">\(\displaystyle x\equiv 9\cdot 4\mod 5\)</span></p></li>
-<li id="li-323"><p id="p-derived-li-323"><span class="process-math">\(\displaystyle x\equiv 103+405\mod 10\)</span></p></li>
-<li id="li-324"><p id="p-derived-li-324"><span class="process-math">\(\displaystyle x \equiv 56 + 6\mod 7\)</span></p></li>
-<li id="li-325"><p id="p-derived-li-325"><span class="process-math">\(\displaystyle x \equiv 9\cdot 99\mod 5\)</span></p></li>
-</ol></article><article class="assemblage assemblage-like" id="assemblage-17"><h3 class="heading"><span class="title">Questions.</span></h3>
-<p id="p-343">Consider the following questions, and what they have to do with modular arithmetic. <ol class="decimal">
-<li id="li-326"><p id="p-derived-li-326">What day of the week will it be 62 days from now?</p></li>
-<li id="li-327"><p id="p-derived-li-327">What month will it be 40 months from now?</p></li>
-<li id="li-328"><p id="p-derived-li-328">What time will it be 27 hours from now?</p></li>
-</ol></p></article><section class="conclusion" id="conclusion-11"><p id="p-344">In this section, we explored the notion of <em class="emphasis">congruence modulo <span class="process-math">\(m\)</span></em>. We saw that we can reduce any integer <span class="process-math">\(x\)</span> to its remainder upon division by <span class="process-math">\(m\text{,}\)</span> and then do arithemtic operations of addition, subtraction, and multiplication mod <span class="process-math">\(m\text{.}\)</span> This corresponds to natural cyclical process, such as times and dates.</p>
-<p id="p-345">In the next section, we'll see how modular arithmetic can be used to reliably transmit information.</p></section><section class="exercises" id="exercises-11"><h3 class="heading hide-type">
+<li id="li-326"><p id="p-derived-li-326"><span class="process-math">\(\displaystyle x\equiv 9\cdot 4\mod 5\)</span></p></li>
+<li id="li-327"><p id="p-derived-li-327"><span class="process-math">\(\displaystyle x\equiv 103+405\mod 10\)</span></p></li>
+<li id="li-328"><p id="p-derived-li-328"><span class="process-math">\(\displaystyle x \equiv 56 + 6\mod 7\)</span></p></li>
+<li id="li-329"><p id="p-derived-li-329"><span class="process-math">\(\displaystyle x \equiv 9\cdot 99\mod 5\)</span></p></li>
+</ol></article><article class="assemblage assemblage-like" id="assemblage-20"><h3 class="heading"><span class="title">Questions.</span></h3>
+<p id="p-353">Consider the following questions, and what they have to do with modular arithmetic. <ol class="decimal">
+<li id="li-330"><p id="p-derived-li-330">What day of the week will it be 62 days from now?</p></li>
+<li id="li-331"><p id="p-derived-li-331">What month will it be 40 months from now?</p></li>
+<li id="li-332"><p id="p-derived-li-332">What time will it be 27 hours from now?</p></li>
+</ol></p></article><section class="conclusion" id="conclusion-14"><p id="p-354">In this section, we explored the notion of <em class="emphasis">congruence modulo <span class="process-math">\(m\)</span></em>. We saw that we can reduce any integer <span class="process-math">\(x\)</span> to its remainder upon division by <span class="process-math">\(m\text{,}\)</span> and then do arithemtic operations of addition, subtraction, and multiplication mod <span class="process-math">\(m\text{.}\)</span> This corresponds to natural cyclical process, such as times and dates.</p>
+<p id="p-355">In the next section, we'll see how modular arithmetic can be used to reliably transmit information.</p></section><section class="exercises" id="exercises-14"><h3 class="heading hide-type">
 <span class="type">Exercises</span> <span class="codenumber"></span> <span class="title">Exercises</span>
 </h3>
-<article class="exercise exercise-like" id="exercise-27"><h4 class="heading"><span class="codenumber">1<span class="period">.</span></span></h4>
-<p id="p-346">Find all solutions to the congruence <span class="process-math">\(6 + x \equiv 5\mod 15\text{.}\)</span></p></article><article class="exercise exercise-like" id="exercise-28"><h4 class="heading"><span class="codenumber">2<span class="period">.</span></span></h4>
-<p id="p-347">Find all solutions to the congruence <span class="process-math">\(6x \equiv 5\mod 15\text{.}\)</span></p></article><article class="exercise exercise-like" id="exer-divisibility-mod-m"><h4 class="heading"><span class="codenumber">3<span class="period">.</span></span></h4>
-<p id="p-348">Let <span class="process-math">\(m\gt 1\)</span> be an integer and let <span class="process-math">\(a\)</span> be any integer. Explain why <span class="process-math">\(a\)</span> is divisible by <span class="process-math">\(m\)</span> if and only if <span class="process-math">\(a\equiv 0\mod m\text{.}\)</span></p></article><article class="exercise exercise-like" id="exercise-30"><h4 class="heading"><span class="codenumber">4<span class="period">.</span></span></h4>
-<p id="p-349">Recall that the decimal representation of a number is a sum of powers of 10; for instance, <span class="process-math">\(6429 = 6\cdot 10^3 + 4\cdot 10^2 + 2\cdot 10 + 9\cdot 1\text{.}\)</span></p>
+<article class="exercise exercise-like" id="exercise-38"><h4 class="heading"><span class="codenumber">1<span class="period">.</span></span></h4>
+<p id="p-356">Find all solutions to the congruence <span class="process-math">\(6 + x \equiv 5\mod 15\text{.}\)</span></p></article><article class="exercise exercise-like" id="exercise-39"><h4 class="heading"><span class="codenumber">2<span class="period">.</span></span></h4>
+<p id="p-357">Find all solutions to the congruence <span class="process-math">\(6x \equiv 5\mod 15\text{.}\)</span></p></article><article class="exercise exercise-like" id="exer-divisibility-mod-m"><h4 class="heading"><span class="codenumber">3<span class="period">.</span></span></h4>
+<p id="p-358">Let <span class="process-math">\(m\gt 1\)</span> be an integer and let <span class="process-math">\(a\)</span> be any integer. Explain why <span class="process-math">\(a\)</span> is divisible by <span class="process-math">\(m\)</span> if and only if <span class="process-math">\(a\equiv 0\mod m\text{.}\)</span></p></article><article class="exercise exercise-like" id="exercise-41"><h4 class="heading"><span class="codenumber">4<span class="period">.</span></span></h4>
+<p id="p-359">Recall that the decimal representation of a number is a sum of powers of 10; for instance, <span class="process-math">\(6429 = 6\cdot 10^3 + 4\cdot 10^2 + 2\cdot 10 + 9\cdot 1\text{.}\)</span></p>
 <ol class="lower-alpha">
-<li id="li-329"><p id="p-derived-li-329">Reduce <span class="process-math">\(10\mod 3\)</span> and <span class="process-math">\(10^2 \equiv 100\mod 3\text{.}\)</span></p></li>
-<li id="li-330"><p id="p-derived-li-330">What do you think it the smallest whole number <span class="process-math">\(x\)</span> satisfying <span class="process-math">\(x\equiv 10^k\mod 3\)</span> for any positive integer power <span class="process-math">\(k\text{?}\)</span></p></li>
-<li id="li-331"><p id="p-derived-li-331">Explain why <span class="process-math">\(6429 \equiv 6 + 4 + 2 + 9 \mod 3\text{.}\)</span></p></li>
-<li id="li-332"><p id="p-derived-li-332">Use your answers to these questions and <a href="" class="xref" data-knowl="./knowl/exer-divisibility-mod-m.html" title="Exercise 6.1.3">Exercise 6.1.3</a> to guess a way to determine if a number is divisible by 3. Explain your thinking.</p></li>
+<li id="li-333"><p id="p-derived-li-333">Reduce <span class="process-math">\(10\mod 3\)</span> and <span class="process-math">\(10^2 \equiv 100\mod 3\text{.}\)</span></p></li>
+<li id="li-334"><p id="p-derived-li-334">What do you think it the smallest whole number <span class="process-math">\(x\)</span> satisfying <span class="process-math">\(x\equiv 10^k\mod 3\)</span> for any positive integer power <span class="process-math">\(k\text{?}\)</span></p></li>
+<li id="li-335"><p id="p-derived-li-335">Explain why <span class="process-math">\(6429 \equiv 6 + 4 + 2 + 9 \mod 3\text{.}\)</span></p></li>
+<li id="li-336"><p id="p-derived-li-336">Use your answers to these questions and <a href="" class="xref" data-knowl="./knowl/exer-divisibility-mod-m.html" title="Exercise 6.1.3">Exercise 6.1.3</a> to guess a way to determine if a number is divisible by 3. Explain your thinking.</p></li>
 </ol></article></section></section></div></main>
 </div>
 </body>

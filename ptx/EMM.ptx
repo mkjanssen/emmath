@@ -182,7 +182,7 @@
 			</p>
 			<ul>
 				<li>The HTML version, avaialable at <url href="https://emmath.org">https://emmath.org</url>, is the author's preferred version. It is easy to update and can contain things like Sage cells, links to spreadsheets for doing lots of arithemtic, and video examples.</li>
-				<li>For various reasons, a PDF version is often helpful. You can download that here (forthcoming).</li>
+				<li>For various reasons, a PDF version is often helpful. You can <url href="./EMM.pdf">download the PDF here</url>.</li>
 				<li>Finally, the <url href="https://pretextbook.org">PreTeXt</url> source code is <url href="https://github.com/mkjanssen/emmath">available on GitHub</url>.</li>
 			</ul>
 			
@@ -2673,7 +2673,7 @@
 				
 				<p>
 					In this part of the text, we will focus particularly on the <em>sense-making</em> component of power and ask: how do mathematical explorers make sense of the physical world via mathematics?
-					In <xref ref="chap-dynamical systems" />, we will explore some increasingly advanced discrete mathematical models, with the ultimate goal of understanding a basic model of how infectious disease spreads through a population.					
+					In <xref ref="chap-dynamical-systems" />, we will explore some increasingly advanced discrete mathematical models, with the ultimate goal of understanding a basic model of how infectious disease spreads through a population.					
 				</p>
 				
 				<p>

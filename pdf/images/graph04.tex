@@ -1,0 +1,46 @@
+\documentclass[tikz,crop]{standalone} %\usetikzlibrary{calc} 
+\usepackage{rubikcube,rubikrotation,rubikpatterns,rubiktwocube} 
+\newcommand{\CycleThreeEdgesFlipTwo}{[CycleThreeEdgesFlipTwo],F,R,U,Rp,Up,Fp}%
+\newcommand{\cyclethreeedgesfliptwo}{\CycleThreeEdgesFlipTwo}%
+%
+%----corner sequences--------------------------
+\newcommand{\AllYellow}{[allyellow],R,U,Rp,U,R,Up,Up,Rp}% = SUNE  %cross -->allyellow
+\newcommand{\allyellow}{\AllYellow}%
+\newcommand{\CycleThreeCorners}{[cyclethreecorners],Lp,U,R,Up,L,U,Rp,Up}%
+\newcommand{\cyclethreecorners}{\CycleThreeCorners}%
+\newcommand{\cornerrotate}{[cornerrotate],Up,Rp,Dp,R,U,Rp,D,R}
+\newcommand{\SwapTwoCorners}{[swaptwocorners],Rp,F,Rp,B2,R,Fp,Rp,B2,R2,Up}
+\newcommand{\swaptwocorners}{\SwapTwoCorners}
+%
+%% brace and bracket macros 
+\newcommand{\Rubikbracket}[1]{$\left(\mbox{#1}\right)$}
+\newcommand{\Rubikbrace}[1]{$\left\{\mbox{#1}\right\}$}
+\newcommand{\cubenumber}[1]{\strut\raisebox{1cm}{#1}}
+\begin{document}
+\begin{figure}
+\begin{center}
+	\begin{tikzpicture}
+  [scale=2,auto=left,every node/.style={circle,inner sep=1.5pt, fill=blue!10}]
+  \node (a) at (0,  2) {$A$};
+  \node(b) at (1, 2)  {$B$};
+  \node (c) at (2,2)  {$C$};
+  \node (d) at (3,2) {$D$};
+  \node (e) at (1.5,1.5)  {$E$};
+  \node (f) at (0,1)  {$F$};
+  \node (g) at (1,1) {$G$};
+  \node (h) at (2,1)  {$H$};
+  \node (i) at (3,1)  {$I$};
+  \node (j) at (0.5,0.5)  {$J$};
+  \node (k) at (2.5, 0.5) {$K$};
+  \node (l) at (0,0) {$L$};
+  \node (m) at (1,0) {$M$};
+  \node (n) at (2,0) {$N$};
+  \node (o) at (3,0) {$O$};
+
+  \foreach \from/\to in {a/b,a/f,b/c,b/e,b/g,c/d,c/h,c/e,d/i,f/g,f/l,g/e,g/h,g/m,h/m,h/i,i/o,g/j,h/k,l/j,l/m,m/n,n/k,n/o,e/h,k/o,h/n}
+    \draw (\from) -- (\to);
+\end{tikzpicture}
+%\caption{An additional vertex and edge appended to $C_9$.}\label{fig:newgraph}
+\end{center}
+\end{figure}
+\end{document}

@@ -255,7 +255,7 @@ TSWLatexianTemp*
 *.sta
 
 feedback/
-.nova/
+/.nova/
 .md/
 html-bad/
 ptx-old/

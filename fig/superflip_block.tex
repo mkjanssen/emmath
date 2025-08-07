@@ -1,0 +1,26 @@
+\documentclass[tikz]{standalone} %\usetikzlibrary{calc} 
+\usepackage{rubikcube,rubikrotation,rubikpatterns,rubiktwocube,tikz} 
+\newcommand{\CycleThreeEdgesFlipTwo}{[CycleThreeEdgesFlipTwo],F,R,U,Rp,Up,Fp}%
+\newcommand{\cyclethreeedgesfliptwo}{\CycleThreeEdgesFlipTwo}%
+%
+%----corner sequences--------------------------
+\newcommand{\AllYellow}{[allyellow],R,U,Rp,U,R,Up,Up,Rp}% = SUNE  %cross -->allyellow
+\newcommand{\allyellow}{\AllYellow}%
+\newcommand{\CycleThreeCorners}{[cyclethreecorners],Lp,U,R,Up,L,U,Rp,Up}%
+\newcommand{\cyclethreecorners}{\CycleThreeCorners}%
+\newcommand{\SwapTwoCorners}{[swaptwocorners],Rp,F,Rp,B2,R,Fp,Rp,B2,R2,Up}
+\newcommand{\swaptwocorners}{\SwapTwoCorners}
+%
+%% brace and bracket macros 
+\newcommand{\Rubikbracket}[1]{$\left(\mbox{#1}\right)$}
+\newcommand{\Rubikbrace}[1]{$\left\{\mbox{#1}\right\}$}
+\newcommand{\cubenumber}[1]{\strut\raisebox{1cm}{#1}}
+\begin{document} 
+\RubikCubeSolvedWY% 
+%\ShowCube{2cm}{0.5}{\DrawRubikCubeRU}% 
+%\qquad$\longrightarrow$\qquad% 
+\RubikRotation{\superflip}% 
+%\ShowCube{2cm}{0.5}{\DrawRubikCubeRU} 
+%\qquad% 
+\ShowCube{5cm}{0.4}{\DrawRubikCubeRU}
+\end{document}

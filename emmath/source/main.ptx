@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<pretext xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <!-- we first include a file which contains the docinfo element: -->
+  <xi:include href="./docinfo.ptx" />
+
+  <book xml:id="book-emm">
+    <title>Exploration in Modern Mathematics</title>
+    <!-- <subtitle>An example to get you started</subtitle> -->
+
+    <!-- Include frontmatter -->
+    <xi:include href="./frontmatter.ptx" />
+
+    <!-- Include chapters -->
+    <xi:include href="./ch-cube.ptx" />
+
+    <xi:include href="./ch-reasoning.ptx" />
+
+    <xi:include href="./ch-logic.ptx" />
+
+    <xi:include href="./ch-dds.ptx" />
+
+    
+
+    <xi:include href="./ch-graphs.ptx" />
+
+    <xi:include href="./ch-coding.ptx" />
+
+    <xi:include href="./ch-voting.ptx" />
+    
+    <xi:include href="./ch-geometry.ptx" />
+
+    <!-- Include backmatter -->
+    <xi:include href="./backmatter.ptx" />
+
+  </book>
+</pretext>

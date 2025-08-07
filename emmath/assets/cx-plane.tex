@@ -1,0 +1,22 @@
+\documentclass[tikz,border=5pt]{standalone}
+\usepackage{amsmath}
+\begin{document}
+
+\begin{tikzpicture}[>=stealth, scale=1.2]
+  % Axes
+  \draw[->] (-4.5,0) -- (4.5,0) node[anchor=west] {Re};
+  \draw[->] (0,-4.5) -- (0,4.5) node[anchor=south] {Im};
+
+  % Grid (optional)
+  \draw[help lines,step=1,gray!30] (-4,-4) grid (4,4);
+
+  % Points and labels
+  \filldraw[blue] (3,0) circle (2pt) node[anchor=north west] {$3$}; % Real axis
+  \filldraw[red] (-2,-3) circle (2pt) node[anchor=north east] {$-2 - 3i$}; % Third quadrant
+  \filldraw[green!70!black] (1,2) circle (2pt) node[anchor=south west] {$1 + 2i$};
+  \filldraw[orange!80!black] (-3,1) circle (2pt) node[anchor=south east] {$-3 + i$};
+  \filldraw[violet] (2,-2) circle (2pt) node[anchor=north west] {$2 - 2i$};
+
+\end{tikzpicture}
+
+\end{document}

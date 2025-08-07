@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <!--********************************************-->
 <!--*       Generated from PreTeXt source      *-->
-<!--*       on 2022-05-25T09:32:15-05:00       *-->
-<!--*   A recent stable commit (2020-08-09):   *-->
-<!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
 <!--*                                          *-->
 <!--*         https://pretextbook.org          *-->
 <!--*                                          *-->
 <!--********************************************-->
-<html lang="en-US">
+<html lang="en-US" dir="ltr">
 <head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Introduction</title>
@@ -17,19 +14,38 @@
 <meta property="og:type" content="book">
 <meta property="book:title" content="Explorations in Modern Mathematics">
 <meta property="book:author" content="Mike Janssen">
-<script src="https://sagecell.sagemath.org/static/embedded_sagecell.js"></script><script>window.MathJax = {
-  tex: {
-    inlineMath: [['\\(','\\)']],
-    tags: "none",
-    tagSide: "right",
-    tagIndent: ".8em",
-    packages: {'[+]': ['base', 'extpfeil', 'ams', 'amscd', 'newcommand', 'knowl']}
+<script src="https://sagecell.sagemath.org/static/embedded_sagecell.js"></script><script>
+var runestoneMathReady = new Promise((resolve) => window.rsMathReady = resolve);
+window.MathJax = {
+  "tex": {
+    "inlineMath": [
+      [
+        "\\(",
+        "\\)"
+      ]
+    ],
+    "tags": "none",
+    "tagSide": "right",
+    "tagIndent": ".8em",
+    "packages": {
+      "[+]": [
+        "base",
+        "extpfeil",
+        "ams",
+        "amscd",
+        "color",
+        "newcommand",
+        "knowl"
+      ]
+    }
   },
-  options: {
-    ignoreHtmlClass: "tex2jax_ignore|ignore-math",
-    processHtmlClass: "process-math",
-    renderActions: {
-        findScript: [10, function (doc) {
+  "options": {
+    "ignoreHtmlClass": "tex2jax_ignore|ignore-math",
+    "processHtmlClass": "process-math",
+    "renderActions": {
+      "findScript": [
+        10,
+        function (doc) {
             document.querySelectorAll('script[type^="math/tex"]').forEach(function(node) {
                 var display = !!node.type.match(/; *mode=display/);
                 var math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
@@ -39,32 +55,75 @@
                 math.end = {node: text, delim: '', n: 0};
                 doc.math.push(math);
             });
-        }, '']
-    },
+        },
+        ""
+      ]
+    }
   },
-  chtml: {
-    scale: 0.88,
-    mtextInheritFont: true
+  "chtml": {
+    "scale": 0.98,
+    "mtextInheritFont": true
   },
-  loader: {
-    load: ['input/asciimath', '[tex]/extpfeil', '[tex]/amscd', '[tex]/newcommand', '[pretext]/mathjaxknowl3.js'],
-    paths: {pretext: "https://pretextbook.org/js/lib"},
+  "loader": {
+    "load": [
+      "input/asciimath",
+      "[tex]/extpfeil",
+      "[tex]/amscd",
+      "[tex]/color",
+      "[tex]/newcommand",
+      "[pretext]/mathjaxknowl3.js"
+    ],
+    "paths": {
+      "pretext": "_static/pretext/js/lib"
+    }
   },
+  "startup": {
+    pageReady() {
+      return MathJax.startup.defaultPageReady().then(function () {
+      console.log("in ready function");
+      rsMathReady();
+      }
+    )}
+  }
 };
-</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script src="https://pretextbook.org/js/lib/jquery.min.js"></script><script src="https://pretextbook.org/js/lib/jquery.sticky.js"></script><script src="https://pretextbook.org/js/lib/jquery.espy.min.js"></script><script src="https://pretextbook.org/js/0.13/pretext.js"></script><script>miniversion=0.674</script><script src="https://pretextbook.org/js/0.13/pretext_add_on.js?x=1"></script><script src="https://pretextbook.org/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
-</script><link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic" rel="stylesheet" type="text/css">
-<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
-<link href="https://pretextbook.org/css/0.4/pretext.css" rel="stylesheet" type="text/css">
-<link href="https://pretextbook.org/css/0.4/pretext_add_on.css" rel="stylesheet" type="text/css">
-<link href="https://pretextbook.org/css/0.4/banner_default.css" rel="stylesheet" type="text/css">
-<link href="https://pretextbook.org/css/0.4/toc_default.css" rel="stylesheet" type="text/css">
-<link href="https://pretextbook.org/css/0.4/knowls_default.css" rel="stylesheet" type="text/css">
-<link href="https://pretextbook.org/css/0.4/style_default.css" rel="stylesheet" type="text/css">
-<link href="https://pretextbook.org/css/0.4/colors_blue_grey.css" rel="stylesheet" type="text/css">
-<link href="https://pretextbook.org/css/0.4/setcolors.css" rel="stylesheet" type="text/css">
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="_static/pretext/js/pretext_search.js"></script><link href="_static/pretext/css/pretext_search.css" rel="stylesheet" type="text/css">
+<script src="_static/pretext/js/lib/jquery.min.js"></script><script src="_static/pretext/js/lib/jquery.sticky.js"></script><script src="_static/pretext/js/lib/jquery.espy.min.js"></script><script src="_static/pretext/js/pretext.js"></script><script src="_static/pretext/js/pretext_add_on.js?x=1"></script><script src="_static/pretext/js/user_preferences.js"></script><script src="_static/pretext/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
+</script><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&amp;family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&amp;family=Tinos:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/dejavu-serif" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:opsz,wdth,wght@8..144,50..150,100..900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wdth,wght@75..100,300..800&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+<link href="_static/pretext/css/pretext.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/pretext_add_on.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/shell_default.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/banner_default.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/navbar_default.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/toc_default.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/knowls_default.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/style_default.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/colors_blue_grey.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/setcolors.css" rel="stylesheet" type="text/css">
 </head>
-<body class="pretext-book ignore-math has-toc has-sidebar-left">
-<a class="assistive" href="#content">Skip to main content</a><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\({\labelitemi}{$\diamond$}
+<body class="pretext book ignore-math">
+<a class="assistive" href="#ptx-content">Skip to main content</a><header id="ptx-masthead" class="ptx-masthead"><div class="ptx-banner">
+<a id="logo-link" class="logo-link" target="_blank" href=""></a><div class="title-container">
+<h1 class="heading"><a href="root-1-2.html"><span class="title">Explorations in Modern Mathematics</span></a></h1>
+<p class="byline">Mike Janssen</p>
+</div>
+</div></header><nav id="ptx-navbar" class="ptx-navbar navbar"><button class="toc-toggle button" title="Contents"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5d2;</span><span class="name">Contents</span></button><a class="index-button button" href="root-1-2-10-1.html" title="Index"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe88e;</span><span class="name">Index</span></a><div class="searchbox">
+<div class="searchwidget"><button id="searchbutton" class="searchbutton button" type="button" title="Search book"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe8b6;</span><span class="name">Search Book</span></button></div>
+<div id="searchresultsplaceholder" class="searchresultsplaceholder" style="display: none">
+<div class="search-results-controls">
+<input aria-label="Search term" id="ptxsearch" class="ptxsearch" type="text" name="terms" placeholder="Search term"><button title="Close search" id="closesearchresults" class="closesearchresults"><span class="material-symbols-outlined">close</span></button>
+</div>
+<h2 class="search-results-heading">Search Results: </h2>
+<div id="searchempty" class="searchempty"><span>No results.</span></div>
+<ol id="searchresults" class="searchresults"></ol>
+</div>
+</div>
+<span class="nav-other-controls"></span><span class="treebuttons"><a class="previous-button button" href="root-1-2-2-2.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="up-button button" href="root-1-2-2.html" title="Up"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Up</span></a><a class="next-button button" href="sec-NoteToStudents.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\({\labelitemi}{$\diamond$}
 \def\arraystretch{1.5}
 \newcommand{\contentsfinish}{}
 \newcommand{\separator}{\begin{center}\rule{\columnwidth}{\arrayrulewidth}\end{center}}
@@ -116,101 +175,240 @@
 \newcommand{\lt}{&lt;}
 \newcommand{\gt}{&gt;}
 \newcommand{\amp}{&amp;}
+\definecolor{fillinmathshade}{gray}{0.9}
+\newcommand{\fillinmath}[1]{\mathchoice{\colorbox{fillinmathshade}{$\displaystyle     \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\textstyle        \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptstyle      \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptscriptstyle\phantom{\,#1\,}$}}}
 \)</span></div>
-<header id="masthead" class="smallbuttons"><div class="banner"><div class="container">
-<a id="logo-link" href=""></a><div class="title-container">
-<h1 class="heading"><a href="book-1.html"><span class="title">Explorations in Modern Mathematics</span></a></h1>
-<p class="byline">Mike Janssen</p>
-</div>
-</div></div>
-<nav id="primary-navbar" class="navbar"><div class="container">
-<div class="navbar-top-buttons">
-<button class="sidebar-left-toggle-button button active" aria-label="Show or hide table of contents sidebar">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
-<a class="index-button toolbar-item button" href="index-68.html" title="Index">Index</a><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="colophon-1.html" title="Previous">Prev</a><a id="upbutton" class="up-button button toolbar-item" href="frontmatter-1.html" title="Up">Up</a><a id="nextbutton" class="next-button button toolbar-item" href="sec-NoteToStudents.html" title="Next">Next</a></span>
-</div>
-</div>
-<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
-<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="colophon-1.html" title="Previous">Prev</a><a class="up-button button toolbar-item" href="frontmatter-1.html" title="Up">Up</a><a class="next-button button toolbar-item" href="sec-NoteToStudents.html" title="Next">Next</a>
-</div>
-</div></nav></header><div class="page">
-<div id="sidebar-left" class="sidebar" role="navigation"><div class="sidebar-content">
-<nav id="toc"><ul>
-<li class="link frontmatter">
-<a href="frontmatter-1.html" data-scroll="frontmatter-1" class="internal"><span class="title">Front Matter</span></a><ul>
-<li><a href="colophon-1.html" data-scroll="colophon-1" class="internal">Colophon</a></li>
-<li><a href="Sec-Introduction.html" data-scroll="Sec-Introduction" class="active">Introduction</a></li>
-<li><a href="sec-NoteToStudents.html" data-scroll="sec-NoteToStudents" class="internal">A Note to Students</a></li>
-<li><a href="sec-NoteToInstructors.html" data-scroll="sec-NoteToInstructors" class="internal">A Note to Instructors</a></li>
-<li><a href="sec-versions.html" data-scroll="sec-versions" class="internal">Versions of this text</a></li>
-<li><a href="sec-acknowledgements.html" data-scroll="sec-acknowledgements" class="internal">Acknowledgments</a></li>
+<div class="ptx-page">
+<div id="ptx-sidebar" class="ptx-sidebar"><nav id="ptx-toc" class="ptx-toc depth2"><ul class="structural contains-active toc-item-list">
+<li class="toc-item toc-frontmatter contains-active">
+<div class="toc-title-box"><a href="root-1-2-2.html" class="internal"><span class="title">Front Matter</span></a></div>
+<ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-colophon"><div class="toc-title-box"><a href="root-1-2-2-2.html" class="internal"><span class="title">Colophon</span></a></div></li>
+<li class="toc-item toc-preface active">
+<div class="toc-title-box"><a href="Sec-Introduction.html" class="internal"><span class="title">Introduction</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-references"><div class="toc-title-box"><a href="Sec-Introduction-4.html" class="internal"><span class="title">References</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-preface"><div class="toc-title-box"><a href="sec-NoteToStudents.html" class="internal"><span class="title">A Note to Students</span></a></div></li>
+<li class="toc-item toc-preface"><div class="toc-title-box"><a href="sec-NoteToInstructors.html" class="internal"><span class="title">A Note to Instructors</span></a></div></li>
+<li class="toc-item toc-preface"><div class="toc-title-box"><a href="sec-versions.html" class="internal"><span class="title">Versions of this text</span></a></div></li>
+<li class="toc-item toc-preface"><div class="toc-title-box"><a href="sec-acknowledgements.html" class="internal"><span class="title">Acknowledgments</span></a></div></li>
 </ul>
 </li>
-<li class="link part"><a href="part-play.html" data-scroll="part-play" class="internal"><span class="codenumber">I</span> <span class="title">Play</span></a></li>
-<li class="link">
-<a href="chap-cube.html" data-scroll="chap-cube" class="internal"><span class="codenumber">1</span> <span class="title">The Cube</span></a><ul>
-<li><a href="sec-play-intro.html" data-scroll="sec-play-intro" class="internal">Introduction and Background</a></li>
-<li><a href="sec-play-describing-the-cube.html" data-scroll="sec-play-describing-the-cube" class="internal">Describing the Cube</a></li>
-<li><a href="sec-play-moving-cubies.html" data-scroll="sec-play-moving-cubies" class="internal">Moving Cubies</a></li>
-<li><a href="sec-play-reorienting-cubies.html" data-scroll="sec-play-reorienting-cubies" class="internal">Reorienting Cubies</a></li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="chap-cube.html" class="internal"><span class="codenumber">1</span> <span class="title">The Cube</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-play-intro.html" class="internal"><span class="codenumber">1.1</span> <span class="title">Introduction and Background</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-play-intro.html#sec-play-intro-3" class="internal"><span class="codenumber">1.1.1</span> <span class="title">Thinking about Play</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-play-intro.html#sec-play-intro-4" class="internal"><span class="codenumber">1.1.2</span> <span class="title">Exploring the Cube</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-play-intro.html#sec-play-intro-5" class="internal"><span class="codenumber">1.1.3</span> <span class="title">Exercises</span></a></div></li>
 </ul>
 </li>
-<li class="link part"><a href="part-truth.html" data-scroll="part-truth" class="internal"><span class="codenumber">II</span> <span class="title">Truth</span></a></li>
-<li class="link">
-<a href="chap-reasoning.html" data-scroll="chap-reasoning" class="internal"><span class="codenumber">2</span> <span class="title">Inductive and Deductive Reasoning</span></a><ul>
-<li><a href="section-5.html" data-scroll="section-5" class="internal">Inductive Reasoning</a></li>
-<li><a href="section-6.html" data-scroll="section-6" class="internal">Deductive Reasoning</a></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-play-describing-the-cube.html" class="internal"><span class="codenumber">1.2</span> <span class="title">Describing the Cube</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-play-describing-the-cube.html#sec-play-describing-the-cube-4" class="internal"><span class="codenumber">1.2.1</span> <span class="title">Faces and Layers</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-play-describing-the-cube.html#sec-play-describing-the-cube-5" class="internal"><span class="codenumber">1.2.2</span> <span class="title">The Need for Notation</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-play-describing-the-cube.html#sec-play-describing-the-cube-6" class="internal"><span class="codenumber">1.2.3</span> <span class="title">Order</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-play-describing-the-cube.html#sec-play-describing-the-cube-8" class="internal"><span class="codenumber">1.2.4</span> <span class="title">Exercises</span></a></div></li>
 </ul>
 </li>
-<li class="link">
-<a href="chap-logic.html" data-scroll="chap-logic" class="internal"><span class="codenumber">3</span> <span class="title">Modern Mathematical Logic</span></a><ul>
-<li><a href="sec-connectives.html" data-scroll="sec-connectives" class="internal">Logical Connectives and Rules of Inference</a></li>
-<li><a href="sec-formal-systems-incompleteness.html" data-scroll="sec-formal-systems-incompleteness" class="internal">Formal Systems and Incompleteness</a></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-play-moving-cubies.html" class="internal"><span class="codenumber">1.3</span> <span class="title">Moving Cubies</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-play-moving-cubies.html#expl-cube-move-cr-1" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-play-moving-cubies.html#def-sr-1" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-play-moving-cubies.html#cube-move-er-1" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-play-moving-cubies.html#sec-play-moving-cubies-14" class="internal"><span class="codenumber">1.3</span> <span class="title">Exercises</span></a></div></li>
 </ul>
 </li>
-<li class="link part"><a href="part-power.html" data-scroll="part-power" class="internal"><span class="codenumber">III</span> <span class="title">Power</span></a></li>
-<li class="link">
-<a href="chap-dynamical-systems.html" data-scroll="chap-dynamical-systems" class="internal"><span class="codenumber">4</span> <span class="title">Discrete Dynamical Systems</span></a><ul>
-<li><a href="sec-intro-to-dds.html" data-scroll="sec-intro-to-dds" class="internal">Sequences</a></li>
-<li><a href="sec-dds.html" data-scroll="sec-dds" class="internal">Discrete Dynamical Systems</a></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-play-reorienting-cubies.html" class="internal"><span class="codenumber">1.4</span> <span class="title">Reorienting Cubies</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-play-reorienting-cubies.html#cube-move-co-1" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-play-reorienting-cubies.html#cube-move-eo-1" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-play-reorienting-cubies.html#sec-play-reorienting-cubies-12" class="internal"><span class="codenumber">1.4</span> <span class="title">Exercises</span></a></div></li>
 </ul>
 </li>
-<li class="link">
-<a href="chap-graphs.html" data-scroll="chap-graphs" class="internal"><span class="codenumber">5</span> <span class="title">Graphs</span></a><ul>
-<li><a href="sec-intro-gt.html" data-scroll="sec-intro-gt" class="internal">Intro to Graph Theory</a></li>
-<li><a href="sec-planar-graphs.html" data-scroll="sec-planar-graphs" class="internal">Planar Graphs and Graph Coloring</a></li>
-<li><a href="sec-trees.html" data-scroll="sec-trees" class="internal">Trees</a></li>
 </ul>
 </li>
-<li class="link">
-<a href="chap-coding.html" data-scroll="chap-coding" class="internal"><span class="codenumber">6</span> <span class="title">Modular Arithmetic and Coding Theory</span></a><ul>
-<li><a href="sec-intro-to-mod-arithmetic.html" data-scroll="sec-intro-to-mod-arithmetic" class="internal">Adding in Circles</a></li>
-<li><a href="sec-coding.html" data-scroll="sec-coding" class="internal">Coding Theory</a></li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="chap-reasoning.html" class="internal"><span class="codenumber">2</span> <span class="title">Inductive and Deductive Reasoning</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="chap-reasoning-3.html" class="internal"><span class="codenumber">2.1</span> <span class="title">Inductive Reasoning</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="chap-reasoning-3.html#chap-reasoning-3-6-1" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="chap-reasoning-3.html#chap-reasoning-3-12" class="internal"><span class="codenumber">2.1</span> <span class="title">Exercises</span></a></div></li>
 </ul>
 </li>
-<li class="link part"><a href="part-justice.html" data-scroll="part-justice" class="internal"><span class="codenumber">IV</span> <span class="title">Justice</span></a></li>
-<li class="link">
-<a href="chap-voting.html" data-scroll="chap-voting" class="internal"><span class="codenumber">7</span> <span class="title">Voting</span></a><ul>
-<li><a href="sec-voting-intro.html" data-scroll="sec-voting-intro" class="internal">Elections with Two Candidates</a></li>
-<li><a href="sec-plurality-borda.html" data-scroll="sec-plurality-borda" class="internal">Plurality and the Borda Count</a></li>
-<li><a href="sec-pwc-irv.html" data-scroll="sec-pwc-irv" class="internal">Pairwise Comparisons and Instant Runoff Voting</a></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="chap-reasoning-4.html" class="internal"><span class="codenumber">2.2</span> <span class="title">Deductive Reasoning</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="chap-reasoning-4.html#chap-reasoning-4-19" class="internal"><span class="codenumber">2.2</span> <span class="title">Exercises</span></a></div></li></ul>
+</li>
 </ul>
 </li>
-<li class="link backmatter"><a href="backmatter-1.html" data-scroll="backmatter-1" class="internal"><span class="title">Back Matter</span></a></li>
-<li class="link"><a href="index-68.html" data-scroll="index-68" class="internal"><span class="title">Index</span></a></li>
-</ul></nav><div class="extras"><nav><a class="pretext-link" href="https://pretextbook.org">Authored in PreTeXt</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/badge.gif" alt="Powered by MathJax"></a></nav></div>
-</div></div>
-<main class="main"><div id="content" class="pretext-content">
-<section class="preface" id="Sec-Introduction"><h2 class="heading hide-type">
-<span class="type">Preface</span> <span class="codenumber"></span> <span class="title">Introduction</span>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="chap-logic.html" class="internal"><span class="codenumber">3</span> <span class="title">Modern Mathematical Logic</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-connectives.html" class="internal"><span class="codenumber">3.1</span> <span class="title">Logical Connectives and Rules of Inference</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-connectives.html#sec-connectives-4-1" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-connectives.html#sec-connectives-4-2" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-connectives.html#sec-connectives-4-3" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-connectives.html#sec-connectives-7-1" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-connectives.html#sec-connectives-7-2" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-connectives.html#sec-connectives-8-1" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-connectives.html#sec-connectives-8-2" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-connectives.html#sec-connectives-9-1" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-connectives.html#sec-connectives-9-2" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-connectives.html#def-implications-1" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-connectives.html#def-implications-2" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-connectives.html#def-implications-3" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-connectives.html#def-implications-4" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-connectives.html#sec-connectives-17-1" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-connectives.html#sec-connectives-19-1" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-connectives.html#sec-connectives-27" class="internal"><span class="codenumber">3.1</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-formal-systems-incompleteness.html" class="internal"><span class="codenumber">3.2</span> <span class="title">Formal Systems and Incompleteness</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-formal-systems-incompleteness.html#subsec-formal-systems" class="internal"><span class="codenumber">3.2.1</span> <span class="title">Formal Systems</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-formal-systems-incompleteness.html#subsec-infinite-sets" class="internal"><span class="codenumber">3.2.2</span> <span class="title">Infinity and Incompleteness</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-formal-systems-incompleteness.html#sec-formal-systems-incompleteness-6" class="internal"><span class="codenumber">3.2.3</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="chap-dynamical-systems.html" class="internal"><span class="codenumber">4</span> <span class="title">Discrete Dynamical Systems</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-intro-to-dds.html" class="internal"><span class="codenumber">4.1</span> <span class="title">Sequences</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-intro-to-dds.html#def-sequence-1" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-intro-to-dds.html#def-sequence-2" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-intro-to-dds.html#sec-intro-to-dds-13" class="internal"><span class="codenumber">4.1</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-dds.html" class="internal"><span class="codenumber">4.2</span> <span class="title">Discrete Dynamical Systems</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-dds.html#subsec-exponential-growth" class="internal"><span class="codenumber">4.2.1</span> <span class="title">Exponential Growth</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-dds.html#sec-dds-5" class="internal"><span class="codenumber">4.2.2</span> <span class="title">A discrete predator-prey model</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-dds.html#sec-dds-6" class="internal"><span class="codenumber">4.2.3</span> <span class="title">The discrete SIR epidemiological model</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-dds.html#sec-dds-8" class="internal"><span class="codenumber">4.2.4</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="chap-graphs.html" class="internal"><span class="codenumber">5</span> <span class="title">Graphs</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-intro-gt.html" class="internal"><span class="codenumber">5.1</span> <span class="title">Intro to Graph Theory</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-intro-gt.html#sec-intro-gt-3" class="internal"><span class="codenumber">5.1.1</span> <span class="title">The Bridges of Konigsberg</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-intro-gt.html#sec-intro-gt-4" class="internal"><span class="codenumber">5.1.2</span> <span class="title">Background and terminology</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-intro-gt.html#sec-intro-gt-6" class="internal"><span class="codenumber">5.1.3</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-planar-graphs.html" class="internal"><span class="codenumber">5.2</span> <span class="title">Planar Graphs and Graph Coloring</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-planar-graphs.html#sec-planar-graphs-3" class="internal"><span class="codenumber">5.2.1</span> <span class="title">Planar Graphs</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-planar-graphs.html#sec-graph-coloring" class="internal"><span class="codenumber">5.2.2</span> <span class="title">Graph Coloring</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-planar-graphs.html#sec-planar-graphs-6" class="internal"><span class="codenumber">5.2.3</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-trees.html" class="internal"><span class="codenumber">5.3</span> <span class="title">Trees</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-trees.html#def-tree-1" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-trees.html#sec-trees-22" class="internal"><span class="codenumber">5.3</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="chap-coding.html" class="internal"><span class="codenumber">6</span> <span class="title">Modular Arithmetic and Coding Theory</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-intro-to-mod-arithmetic.html" class="internal"><span class="codenumber">6.1</span> <span class="title">Adding in Circles</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-intro-to-mod-arithmetic.html#thm-divalg-1" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-intro-to-mod-arithmetic.html#thm-divalg-2" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-intro-to-mod-arithmetic.html#thm-divalg-3" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-intro-to-mod-arithmetic.html#thm-divalg-4" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-intro-to-mod-arithmetic.html#thm-divalg-5" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-intro-to-mod-arithmetic.html#def-congruence-1" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-intro-to-mod-arithmetic.html#def-congruence-2" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-intro-to-mod-arithmetic.html#sec-intro-to-mod-arithmetic-23" class="internal"><span class="codenumber">6.1</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-coding.html" class="internal"><span class="codenumber">6.2</span> <span class="title">Coding Theory</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-coding.html#sec-coding-21" class="internal"><span class="codenumber">6.2</span> <span class="title">Exercises</span></a></div></li></ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="chap-voting.html" class="internal"><span class="codenumber">7</span> <span class="title">Voting</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-voting-intro.html" class="internal"><span class="codenumber">7.1</span> <span class="title">Elections with Two Candidates</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-plurality-borda.html" class="internal"><span class="codenumber">7.2</span> <span class="title">Plurality and the Borda Count</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-worksheet">
+<div class="toc-title-box"><a href="sec-plurality-borda.html#sec-plurality-borda-2" class="internal"><span class="codenumber">7.2</span> <span class="title">Worksheet</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-plurality-borda.html#sec-plurality-borda-2-2" class="internal"><span class="codenumber">7.2.1.1</span> <span class="title">Describing the Problem</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-plurality-borda.html#sec-plurality-borda-2-3" class="internal"><span class="codenumber">7.2.1.2</span> <span class="title">A solution</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-plurality-borda.html#sec-plurality-borda-2-4" class="internal"><span class="codenumber">7.2.1.3</span> <span class="title">The Borda Count</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-plurality-borda.html#sec-plurality-borda-3" class="internal"><span class="codenumber">7.2</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-pwc-irv.html" class="internal"><span class="codenumber">7.3</span> <span class="title">Pairwise Comparisons and Instant Runoff Voting</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-worksheet">
+<div class="toc-title-box"><a href="sec-pwc-irv.html#sec-pwc-irv-2" class="internal"><span class="codenumber">7.3</span> <span class="title">Worksheet</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-pwc-irv.html#subsec-pwc" class="internal"><span class="codenumber">7.3.1.1</span> <span class="title">Pairwise Comparisons</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-pwc-irv.html#subsec-irv" class="internal"><span class="codenumber">7.3.1.2</span> <span class="title">Instant Runoff Voting and Arrow’s Theorem</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-pwc-irv.html#sec-pwc-irv-3" class="internal"><span class="codenumber">7.3</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-backmatter">
+<div class="toc-title-box"><a href="root-1-2-10.html" class="internal"><span class="title">Back Matter</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-index"><div class="toc-title-box"><a href="root-1-2-10-1.html" class="internal"><span class="title">Index</span></a></div></li></ul>
+</li>
+</ul></nav></div>
+<main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="preface" id="Sec-Introduction"><h2 class="heading hide-type">
+<span class="type">Preface</span><span class="space"> </span><span class="codenumber"></span><span class="space"> </span><span class="title">Introduction</span>
 </h2>
-<p id="p-1">In January 2017, Dr. Francis E. Su, president of the Mathematical Association of America, gave his retiring presidential address, <em class="emphasis"><a class="external" href="https://mathyawp.wordpress.com/2017/01/08/mathematics-for-human-flourishing/" target="_blank">Mathematics for Human Flourishing</a><a href="" data-knowl="" class="id-ref fn-knowl original" data-refid="hk-fn-2" id="fn-2"><sup> 2 </sup></a></em><a href="" data-knowl="" class="id-ref fn-knowl original" data-refid="hk-fn-3" id="fn-3"><sup> 3 </sup></a>. In this address and the subsequent book <a href="" class="xref" data-knowl="./knowl/Su2020.html" title="Bibliographic Entry 1">[1]</a>, Su describes ways that the practice of mathematics can help human beings cultivate virtues which in turn enable us live the good life. He identifies several desires that encourage the cultivation of virtue, among them <em class="emphasis">exploration</em>, <em class="emphasis">play</em>, <em class="emphasis">truth</em>, <em class="emphasis">justice</em>, and <em class="emphasis">beauty</em>.</p>
-<p id="p-2">This book uses guided exploration to investigate mathematical topics that specifically meet those desires. We will explore the Rubik's cube and other puzzles and thus <em class="emphasis">play</em> with mathematics. We'll see how deductive reasoning can be used to argue for <em class="emphasis">truth</em>, while also exploring its limitations. <em class="emphasis">Justice</em> will be explored by application of mathematics to democracy and the networks used to exploit our fellow image-bearers. And we'll finish the semester with projects that explore <em class="emphasis">beauty</em> in mathematics.</p>
-<section class="references" id="references-1"><h3 class="heading hide-type">
-<span class="type">References</span> <span class="codenumber"></span> <span class="title">References</span>
+<div class="para" id="Sec-Introduction-2">In January 2017, Dr. Francis E. Su, president of the Mathematical Association of America, gave his retiring presidential address, <em class="emphasis"><a class="external" href="https://mathyawp.wordpress.com/2017/01/08/mathematics-for-human-flourishing/" target="_blank">Mathematics for Human Flourishing</a><details class="ptx-footnote" aria-live="polite" id="Sec-Introduction-2-1-2"><summary class="ptx-footnote__number" title="Footnote 0.0.3"><sup> 3 </sup></summary><div class="ptx-footnote__contents" id="Sec-Introduction-2-1-2"><code class="code-inline tex2jax_ignore">mathyawp.wordpress.com/2017/01/08/mathematics-for-human-flourishing/</code></div></details></em><details class="ptx-footnote" aria-live="polite" id="Sec-Introduction-2-2"><summary class="ptx-footnote__number" title="Footnote 0.0.4"><sup> 4 </sup></summary><div class="ptx-footnote__contents" id="Sec-Introduction-2-2">In 2018, he gave an expanded version of this talk as a First Mondays address at Dordt College.</div></details>. In this address and the subsequent book <a href="Sec-Introduction-4.html#Su2020" class="xref" data-knowl="./knowl/xref/Su2020.html" data-reveal-label="Reveal" data-close-label="Close" title="Bibliographic Entry 1">[1]</a>, Su describes ways that the practice of mathematics can help human beings cultivate virtues which in turn enable us live the good life. He identifies several desires that encourage the cultivation of virtue, among them <em class="emphasis">exploration</em>, <em class="emphasis">play</em>, <em class="emphasis">truth</em>, <em class="emphasis">justice</em>, and <em class="emphasis">beauty</em>.</div>
+<div class="para" id="Sec-Introduction-3">This book uses guided exploration to investigate mathematical topics that specifically meet those desires. We will explore the Rubik’s cube and other puzzles and thus <em class="emphasis">play</em> with mathematics. We’ll see how deductive reasoning can be used to argue for <em class="emphasis">truth</em>, while also exploring its limitations. <em class="emphasis">Justice</em> will be explored by application of mathematics to democracy and the networks used to exploit our fellow image-bearers. And we’ll finish the semester with projects that explore <em class="emphasis">beauty</em> in mathematics.</div>
+<section class="references" id="Sec-Introduction-4"><h3 class="heading hide-type">
+<span class="type">References</span><span class="space"> </span><span class="codenumber"></span><span class="space"> </span><span class="title">References</span>
 </h3>
-<article class="bib" id="Su2020"><div class="bibitem">[1]</div>  <div class="bibentry">F. E. Su, C. Jackson, <em class="emphasis">Mathematics for Human Flourishing</em>. Yale University Press, 2020.</div></article></section></section><div class="hidden-content tex2jax_ignore" id="hk-fn-2"><div class="fn"><code class="code-inline tex2jax_ignore">https://mathyawp.wordpress.com/2017/01/08/mathematics-for-human-flourishing/</code></div></div>
-<div class="hidden-content tex2jax_ignore" id="hk-fn-3"><div class="fn">In 2018, he gave an expanded version of this talk as a First Mondays address at Dordt College.</div></div>
+<article class="bib" id="Su2020"><div class="bibitem">[1]</div>
+<div class="bibentry">F. E. Su, C. Jackson, <em class="emphasis">Mathematics for Human Flourishing</em>. Yale University Press, 2020.</div></article></section></section></div>
+<div class="ptx-content-footer">
+<a class="previous-button button" href="root-1-2-2-2.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="sec-NoteToStudents.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
 </div></main>
+</div>
+<div id="ptx-page-footer" class="ptx-page-footer">
+<a class="pretext-link" href="https://pretextbook.org" title="PreTeXt"><div class="logo"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="338 3000 8772 6866"><g style="stroke-width:.025in; stroke:black; fill:none"><polyline points="472,3590 472,9732 " style="stroke:#000000;stroke-width:174; stroke-linejoin:miter; stroke-linecap:round; "></polyline><path style="stroke:#000000;stroke-width:126;stroke-linecap:butt;" d="M 4724,9448 A 4660 4660  0  0  1  8598  9259"></path><path style="stroke:#000000;stroke-width:174;stroke-linecap:butt;" d="M 4488,9685 A 4228 4228  0  0  0   472  9732"></path><path style="stroke:#000000;stroke-width:126;stroke-linecap:butt;" d="M 4724,3590 A 4241 4241  0  0  1  8598  3496"></path><path style="stroke:#000000;stroke-width:126;stroke-linecap:round;" d="M 850,3496  A 4241 4241  0  0  1  4724  3590"></path><path style="stroke:#000000;stroke-width:126;stroke-linecap:round;" d="M 850,9259  A 4507 4507  0  0  1  4724  9448"></path><polyline points="5385,4299 4062,8125" style="stroke:#000000;stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8598,3496 8598,9259" style="stroke:#000000;stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="850,3496 850,9259" style="stroke:#000000;stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="4960,9685 4488,9685" style="stroke:#000000;stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="3070,4582 1889,6141 3070,7700" style="stroke:#000000;stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="6418,4582 7600,6141 6418,7700" style="stroke:#000000;stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8976,3590 8976,9732" style="stroke:#000000;stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><path style="stroke:#000000;stroke-width:174;stroke-linecap:butt;" d="M 4960,9685 A 4228 4228  0  0  1  8976  9732"></path></g></svg></div></a><a class="runestone-link" href="https://runestone.academy" title="Runestone Academy"><img class="logo" src="https://runestone.academy/runestone/static/images/RAIcon_cropped.png"></a><a class="mathjax-link" href="https://www.mathjax.org" title="MathJax"><img class="logo" src="https://www.mathjax.org/badge/badge-square-2.png"></a>
 </div>
 </body>
 </html>

@@ -1,0 +1,692 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<chapter xml:id="chap-dynamics">
+  <title>Fractals and Dynamics</title>
+
+  <introduction>
+    <p>
+      In this chapter, we will explore how simple rules can produce systems that exhibit complex behavior over time.
+      We will begin by looking at fractals, complex geometric objects that exhibit self-similarity under infinite magnification.
+      We will see how simple algebra with complex numbers produces one of the most striking and well-known geometric object, the Mandelbrot set.
+      Our study concludes by exploring Conway's Game of Life.
+    </p>
+  </introduction>
+
+  <section xml:id="sec-fractals-intro">
+    <title>Introduction to Fractals</title>
+
+    <assemblage>
+      <title>Motivating Questions</title>
+      <p>
+        <statement>
+          In this section, we will explore the following questions.
+          <ol>
+            <li>What is a fractal?</li>
+            <li>What are some examples of fractals? How can we generate fractals?</li>
+          </ol>
+        </statement>
+      </p>
+    </assemblage>
+
+
+
+
+
+    <p>
+      In high school, you likely explored Euclidean geometry, which is the geometry of plane figures.
+      However, the <q>real world</q> is messier than the idealized Euclidean plane.
+      As a first example, we consider the following.
+    </p>
+
+
+    <activity xml:id="act-coastline-paradox">
+      <index>coastline paradox</index>
+      <statement>
+        <p>
+          How long is the coastline of Britain?
+          In the figure below, it is first measured using a rule of length 100km; then it is measured using a ruler of length 50km.
+          As best you can, give the estimates produced using each ruler.
+        </p>
+        <figure xml:id="fig-coastline-paradox">
+          <sidebyside width="45%" margins="auto" valign="middle">
+            <image source="./images/Britain-fractal-coastline-100km.png" />
+            <image source="./images/Britain-fractal-coastline-50km.png" />
+          </sidebyside>
+          <caption>Measuring the coastline of Britain with 100km rulers (left) and 50km (right). (<url href="https://en.wikipedia.org/wiki/File:Britain-fractal-coastline-100km.png">100km credit</url>, <url href="https://en.wikipedia.org/wiki/File:Britain-fractal-coastline-50km.png">50km credit</url>)</caption>
+        </figure>
+      </statement>
+    </activity>
+
+    <p>
+      The behavior observed in
+      <xref ref="act-coastline-paradox" /> is known as the <term>coastline paradox</term>, which is the observation that a landmass does not have a well-defined length: the length measured will depend on the size of the ruler used.
+      A coastline is an example of an object with <em>fractal</em>-like behavior.
+    </p>
+
+    <definition xml:id="def-fractal">
+      <index>fractal</index>
+      <statement>
+        <p>
+          A <term>fractal</term> is a geometric object that looks the same or similar to itself under increasing (indeed, infinite) magnification.
+        </p>
+      </statement>
+    </definition>
+
+    <p>
+      In the remainder of this section, we will see some examples of famous mathematical fractals, as well as some physical objects which exhibit fractal-like behavior.
+    </p>
+
+    <activity xml:id="act-koch-snowflake">
+      <idx>Koch snowflake</idx>
+      <title>Koch snowflake</title>
+      <statement>
+        <p>
+          In this activity, we will construct a fractal known as the <term>Koch snowflake</term>.
+          When carrying out each step, you should redraw the figure each time.
+        </p>
+        <ol>
+          <li>Begin by drawing a single horizontal line segment.</li>
+          <li>Now, draw another horizontal line segment, but then erase the middle third. Replace it with two line segments of the same length as the segment you erased, together forming a sort of peak in the middle.</li>
+          <li>Repeat this process with each of the <em>four</em> line segments you drew in the previous part.</li>
+          <li>Do it again.</li>
+          <li>The typical Koch snowflake begins with an equilateral triangle, and then carries out the process above on each side. Try this, and take the process as far as you can.</li>
+        </ol>
+
+      </statement>
+      <solution>
+        View an animation of the first seven iterations of the Koch snowflake <url href="https://upload.wikimedia.org/wikipedia/commons/f/fd/Von_Koch_curve.gif">here</url>.
+      </solution>
+
+    </activity>
+
+
+    <p>
+      The process undertaken in
+      <xref ref="act-koch-snowflake" /> is often called <term>repeated replacement</term>.
+      Another famous example of such a process is explored in the next activity.
+    </p>
+
+
+    <activity xml:id="act-sierpinski">
+      <title>The Sierpinski Triangle</title>
+      <idx>Sierpinski Triangle</idx>
+      <statement>
+        <p>
+          In this activity, we'll build the <term>Sierpinski Triangle</term>.
+        </p>
+        <ol>
+          <li>Draw an equilaterial triangle (that is, a triangle whose sides all have the same length).</li>
+          <li>Find the midpoints of each side, and connect these points to form a new triangle. How many new, smaller triangles do you have now?</li>
+          <li>Remove the central triangle.</li>
+          <li>Repeat steps 2 and 3 with each of the new triangles you identified in the previous part. Then repeat it again, infinitely.</li>
+        </ol>
+      </statement>
+      <solution>
+        <p>
+          View the first few iterations below.
+        </p>
+        <figure>
+          <image source="./images/Sierpinski_triangle_evolution.svg" />
+          <caption>
+            <url href="https://commons.wikimedia.org/wiki/File:Sierpinski_triangle_evolution.svg">Source</url>
+          </caption>
+        </figure>
+      </solution>
+    </activity>
+
+    <p>
+      We now look at one more example of the results of repeated processes; this time, we will look at an example of a <em>dragon curve</em> sometimes called the <term>Jurassic Park fractal</term>, because iterations of it appear in the chapter headings of Michael Crichton's book, <em>Jurassic Park</em>.
+    </p>
+
+    <activity xml:id="act-jurassic-park">
+      <title>Jurassic Park fractal</title>
+      <statement>
+        <p>
+          Begin with a <m>1\times 11</m> strip of paper.
+        </p>
+        <ol>
+          <li>Lay the paper out, and fold the paper end-over-end, right hand onto left, and crease.</li>
+          <li>Repeat this process so that you have performed four folds in total.</li>
+          <li>What do you think the paper looks like? Unfold it, and set it on its edge. Draw the shape you see.
+          </li>
+          <li>
+            Now, take the fractal you made and fold it back together as before, and fold once more (a fifth fold). Unfold and draw what you see below. How does this compare to the previous 4-fold iteration?
+          </li>
+        </ol>
+      </statement>
+      <solution>
+        <figure>
+          <image source="./images/Dragon_curve_iterations_(2).svg" />
+          <caption>
+            <url href="https://commons.wikimedia.org/wiki/File:Dragon_curve_iterations_(2).svg">Source</url>
+          </caption>
+        </figure>
+      </solution>
+    </activity>
+
+
+    <p>
+      There are many other examples of fractals which are relatively easy to create, such as the <url href="https://en.wikipedia.org/wiki/Fractal_canopy">fractal canopy</url>.
+      Moreover, plants like the <url href="https://en.wikipedia.org/wiki/Romanesco_broccoli">Romanesco broccoli</url> naturally exhibit a fractal form.
+      You will explore these and others in the exercises.
+    </p>
+    
+    
+    <exercises>
+      <exercise>
+        <statement>
+          <p>
+            Find an example of a fractal process and create its first few iterations.
+            Record a few observations about the fractal and the process of creating it.
+          </p>
+        </statement>
+      </exercise>
+      
+      <exercise>
+        <statement>
+          <p>
+            Invent your own simple rule that can be iterated to produce a fractal.
+          </p>
+        </statement>
+      </exercise>
+      
+      <exercise>
+        <statement>
+          <p>
+            Find an example of a natural phenomenon that exhibits fractal behavior and describe it.
+          </p>
+        </statement>
+      </exercise>
+      
+    </exercises>
+
+
+
+
+
+
+
+
+
+  </section>
+
+
+  <section xml:id="sec-cx-fractals">
+    <title>Complex Numbers and Fractals</title>
+
+    <assemblage>
+      <title>Motivating Questions</title>
+      <p>
+        <statement>
+          In this section, we will explore the following questions.
+          <ol>
+            <li>What is a complex number, and how do we represent them, both geometrically and arithmetically?</li>
+            <li>What is a complex fractal? What are some examples of complex fractals?</li>
+            
+
+          </ol>
+        </statement>
+      </p>
+    </assemblage>
+
+    <p>
+      In this section, we will explore other types of dynamical systems.
+      We will see that even though these systems are deterministic, they can still generate surprising
+      <endash />even chaotic
+      <endash />behavior.
+    </p>
+
+    <p>
+      To begin, we review the basics of complex numbers.
+    </p>
+
+
+    <subsection xml:id="subsec-cx-arithmetic-geometry">
+      <title>The Arithmetic and Geometry of Complex Numbers</title>
+
+
+      <definition xml:id="def-cx-number">
+        <idx>complex number</idx>
+        <idx>
+          <h>complex number</h>
+          <h>real part</h>
+        </idx>
+        <idx>
+          <h>complex number</h>
+          <h>imaginary part</h>
+        </idx>
+        <p>
+          Let <m>a</m> and <m>b</m> be real numbers.
+          The <term>complex number</term> with <term>real part</term>
+          <m>a</m> and <term>imaginary part</term>
+          <m>b</m> is the expression of the form <m>a+bi</m>, where <m>i^2 = -1</m>.
+        </p>
+      </definition>
+
+      <p>
+        <idx>
+          <h>complex number</h>
+          <h>addition</h>
+        </idx>
+        <idx>
+          <h>complex number</h>
+          <h>subtraction</h>
+        </idx>
+        <idx>
+          <h>complex number</h>
+          <h>multiplication</h>
+        </idx>
+        It is straightforward to add, subtract, and multiply complex numbers according to the following rules: given complex numbers <m>a+bi</m> and <m>c+di</m>, we define:
+      </p>
+      <md>
+        <mrow> (a+bi) \pm (c+di) \amp = (a+c) \pm (b+d)i</mrow>
+        <mrow> (a+bi) \cdot (c+di) \amp = (ac-bd) + (ad+bc)i</mrow>
+      </md>
+
+      <activity>
+        <statement>
+          <p>
+            Perform the following operations.
+          </p>
+          <ol>
+            <li>
+              <m>(3 + 4i) + (1 + 2i)</m>
+            </li>
+            <li>
+              <m>(5 + 7i) - (2 + 3i)</m>
+            </li>
+            <li>
+              <m>(2+3i)\cdot (2-3i)</m>
+            </li>
+            <li>
+              <m>(-1 + 6i) + (3 - 2i)</m>
+            </li>
+            <li>
+              <m>(2 + 3i)\cdot (4 + i)</m>
+            </li>
+          </ol>
+        </statement>
+      </activity>
+
+      <p>
+        Since complex numbers are defined using two real numbers <m>a</m> and <m>b</m>, there is a natural correspondence with the point <m>(a,b)</m> in the plane.
+        We typically describe the horizontal axis as the <term>real axis</term> the vertical axis as the <term>imaginary axis</term>.
+        See
+        <xref ref="fig-cx-num-plane" /> for some examples.
+      </p>
+
+      <figure xml:id="fig-cx-num-plane">
+        <image xml:id="img-cx-plane" source="./cx-plane.svg" width="75%" /> 
+      </figure>
+
+      <activity xml:id="act-cx-modulus">
+        <statement>
+          <p>
+            One interpretation of the absolute value of a real number is that it gives the <q>size</q> of the number by calculating its positive distance from 0.
+          </p>
+          <p>
+            Consider the complex numbers shown in
+            <xref ref="fig-cx-num-plane" />.
+            How might we calculate their distance from 0 (that is, the origin in the plane)? Give a formula for a general complex number <m>a+bi</m>.
+          </p>
+        </statement>
+      </activity>
+
+
+
+
+    </subsection>
+
+    <subsection xml:id="subsec-julia-sets">
+      <title>Mandelbrot and Julia Sets</title>
+
+      <p>
+        We next take our knowledge of complex numbers and explore what happens when they are run through a simple repeated process.
+        Our goal will be to understand whether or not the process <q>blows up</q> and heads off to infinity
+        <emdash />that is, attains a large distance from 0.
+      </p>
+
+      <activity xml:id="act-powers-of-cx-num">
+        <statement>
+          <p>
+            For each complex number below, compute the first five powers, and plot them in the plane. What do you notice? What do you wonder?
+          </p>
+          <ol>
+            <li>
+              <m>2+3i</m>
+            </li>
+            <li>
+              <m>0.5 + 0.8i</m>
+            </li>
+            <li>
+              <m>0.6+0.8i</m>
+            </li>
+          </ol>
+        </statement>
+      </activity>
+
+
+
+      <assemblage xml:id="assemb-julia-set">
+        <title>Building the <m>a+bi</m> Julia Set</title>
+        <idx>Julia Set</idx>
+        <p>
+          <statement>
+            We now consider the following process.
+            <ol>
+              <li>Fix a number <m>c=a+bi</m>.</li>
+              <li>Choose any complex number <m>z_0</m>, square it, and add <m>c</m>.</li>
+              <li>Call the new number <m>z_1</m>. That is, <m>z_1 = z_0^2 + c</m>.</li>
+              <li>Produce a new number, <m>z_2 = z_1^2 + c</m>.</li>
+              <li>Repeat.</li>
+            </ol>
+          </statement>
+        </p>
+      </assemblage>
+
+      <activity xml:id="act-building-julia-set">
+        <statement>
+          <p>
+            Begin with the complex number <m>a +bi = -1 + 0i</m>. Carry out the <xref ref="assemb-julia-set" text="custom">above process</xref> using the numbers from
+            <xref ref="act-powers-of-cx-num" /> to at least the fifth iteration.
+            Check your work using the Sage cell below.
+          </p>
+          <sage>
+            <input>
+            c = -1
+            z_0 = 2 + 3*I
+            z_1 = z_0^2 + c
+            z_2 = z_1^2 + c
+            z_3 = z_2^2 + c
+            z_4 = z_3^2 + c
+            z_5 = z_4^2 + c
+            z_5, z_5.abs()
+            </input>
+          </sage>
+        </statement>
+      </activity>
+
+      <p>
+        The process <xref ref="assemb-julia-set" text="custom">described above</xref> makes reference to a <q>Julia set</q> but does not actually define it.
+        A rigorous definition is beyond the scope of this text, but an intuitive one is within our grasp!
+        To that end, let <m>c = a+bi</m> be a fixed complex number. The <term>Julia set of <m>c</m>
+        </term>, denoted <m>J_c</m>, is the set of complex numbers <m>z</m> for which the <xref ref="assemb-julia-set" text="custom">iterative process</xref> above, repeated indefinitely, does <em>not</em> go off to infinity.
+        That is, if we choose a number <m>z</m> and the above process does not go off to infinity, then <m>z</m> goes in the Julia set of <m>c</m>.
+      </p>
+      <p>
+        As we have seen, we can plot complex numbers in the plane. Thus, we can fill in the points of the plane that belong to a specific Julia set.
+        When we do, we see something remarkable.
+      </p>
+
+      <figure xml:id="fig-julia-example">
+        <image xml:id="img-julia-example" source="./images/julia.png" />
+        <caption>The Julia set associated to <m>f(z) = z^2 - 1</m>.</caption>
+      </figure>
+
+      <exploration xml:id="expl-julia-sets">
+        <statement>
+          <p>
+            Use the Sage cell below to generate Julia sets for the following complex numbers. Then pick a few of your own to try. What do you notice?
+          </p>
+          <ol>
+            <li>
+              <m>c=-0.4+0.6i</m>
+            </li>
+            <li>
+              <m>c=-0.70176-0.3842i</m>
+            </li>
+            <li>
+              <m>c=-0.835 - 0.2321i</m>
+            </li>
+            <li>
+              <m>c=0.8i</m>
+            </li>
+            <li>
+              <m>c=0.4 + 0.4i</m>
+            </li>
+          </ol>
+          <sage>
+            <input>
+            var('z',domain='complex')
+            c = -1 + 0*I # change this value only, and use I for the imaginary part
+            f = z^2 + c
+            julia_plot(f,mandelbrot=False)
+            </input>
+          </sage>
+        </statement>
+      </exploration>
+
+      <p>
+      <idx>Mandelbrot set</idx>
+        We are now ready to explore the <term>Mandelbrot set</term>, which captures information about <em>every</em> Julia set all at once. The process for constructing the Mandelbrot set is as follows.
+      
+      <ol>
+      
+        <li>Choose a complex number <m>a+bi</m>.</li>
+        <li>Construct the Julia set of <m>a+bi</m>.</li>
+        <li>If the resulting Julia set consists of just one piece, then <m>a+bi</m> goes in the Mandelbrot set. If the Julia set consists of more than one piece, then <m>a+bi</m> does not go in the Mandelbrot set.</li>
+        <li>Repeat for every complex number <m>a+bi</m>.</li>
+      </ol>
+      </p>
+      
+      <exploration xml:id="expl-mandelbrot">
+      <title>Exploring the Mandelbrot set</title>
+      <statement>
+      <p>
+        Use the Sage interact in <xref ref="sage-mandelbrot" /> to explore the Julia sets of various complex numbers and their corresponding membership (or lack thereof) in the Mandelbrot set.
+      </p>
+      
+      <figure xml:id="sage-mandelbrot">
+      <sage>
+        <input>
+        var('z',domain='complex')
+        @interact
+        def plot_julia_set(real=slider(-2, 2, step_size=0.01, default=0.355),
+        imag=slider(-2, 2, step_size=0.01, default=0.355)):
+          c = complex(real, imag)
+          f=z^2+c
+          julia_plot(f,interact=True)
+        </input>
+      </sage>
+      </figure>
+      </statement>
+      </exploration>
+
+    </subsection>
+    
+    <exercises>
+      <exercise>
+        <statement>
+          <p>
+            Plot the points <m>3+2i</m>, <m>2-3i</m>, <m>0.5 + 0.25i</m>, and <m>-\pi - i</m> in the complex plane.
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            Compute the following sums and products of complex numbers.
+          </p>
+          <ol>
+            <li><m>(2+3i)+(3-7i)</m></li>
+            <li><m>(-2+5i)+(4+6i)</m></li>
+            <li><m>(1-2i)(2+3i)</m></li>
+            <li><m>(-i)(4-2i)</m></li>
+            <li><m>(3-2i)^2</m></li>
+          </ol>
+        </statement>
+      </exercise> 
+      <exercise>
+        <statement>
+          <p>
+            Compute the first three iterates of <m>z^2+i</m> for each of the following complex numbers:
+          </p>
+          <ol>
+            <li><m>0+0i</m></li>
+            <li><m>i</m></li>
+            <li><m>2+3i</m></li>
+            <li><m>1-i</m></li>
+          </ol>
+        </statement>
+      </exercise>
+      
+      <exercise>
+        <statement>
+          <p>
+            Choose three complex numbers and graph their Julia sets. Do the numbers you chose seem to be in the Mandelbrot set?
+          </p>
+        </statement>
+      </exercise>
+    </exercises>
+
+
+  </section>
+
+
+
+  <section xml:id="sec-gol">
+    <title>Conway's Game of Life</title>
+    <idx>Conway's Game of Life</idx>
+    <idx>Game of Life</idx>
+    <assemblage>
+      <title>Motivating Questions</title>
+      <p>
+        <statement>
+          In this section, we will explore the following questions.
+          <ol>
+            <li>What is Conway's Game of Life?</li>
+            
+            <li>What is <q>sensitive dependence on initial conditions</q>?</li>
+    
+          </ol>
+        </statement>
+      </p>
+    </assemblage>
+    
+    <p>
+      In <xref ref="sec-cx-fractals" />, we noticed that changing our initial complex number <m>z_0</m> could result in markedly different Julia sets.
+      That is, the long-term behavior of the iterates of the function <m>f(z) = z^2+c</m> depended a great deal on the number <m>c</m>.
+      This is an example of the pheonomenon known as <em>sensitive dependence on initial conditions</em>.      
+    </p>
+    
+    <p>
+      Another setting in which we can study such dynamics is the <em>Game of Life</em>, a <q>zero-player game</q> created by mathematician John Conway, meaning that the initial configuration of the game determines its long term behavior.
+      
+    </p>
+    
+    <assemblage>
+      <title>Rules of the Game of Life</title>
+      <p>
+        <statement>
+          The Game of Life is played on an infinite, two-dimensional orthogonal grid of square cells.
+          A cell has two possible states: <term>alive</term> and <term>dead</term>.
+          Every cell interacts with its eight <term>neighbors</term>.
+          The population of cells evolves according to the following rules.
+          <ol>
+            <li>A live cell with fewer than two live neighbors dies in the next generation, as though by underpopulation.</li>
+            <li>A live cell with two or three live neighbors lives to the next generation.</li>
+            <li>A live cell with more than three live neighbors dies in the next generation, as though by overpopulation.</li>
+            <li>A dead cell with exactly three live neighbors becomes a live cell in the next generation, as if by reproduction.</li>    
+          </ol>
+        </statement>
+      </p>
+    </assemblage>
+    
+    <activity xml:id="act-gol">
+      <statement>
+        <p>
+          Examine the example below.
+          Try to guess what the next generation will look like before you play it!
+        </p>
+        <video source="./blinker.mp4" />
+      </statement>
+    </activity>
+    
+    <activity xml:id="gol-block">
+      <statement>
+        <p>
+          Examine the example below.
+          Try to guess what the next generation will look like before you play it!
+        </p>
+        <video source="./beacon_6.mp4" />
+      </statement>
+    </activity>
+    
+    
+    <activity xml:id="gol-glider">
+      <statement>
+        <p>
+          Examine the example below.
+          Try to guess what the next generation will look like before you play it!
+        </p>
+        <video source="./glider_10.mp4" />
+      </statement>
+    </activity>
+    
+    
+    <activity xml:id="gol-complex">
+      <statement> 
+        <p>
+          The examples below are more complex.
+          As such, it may not be feasible to work out future generations.
+          Instead, see what broader dynamics you observe.
+          Do populations always persist? Do they eventually reach a steady state?
+        </p>
+        <figure xml:id="fig-bracketpulsar">
+          <video source="./bracketpulsar.mp4" />
+        </figure>
+        <figure xml:id="fig-diehard78">
+          <video source="./diehard_78.mp4" />
+        </figure>
+        <figure xml:id="fig-lwss">
+          <video source="./lwss.mp4" />
+        </figure>
+      </statement>
+    </activity>
+    
+    
+    <exercises>
+      <exercise>
+        <statement>
+          <p>
+            The <term>R-pentomino</term> configuration was found by John Conway in 1969.
+            According to <url href="https://conwaylife.com/wiki/R-pentomino">LifeWiki</url>, it is the most active polyomino with fewer than six cells; it stabilizes in generation 1103, while all others stabilize in at most 10 generations.
+          </p>
+          <p>
+            Play with the <url href="https://playgameoflife.com/lexicon/R-pentomino">R-pentomino</url>. What do you notice? What do you wonder?
+          </p>
+        </statement>
+      </exercise>
+      
+      <exercise>
+        <statement>
+          <p>
+            Use <url href="https://playgameoflife.com">PlayGameOfLife.com</url> to make a starting configuration with at least four living cells that dies after the third generation.
+          </p>
+        </statement>
+      </exercise>
+      
+      <exercise>
+        <statement>
+          <p>
+            Use <url href="https://playgameoflife.com">PlayGameOfLife.com</url> to make a starting configuration with no more than 10 living cells that produces a popluation explosion.
+          </p>
+        </statement>
+      </exercise>
+    </exercises>
+
+
+  </section>
+
+
+  
+
+
+
+
+
+
+
+
+
+</chapter>

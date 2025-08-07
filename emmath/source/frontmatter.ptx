@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This frontmatter division will contain all content before the -->
+<!-- first chapter. Fill in and comment/uncomment to see how this -->
+<!-- works. -->
+
+<frontmatter xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="frontmatter">
+  <titlepage>
+    <author>
+      <personname>Mike Janssen</personname>
+      <department>Mathematics and Statistics Department</department>
+      <institution>Dordt University</institution>
+      <email>mike.janssen@dordt.edu</email>
+    </author>
+    <date>
+      <today />
+    </date>
+  </titlepage>
+
+  <colophon xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <edition>Spring 2025 Edition</edition>
+    <website>
+      <name>https://emmath.org</name>
+      <address>https://emmath.org</address>
+    </website>
+
+    <copyright>
+      <year>2022
+        <ndash />
+      </year>
+
+      <minilicense>CC BY-SA 4.0 License</minilicense>
+      <shortlicense>
+        Permission is granted to copy and (re)distribute this material in any format and/or adapt it (even commercially) under the terms of the Creative Commons Attribution-ShareAlike 4.0 International License. The work may be used for free in any way by any party so long as attribution is given to the author(s) and if the material is modified, the resulting contributions are distributed under the same license as this original. All trademarks
+        <trademark /> are the registered
+        <registered /> marks of their respective owners. The graphic
+
+        <sidebyside width="25%">
+          <image xml:id="CC-BY-SA-license" source="./images/CC-BY-SA-license.svg" />
+        </sidebyside>
+
+        that may appear in other locations in the text shows that the work is licensed with the Creative Commons and that the work may be used for free by any party so long as attribution is given to the author(s) and if the material is modified, the resulting contributions are distributed under the same license as this original. Full details may be found by visiting <url href="https://creativecommons.org/licenses/by-sa/4.0/">https://creativecommons.org/licenses/by-sa/4.0/</url> or sending a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
+      </shortlicense>
+
+    </copyright>
+  </colophon>
+
+  <preface xml:id="Sec-Introduction">
+    <title>Introduction</title>
+    <p>
+      In January 2017, Dr. Francis E. Su, president of the Mathematical Association of America, gave his retiring presidential address, <em>
+        <url href="https://mathyawp.wordpress.com/2017/01/08/mathematics-for-human-flourishing/">Mathematics for Human Flourishing</url>
+      </em>
+      <fn>In 2018, he gave an expanded version of this talk as a First Mondays address at Dordt College.</fn>. In this address and the subsequent book
+      <xref ref="Su2020" />, Su describes ways that the practice of mathematics can help human beings cultivate virtues which in turn enable us live the good life. He identifies several desires that encourage the cultivation of virtue, among them <em>exploration</em>, <em>play</em>, <em>truth</em>, <em>justice</em>, and <em>beauty</em>.
+    </p>
+
+    <p>
+      This book uses guided exploration to investigate mathematical topics that specifically meet those desires. We will explore the Rubik's cube and other puzzles and thus <em>play</em> with mathematics. We'll see how deductive reasoning can be used to argue for <em>truth</em>, while also exploring its limitations. <em>Justice</em> will be explored by application of mathematics to democracy and the networks used to exploit our fellow image-bearers. And we'll finish the semester with projects that explore <em>beauty</em> in mathematics.
+    </p>
+
+    <references>
+      <biblio xml:id="Su2020">
+        F. E. Su, C. Jackson, <em>Mathematics for Human Flourishing</em>. Yale University Press, 2020.
+      </biblio>
+    </references>
+  </preface>
+
+  <preface xml:id="sec-NoteToStudents">
+    <title>A Note to Students</title>
+    <p>
+      This work was compiled with some strong opinions.
+    </p>
+    <p>
+      The first is that, as with a sport, instrument, or nearly any other skill, you can't learn mathematics without doing mathematics. Thus, there are few worked-out examples in this book. We would rather spend a long time in productive struggle to understand an idea deeply than be spoon-fed solutions.
+    </p>
+    <p>
+      The second is that most people's ideas of what counts as a mathematical question are far too narrow. Mathematics is not merely geometry, algebra, and calculus (maybe with a dash of statistics for good measure). Mathematics is a way of thinking; it's about abstraction, deductive reasoning, and problem-solving. This way of thinking can be applied in surprising places, and can lead to delight and wonder at the world around us. We will explore some of these questions this semester.
+    </p>
+
+  </preface>
+
+
+  <preface xml:id="sec-NoteToInstructors">
+    <title>A Note to Instructors</title>
+    <p>
+      First, thank you for taking a look at this text! If you have any questions or suggestions, please don't hesitate to <url href="mailto:mike.janssen@dordt.edu?subject=EMM">email me</url>.
+    </p>
+    <p>
+      This text is sufficient for a one-semester <q>liberal arts</q> math course.
+      My stated goal with the text is to expand its readers' notion of the sorts of questions that mathematics can help answer.
+      In addition to those found here, one could choose many different topics for such a course, and I hope to add more over the coming years.
+      I would also welcome suggestions and contributions from the text's users, so feel free to get in touch if you'd like to explore these ideas further.
+      Additionally, the independent nature of the topics in such a course means that the order in which things are covered matters little; I typically cover them in more or less the order presented here.
+    </p>
+    <p>
+      The text is designed with a focus on active learning.
+      I've found that it works particularly well as a sequenced collection of small-group activities.
+      Also, as the
+      <xref ref="Sec-Introduction" /> suggests, I've designed and grouped these topics and activities so that they can be read with Francis Su and Christopher Jackson's <em>Mathematics for Human Flourishing</em>.
+      I typically have students read and discuss Chapters 1-5 as we are transitioning from Play to Truth, Chapters 6-7 as we transition from Truth to Power, Chapters 8-11 as we shift from Power to Justice, and Chapters 12-13 (and the epilogue) near the end of the course.
+      I am consistently impressed by their insights and the connections they make between their own major disciplines and mathematics as described by Su and Jackson.
+    </p>
+  </preface>
+
+  <preface xml:id="sec-versions">
+    <title>Versions of this text</title>
+
+    <p>
+      There are three main versions of this text.
+    </p>
+    <ul>
+      <li>The HTML version, avaialable at <url href="https://emmath.org">https://emmath.org</url>, is the author's preferred version. It is easy to update and can contain things like Sage cells, links to spreadsheets for doing lots of arithemtic, and video examples.</li>
+      <li>For various reasons, a PDF version is often helpful. You can <url href="./EMM.pdf">download the PDF here</url>.</li>
+      <li>Finally, the <url href="https://pretextbook.org">PreTeXt</url> source code is <url href="https://github.com/mkjanssen/emmath">available on GitHub</url>.</li>
+    </ul>
+
+  </preface>
+
+  <preface xml:id="sec-acknowledgements">
+    <title>Acknowledgments</title>
+
+
+    <p>
+      First, we acknowledge and thank the Iowa Private Academic Libraries for a generous grant in Fall 2021 to make the initial version of this text possible.
+    </p>
+    <p>
+      Many aspects of this text were influenced by similar texts.
+      We particularly acknowledge the <url href="https://www.artofmathematics.org"><em>Discovering the Art of Mathematics</em></url> project, Hodge and Klima's <url href="https://bookstore.ams.org/mawrld-30/"><em>The Mathematics of Voting and Elections</em></url>, Oscar Levin's <url href="http://discrete.openmathbooks.org/dmoi3/"><em>Discrete Mathematics: An Open Introduction</em></url>, and Burger and Starbird's <url href="https://newdev.wileyplus.com/math-and-statistics/burger-heart-of-mathematics-an-invitation-to-effective-thinking-4e-eprof10832/"><em>The Heart of Mathematics: An Invitation to Effective Thinking</em></url>.
+    </p>
+    <p>
+      We also thank the two students who were hired to help write the text, Anika Homan and Libby Riege.
+      Their contributions, particularly in Chapters 1-2, were extremely helpful.
+    </p>
+    <p>
+      My interest in compiling this work is a direct result of the existence of the <url href="https://pretextbook.org">PreTeXt</url> toolset.
+      Thanks to Rob Beezer and the other contributors for building such a wonderful system.
+    </p>
+    <p>
+      We finally thank our friends and colleagues in the math department at Dordt for their support of open educational resources and this class.
+    </p>
+
+
+  </preface>
+
+</frontmatter>

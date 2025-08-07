@@ -1,0 +1,2376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<chapter xml:id="chap-voting">
+  <title>Voting</title>
+
+
+  <section xml:id="sec-voting-intro">
+    <title>Elections with Two Candidates</title>
+
+    <assemblage>
+      <title>Motivating Questions</title>
+      <p>
+        <statement>
+          In this section, we will explore the following questions.
+          <ol>
+            <li>What is a voting system?</li>
+            <li>What are some common means of choosing winners of elections?</li>
+            <li>What are some drawbacks for these common systems?</li>
+          </ol>
+        </statement>
+      </p>
+    </assemblage>
+
+
+
+    <introduction>
+      <p>
+        Our main task in this chapter is to explore the mathematics of voting systems.
+        A <term>voting system</term> refers both to the ways votes are cast in elections <em>and</em> the way those votes are used to determine a winner.
+      </p>
+      <p>
+        We will see in this section that while two-candidate systems are fairly straightforward, they provide a fertile ground for exploring the characteristics we desire in all systems.
+        We first want to determine how each system treats the voters and the candidates.
+        A fair system should aim to treat each voter and each candidate equally.
+      </p>
+    </introduction>
+
+
+    <activity xml:id="act-voting-intro">
+      <statement>
+        <p>
+          It is time for the citizens of Scranton to elect a new mayor, and they have two choices: Angela and Stanley.
+          How could the winner of this election be determined?
+          How <em>should</em> the winner of this election be determined?
+        </p>
+      </statement>
+    </activity>
+
+
+    <investigation xml:id="invest-dictatorship">
+      <index>dictatorship</index>
+      <statement>
+        <p>
+          If
+          <xref ref="act-voting-intro" /> seemed too easy, consider the following (likely alternative) suggestion.
+        </p>
+        <p>
+          Angela's husband, Dwight, has been a longtime player in Scranton politics.
+          Thus, the system Scranton has adopted is: everyone votes, but whomever Dwight votes for will be declared the winner, regardless of how the other votes are cast.
+        </p>
+        <p>
+          Of the 76,328 citizens of Scranton, suppose 76,327 vote for Stanley, and Dwight votes for Angela. Who wins the election?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Angela wins!
+        </p>
+
+      </solution>
+    </investigation>
+
+    <p>
+      The method described in
+      <xref ref="invest-dictatorship" /> is known as a <term>dictatorship</term>, with Dwight as the dictator.
+      We note that, in the context of voting theory, the word <em>dictatorship</em> only refers to how the outcomes of elections are determined and has nothing to do with the system of government.
+    </p>
+
+    <exploration>
+      <statement>
+        <p>
+          Does a dictatorship treat all voters equally? That is, does every vote count <q>the same</q>? Does a dictatorship treat the candidates equally? Explain.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          It does not. George's special status means the system treats him differently than the other voters.
+        </p>
+
+      </solution>
+    </exploration>
+
+
+
+
+    <investigation xml:id="invest-imposedrule">
+      <index>imposed rule</index>
+      <statement>
+        <p>
+          If a dictatorship isn't your style, try this one: before the election runs and the citizens of Scranton vote, it is decided that Angela will win.
+          Does this method treat all of the voters equally? That is, do all votes count the same? Does it treat the candidates equally? That is, could each candidate win, depending on the how the votes come in? Explain.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Yes, all voters are treated equally. Each voter has the same amount of influence on the outcome.
+          On the other hand, the candidates are not treated equally. One candidate is chosen ahead of time, and the other one has no chance, regardless how the votes come in.
+        </p>
+
+      </solution>
+    </investigation>
+
+    <p>
+      The method described in
+      <xref ref="invest-imposedrule" /> is known as <term>imposed rule</term>.
+    </p>
+    <p>
+      Let's try one more system on for size.
+    </p>
+
+    <investigation xml:id="invest-minorityrule">
+      <index>minority rule</index>
+      <statement>
+        <p>
+          Consider the following system. Each citizen of Scranton votes, and the votes are counted. The winner is the candidate with the <em>smallest</em> number of votes.
+          This is known as <term>minority rule</term>.
+        </p>
+        <ol>
+          <li>Suppose that the citizens of Scranton vote, with 76,327 voters voting for Stanley and one (Dwight, no longer a dictator) votes for Angela. Who wins under minority rule?</li>
+          <li>Now suppose that Dwight convinces 38164 of the prospective Stanley voters to switch and vote for Angela. Who wins in this case under minority rule?</li>
+          <li>Does minority rule treat all voters equally? Does it treat all candidates equally? Explain.</li>
+          <li>Under minority rule, is it beneficial or detrimental for a candidate to receive additional votes? Explain.</li>
+        </ol>
+      </statement>
+
+
+    </investigation>
+
+
+    <p>
+      <index>fairness criteria</index>
+      In our quest for a mathematically just voting system, we will find it helpful to define certain desirable qualities for a fair and just system to satisfy.
+      <em>However</em>: When we say that a voting system satisfies a certain criterion, we mean that it <em>always</em> satisfies it; that is, it can never violate that criterion.
+      We will refer to these important criteria as <term>fairness criteria</term>. We have already observed a few important criteria that we now formally define.
+    </p>
+
+
+    <definition xml:id="def-fairness1">
+      <index>
+        <h>fairness criteria</h>
+        <h>anonymous</h>
+      </index>
+      <index>
+        <h>fairness criteria</h>
+        <h>neutral</h>
+      </index>
+      <index>
+        <h>fairness criteria</h>
+        <h>monotone</h>
+      </index>
+      <p>
+        A voting system for a two-candidate election is <term>anonymous</term> if it treats all voters equally. That is, if any two voters switched their votes, the outcome of the election should remain the same.
+      </p>
+      <p>
+        A voting system for a two-candidate election is <term>neutral</term> if it treats both candidates equally.
+        That is, if <em>every</em> voter changes their vote, the outcome of the election should also change.
+      </p>
+      <p>
+        A voting system for a two-candidate election is <term>monotone</term> if is impossible for a winning candidate to become a losing candidate by gaining votes (and not losing any others), or for a losing candidate to become a winning candidate by losing votes (and not gaining any others).
+      </p>
+    </definition>
+
+
+    <investigation>
+      <statement>
+        <p>
+          Now suppose three members of the board of the Dunder Mifflin Paper Company are voting to determine who should take over the business.
+          The candidates are Michael and Andy.
+          In order to vote, their <q>friend</q>, Toby, has devised a voting system.
+          Three possible combinations of votes by Jim, Pam, and Kevin are presented in
+          <xref ref="table-officevote" />.
+        </p>
+
+        <table xml:id="table-officevote">
+          <title>
+            The results of Toby's voting system.
+          </title>
+          <tabular halign="center">
+            <row bottom="medium">
+              <cell>
+                Jim
+              </cell>
+              <cell>
+                Pam
+              </cell>
+              <cell right="medium">
+                Kevin
+              </cell>
+              <cell>
+                Winner
+              </cell>
+            </row>
+            <row>
+              <cell>
+                A
+              </cell>
+              <cell>
+                M
+              </cell>
+              <cell right="medium">
+                M
+              </cell>
+              <cell>
+                A
+              </cell>
+            </row>
+            <row>
+              <cell>
+                A
+              </cell>
+              <cell>
+                A
+              </cell>
+              <cell right="medium">
+                M
+              </cell>
+              <cell>
+                M
+              </cell>
+            </row>
+            <row>
+              <cell>
+                M
+              </cell>
+              <cell>
+                M
+              </cell>
+              <cell right="medium">
+                A
+              </cell>
+              <cell>
+                M
+              </cell>
+            </row>
+          </tabular>
+        </table>
+
+        <ol>
+          <li>Which of the three properties described in
+            <xref ref="def-fairness1" /> are satisfied by Toby's voting system? Explain.
+          </li>
+          <li>Is Toby's sytem equivalent to any of the other three systems we've investigated thus far? Why or why not?</li>
+        </ol>
+      </statement>
+      <solution>
+        <ol>
+          <li>None of the three properties are satisfied. Rows 1 and 3 demonstrate that Barry's system isn't anonymous; rows 1 and 2 demonstrate that it's not monotone; and rows 2 and 3 demonstrate that it's not neutral.</li>
+          <li>No. If it were imposed rule, the winner would always be the same. If anyone were a dictator, they would vote for the winner each time. And it's not minority rule, as Michael wins in row 3 despite Buster getting a minority of the vote.</li>
+        </ol>
+
+      </solution>
+
+    </investigation>
+
+    <investigation>
+      <statement>
+        <p>
+          Let's investigate the three criteria in
+          <xref ref="def-fairness1" /> in relation to the three voting systems we've examined.
+        </p>
+        <ol>
+          <li>Which of the three fairness criteria are satisfied by dictatorships? Explain clearly for each of your answers.</li>
+          <li>Which of the three fairness criteria are satisfied by imposed rule? Explain clearly for each of your answers.</li>
+          <li>Which of the three fairness criteria are satisfied by minority rule? Explain clearly for each of your answers.</li>
+        </ol>
+      </statement>
+      <solution>
+        Here is what we came up with.
+        <table xml:id="table-twocandidatefairness">
+          <title>
+            Fairness criteria satisfied by our two-candidate systems.
+          </title>
+          <tabular halign="center">
+            <row bottom="medium">
+              <cell right="medium">
+                Voting System
+              </cell>
+              <cell>
+                Anonymous
+              </cell>
+              <cell>
+                Neutral
+              </cell>
+              <cell>
+                Monotone
+              </cell>
+            </row>
+            <row>
+              <cell right="medium">
+                Dictatorship
+              </cell>
+              <cell>
+                No
+              </cell>
+              <cell>
+                Yes
+              </cell>
+              <cell>
+                Yes
+              </cell>
+            </row>
+            <row>
+              <cell right="medium">
+                Imposed Rule
+              </cell>
+              <cell>
+                Yes
+              </cell>
+              <cell>
+                No
+              </cell>
+              <cell>
+                Yes
+              </cell>
+            </row>
+            <row>
+              <cell right="medium">
+                Minority Rule
+              </cell>
+              <cell>
+                Yes
+              </cell>
+              <cell>
+                Yes
+              </cell>
+              <cell>
+                No
+              </cell>
+            </row>
+          </tabular>
+        </table>
+      </solution>
+
+    </investigation>
+
+    <p>
+      The two-candidate voting system we haven't yet explored is probably the one that you actually suggested in
+      <xref ref="act-voting-intro" />.
+      Perhaps it is something like:
+    </p>
+    <blockquote>
+      Each voter should vote for the candidate they want to win the election.
+      Whichever candidate gets the most votes wins the election.
+    </blockquote>
+    <p>
+      This is known as <term>majority rule</term>.
+    </p>
+
+
+    <investigation>
+      <statement>
+        <p>
+          Which of the three fairness criteria does majority rule satisfy? Explain.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          All of them! It behaves much the same way as minority rule, except now it's helpful to get more votes.
+        </p>
+
+      </solution>
+
+    </investigation>
+
+    <p>
+      In fact, for elections with two candidates, majority rule is the only system to satisfy all three fairness criteria.
+    </p>
+
+    <theorem xml:id="thm-may">
+      <creator>K. May (1952)</creator>
+      <statement>
+        <p>
+          In a two-candidate election with an odd number of voters, majority rule is the only voting system that is anonymous, neutral, and monotone and avoids the possibility of a tie.
+        </p>
+      </statement>
+    </theorem>
+
+    <conclusion>
+      <p>
+        Thus, for elections with two candidates, there is a clear fair and just choice for a voting system subject: majority rule.
+        However, as we know, most elections don't have just two candidates, so in the remainder of this chapter we will consider the question of fairness in the context of these larger elections.
+        We'll refine the existing fairness criteria to handle three or more candidates, and develop additional criteria due to surprising situations that can arise.
+      </p>
+    </conclusion>
+
+
+
+
+
+
+
+  </section>
+
+
+  <section xml:id="sec-plurality-borda">
+    <title>Plurality and the Borda Count</title>
+
+    <worksheet>
+      <assemblage>
+        <title>Motivating Questions</title>
+        <p>
+          <statement>
+            In this section, we will explore the following questions.
+            <ol>
+              <li>How are elections with two candidates different from those with more than two?</li>
+              <li>What is a plurality, and how is it different than a majority?</li>
+              <li>How can we fairly evaluate voting systems with multiple candidates?</li>
+            </ol>
+          </statement>
+        </p>
+      </assemblage>
+
+
+      <subsection>
+        <title>Describing the Problem</title>
+
+        <p>
+          Let's begin with a warmup activity.
+        </p>
+
+
+
+
+
+        <activity>
+          <statement>
+            <p>
+              The popular vote totals from the state of Florida in the 2000 U.S. presidential election are given in
+              <xref ref="table-FLvote2000" />.
+            </p>
+            <table xml:id="table-FLvote2000">
+              <title>
+                The Florida popular vote in 2000.
+              </title>
+              <tabular halign="center">
+                <row bottom="medium">
+                  <cell right="medium">
+                    Candidate
+                  </cell>
+                  <cell>
+                    Popular Votes
+                  </cell>
+                </row>
+                <row>
+                  <cell right="medium">
+                    George W. Bush
+                  </cell>
+                  <cell>
+                    2,912,790
+                  </cell>
+                </row>
+                <row>
+                  <cell right="medium">
+                    Al Gore
+                  </cell>
+                  <cell>
+                    2,912,254
+                  </cell>
+                </row>
+                <row>
+                  <cell right="medium">
+                    Ralph Nader
+                  </cell>
+                  <cell>
+                    97,488
+                  </cell>
+                </row>
+                <row>
+                  <cell right="medium">
+                    Others
+                  </cell>
+                  <cell>
+                    40,579
+                  </cell>
+                </row>
+              </tabular>
+            </table>
+
+            <ol>
+              <li>In this election, did any candidate receive a <term>majority</term> (more than half) of the popular votes cast in the state of Florida?</li>
+              <li>Suppose the system used in Florida in 2000 is: whoever gets the most votes wins. Under this system, who wins the presidential popular vote in Florida in 2000? By how many votes does this person win? By what <em>percentage</em> of the vote does this person win?</li>
+              <li>If George W. Bush and Al Gore had been the only candidates on the ballot in Florida in 2000, do you think that Gore might have possibly received more popular votes than Bush in Florida?</li>
+            </ol>
+          </statement>
+        </activity>
+
+        <p>
+          <index>spoiler candidate</index>
+          In fact, many political scientists believe that Ralph Nader was a <em>spoiler candidate</em> for Gore in 2000; that is, they believe that a large percentage of the Nader voters likely would have voted for Gore if Nader had not been on the ballot.
+          In this section, we'll explore the wrinkles introduced by additional candidates, and develop alternative systems for choosing winners of elections.
+          First, we'll define an important term for a concept you are likely already familiar with.
+        </p>
+
+        <definition xml:id="def-plurality">
+          <index>plurality</index>
+          <p>
+            A candidate in an election who receives more votes than any of the other candidates is said to receive a <term>plurality</term> of the votes cast.
+          </p>
+        </definition>
+
+        <p>
+          It is crucial that we understand the difference between <em>plurality</em> and <em>majority</em>.
+        </p>
+
+        <principle>
+          <statement>
+            <ol>
+              <li>For elections with two candidates, explain why the words <em>plurality</em> and <em>majority</em> mean exactly the same thing.</li>
+              <li>For elections with more than two candidates, explain why the words <em>plurality</em> and <em>majority</em> do not mean exactly the same thing.</li>
+            </ol>
+          </statement>
+        </principle>
+
+        <p>
+          We adopt the following definitions.
+        </p>
+
+        <definition xml:id="def-majoritypluralityrule">
+          <index>
+            <h>majority rule</h>
+            <h>with more than two candidates</h>
+          </index>
+          <index>plurality method</index>
+          <index>
+            <h>voting system</h>
+            <h>plurality method</h>
+          </index>
+          <statement>
+            <p>
+              Consider an election with more than two candidates.
+            </p>
+            <ul>
+              <li>
+                <term>Majority rule</term> is the voting system that elects the candidate who receives more than half the votes, if such a candidate exists. If no such candidate exists, the election is declared a tie with no winner.
+              </li>
+              <li>The <term>plurality method</term> is the voting system that elects the candidate that receives the largest number of votes. The plurality method only produces a tie when two candidates receive exactly the same number of votes, and this number is more than any other candidate.</li>
+            </ul>
+          </statement>
+        </definition>
+
+        <principle>
+          <statement>
+            <ol>
+              <li>Which of the two methods described in
+                <xref ref="def-majoritypluralityrule" /> do you think is more likely to result in a tie?
+              </li>
+              <li>If a candidate wins an election under majority rule, would that candidate also be guaranteed to win under the plurality method?</li>
+              <li>If a candidate wins an election under the plurality method, would that candidate also be guaranteed to win under majority rule?</li>
+            </ol>
+          </statement>
+        </principle>
+
+        <p>
+          We now explore the plurality method in more depth.
+          Because it is familiar, it likely seems quite fair.
+          But let's consider the next exploration.
+        </p>
+
+        <exploration xml:id="expl-office-voting">
+          <statement>
+            <p>
+              It's time to vote for the mayor of Scranton again, and this time there are thirteen candidates: Jim, Pam, Michael, Dwight, Andy, Angela, Kevin, Stanley, Phyllis, Ryan, Kelly, Meredith, and Toby.
+            </p>
+            <ol>
+              <li>Suppose Kevin wins with 6,000 votes out of 76,328 cast. Did he receive a majority of the votes cast for mayor? (You may want to convince yourself that this is possible!) What percentage of the overall vote did he receive?</li>
+              <li>What is the <em>smallest</em> number of votes Kevin could have received and still won the election under the plurality method? (Be careful!)</li>
+              <li>Under the scenario described in the previous question, what is the <em>largest</em> number of voters who could have preferred Kevin <em>least</em> among all 13 candidates and still left him with a chance at winning the election?</li>
+              <li>Using your answers to the previous question, carefully articulate a critique of the plurality method.</li>
+            </ol>
+          </statement>
+        </exploration>
+
+        <!-- <exploration xml:id="expl-office-voting">
+          <index>societal preference order</index>
+          <statement>
+            <p>
+              Twenty-one people filed paperwork with the U.S. Federal Election Commission as candidates for the 2016 Republication nomination for president.
+              There were 31,183,841 votes cast in the Republican primaries nationwide in 2016.
+            </p>
+        
+            <ol>
+              <li>Donald Trump received 14,015,993 of these votes. Did he receive a majority of the votes cast in the Republican primaries?</li>
+              <li>If the winner of the 2016 Republican nomination had been chosen by plurality from these 21 candidates, what is the smallest number of votes Trump could have received and still had a chance at winning the nomination? (Assume that the number of votes remains fixed at 31,183,841.)</li>
+              <li>Under the same assumptions as Question 2, what is the maximum number of voters who could have preferred Trump the <em>least</em> among the 21 candidates in order for him to still have had a chance of winning the nomination?</li>
+              <li>Using your answers to Questions 2 and 3, formulate a well-written criticism of the plurality method. You don't have to agree with your argument, but put yourself in the shoes of a critic and try to predict the type of argument that could be made.</li>
+            </ol>
+          </statement>
+        </exploration> -->
+
+
+      </subsection>
+
+      <subsection>
+        <title>A solution</title>
+
+        <p>
+          As we saw in
+          <xref ref="expl-office-voting" />, when there are <m>N</m> candidates, it is possible for the vote to be split so thoroughly that one candidate can win with just over <m>1/N</m>-th of the vote.
+          In this case, a majority of the voters will prefer someone other than the person who is ultimately elected.
+          But as we saw, the situation can get even worse than that
+          <mdash />it's possible for the candidate who wins the plurality of the vote to be the <em>last</em> choice of a <em>majority</em> of voters, but still win!
+          The main reason that the plurality method is susceptible to this is that it only accounts for a voter's first choice; there is no penalty for being a voter's last choice, and no benefit to being the voter's second choice.
+        </p>
+
+        <p>
+          <index>preference order</index>
+          We will therefore explore methods of voting and fairness criteria that account for a full top-to-bottom ranking of candidates by voters, called a <term>preference order</term>.
+          If there are three candidates in an election, say Michael, Angela, and Stanley, and my preference order is that Michael is my top candidate, Stanley my second choice, and Angela my third, we may write <m>M \succ S \succ A</m>, where the symbol <m>\succ</m> means "is preferred to".
+        </p>
+
+        <activity>
+          <statement>
+            <ol>
+              <li>Consider a 3-candidate election for the mayorship of Scranton between Michael, Angela, and Stanley. How many possible preference orders are there? In other words, in how many different ways could the voters rank them?</li>
+              <li>Suppose their friend Toby enters the race, bringing the total number of candidates to 4. Now how many preference orders are possible now?</li>
+            </ol>
+          </statement>
+        </activity>
+
+        <p>
+          <index>preference ballot</index>
+          Since our voters will be casting <term>preference ballots</term>, we need a different way of displaying the votes cast.
+        </p>
+
+        <exploration xml:id="expl-dmprez">
+          <statement>
+            <p>
+              Suppose Stanley, Toby, Angela, and Michael are running for the presidency of Dunder Mifflin, the premier paper company in Scranton.
+              The preference orders for each of the 13 board members of the company are displayed in
+              <xref ref="table-dmprez" />, a visualization known as a <term>preference schedule</term>.
+              The column headings indicate the number of voters with the preference order displayed in the column. For instance, the first column shows that 6 shareholders have the preference order <m>S \succ A \succ T \succ M</m>.
+              Note that the preference orders displayed are the five that were cast as preference ballots in the election; there are many others that were possible but not cast, and thus are not displayed.
+            </p>
+
+            <table xml:id="table-dmprez">
+              <title>
+                Preference schedule for the presidency of Dunder Mifflin.
+              </title>
+              <tabular halign="center">
+                <row bottom="medium">
+                  <cell right="medium">
+                    Rank
+                  </cell>
+                  <cell right="medium">
+                    6
+                  </cell>
+                  <cell right="medium">
+                    3
+                  </cell>
+                  <cell right="medium">
+                    2
+                  </cell>
+                  <cell right="medium">
+                    1
+                  </cell>
+                  <cell>
+                    1
+                  </cell>
+                </row>
+                <row>
+                  <cell right="medium">
+                    1
+                  </cell>
+                  <cell right="medium">
+                    S
+                  </cell>
+                  <cell right="medium">
+                    T
+                  </cell>
+                  <cell right="medium">
+                    A
+                  </cell>
+                  <cell right="medium">
+                    M
+                  </cell>
+                  <cell>
+                    A
+                  </cell>
+                </row>
+                <row>
+                  <cell right="medium">
+                    2
+                  </cell>
+                  <cell right="medium">
+                    A
+                  </cell>
+                  <cell right="medium">
+                    A
+                  </cell>
+                  <cell right="medium">
+                    M
+                  </cell>
+                  <cell right="medium">
+                    T
+                  </cell>
+                  <cell>
+                    T
+                  </cell>
+                </row>
+                <row>
+                  <cell right="medium">
+                    3
+                  </cell>
+                  <cell right="medium">
+                    T
+                  </cell>
+                  <cell right="medium">
+                    M
+                  </cell>
+                  <cell right="medium">
+                    T
+                  </cell>
+                  <cell right="medium">
+                    A
+                  </cell>
+                  <cell>
+                    M
+                  </cell>
+                </row>
+                <row>
+                  <cell right="medium">
+                    4
+                  </cell>
+                  <cell right="medium">
+                    M
+                  </cell>
+                  <cell right="medium">
+                    S
+                  </cell>
+                  <cell right="medium">
+                    S
+                  </cell>
+                  <cell right="medium">
+                    S
+                  </cell>
+                  <cell>
+                    S
+                  </cell>
+                </row>
+              </tabular>
+            </table>
+
+            <ol>
+              <li>Under majority rule, what would the outcome of the election be?</li>
+              <li>Under the plurality method, what would the outcome of the election be?</li>
+              <li>Rank the candidates based on the outcome produced by the plurality method. The final ranking of candidates by a voting system is known as the <term>societal preference order</term>.</li>
+              <li>Do you think the plurality winner best represents the will and preferences of the voters? If so, explain why. If not, give a convincing argument for why you think some other candidate would be better.</li>
+            </ol>
+
+          </statement>
+        </exploration>
+
+
+
+
+
+
+
+
+
+
+      </subsection>
+
+
+      <subsection>
+        <title>The Borda Count</title>
+
+        <p>
+          One very popular method for choosing the winner of a multi-candidate election is the Borda count.
+        </p>
+
+        <definition>
+          <index>Borda count</index>
+          <index>
+            <h>voting system</h>
+            <h>Borda count</h>
+          </index>
+          <p>
+            Consider an election with <m>N</m> candidates.
+            The <term>Borda count</term> works as follows.
+            Each voter submits a ballot that contains their entire preference order for all candidates in the election.
+            For each ballot cast, points are awarded to each candidate according to the following rules:
+          </p>
+          <ul>
+            <li>A last-place vote is worth 1 point.</li>
+            <li>A second-to-last-place vote is worth 2 points.</li>
+            <li>
+              <m>\vdots</m>
+            </li>
+            <li>A third-place vote is worth <m>N-2</m> points.</li>
+            <li>A second-place vote is worth <m>N-1</m> points.</li>
+            <li>A first-place vote is worth <m>N</m> points.</li>
+          </ul>
+
+          <p>
+            The candidate who accumulates the largest number of total points from all of the ballots is declared the winner, and the societal preference order is determined by listing the candidates in order of the number of points they received, largest to smallest.
+            If two or more candidates are tied with the largest number of points, they are all declared winners (or some suitable prearranged tiebreaking procedure is used).
+          </p>
+
+
+        </definition>
+
+        <activity>
+          <statement>
+            <p>
+              Under the Borda count, what would the outcome of the Dunder Mifflin presidential election in
+              <xref ref="expl-dmprez" /> be?
+            </p>
+          </statement>
+        </activity>
+
+        <p>
+          Consider the following interesting feature of the Borda count.
+        </p>
+
+
+        <activity xml:id="act-dmprez2">
+          <statement>
+            <p>
+              Controversy at the Dunder Mifflin board!
+              Due to some shenanigans involving a major shareholder, the election displayed in
+              <xref ref="table-dmprez" /> has to be rerun. The following preference schedule is produced.
+            </p>
+            <table xml:id="table-dmprez2">
+              <title>
+                Preference schedule for the presidency of Dunder Mifflin.
+              </title>
+              <tabular halign="center">
+                <row bottom="medium">
+                  <cell right="medium">
+                    Rank
+                  </cell>
+                  <cell right="medium">
+                    6
+                  </cell>
+                  <cell right="medium">
+                    3
+                  </cell>
+                  <cell>
+                    2
+                  </cell>
+                </row>
+                <row>
+                  <cell right="medium">
+                    1
+                  </cell>
+                  <cell right="medium">
+                    S
+                  </cell>
+                  <cell right="medium">
+                    T
+                  </cell>
+                  <cell>
+                    A
+                  </cell>
+                </row>
+                <row>
+                  <cell right="medium">
+                    2
+                  </cell>
+                  <cell right="medium">
+                    A
+                  </cell>
+                  <cell right="medium">
+                    A
+                  </cell>
+                  <cell>
+                    M
+                  </cell>
+                </row>
+                <row>
+                  <cell right="medium">
+                    3
+                  </cell>
+                  <cell right="medium">
+                    T
+                  </cell>
+                  <cell right="medium">
+                    M
+                  </cell>
+                  <cell>
+                    T
+                  </cell>
+                </row>
+                <row>
+                  <cell right="medium">
+                    4
+                  </cell>
+                  <cell right="medium">
+                    M
+                  </cell>
+                  <cell right="medium">
+                    S
+                  </cell>
+                  <cell>
+                    S
+                  </cell>
+                </row>
+              </tabular>
+            </table>
+            <ol>
+              <li>Who wins under majority rule?</li>
+              <li>Who wins under the Borda count? Does this seem strange to you?</li>
+            </ol>
+
+
+          </statement>
+
+        </activity>
+
+        <p>
+          Lest you think this is a contrived example, be aware that things like this can happen in real life.
+          A version of the Borda count is used by the Associated Press to rank the top 25 college football and basketball teams.
+          In the 1971 AP preseason poll, the author's Nebraska Cornhuskers received 26 of 50 first-place votes, yet were ranked #2.
+          The results of things like this AP polling anomaly or
+          <xref ref="act-dmprez2" /> suggest a new fairness criterion.
+        </p>
+
+        <definition xml:id="def-majoritycriterion">
+          <index>majority criterion</index>
+          <index>
+            <h>fairness criteria</h>
+            <h>majority</h>
+          </index>
+          <p>
+            A voting system satisfies the <term>majority criterion</term> if whenever a candidate is ranked first by a majority of voters, that candidate will be ranked first in the resulting societal preference order.
+          </p>
+        </definition>
+
+        <principle>
+          <statement>
+            <p>
+              Of all the voting systems we've explored thus far, which must always satisfy the majority criterion?
+            </p>
+          </statement>
+        </principle>
+
+        <p>
+          In
+          <xref ref="sec-voting-intro" />, we defined three fairness criteria.
+          Our definitions from
+          <xref ref="def-fairness1" /> can be modified to extend in a natural way to elections with three or more candidates.
+        </p>
+
+
+
+        <definition xml:id="def-fairness2">
+          <index>
+            <h>fairness criteria</h>
+            <h>anonymous</h>
+          </index>
+          <index>
+            <h>fairness criteria</h>
+            <h>majority</h>
+          </index>
+          <index>
+            <h>fairness criteria</h>
+            <h>neutral</h>
+          </index>
+          <ul>
+            <li>A voting system is <term>anonymous</term> if it treats all of the voters equally, meaning that if any two voters traded <em>preference orders</em>, the outcome of the election (and the resulting societal preference order) would remain the same.</li>
+            <li>A voting system is <term>neutral</term> if it treats all of the candidates equally, meaning that if <em>every</em> voter switched the positions of two particular candidates in their individual preference orders, the positions of these two candidates would switch in the resulting societal preference order as well.</li>
+            <li>A voting system is <term>monotone</term> if changes favorable only to a particular candidate in individual preference orders cannot cause that candidate to be ranked lower in the resulting societal preference order.</li>
+          </ul>
+        </definition>
+
+        <exploration>
+          <statement>
+            <ol>
+              <li>Which of the properties of anonymity, neutrality, and monotonicity are satisfied by plurality? Which are not satisfied? Give a convincing argument to justify each of your answers.</li>
+              <li>Which of the properties of anonymity, neutrality, and monotonicity are satisfied by the Borda count? Which of these three properties are not satisfied? Give a convincing argument to justify each of your answers.</li>
+              <li>Do either of your answers to Questions 1 or 2 contradict
+                <xref ref="thm-may" />? Explain.
+              </li>
+            </ol>
+          </statement>
+        </exploration>
+
+
+        <conclusion>
+          <p>
+            In this section, we have seen that things become more complicated when we consider more than two candidates.
+            In an election with only two candidates, a vote for one implicitly ranks the other candidate second.
+            With more than two candidates, not only can societal preferences be more diffuse, but they are also more complex than can be captured with simple plurality voting.
+            It is possible for a candidate who is the least desirable choice of an <em>overwhelming majority</em> of the voters to win if there are enough other candidates.
+          </p>
+          <p>
+            In the next section, we will explore additional voting systems and fairness criteria that attempt to overcome the shortcomings of the Borda count.
+          </p>
+        </conclusion>
+
+
+
+
+
+
+
+
+
+
+      </subsection>
+
+    </worksheet>
+
+
+    <exercises>
+
+      <exercise>
+        <statement>
+          <p>
+            Consider the election run between Paul (P), Tom (T), Sally (S), and Ann (A) as shown in the table below.
+          </p>
+          <table>
+            <tabular halign="center">
+              <row bottom="medium">
+                <cell right="medium">
+                  Rank
+                </cell>
+                <cell right="medium">
+                  5
+                </cell>
+                <cell right="medium">
+                  5
+                </cell>
+                <cell right="medium">
+                  4
+                </cell>
+                <cell right="medium">
+                  2
+                </cell>
+                <cell>
+                  1
+                </cell>
+              </row>
+              <row>
+                <cell right="medium">
+                  1
+                </cell>
+                <cell right="medium">
+                  S
+                </cell>
+                <cell right="medium">
+                  T
+                </cell>
+                <cell right="medium">
+                  P
+                </cell>
+                <cell right="medium">
+                  P
+                </cell>
+                <cell>
+                  A
+                </cell>
+              </row>
+              <row>
+                <cell right="medium">
+                  2
+                </cell>
+                <cell right="medium">
+                  T
+                </cell>
+                <cell right="medium">
+                  A
+                </cell>
+                <cell right="medium">
+                  S
+                </cell>
+                <cell right="medium">
+                  T
+                </cell>
+                <cell>
+                  T
+                </cell>
+              </row>
+              <row>
+                <cell right="medium">
+                  3
+                </cell>
+                <cell right="medium">
+                  P
+                </cell>
+                <cell right="medium">
+                  S
+                </cell>
+                <cell right="medium">
+                  A
+                </cell>
+                <cell right="medium">
+                  S
+                </cell>
+                <cell>
+                  P
+                </cell>
+              </row>
+              <row>
+                <cell right="medium">
+                  4
+                </cell>
+                <cell right="medium">
+                  A
+                </cell>
+                <cell right="medium">
+                  P
+                </cell>
+                <cell right="medium">
+                  T
+                </cell>
+                <cell right="medium">
+                  A
+                </cell>
+                <cell>
+                  S
+                </cell>
+              </row>
+            </tabular>
+          </table>
+          <ol>
+            <li>Does any candidate receive a majority of first-place votes? Explain.</li>
+            <li>Determine the outcome of the election under majority rule. Explain.</li>
+            <li>Determine the outcome of the election using the plurality method. Explain.</li>
+            <li>Determine the outcome of the election using the Borda count. Explain.</li>
+          </ol>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            As described in this section, the plurality method suffers when there are a large number of candidates.
+            Read about the 2016 Republican presidential primary process.
+            How many candidates were there? How many (total) votes were cast? Assuming the only thing that mattered was the total number of first-place votes received, how few votes could a candidate have (hypothetically) received and still been declared the winner?
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            As described in the text, a form of the Borda count is used to rank college sports teams in the U.S.
+            Find another use of the Borda count in a different context (e.g., a political one), and do some research to determine why it was chosen.
+          </p>
+        </statement>
+      </exercise>
+
+
+
+
+    </exercises>
+
+
+  </section>
+
+
+  <section xml:id="sec-pwc-irv">
+
+    <title>Pairwise Comparisons and Instant Runoff Voting</title>
+    <worksheet>
+      <assemblage>
+        <title>Motivating Questions</title>
+        <p>
+          <statement>
+            In this section, we will explore the following questions.
+            <ol>
+              <li>How should head-to-head preferences figure into an election outcome?</li>
+              <li>What is the method of pairwise comparisons? What are its strengths and weaknesses? </li>
+              <li>What is instant runoff voting? What are its strengths and weaknesses?</li>
+              <li>What does Arrow's Theorem say, and what are its consequences for democracy?</li>
+            </ol>
+          </statement>
+        </p>
+      </assemblage>
+
+      <subsection xml:id="subsec-pwc">
+        <title>Pairwise Comparisons</title>
+
+        <p>
+          Consider the following situation<fn>Borrowed, again, from Hodge and Klima's <url href="https://bookstore.ams.org/mawrld-30/"><em>The Mathematics of Voting and Elections</em>, 2nd ed.</url>
+          </fn>.
+        </p>
+
+        <activity xml:id="act-10klakes">
+          <statement>
+            <p>
+              Suppose Skip, Norm, and Jesse are all running for President of the 10,000 Lakes Club, with the preferences of the 100 members of the club as shown in
+              <xref ref="table-10000lakes" />.
+            </p>
+
+            <table xml:id="table-10000lakes">
+              <title>
+                The preference schedule schedule for the 10,000 Lakes Club presidency.
+              </title>
+              <tabular halign="center">
+                <row bottom="medium">
+                  <cell right="medium">
+                    Rank
+                  </cell>
+                  <cell>
+                    35
+                  </cell>
+                  <cell>
+                    28
+                  </cell>
+                  <cell>
+                    20
+                  </cell>
+                  <cell halign="left">
+                    17
+                  </cell>
+                </row>
+                <row>
+                  <cell right="medium">
+                    1
+                  </cell>
+                  <cell>
+                    N
+                  </cell>
+                  <cell>
+                    S
+                  </cell>
+                  <cell>
+                    J
+                  </cell>
+                  <cell halign="left">
+                    J
+                  </cell>
+                </row>
+                <row>
+                  <cell right="medium">
+                    2
+                  </cell>
+                  <cell>
+                    S
+                  </cell>
+                  <cell>
+                    N
+                  </cell>
+                  <cell>
+                    N
+                  </cell>
+                  <cell halign="left">
+                    S
+                  </cell>
+                </row>
+                <row>
+                  <cell right="medium">
+                    3
+                  </cell>
+                  <cell>
+                    J
+                  </cell>
+                  <cell>
+                    J
+                  </cell>
+                  <cell>
+                    S
+                  </cell>
+                  <cell halign="left">
+                    N
+                  </cell>
+                </row>
+              </tabular>
+            </table>
+
+            <ol>
+              <li>What would be the outcome of the election under majority rule?</li>
+              <li>What would be the outcome of the election under plurality?</li>
+              <li>What would be the outcome of the election under the Borda count?</li>
+              <li>Which candidate is ranked first by the largest number of voters?</li>
+              <li>Which candidate is ranked last by the largest number of voters?</li>
+              <li>In a head-to-head contest between just Skip and Norm, who would win?</li>
+              <li>In a head-to-head contest between just Skip and Jesse, who would win?</li>
+              <li>In a head-to-head contest between just Norm and Jesse, who would win?</li>
+              <li>Does anything about your answers to Questions 1-8 strike you as being strange or unusual?</li>
+            </ol>
+
+          </statement>
+        </activity>
+
+        <p>
+          In
+          <xref ref="act-10klakes" />, we saw that the plurality method can fail to elect a candidate who would win a head-to-head matchup against all other candidates.
+          Perhaps worse, we also saw that plurality <em>can</em> elect a candidate who would <em>lose</em> a head-to-head matchup against all other candidates.
+          This has struck voting theorists as unfair, and we make the following definition, named after Marie Jean Antoine Nicolas de Caritat, the Marquis de Condorcet.
+        </p>
+
+        <definition xml:id="def-cwcclc">
+          <p>
+            A <term>Condorcet winner</term> is a candidate in an election who would win a head-to-head contest (with the winner decided by majority rule) against each of the other candidates.
+          </p>
+          <p>
+            A <term>Condorcet loser</term> is a candidate in an election who would lose a head-to-head contest (with the winner decided by majority rule) against each of the other candidates.
+          </p>
+          <p>
+            A voting system that will always elect a Condorcet winner, <em>whenever one exists</em>, is said to satisfy the <term>Condorcet winner criterion (CWC)</term>.
+          </p>
+          <p>
+            A voting system that will never elect a Condorcet loser is said to satisfy the <term>Condorcet loser criterion (CLC)</term>.
+          </p>
+
+        </definition>
+
+
+        <exploration>
+          <statement>
+            <p>
+              Consider the preference schedule in
+              <xref ref="table-cwcl" />.
+
+            </p>
+
+            <table xml:id="table-cwcl">
+              <title>
+                A preference schedule.
+              </title>
+              <tabular halign="center">
+                <row bottom="medium">
+                  <cell right="medium">
+                    Rank
+                  </cell>
+                  <cell>
+                    1
+                  </cell>
+                  <cell>
+                    1
+                  </cell>
+                  <cell>
+                    1
+                  </cell>
+                </row>
+                <row>
+                  <cell right="medium">
+                    1
+                  </cell>
+                  <cell>
+                    A
+                  </cell>
+                  <cell>
+                    B
+                  </cell>
+                  <cell>
+                    C
+                  </cell>
+                </row>
+                <row>
+                  <cell right="medium">
+                    2
+                  </cell>
+                  <cell>
+                    B
+                  </cell>
+                  <cell>
+                    C
+                  </cell>
+                  <cell>
+                    A
+                  </cell>
+                </row>
+                <row>
+                  <cell right="medium">
+                    3
+                  </cell>
+                  <cell>
+                    C
+                  </cell>
+                  <cell>
+                    A
+                  </cell>
+                  <cell>
+                    B
+                  </cell>
+                </row>
+              </tabular>
+            </table>
+
+            <ol>
+              <li>In a head-to-head contest between just candidates A and B, who would win?</li>
+              <li>In a head-to-head contest between just candidates B and C, who would win?</li>
+              <li>In a head-to-head contest between just candidates A and C, who would win?</li>
+              <li>Does anything about Questions 1-3 strike you as unusual?</li>
+              <li>Is there a Condorcet winner and/or loser in this election? Explain.</li>
+            </ol>
+          </statement>
+        </exploration>
+
+
+        <investigation>
+          <statement>
+            <ol>
+              <li>Explain why a candidate who received a majority of first-place votes is also a Condorcet winner.</li>
+              <li>Does your answer to Question 1 imply that majority rule satisfies the CWC? If so, explain why. Otherwise, give an example to show that majority rule can violate the CWC.</li>
+              <li>Does your answer to Question 1 imply that majority rule satisfies the CLC? If so, explain why. Otherwise, give an example to show that majority rule can violate the CLC.</li>
+              <li>Are there special types of elections for which majority rule does satisfy the CWC? Give a convincing argument to justify your answer.</li>
+              <li>Use your answer to Question 1 to explain why any voting system that violates the majority criterion (
+                <xref ref="def-majoritycriterion" />) must also violate the CWC.
+              </li>
+              <li>Use your answer to Question 5 to explain why the Borda count violates the CWC.</li>
+            </ol>
+          </statement>
+        </investigation>
+
+        <p>
+          In order to find a voting system that satisfies the CWC and CLC, let's return to the Dunder Mifflin presidential election in
+          <xref ref="expl-dmprez" />.
+        </p>
+
+        <exploration xml:id="expl-pwc">
+          <statement>
+            <p>
+              Consider the following proposed voting system, using
+              <xref ref="table-dmprez" /> as the preference schedule.
+            </p>
+
+            <ul>
+              <li>Step 1: List all possible head-to-head matchups between candidates.</li>
+              <li>Step 2: Determine the winner of each head-to-head matchup. Award 1 point for each win, 0 points for a loss, and 1/2 point to each in the event of a tie.</li>
+              <li>Step 3: The candidate with the most points from Step 2 wins.</li>
+            </ul>
+            <p>
+              Consider the method described above.
+            </p>
+            <ol>
+              <li>Under this method, who wins the presidency of Dunder Mifflin?</li>
+              <li>Under this method, what societal preference order is produced?</li>
+              <li>Is there a Condorcet winner and/or loser in this election? Explain.</li>
+            </ol>
+
+            <p>
+              The method described above is known as <term>the method of pairwise comparisions</term> (PWC). What strikes you as being different or unusual about it, especially compared to the plurality and Borda count systems we've already explored?
+            </p>
+
+
+          </statement>
+        </exploration>
+
+        <!-- <p>
+          We'll finish this section by exploring sequential pairwise voting and the CWC/CLC a bit more.
+        </p> -->
+
+        <investigation>
+          <statement>
+            <ol>
+              <li>Could a Condorcet winner ever lose a head-to-head contest with another candidate? Why or why not?</li>
+              <li>What does your answer to Question 1 allow you to conclude about the method of pairwise comparisons and the CWC?</li>
+              <li>Does the method of pairwise comparisons satisfy the CLC? If so, explain why. Otherwise, give an example of a preference schedule for the method of pairwise comparisons could elect a Condorcet loser.</li>
+            </ol>
+          </statement>
+        </investigation>
+
+        <p>
+          As we have just seen, the method of pairwise comparisons satisfies the CWC. This means that it will always elect a Condorcet winner <em>if one exists</em>.
+          However, when a Condorcet winner does not exist, strange things can happen.
+        </p>
+
+
+        <investigation xml:id="invest-iia">
+          <statement>
+            <p>Consider the preference schedule given in
+              <xref ref="table-iia" />.
+            </p>
+            <table xml:id="table-iia">
+              <title>A preference schedule.</title>
+              <tabular halign="center">
+                <row bottom="medium">
+                  <cell right="medium">
+                    Rank
+                  </cell>
+                  <cell right="medium">
+                    10
+                  </cell>
+                  <cell right="medium">
+                    3
+                  </cell>
+                  <cell right="medium">
+                    7
+                  </cell>
+                  <cell>
+                    6
+                  </cell>
+                </row>
+                <row>
+                  <cell right="medium">
+                    1
+                  </cell>
+                  <cell right="medium">
+                    C
+                  </cell>
+                  <cell right="medium">
+                    E
+                  </cell>
+                  <cell right="medium">
+                    D
+                  </cell>
+                  <cell>
+                    B
+                  </cell>
+                </row>
+                <row>
+                  <cell right="medium">
+                    2
+                  </cell>
+                  <cell right="medium">
+                    E
+                  </cell>
+                  <cell right="medium">
+                    A
+                  </cell>
+                  <cell right="medium">
+                    A
+                  </cell>
+                  <cell>
+                    A
+                  </cell>
+                </row>
+                <row>
+                  <cell right="medium">
+                    3
+                  </cell>
+                  <cell right="medium">
+                    D
+                  </cell>
+                  <cell right="medium">
+                    D
+                  </cell>
+                  <cell right="medium">
+                    C
+                  </cell>
+                  <cell>
+                    C
+                  </cell>
+                </row>
+                <row>
+                  <cell right="medium">
+                    4
+                  </cell>
+                  <cell right="medium">
+                    A
+                  </cell>
+                  <cell right="medium">
+                    C
+                  </cell>
+                  <cell right="medium">
+                    B
+                  </cell>
+                  <cell>
+                    D
+                  </cell>
+                </row>
+                <row>
+                  <cell right="medium">
+                    5
+                  </cell>
+                  <cell right="medium">
+                    B
+                  </cell>
+                  <cell right="medium">
+                    B
+                  </cell>
+                  <cell right="medium">
+                    E
+                  </cell>
+                  <cell>
+                    E
+                  </cell>
+                </row>
+              </tabular>
+            </table>
+            <ol>
+
+              <li>Who wins this election using the method of pairwise comparisons?</li>
+              <li>Is there a Condorcet winner? A Condorcet loser?</li>
+              <li>Due to a scandal following the counting of the votes, candidate D withdraws. The election is re-run using the votes already cast, again with the method of pairwise comparisons. Who wins?</li>
+              <li>Does this seem strange?</li>
+            </ol>
+          </statement>
+        </investigation>
+
+        <p>
+          The phenomenon observed in
+          <xref ref="invest-iia" /> is an example of a violation of a new fairness criterion, the <em>independence of irrelevant alternatives</em>.
+          It's more subtle than some of the others, so we'll present a few versions of it.
+        </p>
+
+        <definition>
+          <p>
+            If a voting system has the property that the societal preference between any two candidates depends only on the voters' preferences between those two candidates, then the system is said to satisfy the <term>independence of irrelevant alternatives</term> criterion (IIA).
+          </p>
+          <p>
+            Put another way, a voting system satisfies IIA if some or all of the voters in an election change their preference ballots but no voter changes their preference between two candidates <m>A</m> and <m>B</m>, then the societal preference between <m>A</m> and <m>B</m> must also remain unchanged.
+          </p>
+          <p>
+            Or, if an election is run and produces <m>X</m> as the winner, and later a non-winning candidate <m>Y</m> drops out, then <m>X</m> should still be the winner of the election.
+          </p>
+        </definition>
+
+        <p>
+          IIA is often interpreted as saying that if a candidate (<m>A</m>) would win an election, and a new candidate (<m>B</m>) were added to the ballot, then either <m>A</m> or <m>B</m> should win the election.
+          A further delightful illustration of a violation of IIA is attributed to <url href="https://en.wikipedia.org/wiki/Sidney_Morgenbesser">Sidney Morgenbesser</url>:
+        </p>
+
+        <blockquote>
+          After finishing dinner, Sidney Morgenbesser decides to order dessert. The waitress tells him he has two choices: apple pie and blueberry pie. Sidney orders the apple pie. After a few minutes the waitress returns and says that they also have cherry pie at which point Morgenbesser says <q>In that case I'll have the blueberry pie.</q>
+        </blockquote>
+
+        <p>
+          Let's consider our current systems and IIA.
+        </p>
+
+        <investigation>
+          <statement>
+            <ol>
+              <li> Does plurality satisfy IIA? Why or why not?</li>
+              <li> Does the Borda count satisfy IIA? Why or why not?</li>
+              <li> Does PWC satisfy IIA? Why or why not?</li>
+            </ol>
+          </statement>
+        </investigation>
+
+        <!-- <p>
+          We thus see that when there is no Condorcet winner, the agenda can play an outsize role in the outcome of an election decided by sequential pairwise voting.
+          Since the order in which the candidates are presented seems to matter, it's reasonable to guess that SPV violates the neutrality criterion, which we confirm in the next exploration.
+        </p>
+        
+        <exploration>
+          <statement>
+            <p>
+              Suppose that all of the voters in the Bluth Company election switches the positions of Lindsay and Michael, yielding the preference schedule in <xref ref="table-dmprez3" />.
+            </p>
+            <table xml:id="table-dmprez3">
+              <title>
+              Revised Bluth Company preference schedule.
+              </title>
+              <tabular halign="center">
+              <row bottom="medium">
+                <cell right="medium">
+                Rank
+                </cell>
+                <cell>
+                12
+                </cell>
+                <cell>
+                7
+                </cell>
+                <cell>
+                5
+                </cell>
+                <cell>
+                3
+                </cell>
+              </row>
+              <row>
+                <cell right="medium">
+                1
+                </cell>
+                <cell>
+                B
+                </cell>
+                <cell>
+                G
+                </cell>
+                <cell>
+                M
+                </cell>
+                <cell>
+                L
+                </cell>
+              </row>
+              <row>
+                <cell right="medium">
+                2
+                </cell>
+                <cell>
+                G
+                </cell>
+                <cell>
+                M
+                </cell>
+                <cell>
+                L
+                </cell>
+                <cell>
+                M
+                </cell>
+              </row>
+              <row>
+                <cell right="medium">
+                3
+                </cell>
+                <cell>
+                M
+                </cell>
+                <cell>
+                L
+                </cell>
+                <cell>
+                B
+                </cell>
+                <cell>
+                G
+                </cell>
+              </row>
+              <row>
+                <cell right="medium">
+                4
+                </cell>
+                <cell>
+                L
+                </cell>
+                <cell>
+                B
+                </cell>
+                <cell>
+                G
+                </cell>
+                <cell>
+                B
+                </cell>
+              </row>
+              </tabular>
+            </table>
+            <ol>
+              <li>Using sequential pairwise voting with the agenda G, L, B, M, what societal preference order would result from this new preference schedule?</li>
+              <li>Explain why your answer to <xref ref="expl-spv" /> and Question 1 show that SPV is not neutral.</li>
+            </ol>
+          </statement>
+        </exploration> -->
+
+        <exploration>
+          <statement>
+            <p>
+              Is the method of pairwise comparisons anonymous? Monotone? Does it satisfy the majority criterion? Justify your answers.
+            </p>
+          </statement>
+        </exploration>
+
+
+        <p>
+          Let's take stock of where we're at.
+        </p>
+
+        <activity>
+          <statement>
+            <p>
+              Fill in
+              <xref ref="table-vsfc1" />, indicating whether each voting system satisfies the given criteria.
+            </p>
+
+            <table xml:id="table-vsfc1">
+              <title>
+                Voting systems and fairness criteria
+              </title>
+              <tabular halign="center">
+                <row bottom="medium">
+                  <cell right="medium">
+                    <line>
+                    </line>
+                    <line>
+                    </line>
+                  </cell>
+                  <cell right="medium">
+                    Anonymous
+                  </cell>
+                  <cell right="medium">
+                    Neutral
+                  </cell>
+                  <cell right="medium">
+                    Monotone
+                  </cell>
+                  <cell right="medium">
+                    Majority
+                  </cell>
+                  <cell halign="left" right="medium">
+                    CWC
+                  </cell>
+                  <cell halign="left" right="medium">
+                    CLC
+                  </cell>
+                  <cell halign="left">
+                    IIA
+                  </cell>
+                </row>
+                <row bottom="medium">
+                  <cell right="medium">
+                    Majority rule
+                  </cell>
+                  <cell right="medium">
+                    <line>
+                    </line>
+                    <line>
+                    </line>
+                  </cell>
+                  <cell right="medium">
+                    <line>
+                    </line>
+                    <line>
+                    </line>
+                  </cell>
+                  <cell right="medium">
+                    <line>
+                    </line>
+                    <line>
+                    </line>
+                  </cell>
+                  <cell right="medium">
+                    <line>
+                    </line>
+                    <line>
+                    </line>
+                  </cell>
+                  <cell halign="left" right="medium">
+                  </cell>
+                  <cell halign="left" right="medium">
+                  </cell>
+                  <cell halign="left">
+                  </cell>
+                </row>
+                <row bottom="medium">
+                  <cell right="medium">
+                    Plurality
+                  </cell>
+                  <cell right="medium">
+                    <line>
+                    </line>
+                    <line>
+                    </line>
+                  </cell>
+                  <cell right="medium">
+                    <line>
+                    </line>
+                    <line>
+                    </line>
+                  </cell>
+                  <cell right="medium">
+                    <line>
+                    </line>
+                    <line>
+                    </line>
+                  </cell>
+                  <cell right="medium">
+                    <line>
+                    </line>
+                    <line>
+                    </line>
+                  </cell>
+                  <cell halign="left" right="medium">
+                  </cell>
+                  <cell halign="left" right="medium">
+                  </cell>
+                  <cell halign="left">
+                  </cell>
+                </row>
+                <row bottom="medium">
+                  <cell right="medium">
+                    Borda count
+                  </cell>
+                  <cell right="medium">
+                    <line>
+                    </line>
+                    <line>
+                    </line>
+                  </cell>
+                  <cell right="medium">
+                    <line>
+                    </line>
+                    <line>
+                    </line>
+                  </cell>
+                  <cell right="medium">
+                    <line>
+                    </line>
+                    <line>
+                    </line>
+                  </cell>
+                  <cell right="medium">
+                    <line>
+                    </line>
+                    <line>
+                    </line>
+                  </cell>
+                  <cell halign="left" right="medium">
+                  </cell>
+                  <cell halign="left" right="medium">
+                  </cell>
+                  <cell halign="left">
+                  </cell>
+                </row>
+                <row>
+                  <cell right="medium">
+                    PWC
+                  </cell>
+                  <cell right="medium">
+                    <line>
+                    </line>
+                    <line>
+                    </line>
+                  </cell>
+                  <cell right="medium">
+                    <line>
+                    </line>
+                    <line>
+                    </line>
+                  </cell>
+                  <cell right="medium">
+                    <line>
+                    </line>
+                    <line>
+                    </line>
+                  </cell>
+                  <cell right="medium">
+                    <line>
+                    </line>
+                    <line>
+                    </line>
+                  </cell>
+                  <cell halign="left" right="medium">
+                  </cell>
+                  <cell halign="left" right="medium">
+                  </cell>
+                  <cell halign="left">
+                  </cell>
+                </row>
+              </tabular>
+            </table>
+          </statement>
+        </activity>
+
+
+      </subsection>
+
+      <subsection xml:id="subsec-irv">
+        <title>Instant Runoff Voting and Arrow's Theorem</title>
+
+
+
+
+        <p>
+          In this section, we'll examine one last (new) voting system, called <term>instant runoff voting</term> (IRV) or <term>ranked choice voting</term> (RCV).
+        <aside>The nonpartisan election advocacy group, FairVote, refers to this system as RCV. I prefer calling the system <em>instant runoff</em>; the non-plurality systems we've looked at for three or more candidates all involve ranking candidates, so I find the term too general.</aside>
+        This system was proposed in the mid-1800s by Thomas Hare, and has slowly grown in popularity.
+        Other than plurality, it is likely the most widely used system for choosing elected officials in the U.S.
+        For example, the <url href="http://vote.minneapolismn.gov/rcv/index.htm">City of Minneapolis</url> uses IRV for its city-wide elections, and <url href="http://www.rcvmaine.com">Maine uses it for all state-wide elections</url>, including, for the first time in 2020, for the <url href="https://www.huffpost.com/entry/maine-ranked-choice-voting-2020_n_5d72ca74e4b06451356df0f3">general election for president</url>.
+        </p>
+
+        <definition>
+          <p>
+            The instant runoff voting (IRV) system works as follows.
+          </p>
+          <ol>
+            <li>Each voter in the election submits their entire preference order.</li>
+            <li>If a candidate has a majority of first-place votes, they are declared the winner.</li>
+            <li>If no candidate has a majority of first-place votes, then the candidate (or candidates, in the case of a tie) with the fewest first-place votes is eliminated from each voter's preference order, and the remaining candidates are moved up, yielding a new preference schedule.</li>
+            <li>Step 2 is repeated until a single candidate remains. That candidate is declared the winner.</li>
+          </ol>
+        </definition>
+
+        <activity xml:id="act-irv1">
+          <statement>
+            <p>Consider the hypothetical preference schedule shown in
+              <xref ref="table-irv" />.
+            </p>
+            <table xml:id="table-irv">
+              <title>
+                A hypothetical election
+              </title>
+              <tabular halign="center">
+                <row bottom="medium">
+                  <cell right="medium">
+                    Rank
+                  </cell>
+                  <cell right="medium">
+                    6
+                  </cell>
+                  <cell right="medium">
+                    7
+                  </cell>
+                  <cell right="medium">
+                    9
+                  </cell>
+                  <cell>
+                    3
+                  </cell>
+                </row>
+                <row>
+                  <cell right="medium">
+                    1
+                  </cell>
+                  <cell right="medium">
+                    A
+                  </cell>
+                  <cell right="medium">
+                    B
+                  </cell>
+                  <cell right="medium">
+                    C
+                  </cell>
+                  <cell>
+                    A
+                  </cell>
+                </row>
+                <row>
+                  <cell right="medium">
+                    2
+                  </cell>
+                  <cell right="medium">
+                    B
+                  </cell>
+                  <cell right="medium">
+                    C
+                  </cell>
+                  <cell right="medium">
+                    B
+                  </cell>
+                  <cell>
+                    C
+                  </cell>
+                </row>
+                <row>
+                  <cell right="medium">
+                    3
+                  </cell>
+                  <cell right="medium">
+                    C
+                  </cell>
+                  <cell right="medium">
+                    A
+                  </cell>
+                  <cell right="medium">
+                    A
+                  </cell>
+                  <cell>
+                    B
+                  </cell>
+                </row>
+              </tabular>
+            </table>
+            <ol>
+              <li>Under IRV, which candidate is eliminated first?</li>
+              <li>Under IRV, which candidate is eliminated second?</li>
+              <li>Who would win the election under IRV? What would be the resulting societal preference order?</li>
+            </ol>
+          </statement>
+        </activity>
+
+
+        <p>
+          As has been our wont, let's explore which fairness criteria are satisfied by IRV.
+        </p>
+
+        <investigation>
+          <statement>
+            <p>
+              Use
+              <xref ref="def-fairness2" /> to write a thorough explanation of why IRV is both neutral and anonymous.
+            </p>
+          </statement>
+        </investigation>
+
+        <investigation>
+          <statement>
+            <p>
+              Explain why IRV satisfies the majority criterion.
+            </p>
+          </statement>
+        </investigation>
+
+
+
+        <activity xml:id="act-monotonicity-crit">
+          <statement>
+            <p>
+              Consider the election run in
+              <xref ref="act-irv1" />.
+              Suppose that the three voters in the rightmost column of
+              <xref ref="table-irv" /> got wind of candidate <m>C</m>'s support and switched their votes to <m>C \succ A \succ B</m> to be on the side of the winner.
+            </p>
+            <ol>
+              <li>With these new preferences, who would win the election under IRV?</li>
+              <li>Compare your answer to Question 1 of this activity to Question 3 of
+                <xref ref="act-irv1" />. What conclusions can you draw?
+              </li>
+              <li>Do some research on <url href="https://www.fairvote.org">FairVote.org</url> about this phenomenon. How do they respond to a potential critique?</li>
+            </ol>
+          </statement>
+        </activity>
+
+        <p>
+          The phenomonon observed in
+          <xref ref="act-monotonicity-crit" /> suggests our last fairness criterion: the <em>monotonicity criterion</em>.
+        </p>
+
+        <definition xml:id="def-mono-crit">
+          <index>monotonicity criterion</index>
+          <statement>
+            <p>
+              A voting system is said to satisfy the <term>monotonicity criterion</term> if when a candidate <m>X</m> wins, and on a recount or reelection, only changes favorable to <m>X</m> occur, then <m>X</m> will still win.
+              That is, changes that only favor the winner should not change the winner.
+            </p>
+          </statement>
+        </definition>
+
+        <investigation>
+          <statement>
+            <p>Consider an election between three candidates with the preference schedule shown in
+              <xref ref="table-irv3" />.
+            </p>
+
+            <table xml:id="table-irv3">
+              <title>
+                A hypothetical election.
+              </title>
+              <tabular halign="center">
+                <row bottom="medium">
+                  <cell right="medium">
+                    Rank
+                  </cell>
+                  <cell right="medium">
+                    1
+                  </cell>
+                  <cell right="medium">
+                    2
+                  </cell>
+                  <cell>
+                    2
+                  </cell>
+                </row>
+                <row bottom="medium">
+                  <cell right="medium">
+                    1
+                  </cell>
+                  <cell right="medium">
+                    A
+                  </cell>
+                  <cell right="medium">
+                    B
+                  </cell>
+                  <cell>
+                    C
+                  </cell>
+                </row>
+                <row bottom="medium">
+                  <cell right="medium">
+                    2
+                  </cell>
+                  <cell right="medium">
+                    B
+                  </cell>
+                  <cell right="medium">
+                    A
+                  </cell>
+                  <cell>
+                    A
+                  </cell>
+                </row>
+                <row>
+                  <cell right="medium">
+                    3
+                  </cell>
+                  <cell right="medium">
+                    C
+                  </cell>
+                  <cell right="medium">
+                    C
+                  </cell>
+                  <cell>
+                    B
+                  </cell>
+                </row>
+              </tabular>
+            </table>
+
+            <ol>
+              <li>Is there a Condorcet winner in this election?</li>
+              <li>Who would win the election under IRV?</li>
+              <li>Does IRV satisfy the Condorcet winner criterion? Use your answers to Questions 1 and 2, together with
+                <xref ref="def-cwcclc" /> (and what we know about when implications are false! Recall
+                <xref ref="def-implications" />.).
+              </li>
+            </ol>
+          </statement>
+        </investigation>
+
+        <investigation>
+          <statement>
+            <ol>
+              <li>What about Dunder Mifflin? Who wins the company presidency with the preference schedule in
+                <xref ref="table-dmprez" /> under IRV?
+              </li>
+              <li>Given all the investigations we've done into the Dunder Mifflin presidency, write an argument to the company's board of directors arguing for a particular voting system to be used to choose the company's president. Your argument should make some allusion to the fairness criteria we've explored.</li>
+            </ol>
+          </statement>
+        </investigation>
+
+
+
+
+
+        <p>
+          At this point, you may be wondering which voting system is best. We saw a decisive answer if our election has only two candidates (the familiar <em>majority rule</em>), but when the election has more than two candidates, things have gotten complicated. Plurality, majority rule, the Borda count, PWC, and IRV all fail to satisfy at least one of our criteria.
+        </p>
+
+        <p>
+          In 1951, economist <url href="https://en.wikipedia.org/wiki/Kenneth_Arrow">Kenneth Arrow</url> proved the following landmark result. It states that our quest is hopeless! There is no fairest voting system.
+          Each has tradeoffs which make it suitable in certain circumstances and unsuitable in others.
+        </p>
+
+
+        <assemblage>
+          <title>Arrow's Impossibility Theorem</title>
+
+          <p>
+            In an election with more than two candidates, it is impossible for a voting system to satisfy monotonicity, neutrality, anonymity, IIA, the majority criterion, and the CWC.
+          <aside>Technically, we also need to assume that the votes matter (not imposed rule), and that there is no dictator.</aside>
+          </p>
+        </assemblage>
+
+        <!-- <principle>
+              <p>
+                There is an ongoing debate about whether voting systems other than plurality are truly <q>democratic</q>.
+                For instance, lawmakers in Maine have repeatedly attempted to overturn the implementation of IRV for statewide elections, despite it passing on a statewide ballot initiative.
+              </p>
+            <p>
+              What do you think? Regardless of which system you choose, what do you think of systems that take voter preferences beyond their first choice into account?
+              What effect(s) do you think they might have on elections? On campaigning?
+              Are there any other advantages or disadvantages you'd like to raise?
+            </p>
+          </principle> -->
+
+
+        <conclusion>
+          <p>
+            In this section, we explored additional voting systems (the method of pairwise comparisions and instant runoff voting) and fairness criteria (IIA and the monotonicity criterion).
+            As we saw that none of our systems satisfied all of our criteria, we were faced with a question: is there <em>any</em> voting system out there that is completely fair?
+            Arrow's landmark theorem tells us that no democratic voting system can satisfy all of our criteria.
+            This does not mean that our explorations have been fruitless
+            <mdash />instead, we'll need to consider which criteria are most important to us when selecting a voting system, and choose accordingly.
+          </p>
+        </conclusion>
+
+      </subsection>
+    </worksheet>
+    <exercises>
+
+      <exercise>
+        <statement>
+          <p>
+            Consider the hypothetical election below.
+          </p>
+          <table>
+            <tabular halign="center">
+              <row bottom="medium">
+                <cell right="medium">
+                  Rank
+                </cell>
+                <cell right="medium">
+                  8
+                </cell>
+                <cell right="medium">
+                  6
+                </cell>
+                <cell right="medium">
+                  4
+                </cell>
+                <cell>
+                  2
+                </cell>
+              </row>
+              <row>
+                <cell right="medium">
+                  1
+                </cell>
+                <cell right="medium">
+                  A
+                </cell>
+                <cell right="medium">
+                  C
+                </cell>
+                <cell right="medium">
+                  D
+                </cell>
+                <cell>
+                  B
+                </cell>
+              </row>
+              <row>
+                <cell right="medium">
+                  2
+                </cell>
+                <cell right="medium">
+                  B
+                </cell>
+                <cell right="medium">
+                  A
+                </cell>
+                <cell right="medium">
+                  C
+                </cell>
+                <cell>
+                  C
+                </cell>
+              </row>
+              <row>
+                <cell right="medium">
+                  3
+                </cell>
+                <cell right="medium">
+                  D
+                </cell>
+                <cell right="medium">
+                  B
+                </cell>
+                <cell right="medium">
+                  B
+                </cell>
+                <cell>
+                  A
+                </cell>
+              </row>
+              <row>
+                <cell right="medium">
+                  4
+                </cell>
+                <cell right="medium">
+                  C
+                </cell>
+                <cell right="medium">
+                  D
+                </cell>
+                <cell right="medium">
+                  A
+                </cell>
+                <cell>
+                  D
+                </cell>
+              </row>
+            </tabular>
+          </table>
+          <ol>
+            <li>Who wins the election using the method of pairwise comparisons?</li>
+            <li>Suppose that after a scandal emerges, candidate <m>D</m> drops out and the results are re-tabulated. Who wins the election?</li>
+            <li>Does the answer to the previous question give an example of a violation of one of our fairness criteria? Explain.</li>
+            <li>Suppose instead that, before the original election is run, the four voters in the third column switch their preference ballot to <m>C \succ D \succ B \succ A</m>. Who wins the election? Is this an example of a violation of one of our fairness criteria? Explain.</li>
+            <li>Using the original preference schedule, who wins the election using instant runoff voting? Explain.</li>
+          </ol>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            One criticism of non-plurality voting systems is that they are too complex, or ballots too difficult to understand.
+            Find an article that makes this point and respond to it in a well-reasoned paragraph or two.
+            Do you agree? Disagree?
+          </p>
+        </statement>
+      </exercise>
+
+
+
+    </exercises>
+  </section>
+
+
+
+
+
+
+</chapter>

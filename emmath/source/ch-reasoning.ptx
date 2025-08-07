@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<chapter xml:id="chap-reasoning">
+  <title>Inductive and Deductive Reasoning</title>
+
+  <introduction>
+    <p>
+      In order to more fully explore the deductive reasoning employed in mathematical explorations, we'll first contrast it with the inductive reasoning common in other areas of inquiry.
+    </p>
+
+  </introduction>
+
+
+  <section>
+    <title>Inductive Reasoning</title>
+
+    <assemblage>
+      <title>Motivating Questions</title>
+      <p>
+        <statement>
+          In this section, we will explore the following questions.
+          <ol>
+            <li>What is truth? What is fact? Is there a difference?</li>
+            <li>What is inductive reasoning? When is it helpful? What are its shortcomings?</li>
+          </ol>
+        </statement>
+      </p>
+    </assemblage>
+
+    <p>
+      We'll begin by attempting to define <em>truth</em> and <em>fact</em>, and compare them.
+      We'll then explore <em>inductive reasoning</em> in depth, considering its benefits shortcomings.
+    </p>
+
+
+    <principle>
+      <statement>
+        <p>
+          What is truth? What is fact? How are the two concepts related? How are they different? Under which category does the sentence <m>1+1=2</m> fall?
+        </p>
+
+      </statement>
+
+      <!-- <solution>
+            <p>
+              <em>Truth</em> refers to propositions which are correct and valid for all time, places, and people. It never changes. <em>Facts</em> refer to propositions supported by evidence. They are subject to change based on new evidence.
+              There was some debate about the nature of truth relative to belief. 
+              For instances, Christians believe that the historical person of Jesus is the Son of God. 
+              Muslims do not. 
+              Is this statement true for Christians but not for Muslims?
+              Or is the proposition that the historical person of Jesus is the Son of God <em>true</em>, but Christians and Muslims have differing beliefs on its truth?
+            </p>
+
+          </solution> -->
+
+
+    </principle>
+
+    <activity xml:id="act-whats-my-world">
+      <title>What's my world?</title>
+      <statement>
+        <p>
+          In the game <em>What's my World?</em>, one person thinks of a single law that defines a hypothetical world (e.g., <q>My world does not contain things that start with the letter <q>C</q>.</q>). The other players attempt to guess this governing law by taking turns asking questions of the creator, such as <q>Does your world contain dogs? Does it contain cats?</q> and so on. When one of the guessers believe they can identify the governing law, they ask the creator.
+        </p>
+        <p>
+          Play a few rounds of this game, taking turns in the role of creator. <em>Other than asking the creator directly</em>, how could you be <em>certain</em> that you had determined the law of the world?
+        </p>
+      </statement>
+
+      <solution>
+        <p>
+          We played various rounds of this game, but the only way we identified that we could know <em>for certain</em> that we had guessed the governing law correctly is by asking the creator. We can amass evidence and develop facts and a theory based on those facts, but we can only know for certain by asking the creator directly.
+        </p>
+
+      </solution>
+
+
+    </activity>
+
+
+
+    <definition>
+      <index>inductive reasoning</index>
+      <p>
+        <term>Inductive reasoning</term> is the process of drawing general conclusions from particular instances, generally known as <term>data</term>.
+      </p>
+    </definition>
+
+    <p>
+      The work of the guesser in
+      <xref ref="act-whats-my-world" /> is to employ inductive reasoning to determine the general law put in place by the creator.
+      This is the heart of the scientific endeavor: looking at the world in its orderliness and using our curiosity and creativity to infer larger governing principles.
+    </p>
+    <p>
+      But how does this work in mathematics?
+    </p>
+
+    <exploration xml:id="expl-dot-game">
+      <statement>
+        <p>
+          Let's play a game with dots and lines.
+          We'll start with at least two dots (though you'll probably want to increase this number pretty quickly).
+          The rules are:
+        </p>
+        <ul>
+          <li>Split your dots into two groups, group <m>A</m> and group <m>B</m>, and draw each group on its own line.</li>
+          <li>Connect (some of) the dots from <m>A</m> to (some of) the dots in <m>B</m> with lines. The lines don't have to be straight
+            <mdash />they can curve in any way you want!
+            <mdash />but each line should connect precisely two dots: one from <m>A</m> and one from <m>B</m>.
+          </li>
+          <li>Each dot should be connected to at least one other dot
+            <mdash />no lonely dots!
+          </li>
+        </ul>
+        <p>
+          So, if I label four dots as <m>X, Y, Z, W</m>, <em>one possible</em> drawing is given in
+          <xref ref="fig-dot-game-example" />.
+        </p>
+        <figure xml:id="fig-dot-game-example">
+          <image source="./images/dot-game-example.svg" width="35%" />
+        </figure>
+        <p>
+          However, there is a problem with this drawing: the lines cross! I know, this wasn't one of the rules above, but let's add it.
+        </p>
+        <ul>
+          <li>The lines must be drawn so that none of them cross.</li>
+        </ul>
+        <p>
+          Now consider the following questions.
+        </p>
+        <ol>
+          <li>Redraw the picture in
+            <xref ref="fig-dot-game-example" /> so that none of the lines cross.
+          </li>
+          <li>Give a name to drawings of figures like
+            <xref ref="fig-dot-game-example" /> which <em>can</em> be drawn so that none of the lines cross.
+          </li>
+          <li>Which (non-crossing!) drawings are possible with two or three dots?</li>
+          <li>What other non-crossing drawings are possible with four dots? Five?</li>
+          <li>Based on your work here, do you think it will always be possible to draw these pictures so that none of the lines cross? Explain your thinking.</li>
+        </ol>
+      </statement>
+    </exploration>
+
+    <principle>
+      <statement>
+        <p>
+          Based on our work in this section, what are some strengths of inductive reasoning?
+          What are some possible pitfalls?
+          How can we minimize these potential downsides?
+        </p>
+      </statement>
+    </principle>
+
+    <conclusion>
+      <p>
+        In this section, we explored inductive reasoning.
+        We saw that inductive reasoning is the process of drawing general principles from data.
+        It is generally the case that, the more evidence we have for a conclusion, the more sure we can feel about it.
+        We note that, in mathematics and elsewhere, our inductive conclusions are tentative, always subject to new data for which we must account.
+      </p>
+    </conclusion>
+
+    <exercises>
+      <exercise>
+        <statement>
+          <p>
+            Do some internet research on the <term>Twin Prime Conjecture</term>.
+            What is it? When was it first formulated?
+            Is it true? Likely true?
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            The process of accounting for new data which challenges an accepted perspective is often messy and exciting.
+            Find a time in scientific history in which new data and an accompanying theory challenged accepted understanding, and write two or three paragraphs about it.
+            What was the status quo and how was it revised in light of new information?
+          </p>
+        </statement>
+      </exercise>
+    </exercises>
+
+
+
+
+
+  </section>
+
+
+
+  <section>
+    <title>Deductive Reasoning</title>
+
+    <assemblage>
+      <title>Motivating Questions</title>
+      <p>
+        <statement>
+          In this section, we will explore the following questions.
+          <ol>
+            <li>What is deductive reasoning? How does it differ from inductive reasoning?</li>
+            <li>How is deductive reasoning employed in mathematics?</li>
+            <li>What are some strengths and weaknesses of deductive reasoning?</li>
+          </ol>
+        </statement>
+      </p>
+    </assemblage>
+
+    <p>
+      Formal mathematical reasoning is deductive (defined momentarily), and begins with <term>axioms</term>, which are statements that should be self-evident and taken to be true.
+      Note that while axioms are not always explicitly stated, they <em>can</em> be when necessary.
+    </p>
+
+    <investigation>
+      <statement>
+        <p>
+          The most famous set of axioms are Euclid's postulates for geometry, defined in <em>
+            <url href="https://en.wikipedia.org/wiki/Euclid's_Elements">The Elements</url>
+          </em>, which not only shaped thousands of years of geometry, but solidified the deductive approach to doing and explaining mathematics that we will explore in this unit.
+          At the beginning of Book I of <em>The Elements</em>, Euclid identified five postulates and five axioms.
+        </p>
+        <p>
+          Euclid's <em>postulates</em> are:
+        </p>
+        <ol>
+          <li>A straight line segment can be drawn joining any two points.</li>
+          <li>Any straight line segment can be extended indefinitely in a straight line.</li>
+          <li>Any circle can be described given a center and (radial) distance.</li>
+          <li>All right angles are equal to one another.</li>
+          <li>If a straight line intersecting two straight lines make the interior angles on the same side less than two right angles, the two straight lines, if produced indefinitely, meet on the side on which the angles are less than two right angles.</li>
+        </ol>
+
+        <p>
+          Euclid's <em>axioms</em> (or <em>common notions</em>) are:
+        </p>
+        <ol>
+          <li>Things which are equal to the same thing are also equal to one another.</li>
+          <li>If equals are added to equals, the wholes are equal.</li>
+          <li>If equals are subtracted from equals, the remainders are equal.</li>
+          <li>Things which coincide with one another are equal to one another.</li>
+          <li>The whole is greater than the part.</li>
+        </ol>
+
+        <p>
+          The desired qualities of a system of axioms are:
+        </p>
+        <ol>
+          <li>
+            <term>consistency</term>: we cannot deduce contradictory propositions, such as "God exists" and "God does not exist" from the same set of axioms
+          </li>
+          <li>
+            <term>simplicity</term>: we have as few axioms as possible, and they are no more complicated than they need to be
+          </li>
+          <li>
+            <term>completeness</term>: the system can answer every question we can think to ask
+          </li>
+        </ol>
+
+
+
+
+        <p>
+          In your groups, discuss Euclid's postulates and common notions, perhaps in view of the desired qualities of an axiomatic system.
+          What strikes you as being interesting or noteworthy? Make a list of at least 2-3 observations.
+          Then consider: on what axioms or assumptions do you make decisions (e.g., about how to spend your time, resources, etc)?
+        </p>
+      </statement>
+
+      <solution>
+        <p>
+          Axioms are unproved, self-evident propositions on top of which logical deductions can be made, and entire fields of study rest.
+          They should be as simple as possible; all except Euclid's fifth postulate (the parallel postulate) are considered quite straightforward.
+          The parallel postulate has a fascinating history; it turns out be independent of the other postulates, and one can create new geometries (on the surface of a sphere, for instance), by rejecting it.
+        </p>
+        <p>
+          There are lots of unproved assumptions that we make in life.
+          Many Christian mathematicians make explicit that they view the authority of Scripture as an axiom; they can't use logic to conclusively deduce that Scripture is the only authority for Christian faith and life, but they <em>assume</em> it in order to draw conclusions <em>about</em> faith and life.
+        </p>
+
+
+
+      </solution>
+
+
+
+
+
+    </investigation>
+
+
+
+    <p>
+      The process of <term>deductive reasoning</term> in mathematics begins from a set of generally agreed-upon axioms of <url href="https://en.wikipedia.org/wiki/Zermelo–Fraenkel_set_theory">set theory</url>
+      <fn>It should be noted that there is disagreement about the Axiom of Choice, mostly due to some of its surprising consequences.</fn> and uses logic to make inevitable conclusions from those axioms. These conclusions are generally called <term>theorems</term>. They are usually given as conditional statements of the form <q>If <m>P</m>, then <m>Q</m>,</q> where <m>P</m> and <m>Q</m> are sensible statements.
+      Moreover, since most deductive statements are presented in conditional form, their scope is generally limited.
+      That is, the statement <q>if it is Monday, then we have math class</q> is only making a claim about what happens on Mondays; it says nothing whatsoever about any other day of the week.
+      We will explore the consequences of this more in
+      <xref ref="chap-logic" />.
+    </p>
+
+
+
+    <p>
+      The author Lewis Carroll loved logic puzzles (he was actually a mathematics professor!), and wrote many of them. Here is one, axiomatized for easy reference.
+    </p>
+
+
+    <axiom xml:id="axiom-kittens">
+      <title>(Carroll)</title>
+      <statement>
+        <p>
+          Consider the axioms:
+        </p>
+        <ol>
+          <li>If a kitten loves fish, then it is teachable.</li>
+          <li>Every kitten without a tail will play with a gorilla.</li>
+          <li>All kittens with whiskers love fish.</li>
+          <li>If a kitten has green eyes, then it is not teachable.</li>
+          <li>All kittens have whiskers or do not have tails.</li>
+        </ol>
+
+      </statement>
+    </axiom>
+
+    <p>
+      Once you have a deductive argument that (generally) begins from your premises and reasons, step-by-step, to your conclusion, you can write out the argument in a short essay known as a <em>proof</em>.
+      For our purposes, a proof is just a <em>convicing argument</em>.
+      It should be written at a level appropriate to the reader and clearly lay out the steps necessary for a reader who accepts your hypotheses to believe the conclusion.
+      As an example, consider the following.
+    </p>
+
+    <example xml:id="example-kitten-deduction">
+      <statement>
+        <p>
+          All kittens with whiskers are teachable.
+        </p>
+        <p>
+          <term>Proof</term>. Suppose we have a kitten with whiskers. Let's call him Arthur. By
+          <xref ref="axiom-kittens" /> #3, Arthur loves fish. Since Arthur loves fish,
+          <xref ref="axiom-kittens" /> #1 implies that Arthur is teachable.
+        </p>
+        <p>
+          Since Arthur was an arbitrary kitten, we conclude that all kittens with whiskers are teachable.
+        </p>
+      </statement>
+    </example>
+
+    <p>
+      There are several observations which are worth a moment of our time in the proof in
+      <xref ref="example-kitten-deduction" />.
+    </p>
+    <ul>
+      <li>We first note that the proof is written using standard conventions of academic writing, including complete sentences, proper punctuation and capitalization, etc. This is important! In order to convince someone that your argument is valid, they need to be able to read it.</li>
+      <li>While the statement to be proved is not written as <q>if <m>P</m>, then <m>Q</m></q>, it <em>can</em> be stated that way: <q>If <m>A</m> is a kitten with whiskers, then <m>A</m> is teachable</q>. Thus, our proof begins by considering an arbitrary kitten with whiskers, who we name Arthur. We observe, however, that there is nothing special about Arthur that figures into our proof in a meaningful way, so the argument will apply just as well to any kitten with whiskers we may find.</li>
+      <li>In each step we take throughout the proof, we refer to the specific axiom from
+        <xref ref="axiom-kittens" /> that allow us to take that step. It is valuable to be able to do this, but generally we do not specifically refer to the axioms by number. This is to improve the readability of the proof.
+      </li>
+      <li>Finally, note that our proof concludes with a conclusion: all kittens with whiskers are teachable. This is good practice and sends an unmistakable signal to the reader that you are done.</li>
+    </ul>
+
+    <p>
+      Now, prove the theorems that follow using
+      <xref ref="axiom-kittens" />.
+    </p>
+
+
+
+
+
+
+    <theorem>
+      <statement>
+        <p>
+          If a kitten has green eyes, then it does not love fish.
+        </p>
+      </statement>
+    </theorem>
+
+    <theorem>
+      <statement>
+        <p>
+          If a kitten has a tail, then it does not have green eyes.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          TBD! We tried some things, but there are issues. We'll look at it again after we study
+          <xref ref="def-implications" />.
+        </p>
+
+      </proof>
+
+    </theorem>
+
+    <theorem>
+      <statement>
+        <p>
+          Every kitten with green eyes will play with a gorilla.
+        </p>
+      </statement>
+    </theorem>
+
+
+
+
+
+    <activity>
+      <statement>
+        <p>
+          Compare and contrast the structures of the proofs of the preceding theorems.
+          Can you clarify the general reasoning patterns you used to prove them?
+        </p>
+
+      </statement>
+
+    </activity>
+
+
+    <principle>
+      <statement>
+        <p>
+          We have now explored both inductive and deductive reasoning. How are they similar? How are they different? How might you decide which type of reasoning to employ in a given situation? What are their strengths and weaknesses?
+        </p>
+      </statement>
+    </principle>
+
+    <conclusion>
+      <title>Conclusion</title>
+      <p>
+        In this section, we explored deductive reasoning, which begins from accepted axioms and premises and then reasons, step by logical step, toward a conclusion.
+        This is the primary form of reasoning used in mathematics.
+        We saw that while conclusions reached via deductive reasoning are generally tighter and more certain, there are still some drawbacks.
+      </p>
+      <p>
+        The main drawback of deductive reasoning involves scope.
+        We must begin with axioms, so the axioms must be well-chosen and sensible.
+        However, if one disagrees with the choice of a set of axioms, then one must be willing to set aside any results deduced from them (or, at least, deduced from the particular axioms with which one disagrees).
+      </p>
+      <p>
+        A second drawback having to do with scope concerns the premises of a conditional statement.
+        In particular, if the premises of a statement are not satisfied, the statement makes no assertion whatsoever
+        (though, as we will see in
+        <xref ref="chap-logic" />, there is still a <em>consistent</em> way to assign truth values to statements whose premises are not satisfied).
+      </p>
+    </conclusion>
+
+
+
+    <exercises>
+
+      <exercise>
+        <statement>
+          <p>
+            Invent one or two additional theorems that can be deduced from
+            <xref ref="axiom-kittens" />.
+            Prove them.
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            While deductive proofs are crucial for the advancement of mathematical knowledge, they can often be complex and hard to understand, even for experts. An extreme example of this arose in the 1970s via the proof of the <url href="https://en.wikipedia.org/wiki/Four_color_theorem">four color theorem</url>. Read about this theorem and the controversy surrounding its proof, and write a one-paragraph summary. What is the current state of the theorem?
+          </p>
+        </statement>
+      </exercise>
+    </exercises>
+
+
+
+
+  </section>
+
+
+
+
+</chapter>

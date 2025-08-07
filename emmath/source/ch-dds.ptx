@@ -1,0 +1,802 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<chapter xml:id="chap-dynamical-systems">
+  <title>Dynamical Systems</title>
+
+
+  <introduction>
+    <p>
+      We begin this chapter by exploring the concept of a <em>sequence</em>.
+      Our ultimate goal is to use systems of related sequences to describe how certain physical quantities change over time via discrete dynamical systems.
+      Many situations can be <em>modeled</em> via discrete dynamical systems, including the growth of populations over time, predator-prey interactions, and the spread of a disease through a population.
+    </p>
+  </introduction>
+
+  <section xml:id="sec-intro-to-dds">
+    <title>Sequences</title>
+
+
+
+
+    <assemblage>
+      <title>Motivating Questions</title>
+      <p>
+        <statement>
+          In this section, we will explore the following questions.
+          <ol>
+            <li>What is a sequence?</li>
+            <li>How can we use discrete sequences to describe real-world phenomena?</li>
+            <li>What is the difference between a recursive definition and an explicit formula for a discrete sequence?</li>
+          </ol>
+        </statement>
+      </p>
+    </assemblage>
+
+
+    <p>
+      We begin our study with an exploration of <em>sequences</em>.
+    </p>
+
+    <definition xml:id="def-sequence">
+      <index>sequence</index>
+      <index>
+        <h>sequence</h>
+        <h>terms of</h>
+      </index>
+      <statement>
+        <p>
+          A <term>sequence</term> is an ordered list of numbers, called <term>terms</term>.
+        </p>
+      </statement>
+    </definition>
+
+    <p>
+      That's it!
+      Typically, we explore sequences which continue forever; these are generally called <term>infinite sequences</term>.
+      Such sequences are typically described using a mathematical rule of some sort.
+      Let's look at an example.
+    </p>
+
+
+
+
+
+
+
+    <example xml:id="example-recursive">
+
+      <p>
+
+        Joris is a collector of board games.
+        His collection currently has 37 games, and each year he budgets enough to acquire 8 new games.
+        We'll use the notation <m>G_t</m> to describe how many games Joris has in year <m>t</m>, where we consider <m>G_0</m> (that is, in year <m>t=0</m>) to be the number of games he currently has.
+        Thus, <m>G_0 = 37</m>.
+        We would also expect <m>G_1 = 37 + 8 = 45</m>, and <m>G_2 = 45 + 8 = 53</m>.
+        We say that <m>37, 45, 53\ldots</m> are the first three <term>terms</term> of the sequence.
+      </p>
+      <p>
+        This way of describing the number of games Joris has is known as a <term>recursive</term> description, where each term depends on previous terms.
+        That is, the recursive description is given by the formula
+        <men xml:id="eq-recursive-games">
+          G_0 = 37, \ G_{t+1} = G_t + 8, t \ge 1.
+        </men>
+      </p>
+
+
+    </example>
+
+    <p>
+      Since the sequence above only allows for whole number inputs, it cannot estimate the number of board games Joris will have in 1.3 years, or <m>\pi/4</m> years; the system's prediction changes by 8 as the elapsed time changes from 1 to 2, 5 to 6, and so on.
+      This makes the sequence <term>discrete</term>.
+    </p>
+    <p>
+      We also note the recursive nature of the definition of the sequence in
+      <xref ref="example-recursive" />.
+      But there are other ways to describe sequences, and we turn to those now.
+    </p>
+
+    <activity xml:id="act-games">
+      <statement>
+        <p>
+          A recursive definition is nice because it is reasonably intuitive and fits with our usual understanding of how things change over time: they start from where they are now, and then change a little every so often.
+          But perhaps we'd like to know how long it will take Joris to accumulate 500 games.
+          <!-- 							<aside><url href="https://omahamagazine.com/articles/game-on/">People do this</url>, I swear.</aside> -->
+        </p>
+        <ol>
+          <li>Clearly describe in 2-3 sentences <em>a process</em> for using the recursive definition in
+            <xref ref="example-recursive" /> that would allow you to determine how many years it would take Joris to accumulate 500 board games. Please do not use this process to answer the question!
+          </li>
+          <li>In 2-3 sentences, describe the disadvantage in the process you used in Question 1 for finding how long it would take Joris to accumulate 500 games.</li>
+          <li>What we want is a <term>explicit formula</term> for <m>G_t</m>. That is, we want a formula that allows us to plug in a value for <m>t</m> that will give us the number of games <m>G_t</m> that Joris has in year <m>t</m> without having to know any of the previous terms in the sequence. Find such a formula, and compute the first three terms to convince your group that your formula produces the same sequence as
+            <xref ref="eq-recursive-games" />.
+          </li>
+        </ol>
+      </statement>
+      <solution>
+        <ol>
+          <li>Just using the recursive formula provided in
+            <xerf ref="eq-recursive-games" />, we could find the number of years it would take Joris to accumulate 500 board games by generating the terms of the sequence and seeing when it passes 500. We would do this by first finding <m>G_1</m>, then <m>G_1</m> to find <m>G_2</m>, then using <m>G_2</m> to find <m>G_3</m>, etc.
+          </li>
+          <li>This is highly inefficient! In order to know, e.g., <m>G_{500}</m>, you would need to compute <em>all</em> preceding terms.</li>
+          <li>An explicit formula is given by <m>G_t = 37 + 8t</m>. Observe that <m>G_1 = 37 + 8\cdot 1 = 45</m>, <m>G_2 = 37 + 8\cdot 2 = 37 + 16 = 53</m>, and <m>G_3 = 38 + 8\cdot 3 = 61</m>.</li>
+        </ol>
+
+      </solution>
+
+    </activity>
+
+    <p>
+      The sequence described in
+      <xref ref="act-games" /> is known as a <term>linear</term> sequence.
+      This is because, like a line, it grows at a constant rate.
+      Linear growth is extremely useful because it is straightforward to understand and apply.
+      However, it has its shortcomings as well.
+    </p>
+
+    <activity xml:id="act-linear-growth">
+      <statement>
+        <p>
+          Lila is 6 years old, and is 43.5 inches tall.
+          Her parents are told to expect her to grow at approximately 2.25 inches/year.
+          Let <m>H_t, t\ge 0</m> denote Lila's height <m>t</m> years from now.
+        </p>
+        <ol>
+          <li>Predict Lila's height when she turns 8.</li>
+          <li>Give a recursive description for Lila's height.</li>
+          <li>Give an explicit formula for Lila's height.</li>
+          <li>How tall will Lila be when she is 50? Give your answer in feet (remember: there are 12 inches in a foot).</li>
+          <li>In 2-3 sentences, clearly articulate at least one shortcoming of extrapolating using linear models.</li>
+        </ol>
+      </statement>
+      <solution>
+        <ol>
+          <li>Since she is 39 inches tall when she is 4, she should be 41.25 inches tall when she is 5, and 43.5 inches tall when she is 6.</li>
+          <li>We can recursively describe her height <m>t</m> years from now by <m>H_t = H_{t-1} + 2.25</m> for <m>t\ge 1</m>.</li>
+          <li>This model again assumes linear growth: Lila's height is predicted by <m>H_t = 39 + 2.25t</m>.</li>
+          <li>When Lila is 50, the model predicts that she will be <m>H_{46} = 39 + 2.25\cdot 50 = 151.5</m> inches tall, or 12 feet, 7.5 inches tall.</li>
+          <li>Almost nothing changes linearly over a long enough time scale. So while linear models are helpful on short time scales, they eventually become unreliable.</li>
+        </ol>
+
+      </solution>
+
+    </activity>
+
+
+
+
+
+
+
+
+    <conclusion>
+      <title>Conclusion</title>
+      <p>
+        In this section, we explored the idea of a (discrete) sequence.
+        A sequence is just a list of numbers, and we considered sequences which are (in theory, at least) infinite.
+        We saw two ways of describing a sequence other than just listing the numbers in order: recursively, and with an explicit formula.
+        The recursive definition fits with our intuition about how quantities change over time, but it can be tedious to calculate terms that appear late in the sequence, as you need to calculate every term leading up to the one in which you're interested.
+        Explicit formulas, on the other hand, give us shortcuts to calculating any term we want, but can often be hard to find and can obscure the actual behavior of the sequence.
+      </p>
+      <p>
+        Next time, we'll take a look at the ways in which we can combine multiple sequences to create <em>systems</em>.
+        These systems can be used to describe the behavior of real-world interactions.
+        In particular, we'll explore a basic predator-prey model (involving two populations, the predators and the prey), and then a system of three sequences that describes the basic dynamics of the spread of a disease.
+      </p>
+
+    </conclusion>
+
+    <exercises>
+      <exercise>
+        <statement>
+          <p>
+            Find an explicit formula for each of the following.
+          </p>
+          <ol>
+            <li>
+              <m>2, 5, 8, 11, 14, \ldots</m>
+            </li>
+            <li>
+              <m>50, 43, 36, 29, \ldots</m>
+            </li>
+          </ol>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            The first three terms in a sequence are listed below as numbers of dots.
+            Determine a recursive description for the sequence.
+            If possible, determine an explicit formula for the sequence.
+          </p>
+          <figure xml:id="fig-x-seq">
+            <image xml:id="img-x-seq" source="./images/x.svg" size="15%" />
+          </figure>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            The first four terms in a sequence are listed below as numbers of dots.
+            Determine a recursive description for the sequence.
+            If possible, determine an explicit formula for the sequence.
+          </p>
+          <figure xml:id="fig-triangular-seq">
+            <image xml:id="img-triangular-seq" source="./images/triangular.svg" size="45%" />
+          </figure>
+        </statement>
+      </exercise>
+    </exercises>
+
+  </section>
+
+  <section xml:id="sec-dds">
+    <title>Discrete Dynamical Systems</title>
+
+    <assemblage>
+      <title>Motivating Questions</title>
+      <p>
+        <statement>
+          In this section, we will explore the following questions.
+          <ol>
+            <li>What is a discrete dynamical system? How do they relate to sequences?</li>
+            <li>How can we use discrete dynamical systems to describe real-world phenomena like predator-prey interactions, or the spread of a disease in a population?</li>
+          </ol>
+        </statement>
+      </p>
+    </assemblage>
+
+    <introduction>
+      <p>
+        In
+        <xref ref="sec-intro-to-dds" />, we introduced the notion of a sequence.
+        In this section, we will focus on situations in which our sequences represent a quantity changing over discrete, consistent periods of time.
+        We will also consider <em>systems</em> of sequences: two or more interrelated sequences which describe the behavior of multiple changing quantities all at once.
+        Before we dive into such systems, we consider another type of growth.
+      </p>
+    </introduction>
+
+    <subsection xml:id="subsec-exponential-growth">
+      <title>Exponential Growth</title>
+
+      <p>
+        Populations of people and animals do not grow linearly. Instead, they usually grow by a percentage of the whatever the current population is.
+        So, if that annual percentage is, say, 10%, and the current population of a group of fish in a pond is 1000, this model predicts a population of <m>1000 + 10\%\cdot 1000 = 1000 + 100 = 1100</m> fish for next year.
+      </p>
+      <p>
+        In symbols, if <m>P_t</m> represents the number of fish <m>t</m> years from now, then <m>P_0 = 1000</m>, <m>P_1 = P_0 + 0.1\cdot P_0 = (1+0.1)P_0 = 1.1 P_0</m>.
+        The number 0.1 is called the <term>growth rate</term>, <m>r</m>, and the number 1.1 is the <term>growth multiplier</term>.
+      </p>
+
+      <p>
+        In what follows, I will occasionally provide Sage cells in which you can do basic computations (and in which I may help get you started). To see how this works, click "Evaluate" in the Sage cell below to see what happens.
+      </p>
+      <sage>
+        <input>
+        P_0 = 1000
+        P_1 = 1.1*P_0
+        P_1
+        </input>
+      </sage>
+
+      <exploration xml:id="expl-exponential-growth">
+        <statement>
+          <p>
+            Consider a population of 1000 fish growing at 10% per year.
+          </p>
+          <ol>
+            <li>Give a formula for <m>P_2</m> in terms of <m>P_1</m>, and then a formula for <m>P_3</m> in terms of <m>P_2</m>.</li>
+            <li>Using your answer to the previous part as a guide, give a formula for <m>P_t</m> in terms of <m>P_{t-1}</m>.</li>
+            <li>Again, using your answer to Question 1 and the work in the paragraph preceding this activity, give a formula for <m>P_2</m> in terms of <m>P_0</m>. Use this formula to find <m>P_3</m> in terms of <m>P_0</m>. Why might these formulas be more useful than the ones you found in Question 1?</li>
+            <li>State your best guess for a formula for <m>P_t</m> in terms of <m>P_0</m>. Use your formula to estimate the number of fish in the pond after 10, 20, and 50 years. What is this model missing?</li>
+            <li>Press <q>Evaluate</q> below to confirm your response to Question 4. What happens if you increase or decrease the growth rate, <m>r</m>? Try it, and reevaluate.</li>
+          </ol>
+          <sage>
+            <input>
+            P_0 = 1000
+            r = 0.1
+            P(t) = (1+r)^t*P_0
+            tt = range(50)
+            PP = [P(t) for t in tt]
+            tP = list(zip(tt, PP))
+            P_dots = points(tP, color='red')
+            P_dots
+            </input>
+          </sage>
+        </statement>
+        <solution>
+          <ol>
+            <li>We have <m>P_2 = P_1 + 0.1\cdot P_1 = 1.1\cdot P_1.</m> Similarly, <m>P_3 = P_2 + 0.1\cdot P_2 = 1.1\cdot P_2</m>.</li>
+            <li>We may reasonably extrapolate that <m>P_t = 1.1\cdot P_{t-1}</m>.</li>
+            <li>We see <m>P_2 = 1.1 P_1 = 1.1 (1.1 P_0) = (1.1)^2 P_0</m>. Similarly, <m>P_3 = (1.1)^3 P_0</m>. These formulas are more useful because we only need to know the first term, <m>P_0</m>.</li>
+            <li>Best guess: <m>P_t = (1.1)^t P_0</m>. Much like the linear model from the previous activity, this model assumes that the population continues to grow forever.</li>
+            <li>You should notice that the curve grows more slowly if <m>r \lt 0.1</m>, and more quickly if <m>r \gt 0.1</m>.</li>
+          </ol>
+
+        </solution>
+
+      </exploration>
+
+
+      <p>
+        The type of growth explored in
+        <xref ref="expl-exponential-growth" /> called <term>exponential</term>, as the growth comes from taking the growth multiplier to larger and larger powers (exponents).
+        We saw the danger of extrapolation with linear models in
+        <xref ref="act-linear-growth" />, and we note a similar danger in extrapolating with exponential models. If nothing else, it's likely that the pond cannot <em>hold</em> 100,000 fish.
+        Thankfully, we can modify our exponential growth model by introducing an upper limit for what the habitat can hold.
+      </p>
+
+      <exploration xml:id="expl-carrying-capacity">
+        <statement>
+          <p>
+            Suppose our pond can hold 5000 fish.
+            This is known as the <em>carrying capacity</em>, and we'll denote it with the letter <m>K</m>.
+            We'll now let <m>r = 0.1</m> be our <em>maximum</em> growth rate, but we'll let it slowly reduce as the population grows.
+          </p>
+          <ol>
+            <li>As <m>P_t</m> increases and gets closer and closer to <m>K</m> over time, what happens to the ratio <m>P_t/K</m>? What number does it get close to?</li>
+            <li>Thus, what happens to the expression <m>1-\frac{P_t}{K}</m> as <m>P_t</m> increases and gets closer and closer to <m>K</m>?</li>
+            <li>Ecologically speaking, what does it mean for <m>P_t</m> to get closer and closer to <m>K</m>?</li>
+            <li>As the phenomena described in Question 3 occurs, what do we expect the graph of <m>P_t</m> over time to look like?</li>
+            <li>Test your suspicion by evaluating the Sage code below.</li>
+          </ol>
+          <sage>
+            <input>
+            P_0=1000
+            r = 0.1
+            K = 5000
+            maxterm = 100
+            P(t)= K/(1+(K-P_0)/P_0*e^(-r*t))
+            tt = range(maxterm)
+            PP = [P(t) for t in tt]
+            tP = list(zip(tt, PP))
+            P_dots = points(tP, color='red')
+            P_dots
+            </input>
+          </sage>
+        </statement>
+
+        <solution>
+          <ol>
+            <li>As <m>P_t</m> gets closer and closer to <m>K</m>, the ratio <m>P_t/K</m> approaches 1.</li>
+            <li>Since <m>P_t/K</m> is approaching 1, <m>1-P_t/K</m> approaches <m>1-1=0</m>.</li>
+            <li>As <m>P_t</m> approaches <m>K</m>, the population of fish is approaching the maximum number of fish that the pond can support (the carrying capacity).</li>
+            <li>While we expect some sort of growth early (exponential is a good guess), we then expect the population to level off over time as it approaches the carrying capacity.</li>
+            <li>Suspicion confirmed!</li>
+          </ol>
+
+        </solution>
+
+
+      </exploration>
+
+
+    </subsection>
+
+
+    <subsection>
+      <title>A discrete predator-prey model</title>
+
+      <p>
+        We now consider systems of discrete sequences, called <term>discrete dynamical systems</term>.
+      </p>
+
+      <definition xml:id="def-dynamical-system">
+        <p>
+          A <term>dynamical system</term> refers to any fixed mathematical rule which describes how a system changes over time.
+          A <term>discrete</term> dynamical system changes at fixed intervals in time (e.g., each hour), and does not change between the fixed points in time (e.g., a system that changes each hour will view the changing quantity as static between the hours of 1:00pm and 2:00pm).
+        </p>
+
+      </definition>
+
+
+
+      <p>
+        There are two main types of dynamical systems: discrete and continuous.
+        The study of continuous dynamical systems is the domain of calculus and its related disciplines (e.g., differential equations).
+        Continuous dynamical systems treat time as infinitely divisible; discrete dynamical systems do not.
+        Typically, a dynamical <em>system</em> involves multiple related quantities that change over time.
+      </p>
+
+      <p>
+        We begin with a classic predator-prey model adapted from the <url href="https://www.cds.caltech.edu/~murray/amwiki/index.php/Predator_prey">Feedback Systems Wiki</url> at Caltech.
+        For historical reasons, we let <m>L_t</m> be the size of a population of Canadian lynxes in year <m>t</m> and <m>H_t</m> be the size of a population of snowshoe hares, the lynx's primary prey.
+      <aside>Of course, we can carry out the following analysis using any predator/prey pair.</aside>
+      </p>
+
+      <definition xml:id="def-lotkavolterra">
+        <p>
+          Let <m>H_0</m> be the initial population of hares, and <m>L_0</m> the initial population of lynxes.
+          For <m>t\ge 1</m>, the <term>discrete Lotka-Volterra model</term> for the lynx/hare population is given by:
+        </p>
+        <md>
+          <mrow>H_{t+1} \amp = H_t + b(u) H_t - a L_t H_t</mrow>
+          <mrow>L_{t+1} \amp = L_t + c L_t H_t - d L_t,</mrow>
+        </md>
+        <p>
+          where <m>b</m> is the hare birth rate per unit time as a function of the food supply <m>u</m>, <m>d</m> is the lynx mortality rate, and <m>a</m> and <m>c</m> are interaction coefficients.
+        </p>
+      </definition>
+
+
+
+
+      <p>
+        Note the interrelationship between the two equations: the formula for calculating <m>H_{t+1}</m> requires knowing not only <m>H_t</m>, but also <m>L_t</m>.
+        This makes sense!
+        These populations interact, so the presence (or absence) of lynx should reasonably affect the hare population.
+        Let's further analyze this model.
+      </p>
+
+      <exploration>
+        <statement>
+          <p>
+            Consider the predator/prey model introduced in
+            <xref ref="def-lotkavolterra" />.
+          </p>
+          <ol>
+            <li>What do the terms <m>L_t</m> and <m>H_t</m> represent?</li>
+            <li>Which term in the model represents an increase in the hare population? Which term represents a decrease in the hare population? Explain how you know.</li>
+            <li>Which term in the model represents an increase in the lynx population? Which term represents a decrease in the lynx population? Explain how you know.</li>
+            <li>What does the product <m>L_t H_t</m> represent? (The <url href="https://en.wikipedia.org/wiki/Rule_of_product">multiplication principle</url> may be helpful here; also consider what <m>a</m> is described to be.)</li>
+            <li>What simplifying assumptions does this model make about how the populations increase and decrease?</li>
+          </ol>
+
+        </statement>
+
+      </exploration>
+
+      <activity>
+        <statement>
+          <p>
+            Let's start by assuming that <m>H_0 = 20</m> and <m>L_0 = 35</m>. That is, we begin with 20 hares and 35 lynxes.
+            Let's further assume that <m>a = c = 0.001167</m>, <m>b = 0.05</m>, and <m>d = 0.0583</m> (parameters scaled by 12 months).
+          </p>
+          <ol>
+            <li>Compute <m>H_1, H_2, L_1,</m> and <m>L_2</m>. What seems to be happening to the two populations? Confirm using the Sage cell below, which will display the first ten months' worth of predictions, or explore <url href="https://docs.google.com/spreadsheets/d/1sFOHJ-LNA39Ydj_GDg69XhtNwWVtpWNweBT5IBzjJGo/edit?usp=sharing">this spreadsheet</url>. Note that the hare population is given by the blue dots and the lynx population by the red.
+
+              <sage>
+                <input>
+                H_0 = 10 # This is the initial hare population
+                L_0 = 10 # This is the initial lynx population
+                a = 0.014 # This represents the predation rate
+                b=0.6 # Growth rate of hares
+                c=a # This represents the predation rate
+                d=0.7 # death rate of lynx
+                nperiod = 12 # number of time periods in a year
+                def H(n):
+                if n==0:
+                return H_0
+                else:
+                return H(n-1) + (b*H(n-1)-a*L(n-1)*H(n-1))/nperiod
+
+                def L(n):
+                if n==0:
+                return L_0
+                else:
+                return L(n-1) + c*L(n-1)*H(n-1)-(d*L(n-1))/nperiod
+                time=10
+                nn=range(time)
+                HH = [H(n) for n in nn]
+                LL = [L(n) for n in nn]
+                nH = list(zip(nn, HH))
+                nL = list(zip(nn, LL))
+                H_dots = points(nH, color='blue')
+                L_dots = points(nL, color='red')
+                p = H_dots + L_dots
+                p
+                </input>
+              </sage>
+
+            </li>
+            <li>The interaction coefficients translate to a decrease in the lynx population and an increase in the hare population. What do you expect to happen if we increase it from 0.014 to 0.05?</li>
+            <li>
+              Test your suspicion using the Sage cell below, or <url href="https://docs.google.com/spreadsheets/d/1sFOHJ-LNA39Ydj_GDg69XhtNwWVtpWNweBT5IBzjJGo/edit?usp=sharing">this spreadsheet</url>.
+              <sage>
+                <input>
+                H_0 = 10 # This is the initial hare population
+                L_0 = 10 # This is the initial lynx population
+                a = 0.05 # This represents the predation rate
+                b=0.6 # Growth rate of hares
+                c=a # This represents the predation rate
+                d=0.7 # death rate of lynx
+                nperiod=12
+                def H(n):
+                if n==0:
+                return H_0
+                else:
+                return H(n-1) + (b*H(n-1)-a*L(n-1)*H(n-1))/nperiod
+
+                def L(n):
+                if n==0:
+                return L_0
+                else:
+                return L(n-1) + (c*L(n-1)*H(n-1)-d*L(n-1))/nperiod
+                time=10
+                nn=range(time)
+                HH = [H(n) for n in nn]
+                LL = [L(n) for n in nn]
+                nH = list(zip(nn, HH))
+                nL = list(zip(nn, LL))
+                H_dots = points(nH, color='blue')
+                L_dots = points(nL, color='red')
+                p = H_dots + L_dots
+                p
+                </input>
+              </sage>
+            </li>
+            <li>
+              Qualitatively describe the dynamics displayed in the Sage output in the previous question.
+            </li>
+
+          </ol>
+
+
+
+
+        </statement>
+      </activity>
+
+
+      <p>
+        One might reasonably wonder how such a simple model does in making predictions about the long-term dynamics of these populations.
+        The answer is: surprisingly well!
+        In
+        <xref ref="fig-harelynxdata" />, observe the actual collected data on hare and lynx populations over 90 years, from 1845 to 1935.
+        In
+        <xref ref="fig-harelynxmodel" />, we see dynamics predicted by the model.
+        Note the same cyclical patterns of an increase in the hare population followed by an increase in the lynx population, which in turn causes a decrease in the hare population, etc.
+      </p>
+
+      <figure xml:id="fig-harelynxdata">
+
+        <caption>Data on hare and lynx populations over time. (<url href="https://www.cds.caltech.edu/~murray/amwiki/index.php/Predator_prey">Source</url>)</caption>
+
+        <image xml:id="img-hare-lynx-data" width="50%" source="Predprey-graph.png" />
+      </figure>
+
+      <figure xml:id="fig-harelynxmodel">
+
+        <caption>The predicted dynamics of hare and lynx populations over time. (<url href="https://www.cds.caltech.edu/~murray/amwiki/index.php/Predator_prey">Source</url>)</caption>
+
+        <image xml:id="img-hare-lynx-model" width="50%" source="Predprey-discrete.png" />
+      </figure>
+
+      <p>
+        To be clear, the purpose of the model is not to make absolutely certain predictions about the precise numbers of hares and lynxes present in the Canadian wilderness.
+        Instead, we want to understand the broad dynamics of how the populations change relative to one another.
+        Mathematical ecologists can then use these models to understand how small changes in the parameters (say, an increase in the rate of predation) affect the broader dynamics of the ecological system.
+      </p>
+
+    </subsection>
+
+
+    <subsection>
+      <title>The discrete SIR epidemiological model</title>
+
+      <p>
+        We now arrive at the main goal of this chapter: the description of a basic mathematical model for the spread of an infectious disease.
+        We'll first present the model itself and examine its features and assumptions.
+        As was the case with the predator-prey model, we'll see that while it does make simplifying assumptions, it still allows us to analyze the broader dynamics of the disease transmission.
+        We'll then look at ways of reducing the rate of infection, including the so-called "flattening the curve" method.
+      </p>
+      <p>
+        We begin with the model.
+        It is known as a <em>compartmental model</em>, as it divides the population into compartments and assumes that every individual in the same compartment has the same characteristics (at least as far as the transmission of the disease is concerned).
+        We'll look at the simplest such model, the discrete SIR model.
+        Many more complex models are built on the SIR model.
+      </p>
+
+
+      <definition>
+        <p>
+          Consider a population of <m>N</m> people through which a disease is spreading.
+          For some discrete time <m>t \ge 0</m>, let <m>S_t</m> denote the number of individuals <em>susceptible</em> to the disease, <m>I_t</m> the number of individuals <em>infected</em> with the disease, and <m>R_t</m> the number of individuals who have <em>recovered</em> from the disease.
+          We assume that that people move through the compartments as follows:
+        </p>
+
+        <men xml:id="eq-compartments">
+          S \to I \to R.
+        </men>
+
+        <p>
+
+          For <m>t\ge 1</m>, the model is given by the following equations.
+        </p>
+        <md>
+          <mrow>N \amp = S_t + I_t + R_t</mrow>
+          <mrow>S_{t+1} \amp = S_t -b S_t I_t</mrow>
+          <mrow>I_{t+1} \amp = I_t + b S_t I_t - a I_t</mrow>
+          <mrow>R_{t+1} \amp = R_t + a I_t.</mrow>
+        </md>
+        <p>
+          The constant <m>a</m> is known as the <em>recovery rate</em> parameter, which roughly describes how fast someone moves from the infected compartment to the recovered compartment. The constant <m>b</m> is known as the <em>infection rate</em>, and roughly describes how fast someone moves from the susceptible compartment to the infected compartment.
+        </p>
+      </definition>
+
+      <p>
+        Let's explore the equations.
+      </p>
+
+      <exploration>
+        <statement>
+          <ol>
+            <li>What does
+              <xref ref="eq-compartments" /> mean? What assumptions does this make? How does it simplify our analysis?
+            </li>
+            <li>What does the first equation in the set of four mean? What assumptions does it make about the population?</li>
+            <li>The second equation describes how the susceptible population changes over time. It contains the term <m>-b S_t I_t</m>. Based on our work above with a predator-prey model and the definition of <m>b</m>, what epidemiological event is this term describing?</li>
+            <li>Explain why it makes sense that we add <m>b S_t I_t</m> in the equation defining <m>I_{t+1}</m>.</li>
+            <li>What does the term <m>-a I_t</m> mean in the equation for <m>I_{t+1}</m>? Why does it make sense to <em>add</em>
+              <m>a I_t</m> in the equation for <m>R_{t+1}</m>?
+            </li>
+            <li>Note that there are no terms being subtracted in the equation for <m>R_{t+1}</m>. What assumption does this tell us that the model is making?</li>
+          </ol>
+
+        </statement>
+
+
+      </exploration>
+
+      <activity xml:id="act-sirnumbers">
+        <statement>
+          <p>
+            Let's see what happens when we plug in some numbers.
+            Assume that <m>N = 10,000</m>, <m>R_0 = 0</m>, and <m>I_0 = 50</m>.
+          </p>
+          <ol>
+            <li>Why does it make sense that we have <m>R_0 = 0</m> (assuming we have a new disease entering a population).</li>
+            <li>What is <m>S_0</m>?</li>
+            <li>Let's assume that <m>a = 0.1</m> and <m>b = 0.0001</m>. Compute <m>S_1, I_1</m>, and <m>R_1</m>.</li>
+            <li>Use your answer to the previous part to compute <m>S_2, I_2</m>, and <m>R_2</m>.</li>
+            <li>Now check your work using <url href="https://docs.google.com/spreadsheets/d/153LO2O21_TwEYyODq2Km90oRrilLEpfYmgb8w3AJSQo/edit?usp=sharing">this spreadsheet</url> (download a copy to your device and edit it there).</li>
+          </ol>
+        </statement>
+      </activity>
+
+      <investigation>
+        <statement>
+          <p>
+            In this and the following activity, we'll use the spreadsheet <url href="https://docs.google.com/spreadsheets/d/153LO2O21_TwEYyODq2Km90oRrilLEpfYmgb8w3AJSQo/edit?usp=sharing">found here</url>.
+            Download the file and play around with the numbers at the top of the sheet to change some of the features; e.g., how does increasing/decreasing the number of initial infected individuals change the shape of the curves?
+            What do you notice? What do you wonder? Give at least 2-3 observations or questions.
+          </p>
+        </statement>
+      </investigation>
+
+      <p>
+        The COVID-19 pandemic introduced many people to a quantity called <m>r_0</m>.
+      <aside>Read <q>R-naught</q> or <q>R-zero</q>.</aside>
+      This is known as the <term>basic reproduction number</term>, and is the expected number of new infections <em>directly generated</em> by a single case.
+      So, if Sam were to get COVID-19, <m>r_0</m> would be the expected number of people Sam would <em>directly</em> infect.
+      We would then expect each of <em>them</em> to infect another <m>r_0</m> people, and so on.
+      </p>
+      <p>
+        Generally, if <m>r_0 \gt 1</m>, we expect the disease to spread.
+        If <m>r_0 \lt 1</m>, we expect it to die out.
+      </p>
+      <p>
+        The next activity explores the ways in which varying <m>r_0</m> impacts new cases of the disease caused both directly and indirectly by a single person.
+      </p>
+
+      <activity xml:id="act-r0">
+        <statement>
+          <p>
+            In this activity, we assume different values for <m>r_0</m>. However, we will make two assumptions that don't change.
+          </p>
+          <p>
+            First, assume that all direct infections are done within a 5-day period.
+            Second, assume that that those infected don't infect others until the next five day period.
+          </p>
+          <p>
+            Let <m>C_t</m> be the number of cases I've caused after <m>t</m> five-day periods. Assume <m>C_0 = 1</m> (me).
+          </p>
+          <ol>
+            <li>Explain why <m>C_1 = r_0 C_0 = r_0</m>.</li>
+            <li>Explain why <m>C_2 = C_1 + r_0 C_1 = r_0 + r_0^2</m>.</li>
+            <li>After 30 days, six five-day periods will have passed. Explain why <me>C_6 = r_0 + r_0^2 + r_0^3 + \cdots + r_0^6.</me>
+            </li>
+            <li>Our SIR model approximates <m>r_0</m> by the formula <men xml:id="eq-r0">r_0 \approx \frac{bN}{a}.</men> Using that formula, what is the approximate <m>r_0</m> for the situation described in
+              <xref ref="act-sirnumbers" />?
+            </li>
+            <li>Given that value of <m>r_0</m>, use the Sage cell below (replacing the ? with the value you found) to estimate how many cases Sam directly or indirectly causes over a 30-day period.</li>
+            <li>The practice of <url href="https://en.wikipedia.org/wiki/Social_distancing">social distancing</url> is intended to reduce <m>r_0</m>. Assume that strict social distancing is observed, and this reduces <m>r_0</m> to approximately 1.25 (one direct infection fewer). Now how many cases does Sam cause over the course of a 30-day period?</li>
+            <li>As the COVID-19 situation is ongoing, estimates for <m>r_0</m> vary significantly (and are variant-dependent). <url href="https://academic.oup.com/jtm/article/27/2/taaa021/5735319">One study from February 2020</url> found an average <m>r_0</m> of 3.28. If that is the true number, approximately how many cases will a typical infected person be responsible for over the course of a month? Use the Sage cell to determine your answer.</li>
+            <li>Other studies suggest that, in the absence of any social interventions, the original variant of COVID-19 has <m>r_0 \approx 2.38</m>. In that case, how many cases would an infected person be responsible for over the course of a month?</li>
+            <li>The Delta variant of COVID-19 has <m>r_0 \approx 5.1</m>. If I am infected with the Delta variant, approximately how many new cases will I cause within a month?</li>
+            <li>The Omicron variant of COVID-19 has an estimated <m>r_0 \approx 10</m> (note that this is being written in February 2022, just as the first major Omicron wave is subsiding; it should therefore be treated as preliminary). If Sam is infected with the Omicron variant, approximately how many new cases will he cause within a month?</li>
+          </ol>
+          <sage>
+            <input>
+            r_0 = ?
+            r_0 + r_0^2 + r_0^3 + r_0^4 + r_0^5 + r_0^6
+            </input>
+          </sage>
+        </statement>
+      </activity>
+
+      <p>
+        For our last activity, we'll explore how reducing <m>r_0</m> <q>flattens</q> the curve of infected people at time <m>t</m>, <m>I_t</m>.
+        There are two main advantages of a flattened infected curve.
+        First, this often corresponds to fewer infected people overall.
+        Second, the lack of a spike in infected persons makes it easier for the healthcare system to effectively treat those who <em>are</em> infected (not to mention anyone with other medical concerns).
+      </p>
+
+      <exploration>
+        <statement>
+          <p>
+            One last time, consider the values for the variables we used in
+            <xref ref="act-sirnumbers" />; for reference, this was <m>S_0 = 10000</m>, <m>I_0 = 50</m>, <m>R_0 = 0</m>, <m>a = 0.1</m>, and <m>b = 0.0001</m>. We'll again use the <url href="https://drive.google.com/file/d/1xSJ6KM8x9HVdo9-P4QoUOoSmmfpKmmIQ/view?usp=sharing">Google sheet</url> to answer these questions.
+          </p>
+          <ol>
+            <li>What is <m>r_0</m>? (Recall
+              <xref ref="eq-r0" /> from Question 4 of
+              <xref ref="act-r0" />.)
+            </li>
+            <li>
+              <p>This value is pretty high (though it is approximately the <m>r_0</m> of diseases like measles and chicken pox!), but is convenient for our purposes. Nonetheless, we can still explore the ways in which changes in <m>r_0</m> affect the shape of the curves; our qualitative observations will still apply to real-world situations like the current coronavirus pandemic.</p>
+
+
+              <p>Recall that <m>r_0 \approx \frac{bN}{a}</m> and assume our population size <m>N = 10000</m> and recovery rate <m>a = 0.1</m> are constant. Compute the three values of <m>r_0</m> that result from infection rates of <m>b = 0.00005, 0.0001</m>, and <m>0.0002</m>. In turn, plug these values into the <url href="https://drive.google.com/file/d/1xSJ6KM8x9HVdo9-P4QoUOoSmmfpKmmIQ/view?usp=sharing">Google sheet</url> and comment on the shape of the infection curve: how tall is the spike of infected individuals, and at what time <m>t</m> is it at its highest point?</p>
+            </li>
+
+
+            <li>Similarly, assuming <m>N = 10000</m> and <m>b = 0.0001</m> are constant, compute the values of <m>r_0</m> that result from <m>a = 0.05, 0.1</m>, and <m>0.2</m>. In turn, plug these values into the <url href="https://drive.google.com/file/d/1xSJ6KM8x9HVdo9-P4QoUOoSmmfpKmmIQ/view?usp=sharing">Google sheet</url> and comment on the shape of the (green) infection curve: how tall is the spike of infected individuals, and at what time <m>t</m> is it at its highest point?</li>
+          </ol>
+        </statement>
+      </exploration>
+
+
+
+
+
+
+
+
+
+
+    </subsection>
+
+    <conclusion>
+      <p>
+        In this section, we first saw exponential growth, and discussed the strengths and weaknesses of using exponential growth to model a changing population.
+        We also explored a basic predator-prey model, and noted that though the specific predictions made by the model may not be completely accurate, it does a good job of describing the broader dynamics and trends in the populations of the predator and prey.
+      </p>
+      <p>
+        We concluded by exploring a discrete version of the SIR epedimiological model, which is useful for describing the spread of a disease through a population.
+        We used the model to test the effect of various interventions and observed how slowing the spread of the disease <q>flattens the curve</q> of infected individuals.
+      </p>
+    </conclusion>
+
+
+    <exercises>
+
+      <exercise>
+        <statement>
+          <p>
+            The predator-prey model described in
+            <xref ref="def-lotkavolterra" /> is known as a <em>discrete Lotka-Volterra</em> model.
+            Do some research online to determine who Lotka and Volterra were, and what questions they were interested in. Write one or two paragraphs describing your findings.
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            An advantage of the SIR model explored in this section is its simplicity: the population is split into only three compartments.
+            However, through the use of more compartments it is possible to identify subtler dynamics at work; find such a model, such as an SEIR model, describe the choices it makes, and what is gained by the additional complexity.
+          </p>
+        </statement>
+      </exercise>
+
+
+    </exercises>
+
+  </section>
+
+
+
+
+</chapter>

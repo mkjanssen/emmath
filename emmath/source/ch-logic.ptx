@@ -1,0 +1,1084 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<chapter xml:id="chap-logic">
+  <title>Modern Mathematical Logic</title>
+
+  <introduction>
+    <p>
+      In
+      <xref ref="chap-reasoning" />, we explored two types of reasoning: inductive reasoning, and deductive reasoning.
+      The type of reasoning used most often in mathematics is deductive reasoning.
+      In the late 19th/early 20th century, logic itself was mathematized by the likes of George Boole and Augustus De Morgan into a <em>propositional calculus</em>.
+      This gave mathematicians a means of determining the truth value of a statement purely based on its inherent logical structure.
+    </p>
+    <p>
+      It is this method of calculating that we explore in this chapter.
+    </p>
+  </introduction>
+
+  <section xml:id="sec-connectives">
+    <title>Logical Connectives and Rules of Inference</title>
+
+    <assemblage>
+      <title>Motivating Questions</title>
+      <p>
+        <statement>
+          In this section, we will explore the following questions.
+          <ol>
+            <li>What is a proposition?</li>
+            <li>What are logical connectives? How can they be used to build new propositions?</li>
+            <li>What does it mean for two propositions to be logically equivalent?</li>
+          </ol>
+        </statement>
+      </p>
+    </assemblage>
+
+
+
+    <p>
+      In the late 19th and early 20th centuries, mathematicians began mathematize and formalize logic itself. Today we begin to explore these foundational issues. We'll start with some definitions.
+    </p>
+
+
+    <definition>
+      <index>proposition</index>
+      <index>
+        <h>proposition</h>
+        <h>elementary</h>
+      </index>
+      <index>logical connectives</index>
+      <p>
+        A <term>proposition</term> is a declarative sentence which is either true or false, but not both.
+        An <term>elementary proposition</term> is a sentence with a subject and a verb, but no connectives (such as <em>and, or, not, if-then,</em> or <em>if-and-only-if</em>).
+      </p>
+
+    </definition>
+
+    <activity xml:id="act-propositions">
+      <statement>
+        <p>
+          Determine which of the following are propositions (elementary or otherwise).
+          If a given sentence is a proposition, determine its truth value.
+          If it isn't, explain why not.
+        </p>
+        <ol>
+          <li>Barack Obama was the 44th president of the United States.</li>
+          <li>The square root of a whole number is always a whole number.</li>
+          <li>The Green Bay Packers are the worst football team.</li>
+          <li>Why is this class so much fun?</li>
+          <li>This sentence is false.</li>
+          <li>A group of crows is called a murder.</li>
+          <li>Everyone likes cats.</li>
+        </ol>
+
+      </statement>
+
+      <solution>
+        <ol>
+          <li>This is a true proposition.</li>
+          <li>This is a false proposition. As an example, <m>\sqrt{21}</m> is not a whole number.</li>
+          <li>This one is harder (though it's an easy "true" from your instructor). But it's likely either a false proposition (due to the Packers not having the worst record in the league) or not a proposition at all, as agreement with the sentence is a matter of subjective taste.</li>
+          <li>This is an interrogative, not a declaration.</li>
+          <li>This is a declarative sentence, but it's neither true nor false; it's a paradox.</li>
+          <li>This is a true proposition! Who knew?</li>
+          <li>This is a false proposition.</li>
+        </ol>
+
+      </solution>
+
+
+    </activity>
+
+    <p>
+      Now that we have a sense for what a proposition is, we'll take old propositions and make new ones using <em>logical connectives</em>.
+      In order to describe how the connectives work, mathematicians define the truth values of the new propositions <em>formally</em>
+      <mdash />that is, without regard to the content of the propositions themselves
+      <mdash />in terms of the possible combinations of truth values from the constituent propositions.
+      This gives us an abstract way of considering the truth values of propositions.
+    </p>
+
+    <definition>
+      <index>negation</index>
+      <index>
+        <h>logical connectives</h>
+        <h>negation</h>
+      </index>
+      <statement>
+        <p>
+          Suppose <m>P</m> and <m>Q</m> are statements (e.g., like those in
+          <xref ref="act-propositions" />).
+          The <term>negation</term> of <m>P</m>, denoted <m>\neg P</m> and read "not <m>P</m>", has the opposite truth value of <m>P</m> and is defined by
+          <xref ref="table-negation" />.
+        </p>
+
+        <table xml:id="table-negation">
+          <title>
+            The negation of <m>P</m>.
+          </title>
+          <tabular halign="center">
+            <row bottom="medium">
+              <cell halign="left" right="medium">
+                <m>​P</m>
+              </cell>
+              <cell halign="left">
+                <m>​\neg P</m>
+              </cell>
+            </row>
+            <row>
+              <cell right="medium">
+                T
+              </cell>
+              <cell>
+                F
+              </cell>
+            </row>
+            <row>
+              <cell right="medium">
+                F
+              </cell>
+              <cell>
+                T
+              </cell>
+            </row>
+          </tabular>
+        </table>
+      </statement>
+    </definition>
+
+    <definition>
+      <index>and</index>
+      <index>
+        <h>logical connectives</h>
+        <h>and</h>
+      </index>
+      <statement>
+        <p>
+          The <term>conjunction</term> of <m>P</m> and <m>Q</m>, denoted <m>P \land Q</m> and read <q>
+            <m>P</m> and <m>Q</m>
+          </q>, is true when both <m>P</m> and <m>Q</m> are true, and false otherwise. See
+          <xref ref="table-and" />.
+        </p>
+
+        <table xml:id="table-and">
+          <title>
+            The conjunction of <m>P</m> and <m>Q</m>.
+          </title>
+          <tabular halign="center">
+            <row bottom="medium">
+              <cell halign="left" right="medium">
+                <m>​P</m>
+              </cell>
+              <cell halign="left" right="medium">
+                <m>​Q</m>
+              </cell>
+              <cell halign="left">
+                <m>P \land Q​</m>
+              </cell>
+            </row>
+            <row>
+              <cell right="medium">
+                T
+              </cell>
+              <cell right="medium">
+                T
+              </cell>
+              <cell>
+                T
+              </cell>
+            </row>
+            <row>
+              <cell right="medium">
+                T
+              </cell>
+              <cell right="medium">
+                F
+              </cell>
+              <cell>
+                F
+              </cell>
+            </row>
+            <row>
+              <cell right="medium">
+                F
+              </cell>
+              <cell right="medium">
+                T
+              </cell>
+              <cell>
+                F
+              </cell>
+            </row>
+            <row>
+              <cell right="medium">
+                F
+              </cell>
+              <cell right="medium">
+                F
+              </cell>
+              <cell>
+                F
+              </cell>
+            </row>
+          </tabular>
+        </table>
+      </statement>
+    </definition>
+
+    <definition>
+      <index>or</index>
+      <index>
+        <h>logical connectives</h>
+        <h>or</h>
+      </index>
+      <statement>
+
+        <p>
+          The <term>disjunction</term> of <m>P</m> and <m>Q</m>, denoted <m>P \lor Q</m> and read <q>
+            <m>P</m> or <m>Q</m>
+          </q>, is true when <m>P</m> is true, <m>Q</m> is true, or both are true, and false otherwise. See
+          <xref ref="table-or" />.
+        </p>
+
+        <table xml:id="table-or">
+          <title>
+            The disjunction of <m>P</m> and <m>Q</m>.
+          </title>
+          <tabular halign="center">
+            <row bottom="medium">
+              <cell halign="left" right="medium">
+                <m>​P</m>
+              </cell>
+              <cell halign="left" right="medium">
+                <m>​Q</m>
+              </cell>
+              <cell halign="left">
+                <m>P \lor Q​</m>
+              </cell>
+            </row>
+            <row>
+              <cell right="medium">
+                T
+              </cell>
+              <cell right="medium">
+                T
+              </cell>
+              <cell>
+                T
+              </cell>
+            </row>
+            <row>
+              <cell right="medium">
+                T
+              </cell>
+              <cell right="medium">
+                F
+              </cell>
+              <cell>
+                T
+              </cell>
+            </row>
+            <row>
+              <cell right="medium">
+                F
+              </cell>
+              <cell right="medium">
+                T
+              </cell>
+              <cell>
+                T
+              </cell>
+            </row>
+            <row>
+              <cell right="medium">
+                F
+              </cell>
+              <cell right="medium">
+                F
+              </cell>
+              <cell>
+                F
+              </cell>
+            </row>
+          </tabular>
+        </table>
+
+      </statement>
+
+
+
+
+
+    </definition>
+
+    <activity>
+      <statement>
+        <p>
+          Meaningfully negate the following propositions (without just saying "It is not the case that...").
+        </p>
+        <ol>
+          <li>
+            <m>e</m> is a negative real number.
+          </li>
+          <li>Iowa is the tenth largest state in the U.S.A. (by population).</li>
+          <li>17 is a prime number.</li>
+        </ol>
+        <!-- <solution>
+              <ol>
+                <li><m>e</m> is a nonnegative real number.</li>
+                <li>Iowa is not the tenth largest state.</li>
+                <li>17 is a composite number.</li>
+              </ol>
+  
+  
+            </solution> -->
+
+
+
+      </statement>
+
+
+    </activity>
+
+
+    <exploration>
+      <statement>
+        <p>
+          Determine the truth values of the following propositions.
+        </p>
+        <ol>
+          <li>Our math class meets on Mondays and the capital of Iowa is Des Moines.</li>
+          <li>Our math class meets on Mondays and the capital of Minnesota is Minneapolis.</li>
+          <li>Our math class meets on Mondays or the capital of Minnesota is Minneapolis.</li>
+        </ol>
+
+
+      </statement>
+
+      <solution>
+        <p>We want to emphasize that the truth of the conjunction or disjunction depends <em>only on the truth of the constituent statements</em>. It doesn't matter whether it makes sense semantically to combine the constituents this way.</p>
+
+        <ol>
+          <li>This is true, as both constituents are true.</li>
+          <li>This is false; the capital of Minnesota is St. Paul, not Minneapolis.</li>
+          <li>This is true, since it's a disjunctive statement and one of the constituents is true (Math 149 meets on Mondays).</li>
+        </ol>
+
+
+      </solution>
+    </exploration>
+
+
+
+    <p>
+      The last connective we'll consider (for now) is <em>implication</em>.
+    </p>
+
+    <definition xml:id="def-implications">
+      <index>implication</index>
+      <index>if-then</index>
+      <index>conditional statements</index>
+      <index>
+        <h>logical connectives</h>
+        <h>implies</h>
+      </index>
+      <p>
+        Let <m>P</m> and <m>Q</m> be statements.
+        The <term>implication</term>, "<m>P</m> implies <m>Q</m>" (or "if <m>P</m>, then <m>Q</m>") is denoted <m>P\Rightarrow Q</m>, and is false only when <m>P</m> is true but <m>Q</m> is false.
+        See
+        <xref ref="table-implication" />.
+      </p>
+
+      <table xml:id="table-implication">
+        <title>
+          The implication <m>P\Rightarrow Q</m>.
+        </title>
+        <tabular halign="center">
+          <row bottom="medium">
+            <cell halign="left" right="medium">
+              <m>​P</m>
+            </cell>
+            <cell halign="left" right="medium">
+              <m>​Q</m>
+            </cell>
+            <cell halign="left">
+              <m>P\Rightarrow Q​</m>
+            </cell>
+          </row>
+          <row>
+            <cell right="medium">
+              T
+            </cell>
+            <cell right="medium">
+              T
+            </cell>
+            <cell>
+              T
+            </cell>
+          </row>
+          <row>
+            <cell right="medium">
+              T
+            </cell>
+            <cell right="medium">
+              F
+            </cell>
+            <cell>
+              F
+            </cell>
+          </row>
+          <row>
+            <cell right="medium">
+              F
+            </cell>
+            <cell right="medium">
+              T
+            </cell>
+            <cell>
+              T
+            </cell>
+          </row>
+          <row>
+            <cell right="medium">
+              F
+            </cell>
+            <cell right="medium">
+              F
+            </cell>
+            <cell>
+              T
+            </cell>
+          </row>
+        </tabular>
+      </table>
+    </definition>
+
+    <exploration>
+      <statement>
+        <p>
+          Determine the truth values of the following statements. Identify which row of
+          <xref ref="table-implication" /> you are in.
+        </p>
+        <ol>
+          <li>If <m>-5</m> is a negative real number, then triangles have three sides.</li>
+          <li>If our math class meets today, then it is Wednesday.</li>
+          <li>If <m>9 > 5</m>, then dogs do not have wings.</li>
+          <li>If <m>2=4</m>, then dogs do have wings.</li>
+        </ol>
+
+      </statement>
+      <!-- 
+    <solution>
+              <p>As with conjunction and disjunction, there need be no causal relationship (or any relationship at all) between the constituents in an implication. To actually deduce the implication, however, usually does require a causal link to be established.</p>
+              <ol>
+                <li>This is true.</li>
+              </ol>
+    
+            </solution>
+     -->
+
+
+    </exploration>
+
+
+
+    <p>
+      The formalization of mathematical logic ramps up a bit when we consider conditional statements.
+      It is important to remember that we define the truth value of the proposition <m>P \Rightarrow Q</m> <em>purely formally</em> based on the structure of the conditional statement and the truth values of the constituents <m>P</m> and <m>Q</m>.
+      There need not be a causal relationship between <m>P</m> and <m>Q</m>!
+    </p>
+
+    <p>
+      The last two rows of
+      <xref ref="table-implication" /> are also worth a moment of our time.
+      They state that if the statement <m>P</m>
+      <fn>Often called the <em>antecedent.</em></fn> is false, then the <em>implication</em>
+      <m>P\Rightarrow Q</m> is <em>true</em>.
+      Note that this is different than saying that <m>Q</m>
+      <fn>Often called the <em>consequent.</em></fn> is true.
+      When the implication <m>P\Rightarrow Q</m> is true because <m>P</m> is false, we usually say that <m>P\Rightarrow Q</m> is <term>vacuously true</term>.
+    </p>
+
+    <activity>
+      <index>vacuous truth</index>
+      <statement>
+        <p>
+          Suppose your professor promises that, if everyone has solved a Rubik's cube by Friday, then they will bring snacks to class<fn>This is purely hypothetical.</fn>.
+          Unfortunately, a few students do not solve a Rubik's cube by Friday, so the class does not get snacks.
+        </p>
+        <p>
+          Decide the truth value of the following implication:
+        </p>
+        <blockquote>
+          If everyone in the class solves a Rubik's cube by Friday, the professor will bring snacks to class.
+        </blockquote>
+        <p>
+          Explain your thinking.
+        </p>
+        <!-- <p>
+                Suppose Dr. Janssen promises that, if everyone has solved their Rubik's Cube by Friday, then he will bring Defender sandwiches (on pretzel buns, with everything, as God intended) to class<fn>This is purely hypothetical.</fn>.
+                Unfortunately, a few students do not solve the Cube by Friday, so Dr. Janssen does not bring Defenders.
+              </p>
+    
+              <p>
+                Decide the truth value of the implication "If everyone can solve their Cubes by Friday, Dr. Janssen will bring Defenders to class".
+                How does this help you think about vacuous truth?
+              </p> -->
+
+
+
+
+      </statement>
+
+    </activity>
+
+
+    <p>
+      An important tool in our logical toolkit is one you likely employed in the theorems you deduced from
+      <xref ref="axiom-kittens" />.
+    </p>
+
+
+    <exploration>
+      <index>contrapositive</index>
+      <statement>
+        <p>
+          Let <m>P</m> and <m>Q</m> be statements.
+          The <term>contrapositive</term> of the implication <m>P\Rightarrow Q</m> is the implication <m>(\neg Q) \Rightarrow (\neg P)</m>.
+          Complete
+          <xref ref="table-contrap" />. Is the contrapositive equivalent to anything we've looked at thus far?
+        </p>
+        <table xml:id="table-contrap">
+          <title>
+            The contrapositive of <m> P\Rightarrow Q</m>.
+          </title>
+          <tabular>
+            <row bottom="medium">
+              <cell right="medium">
+                <m>P</m>
+              </cell>
+              <cell right="medium">
+                <m>Q</m>
+              </cell>
+              <cell right="medium">
+                <m>\neg P​</m>
+              </cell>
+              <cell right="medium">
+                <m>\neg Q​</m>
+              </cell>
+              <cell>
+                <m>(\neg Q) \Rightarrow (\neg P)</m>
+              </cell>
+            </row>
+            <row>
+              <cell halign="center" right="medium">
+                T
+              </cell>
+              <cell halign="center" right="medium">
+                T
+              </cell>
+              <cell right="medium">
+              </cell>
+              <cell right="medium">
+              </cell>
+              <cell halign="center">
+                <line>
+                </line>
+                <line>
+                </line>
+              </cell>
+            </row>
+            <row>
+              <cell halign="center" right="medium">
+                T
+              </cell>
+              <cell halign="center" right="medium">
+                F
+              </cell>
+              <cell right="medium">
+              </cell>
+              <cell right="medium">
+              </cell>
+              <cell halign="center">
+                <line>
+                </line>
+                <line>
+                </line>
+              </cell>
+            </row>
+            <row>
+              <cell halign="center" right="medium">
+                F
+              </cell>
+              <cell halign="center" right="medium">
+                T
+              </cell>
+              <cell right="medium">
+              </cell>
+              <cell right="medium">
+              </cell>
+              <cell halign="center">
+                <line>
+                </line>
+                <line>
+                </line>
+              </cell>
+            </row>
+            <row>
+              <cell halign="center" right="medium">
+                F
+              </cell>
+              <cell halign="center" right="medium">
+                F
+              </cell>
+              <cell right="medium">
+              </cell>
+              <cell right="medium">
+              </cell>
+              <cell halign="center">
+                <line>
+                </line>
+                <line>
+                </line>
+              </cell>
+            </row>
+          </tabular>
+        </table>
+      </statement>
+    </exploration>
+
+
+
+    <activity>
+      <statement>
+        <p>
+          Write the contrapositives of the following statements. Be ready to explain why the contrapositives are equivalent to the original implications.
+        </p>
+        <ol>
+          <li>If a kitten loves fish, then it is teachable.</li>
+          <li>If a kitten does not have a tail, then it will play with a gorilla.</li>
+          <li>If a kitten has green eyes, then it is not teachable.</li>
+          <li>If today is Wednesday, then we have math class.</li>
+        </ol>
+      </statement>
+
+    </activity>
+
+    <p>
+      We have now explored several ways of combining existing propositions into larger propositions using logical connectives.
+      When we use logic to write proofs, we also employ tools known as <em>rules of inference</em>.
+      They clearly describe what steps we are allowed to take.
+      There are many such rules; we will highlight two.
+    </p>
+
+    <p>
+      The way in which reasoning with implications is often done uses a rule of inference known as <term>modus ponens</term> which runs roughly:
+    </p>
+    <ul>
+      <li>If <m>P</m>, then <m>Q</m>.</li>
+      <li>
+        <m>P</m>,
+      </li>
+      <li>Therefore, <m>Q</m>
+      </li>
+    </ul>
+
+    <p>
+      A closely related rule of inference is known as <term>modus tollens</term>, and runs thusly:
+    </p>
+    <ul>
+      <li>If <m>P</m>, then <m>Q</m>.</li>
+      <li>Not <m>Q</m>,</li>
+      <li>Therefore, not <m>P</m>.</li>
+    </ul>
+
+    <conclusion>
+      <p>
+        In this section, we explored the fundamentals of logical reasoning employed in mathematics.
+        Propositions are constructed out of elementary propositions and logical connectives.
+        The truth values of these propositions can be determined purely formally in a consistent fashion.
+        We then use laws of inference like <em>modus ponens</em> or <em>modus tollens</em> to reason from true proposition to true proposition.
+      </p>
+    </conclusion>
+
+
+
+
+
+    <exercises>
+      <exercise>
+        <statement>
+          <p>
+            Given an implication <m>P\Rightarrow Q</m>, the <em>converse</em> is the statement <m>Q\Rightarrow P</m>.
+            Find the truth table for <m>Q\Rightarrow P</m>; is it the same as <m>P\Rightarrow Q</m>?
+            Think of an example of a specific statement <m>P\Rightarrow Q</m> that illustrates this.
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            A statement is called a <term>tautology</term> if is it always true.
+            Similarly, a statement is known as a <term>contradiction</term> if it is never true.
+            Determine which of the following, if any, are tautologies, and which are contradictions.
+          </p>
+          <ol>
+            <li>
+              <m>P\land (\neg P)</m>
+            </li>
+            <li>
+              <m>P\lor (\neg P)</m>
+            </li>
+            <li>
+              <m>P\Rightarrow (P\Rightarrow (P\Rightarrow (P\Rightarrow Q)))</m>
+            </li>
+            <li>
+              <m>P\Rightarrow (\neg P\Rightarrow (P\Rightarrow (\neg P\Rightarrow Q)))</m>
+            </li>
+          </ol>
+        </statement>
+      </exercise>
+    </exercises>
+
+
+
+
+
+
+  </section>
+
+
+  <section xml:id="sec-formal-systems-incompleteness">
+    <title>Formal Systems and Incompleteness</title>
+
+    <assemblage>
+      <title>Motivating Questions</title>
+      <p>
+        <statement>
+          In this section, we will explore the following questions.
+          <ol>
+            <li>What are formal systems?</li>
+            <li>What was Hilbert's goal? How was it resolved?</li>
+            <li>How did Cantor describe infinite sets?</li>
+          </ol>
+        </statement>
+      </p>
+    </assemblage>
+
+    <subsection xml:id="subsec-formal-systems">
+      <title>Formal Systems</title>
+
+      <p>
+        We have seen thus far a way of formalizing logic so that we can think about the truth of a statement purely syntactically (structurally) without regard for the semantic meaning of the statements under consideration.
+        In the late 19th century, mathematicians developed what became known as <term>formal systems</term>, consisting of axioms, which were strings of symbols, such as
+        <me>
+          \exists B \forall C, (C\in B \Leftrightarrow C\subseteq A),
+        </me>
+        along with a <term>logical calculus</term>, which govern the rules of inference that can be used on the axioms to deduce new theorems.
+      </p>
+
+      <p>
+        Further, mathematicians had long assumed there were consistent foundational axioms for their discipline.
+        Newly discovered paradoxes challenged this view.
+      </p>
+      <exploration>
+        <title>Russell's Paradox</title>
+        <p>
+          In a certain town lives a barber who only cuts the hair of <em>all</em> people who do not cut their own hair.
+          Who cuts the barber's hair?
+        </p>
+        <!-- 						<solution>
+              <p>
+                This is a paradox: if the barber cuts his own hair, we reach a contradiction, as he only cuts the hair of those who do not cut their own hair. On the other hand, if the barber does not cut his own hair, he does by definition.
+              </p>
+              <p>
+                This sort of self-referential paradox is exactly the sort that we'll study later in this section that led to the foundational crisis referred to in the section title.
+              </p>
+            </solution> -->
+      </exploration>
+
+      <p>
+        Two main schools of mathematical philosophy sprung up in the wake of these discoveries.
+        The <term>formalists</term> argued that statements of mathematics and logic are really just about the rules and consequences for manipulating symbols and strings of letters.
+        That is, mathematics does not have a subject matter at all--just empty symbols, which may be given an interpretation in particular situations and thus have meaning.
+      </p>
+      <p>
+        The response came from the <term>intuitionists</term>
+        <fn>Of course, these are not the only two options for philosophies of mathematics; many mathematicians talk about their work as if they are <url href="https://plato.stanford.edu/entries/platonism-mathematics/">platonists</url> at some level.</fn>.
+        Intuitionism is an approach that considers mathematics to be purely the result of the constructive mental activity of humans rather than the discovery of any principles which we can reasonably claim exist in an objective reality.
+        Thus, in some sense, mathematics is up to whoever is doing the mathematics.
+        To the intuitionists, the formalists were reducing mathematics to a meaningless game with symbols.
+      </p>
+
+      <principle>
+        <p>
+          What strikes you about the formalist and intuitionist approaches to mathematics?
+          Why?
+        </p>
+      </principle>
+
+
+      <p>
+        In 1900, at the second International Congress of Mathematicians in Paris, the esteemed mathematician David Hilbert posed 23 theretofore unanswered problems in mathematics that he thought were important to guide the development of mathematics in the 20th century.
+        Most of Hilbert's problems have been solved, but three are unresolved, two are thought to be too vague to ever get consensus on what a solution would look like, and one is the subject of much debate.
+      </p>
+      <p>
+        In an attempt to resolve the issues raised by paradoxes like Russell's Paradox, Hilbert posed this problem, the second on the list:
+      </p>
+      <blockquote>
+        But above all I wish to designate the following as the most important among the numerous questions which can be asked with regard to the axioms: To prove that they are not contradictory, that is, that a definite number of logical steps based upon them can never lead to contradictory results….
+      </blockquote>
+
+      <p>
+        That is, Hilbert wanted mathematicians to prove that the axioms on which mathematics was founded did not lead to a contradiction.
+        The resolution to this problem is surprising, and to begin to explore its solution, we will turn to the infinite.
+      </p>
+
+    </subsection>
+
+    <subsection xml:id="subsec-infinite-sets">
+      <title>Infinity and Incompleteness</title>
+
+      <p>
+        In
+        <xref ref="subsec-formal-systems" />, we learned about the push from mathematicians in the late 19th/early 20th century were trying to show that the axioms, the very foundations on which mathematics was built, were both <em>complete</em> (the truth of every sensible statement could be decided via deductions from the axioms) and <em>consistent</em> (one could never deduce contradictory statements from the axioms).
+      </p>
+
+      <p>
+        For reasons which are hopefully clear, we'll assume that the axioms are consistent, that is, no contradictions will arise from them. (If contradictions <em>can</em> arise, we are in trouble indeed.)
+        But if the axioms are consistent, can it be shown that they're complete?
+        To answer this question, we dive into the realm of infinity.
+      </p>
+
+
+      <definition>
+        <p>
+          Let <m>S</m> and <m>T</m> be <term>sets</term>, which we may think of as collections of objects.
+          We say that <m>S</m> and <m>T</m> have the same <term>cardinality</term> if there is a one-to-one correspondence between the objects of <m>S</m> and those of <m>T</m>, i.e., if each element of <m>S</m> can be paired up with one and only one unique element of <m>T</m>.
+          In this case, we write <m>|S| = |T|</m>.
+        </p>
+      </definition>
+
+      <p>
+        The idea that we can compare sizes of collections of objects by placing them in one-to-one correspondence is known to very young children.
+        However, they are mostly concerned with finite collections.
+        Georg Cantor's crucial insight in studying the mathematics of the infinite was that one-to-one correspondences could also be used to study infinite collections of numbers.
+        This is widely (though not universally) accepted today, but was the subject of much controversy in the late 19th century when he introduced it.
+      </p>
+
+      <activity>
+        <statement>
+          <p>
+            Let <m>S = \{1,2,3,4\}</m>, <m>T=\{\square,\circ,\bigstar,\triangle\}</m>, and <m>U = \{\diamondsuit,\spadesuit,\clubsuit\}</m>.
+          </p>
+          <ol>
+            <li>Can you find a one-to-one correspondence between <m>S</m> and <m>T</m>? Describe it, or explain why none exist.</li>
+            <li>Can you find a one-to-one correspondence between <m>S</m> and <m>U</m>? Describe it, or explain why none exist.</li>
+            <li>Can you find a one-to-one correspondence between <m>T</m> and <m>U</m>? Describe it, or explain why none exist.</li>
+          </ol>
+        </statement>
+      </activity>
+
+      <p>
+        In order to explore our undecidable statement, we need to set some notation.
+      </p>
+
+      <definition xml:id="def-number_sets">
+        <p>
+          We define the following sets of numbers.
+        </p>
+        <ol>
+          <li>The <term>natural numbers</term> are given by <m>\mathbb{N} = \{1, 2, 3, \ldots\}</m>.</li>
+          <li>The <term>whole numbers</term> are given by <m>\mathbb{W} = \{0,1,2,3,\ldots\}</m>.</li>
+          <li>The <term>integers</term> are given by <m>\mathbb{Z} = \{\ldots, -3, -2, -1, 0, 1, 2, 3, \ldots\}</m>.</li>
+          <li>The <term>even integers</term> are given by <m>2\mathbb{Z} = \{\ldots, -6, -4, -2, 0, 2, 4, 6, \ldots\}</m>.</li>
+          <li>The set of <term>rational numbers</term> is denoted by <m>\mathbb{Q}</m> and consists of all fractions <m>\frac{a}{b}</m>, where <m>a,b</m> are integers and <m>b\ne 0</m>.</li>
+          <li>The set of <term>real numbers</term> is denoted by <m>\mathbb{R}</m> and is given by all positive and negative infinite decimals (alternatively, every point on the number line).</li>
+        </ol>
+      </definition>
+
+      <activity>
+        <statement>
+          <p>
+            For the numbers that follow, identify all sets described in
+            <xref ref="def-number_sets" /> they live in.
+          </p>
+          <ol>
+            <li>
+              <m>7</m>
+            </li>
+            <li>
+              <m>-2</m>
+            </li>
+            <li>
+              <m>\pi</m>
+            </li>
+            <li>
+              <m>\frac{4}{3}</m>
+            </li>
+            <li>
+              <m>0</m>
+            </li>
+          </ol>
+        </statement>
+      </activity>
+
+      <p>
+        We now look for some one-to-one correspondences.
+      </p>
+
+      <exploration xml:id="expl-countable">
+        <statement>
+          <p>
+            For the following pairs of sets, determine whether a one-to-one correspondence between the two sets exists. If it does, describe it. If it does not, give a justification.
+          </p>
+          <ol>
+            <li>
+              <m>\mathbb{N}</m> and <m>\mathbb{W}</m>
+            </li>
+            <li>
+              <m>\mathbb{W}</m> and <m>\mathbb{Z}</m>
+            </li>
+            <li>
+              <m>\mathbb{Z}</m> and <m>2\mathbb{Z}</m>
+            </li>
+            <li>
+              <m>\mathbb{N}</m> and <m>2\mathbb{Z}</m>
+            </li>
+            <li>(Challenge) <m>\mathbb{N}</m> and <m>\mathbb{Q}</m>
+            </li>
+          </ol>
+        </statement>
+      </exploration>
+
+      <exploration xml:id="expl-uncountable">
+        <statement>
+          <p>
+            Let's explore the relationship between the cardinalities of <m>\mathbb{N}</m> and <m>\mathbb{R}</m> by considering the interval <m>[0,1]</m> consisting of all real numbers (points on the number line) <m>x</m> satisfying <m>0 \le x \le 1</m>.
+            We will use the notation <m>0.a_1 a_2 a_3 \ldots</m> to denote the infinite decimal with tenths place value <m>a_1</m>, hundredths <m>a_2</m>, and so on.
+          </p>
+          <ol>
+            <li>What is the relationship between <m>|\mathbb{R}|</m> and <m>|[0,1]|</m>?</li>
+            <li>Suppose we have a one-to-one correspondence between <m>\mathbb{N}</m> and <m>[0,1]</m>. Explain why this means that we can write
+              <md>
+                <mrow>1 \amp \leftrightarrow 0.d_{11}d_{12}d_{13}\ldots</mrow>
+                <mrow>2 \amp \leftrightarrow 0.d_{21}d_{22}d_{23}\ldots</mrow>
+                <mrow>3 \amp \leftrightarrow 0.d_{31}d_{32}d_{33}\ldots</mrow>
+                <mrow> \amp \vdots </mrow>
+              </md>
+              where <m>d_{ij}</m> is the <m>j</m>th decimal digit of the <m>i</m>th number on the list.
+            </li>
+            <li>Define a real number <m>M = 0.e_1 e_2 e_3 \ldots</m> where <m>e_j = 2</m> if <m>d_{jj} \ge 5</m> and <m>e_j = 7</m> if <m>d_{jj} \lt 5</m>. Suppose the first three numbers on the list above are
+              <md>
+                <mrow> \amp 0.4548430426\ldots</mrow>
+                <mrow> \amp 0.4607677961\ldots</mrow>
+                <mrow> \amp 0.4702962689\ldots</mrow>
+              </md>
+              What is <m>M</m> in this case?
+            </li>
+            <li>In general, is it true that <m>0 \le M \le 1</m>?</li>
+            <li>Where is <m>M</m> on the list in Question 2?</li>
+            <li>What does your answer to the previous question suggest about the one-to-one correspondence we wrote down in Question 2?</li>
+            <li>What does your answer to the previous question suggest about the relationship between <m>|\mathbb{N}|</m> and <m>|[0,1]|</m>? Between <m>|\mathbb{N}|</m> and <m>|\mathbb{R}|</m>?</li>
+          </ol>
+        </statement>
+      </exploration>
+
+
+      <principle xml:id="disc-ch">
+        <p>
+          Given your responses to
+          <xref ref="expl-countable" /> and
+          <xref ref="expl-uncountable" />, do you think there is a set <m>S</m> such that <m>|S| \gt |\mathbb{N}|</m> and <m>|S| \lt |\mathbb{R}|</m>? Why or why not?
+        </p>
+      </principle>
+
+
+      <p>
+        <index>incompleteness theorems</index>
+        In the early 1930s, the Austrian mathematical logician Kurt Gödel revolutionized mathematical logic with his two <term>incompleteness theorems</term>.
+        Informally, first incompleteness theorem states that any sufficiently strong, consistent formal system contains undecidable statements.
+        That is, there are sensible statements, such as the one raised in
+        <xref ref="disc-ch" />, which cannot be proved from within the system.
+        In that case, we may choose to adopt either the statement <em>or its negation</em> as an additional axiom, and may do so without creating any contradiction.
+      </p>
+      <p>
+        The question in
+        <xref ref="disc-ch" /> leads to just such a proposition, namely that no such set <m>S</m> exists.
+        This has been known as the <term>continuum hypothesis</term>.
+        It was first suggested by Cantor in 1878, and was one of Hilbert's 23 problems.
+        Gödel himself proved in 1940 that its negation, i.e., that such a set <m>S</m> does exist, is independent of the usual axioms of set theory.
+        The mathematician Paul Cohen proved in 1963 that the continuum hypothesis itself is independent of the usual axioms of set theory, thus verifying that the hypothesis is undecidable.
+      </p>
+
+
+    </subsection>
+
+    <conclusion>
+      <p>
+        In this section, we explored the idea of a formal system, which consists of axioms describing the use of certain symbols, and the rules of logical inference used to make deductions from them.
+        We were introduced to Hilbert's second problem, which challenged mathematicians to find consistent foundational axioms for the entire discipline.
+        In the 1930s, Kurt Gödel proved that no such collection of axioms could exist; if math is consistent, then it will necessarily contain statements whose truth values are independent of the axioms.
+        An example of such a statement is the <term>continuum hypothesis</term>, which asserts the non-existence of a set <m>S</m> satisfying <m>|\N| \lt |S| \lt |\R|</m>.
+      </p>
+    </conclusion>
+
+    <exercises>
+
+      <exercise>
+        <statement>
+          <p>
+            Suppose the list of real numbers described in
+            <xref ref="expl-uncountable" /> is
+          </p>
+
+          <md>
+            <mrow> \amp 0.2684514351\ldots</mrow>
+            <mrow> \amp 0.2792165465\ldots</mrow>
+            <mrow> \amp 0.6549842123\ldots</mrow>
+            <mrow> \amp 0.2165489461\ldots</mrow>
+            <mrow> \amp 0.9961935468\ldots</mrow>
+          </md>
+          <p>
+            Calculate the number <m>M</m> generated by Cantor's diagonal argument.
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            How have mathematicians reacted to Gödel's incompleteness theorems?
+            What consequences, if any, have there been for the work of discovering new mathematics?
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            The existence of undecidable statements in mathematics, such as the continuum hypothesis, may seem like an esoteric quirk without any real consequences.
+            However, there have been similar undecidable statements discovered in related disciplines such as computer science and physics.
+            Find such a statement and, as best you can, describe it.
+          </p>
+        </statement>
+      </exercise>
+
+
+    </exercises>
+
+
+
+
+
+
+  </section>
+
+
+
+
+
+
+
+
+</chapter>

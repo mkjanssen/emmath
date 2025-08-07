@@ -1,0 +1,1217 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pretext xmlns:xi="http://www.w3.org/2001/XInclude" xml:lang="en-US">
+
+
+
+
+
+
+
+
+
+
+	<!-- <part xml:id="part-play">
+	<title>Play</title>
+	<introduction>
+		<p>
+			
+		</p>
+	</introduction> -->
+
+
+
+
+	<!-- </part> -->
+
+
+
+
+	<!-- <part xml:id="part-truth">
+			<title>Truth</title>
+			
+			<introduction>
+				<p>
+					As Su identifies in <xref ref="Su2020" />, humans have an innate desire for truth.
+					Defining just what we mean by <term>truth</term> is tricky, so we'll follow Su's lead and just say that <q>true statements are ones that align with reality</q>.
+					In an age of rampant disinformation, we seek to know what is actually true.
+				</p>
+				<p>
+					Mathematics is often thought of as one of the last bastions of objective truth.
+					One widely accepted cultural norm is that if a statement is quantitative, or can be arrived at via a sequence of logical deductions, it is often considered "true", whereas statements that cannot be presented in such a way live in the realm of opinion. 
+					Yet, mathematics is a human endeavor; and what do mathematicians mean when they talk of a statement being <q>true</q>, anyway? 
+					The answer might surprise you.
+				</p>
+				
+				<p>
+					In this unit, we'll explore inductive and deductive reasoning, as well as formal logic. 
+					We'll explore the shortcomings of mathematical thinking in addition to its strengths.
+				</p>
+				
+				<p>
+					We again acknowledge our enormous debt to <em><url href="https://www.artofmathematics.org/books/truth-reasoning-certainty-and-proof">Discovering the Art of Mathematics: Truth, Reasoning, Certainty, and Proof</url></em> by Fleron, Hotchkiss, Ecke, and von Renesse.
+				</p>
+			</introduction> -->
+
+
+
+
+
+
+
+
+
+
+	<!-- </part> -->
+
+
+
+	<!-- <part xml:id="part-power">
+			<title>Power</title>
+			
+			<introduction>
+			
+				<p>
+					In the <xref ref="Sec-Introduction">Introduction</xref> to this book, we cited Francis Su's retiring MAA presidential address, <em>Mathematics for Human Flourishing</em>.
+					In his address, Su argues that the practice of mathematics can cultivate virtues that help humans live lives of fullness and flourishing.
+					We've explored the ways in which mathematics enables us to play and discern truth.
+					We will next explore the ways in which the <em>power</em> of mathematics can be brought to bear to help us understand phenomena such as the current (as of this writing) coronavirus pandemic.
+				</p>
+				
+				<p>
+					As Su writes in his follow-up book <xref ref="Su2020" />, <em>power</em> "often sounds like a bad word," especially when applied to humans.
+					Yet Su means power in the sense in which Andy Crouch defines it in his book, <url href="https://www.ivpress.com/playing-god"><em>Playing God: Redeeming the Gift of Power</em></url>:
+				</p>
+				
+				<blockquote>
+					Power is the ability to make something of the world...the ability to participate in that stuff-making, sense-making process that is the most distinctive thing that human beings do.
+				</blockquote>
+				
+				<p>
+					In this part of the text, we will focus particularly on the <em>sense-making</em> component of power and ask: how do mathematical explorers make sense of the physical world via mathematics?
+					In <xref ref="chap-dynamical-systems" />, we will explore some increasingly advanced discrete mathematical models, with the ultimate goal of understanding a basic model of how infectious disease spreads through a population.					
+				</p>
+				
+				<p>
+					In <xref ref="chap-graphs" />, we will see how we can use the notion of a graph to model connections.
+					And in <xref ref="chap-coding" />, we will use ancient ideas from number theory to talk about how to reliably transmit information in the digital age.
+				</p>
+			
+			</introduction> -->
+
+
+
+
+
+
+
+
+
+
+	<!-- </part> -->
+
+
+
+	<!-- <part xml:id="part-justice">
+			<title>Justice</title>
+			
+			<introduction>
+				<p>
+					One of the goals of this text is to expand the domain of mathematical questions to new areas.
+					While we need to be careful to not overreach, mathematical ways of knowing have recently illuminated many interesting questions, and occasionally answered them.
+				</p>
+				<p>
+					An example of this involves recent mathematical explorations of democracy.
+					In <xref ref="chap-voting" />, we will consider mathematical analyses of various methods of choosing winner(s) of elections and discuss the question: is there a single best, fairest system?
+					In <xref ref="chap-apportionment" />, we will explore the systems of assigning representatives to geographical areas that have been employed throughout U.S. history.
+					And in <xref ref="chap-redistricting" />, we'll explore the process of drawing new districts based on shifting populations to ensure that those geographical areas are represented fairly. -->
+	<!-- </p>
+				<p>
+					As we will see, mathematics helps us explore these questions, but it cannot provide perfect answers, as human desires<mdash />for justice, fairness, and equity<mdash /> are not mathematical constructs.
+				</p>
+			</introduction> -->
+
+
+	<!-- 
+			<chapter xml:id="chap-apportionment">
+				<title>Apportionment</title>
+				
+				<section xml:id="sec-apportionment-intro">
+					<title>Apportionment and Divisor Methods</title>
+					<worksheet>
+					<assemblage>
+						<title>Motivating Questions</title>
+						<p>
+							<statement>
+								In this section, we will explore the following questions.
+								<ol>
+									<li>What is apportionment?</li>
+									<li>What is the mathematical question at the heart of the apportionment problem?</li>
+									<li>What methods were proposed by Hamilton and Jefferson for apportionment of the U.S. house seats?</li>
+									<li>What is the quota rule? Why is it reasonable?</li>	  
+								</ol>
+							</statement>
+						</p>
+					</assemblage>
+					
+					<introduction>
+						
+						<p>
+							Apportionment is the process by which the 435 seats in the U.S. House of Representatives are divided amongst the states. Every ten  years, following a census, Congress must pass a new apportionment bill.  A state's apportionment in Congress is also directly tied to its power in the electoral college, so the electoral votes after the 2024 presidential election will likely look different than it did following the 2020 election.
+						</p>
+						
+						
+						
+						
+					</introduction>
+					
+					
+					
+					
+					<subsection>
+						<title>Apportionment</title>
+						
+						
+						<hypothesis>
+							<statement>
+								<p>
+									Round off the following fifteen numbers (i.e., turn  them into whole numbers) so that the sum of the rounded numbers equals the sum of the unrounded numbers (which is exactly 105):
+								</p>
+								<table>
+									  <tabular>
+										<row>
+										  <cell>
+											6.408,
+										  </cell>
+										  <cell>
+											1.594,
+										  </cell>
+										  <cell>
+											2.226,
+										  </cell>
+										  <cell>
+											1.987,
+										  </cell>
+										  <cell>
+											8.622,
+										  </cell>
+										  <cell>
+											12.814,
+										  </cell>
+										  <cell>
+											3.826,
+										  </cell>
+										  <cell>
+											4.965,
+										  </cell>
+										</row>
+										<row>
+										  <cell>
+											9.175,
+										  </cell>
+										  <cell>
+											10.651,
+										  </cell>
+										  <cell>
+											1.864,
+										  </cell>
+										  <cell>
+											6.716,
+										  </cell>
+										  <cell>
+											2.301,
+										  </cell>
+										  <cell>
+											20.158,
+										  </cell>
+										  <cell>
+											11.693
+										  </cell>
+										  <cell>
+										  </cell>
+										</row>
+									  </tabular>
+									</table>
+									<p>
+										What rounding method did you use? Describe in detail how you decided which numbers to round up to the next whole number, and which to round down to the previous whole number.
+									</p>
+							</statement>
+						</hypothesis>
+						
+						<p>
+							<url href="https://www.archives.gov/founding-docs/constitution-transcript">Article 1, Section 2 of the U.S. Constitution</url> states that representatives should be allocated to states based on population, but gives no method for doing so.
+							The question of method is a thorny one, and has changed throughout history. 
+							Let's look at the first method for apportionment passed by Congress, due to Alexander Hamilton.
+							To understand Hamilton's method, we need one bit of terminology: the <term>standard quota</term>.
+						</p>
+						
+						<definition>
+							<statement>
+								<p>
+									The <term>standard quota</term> of a state is the exact number of seats it is entitled to, decimal and all.
+									It is found by multiplying the state's proportion of the U.S. population by the number of seats in the legislature.
+								</p>
+							</statement>
+						</definition>
+						
+						
+						<p>
+							The fundamental problem of apportionment, then, is as follows.
+						</p>
+						
+						<assemblage>
+							<title>The Apportionment Problem</title>
+							<p>
+								<statement>
+									Given a list of decimal numbers representing the standard quotas for each state, determine a fair method of allocating a fixed whole number of representatives to each state.
+								</statement>
+							</p>
+						</assemblage>
+						
+						
+						<p>
+							Alexander Hamilton proposed the following.
+						</p>
+						
+						
+						
+						<assemblage>
+							<title>Hamilton's Apportionment Method</title>
+							<p>
+								<statement>
+									<ol>
+										<li>Find the standard quota for each state.</li>
+										<li>Give each state a number of seats equal to its standard quota, rounded down (but at least 1).</li>
+										<li>See how many seats are left to be allocated. Give those seats, one at a time, to the states whose standard quotas have the largest decimal parts.</li>
+									</ol>
+								</statement>
+							</p>
+						</assemblage>
+						
+						
+						<table xml:id="table-1790-population">
+							  <title>
+								Population totals by state, Census of 1790
+							  </title>
+							  <tabular>
+								<row bottom="medium">
+								  <cell right="medium">
+									State
+								  </cell>
+								  <cell halign="right">
+									Population
+								  </cell>
+								</row>
+								<row>
+								  <cell right="medium">
+									Connecticut
+								  </cell>
+								  <cell halign="right">
+									237,655
+								  </cell>
+								</row>
+								<row>
+								  <cell right="medium">
+									Delaware
+								  </cell>
+								  <cell halign="right">
+									59,096
+								  </cell>
+								</row>
+								<row>
+								  <cell right="medium">
+									Georgia
+								  </cell>
+								  <cell halign="right">
+									82,548
+								  </cell>
+								</row>
+								<row>
+								  <cell right="medium">
+									Kentucky
+								  </cell>
+								  <cell halign="right">
+									73,677
+								  </cell>
+								</row>
+								<row>
+								  <cell right="medium">
+									Maryland
+								  </cell>
+								  <cell halign="right">
+									319,728
+								  </cell>
+								</row>
+								<row>
+								  <cell right="medium">
+									Massachusetts
+								  </cell>
+								  <cell halign="right">
+									475,199
+								  </cell>
+								</row>
+								<row>
+								  <cell right="medium">
+									New Hampshire
+								  </cell>
+								  <cell halign="right">
+									141,899
+								  </cell>
+								</row>
+								<row>
+								  <cell right="medium">
+									New Jersey
+								  </cell>
+								  <cell halign="right">
+									184,139
+								  </cell>
+								</row>
+								<row>
+								  <cell right="medium">
+									New York
+								  </cell>
+								  <cell halign="right">
+									340,241
+								  </cell>
+								</row>
+								<row>
+								  <cell right="medium">
+									North Carolina
+								  </cell>
+								  <cell halign="right">
+									395,005
+								  </cell>
+								</row>
+								<row>
+								  <cell right="medium">
+									Pennsylvania
+								  </cell>
+								  <cell halign="right">
+									433,611
+								  </cell>
+								</row>
+								<row>
+								  <cell right="medium">
+									Rhode Island
+								  </cell>
+								  <cell halign="right">
+									69,112
+								  </cell>
+								</row>
+								<row>
+								  <cell right="medium">
+									South Carolina
+								  </cell>
+								  <cell halign="right">
+									249,073
+								  </cell>
+								</row>
+								<row>
+								  <cell right="medium">
+									Vermont
+								  </cell>
+								  <cell halign="right">
+									85,341
+								  </cell>
+								</row>
+								<row bottom="medium">
+								  <cell right="medium">
+									Virginia
+								  </cell>
+								  <cell halign="right">
+									747,550
+								  </cell>
+								</row>
+								<row>
+								  <cell right="medium">
+									Total:
+								  </cell>
+								  <cell halign="right">
+									3,893,874
+								  </cell>
+								</row>
+							  </tabular>
+							</table>
+						
+						
+						<activity xml:id="act-hamilton">
+							<statement>
+								<p>
+									Use Hamilton's method to apportion 105 seats to the fifteen states with population figures shown in <xref ref="table-1790-population" />.
+									Which states were winners under Hamilton's method? Which were losers? What would it even mean to win/lose?
+								</p>
+								<p>
+									Then, for the standard quotas you determined for Maryland and Delaware, calculate the percentage that each state's decimal part is of its entire standard quota.
+								</p>
+							</statement>
+						</activity>
+						
+						<exploration>
+							<statement>
+								<p>
+									For the standard quotas of each state in <xref ref="act-hamilton" />, which state's decimal part makes up the largest percentage of its entire standard quota? The smallest?									
+								</p>
+								
+								<p>
+									In light of this, which state do you think was treated best in the apportionment from <xref ref="act-hamilton" />? Worst?
+								</p>
+								<p>
+									Finally, articulate a critique of Hamilton's method.
+								</p>
+							</statement>
+						</exploration>
+						
+						<p>
+							Interestingly, Hamilton's method, passed by Congress, was the subject of the first presidential veto.
+							No one knows exactly why President Washington vetoed it, but as we have seen, there are some problems with Hamiilton's method.
+							For one, decimal parts are not really comparable. That is, similar decimal parts can represent very different numbers of people, depending on the populations of the states.
+						</p>
+						<p>
+							The method eventually passed by Congress and signed by Washington is due to Thomas Jefferson. We'll take a look at his method momentarily. But we're not done with Hamilton. <url href="https://youtu.be/ZPrAKuOBWzw?t=544">Just you wait</url>.
+						</p>
+										
+						
+						
+						
+					</subsection>
+					
+					<subsection xml:id="subsec-divisors">
+						<title>Divisors and the Quota Rule</title>
+					
+						<p>
+							The method that was ultimately approved by Congress and signed by Washington for the 1794 apportionment was due to Thomas Jefferson, and involved the calculation of the <term>standard divisor</term>.
+						</p>
+						
+						<definition>
+							<statement>
+								<p>
+									If <m>m</m> seats are to be apportioned among a total population of <m>N</m> people, the <term>standard divisor</term> <m>D</m> is given by the formula <m>D = \frac{N}{m}</m>.
+									For a state with population <m>P</m>, the state's <term>standard quota</term> is the number <m>\frac{P}{D}</m>.
+								</p>
+							</statement>
+						</definition>
+						
+						<exploration>
+							<statement>
+								<ol>
+									<li>Recall the state population totals from the 1790 Census, presented again in <xref ref="table-1790-census" />. Calculate the standard divisor for the 1790 Census.</li>
+									<li>Describe in words what the standard divisor <em>means</em>.</li>
+									<li>Using the data below, calculate the standard quotas for each state.</li>
+								</ol>
+									
+								<table xml:id="table-1790-census">
+										  <title>
+											Population totals by state, Census of 1790
+										  </title>
+										  <tabular>
+											<row bottom="medium">
+											  <cell right="medium">
+												State
+											  </cell>
+											  <cell halign="right">
+												Population
+											  </cell>
+											</row>
+											<row>
+											  <cell right="medium">
+												Connecticut
+											  </cell>
+											  <cell halign="right">
+												237,655
+											  </cell>
+											</row>
+											<row>
+											  <cell right="medium">
+												Delaware
+											  </cell>
+											  <cell halign="right">
+												59,096
+											  </cell>
+											</row>
+											<row>
+											  <cell right="medium">
+												Georgia
+											  </cell>
+											  <cell halign="right">
+												82,548
+											  </cell>
+											</row>
+											<row>
+											  <cell right="medium">
+												Kentucky
+											  </cell>
+											  <cell halign="right">
+												73,677
+											  </cell>
+											</row>
+											<row>
+											  <cell right="medium">
+												Maryland
+											  </cell>
+											  <cell halign="right">
+												319,728
+											  </cell>
+											</row>
+											<row>
+											  <cell right="medium">
+												Massachusetts
+											  </cell>
+											  <cell halign="right">
+												475,199
+											  </cell>
+											</row>
+											<row>
+											  <cell right="medium">
+												New Hampshire
+											  </cell>
+											  <cell halign="right">
+												141,899
+											  </cell>
+											</row>
+											<row>
+											  <cell right="medium">
+												New Jersey
+											  </cell>
+											  <cell halign="right">
+												184,139
+											  </cell>
+											</row>
+											<row>
+											  <cell right="medium">
+												New York
+											  </cell>
+											  <cell halign="right">
+												340,241
+											  </cell>
+											</row>
+											<row>
+											  <cell right="medium">
+												North Carolina
+											  </cell>
+											  <cell halign="right">
+												395,005
+											  </cell>
+											</row>
+											<row>
+											  <cell right="medium">
+												Pennsylvania
+											  </cell>
+											  <cell halign="right">
+												433,611
+											  </cell>
+											</row>
+											<row>
+											  <cell right="medium">
+												Rhode Island
+											  </cell>
+											  <cell halign="right">
+												69,112
+											  </cell>
+											</row>
+											<row>
+											  <cell right="medium">
+												South Carolina
+											  </cell>
+											  <cell halign="right">
+												249,073
+											  </cell>
+											</row>
+											<row>
+											  <cell right="medium">
+												Vermont
+											  </cell>
+											  <cell halign="right">
+												85,341
+											  </cell>
+											</row>
+											<row bottom="medium">
+											  <cell right="medium">
+												Virginia
+											  </cell>
+											  <cell halign="right">
+												747,550
+											  </cell>
+											</row>
+											<row>
+											  <cell right="medium">
+												Total:
+											  </cell>
+											  <cell halign="right">
+												3,893,874
+											  </cell>
+											</row>
+										  </tabular>
+										</table>	
+							</statement>
+						</exploration>
+						
+						<p>
+							Jefferson's apportionment method is known as a <em>divisor method</em> because it works by modifying the standard divisor.
+						</p>
+						
+						<assemblage>
+							<title>Jefferson's Method</title>
+							<p>
+								<statement>
+									<ol>
+										<li>Find the standard quota for each state.</li>
+										<li>Round each standard quota down to the nearest whole number (but at least 1). If the sum of the rounded quotas equals the total number of seats being apportioned, we're done. Otherwise, continue to the next step.</li>
+										<li>Choose a <em>modified</em> divisor different from the standard divisor, and use it to calculate modified quotas for each state by dividing the state's population by the modified divisor.</li>
+										<li>Round each modified quota down to the nearest whole number (but at least 1). Sum the rounded modified quotas and check to see if the sum equals the number of seats to be apportioned. If so, we're done. Otherwise, repeat Step 3 with a different modified divisor.</li>
+									</ol>
+								</statement>
+							</p>
+						</assemblage>
+						
+						<p>
+							Note that you may need to try Steps 3 and 4 a few times to get the sum of the quotas to equal the number of seats being apportioned.
+							However, Jefferson's method has the advantage of rounding all the quotas the in the same way, potentially making it easier to understand and implement.
+						</p>
+						
+						<activity>
+							<statement>
+								<p>
+									Use Jefferson's method to carry out the apportionment of 1794<fn>You might find <url href="https://docs.google.com/spreadsheets/d/1i5hEDQi1qVi9P0wY_CncNx06KOOyGE98RosP-e7cKhA/edit?usp=sharing">this Google sheet</url> helpful.</fn>.
+									For each modified divisor that you try, write down the apportionment that results.
+									Finally, describe how you knew whether to modfiy the divisor by making it larger or smaller based on the sum of the rounded modified quotas.
+								</p>
+							</statement>
+						</activity>
+						
+						<question>
+							<statement>
+								<p>
+									Why will Step 2 of Jefferson's method always result in too few seats being apportioned? What will this cause you to always do to the standard quota to get to Step 3?
+									What will the effect be for small states vs. large states?
+								</p>
+							</statement>
+						</question>
+						
+						<exploration>
+							<statement>
+								<p>
+									In 1820, the Census recorded populations of 1,368,775 for New York and 8,969,878 for the entire U.S.
+									Based on these numbers and the other states recorded, a total of 213 House seats were to be apportioned for the election of 1822.
+								</p>
+								<ol>
+									<li>Using the 1820 Census data, calculate the standard divisor and New York's standard quota.</li>
+									<li>In the apportionment of 1822, Jefferson's method with a modified divisor of 39,900 was used. Find New York's modified quota, and the final number of seats the state was given. Was this fair? Why or why not?</li>
+								</ol>
+							</statement>
+						</exploration>
+						
+						<p>
+							As one can imagine, this caused some consternation at the time.
+							Unfortunately (though perhaps unsurprisingly), Congress did nothing. Perhaps they hoped the problem wouldn't happen again.
+							But then it did, in the very next apportionment, in 1832.
+							Further, it turns out that if Jefferson's method had continued to be used, something similar would have happened in every apportionment since 1852.
+						</p>
+						
+						<principle>
+							<statement>
+								<p>
+									An alternative to Jefferson's method was proposed by John Adams, except rather than rounding the quotas down, he rounded up.
+									Explain why this is no better than Jefferson's method.
+								</p>
+							</statement>
+						</principle>
+						
+						<definition>
+							<statement>
+								<p>
+									The <term>quota rule</term> states that, in an apportionment, each state should be given a number of seats equal to its standard quota, rounded up or down<mdash />no more, no less.
+									An apportionment method is said to <term>violate quota</term> if it can produce apportionments which fail the quota rule<aside>As Jefferson's method did with NY in 1822.</aside>
+								</p>
+							</statement>
+						</definition>
+						
+						<p>
+							So, both Jefferson's method and Adams' method violate quota.
+							The method used in 1842 was due to Daniel Webster, and modifies Jefferson and Adams only slightly.
+							Rather than rounding the quotas always up or always down, Webster proposed that they should be rounded conventionally (i.e., a decimal part less than 0.5 gets rounded down, while a decimal part at least 0.5 gets rounded up)
+						</p>
+						<p>
+							It turns out that Webster's method can also violate quota, though this is much less likely. In fact, if Webster's method had been used in every apportionment from 1794 to 2012, it would not have violated quota once.
+							As it happened, though, Webster's method was only used in 1842.
+							Perhaps Congress was wary of continuing to use a method that could violate quota after 1822 and 1832.
+						</p>
+						<p>
+							In 1850, Samuel Vinton proposed what turned out to be Hamilton's method all over again, though no one remembered it as such<fn>Who tells your story, indeed.</fn>
+							It happens that Hamilton's method cannot violate quota (why?).
+							It was used for the apportionments of 1852 and 1862, though by 1872, Congress illegally and unconstitutionally apportioned seats based on no method at all.
+							This had consequences for the presidential election of 1876, where Hayes defeated Tilden based on the electoral college, whereas if Hamilton's method had been used in 1872, Tilden would have easily won.
+						</p>
+						<p>
+							Congress went back to Hamilton's method in 1882, but not for long.
+							In the next section, we'll look at some paradoxes that can arise from the apportionment process.
+						</p>
+					</subsection>
+					</worksheet>
+				</section>
+				
+				<section xml:id="sec-apportionment-paradoxes">
+					<title>Apportionment Paradoxes and Hills' Method</title>
+					<worksheet>
+					<assemblage>
+						<title>Motivating Questions</title>
+						<p>
+							<statement>
+								In this section, we will explore the following questions.
+								<ol>
+										<li>What surprising results can arise from the apportionment process?</li>			
+									  <li>What does the Balinski-Young theorem say?</li>
+									  <li>What method of apportionment is used today?</li>									
+								</ol>
+							</statement>
+						</p>
+					</assemblage>
+						
+						
+						<p>
+							We've already seen that apportionment is a trickier subject than it might seem at first.
+							However, things are about to get downright weird as we study three apportionment <em>paradoxes</em>, by which we mean surprising or counterintuitive results.
+							While these might seem farfetched, we'll see that they arose naturally in the history of apportionment in the U.S. and helped lead to the apportionment process we use today.
+						</p>
+						
+						<subsection>
+							<title>The Alabama Paradox</title>
+							
+							<p>
+								In the course of apportioning the House seats in 1882, the U.S. Census Bureau calculated apportionments using Hamilton's method for all sizes of House between 275 and 350 seats.
+								Something strange was afoot for Alabama.
+							</p>
+							
+							<exploration xml:id="expl-alabama-paradox">
+								<title>The Apportionment of 1882</title>
+								<statement>
+									<p>
+										With a House size of 299 seats, Alabama's standard quota was 7.646, Illinois' was 18.640, and Texas's was 9.640.
+										Ranked from largest to smallest by decimal part, Alabama was 20th on the list.
+										With 299 seats, there were 20 surplus seats to dole out.
+									</p>
+									<p>
+										With 300 seats, the standard quotas for all states increased a bit. (Why?)
+										Alabama's increased to 7.671, Illinois' to 18.702, and Texas' to 9.672.
+										This moved Illinois into the 20th spot in line, with Texas next, and then Alabama.
+										With a House of size 300, there were 21 surplus seats to be doled out, rather than 20.
+									</p>
+									<ol>
+										<li>How many seats would Hamilton's method give to each of these states with 299 seats?</li>
+										<li>How many seats would Hamilton's method give to each of these states with 300 seats?</li>
+										<li>Does anything about these two potential apportionments strike you as strange? Unfair? Explain your thinking.</li>
+										</ol>
+								</statement>
+							</exploration>
+							
+							<definition>
+								<statement>
+									<p>
+										The phenomenon you observed in <xref ref="expl-alabama-paradox" />, in which a state loses a seat when the total number of seats increases, is known as the <term>Alabama paradox</term>.
+									</p>
+								</statement>
+							</definition>
+							
+							<p>
+								While it didn't present itself in the first few uses of Hamilton's method, the Alabama paradox can happen fairly regularly, and perhaps validates Washington's veto of Hamilton's method (though it is unlikely that Washington actually observed this phenomenon before deciding to veto Hamilton's method).
+								Congress resolved this paradox by choosing a new House size of 325, a size at which the paradox did not occur.
+								</p>
+								
+								<exploration>
+									<title>The Apportionment of 1902</title>
+									
+									
+									<statement>
+										<p>
+											For the 1902 apportionment, the Census Bureau gave Congress a table showing the apportionments under Hamilton's method for all House sizes from 350 to 400.
+										</p>	
+										<ul>
+											<li>When the number of seats in the House was 350-382, 386, 389, and 390, Maine would be given three seats, but for all other sizes Maine would be given four.</li>
+											<li>When the number of House seats was 357, Colorado would be given two seats, but for all other House sizes Colorado would be given three seats.</li>
+										</ul>
+										<p>
+											Based only on these data, would the Alabama paradox have occurred for at least one House size between 350 and 400 seats (under Hamilton's method)? If so, for which House sizes and which states?
+										</p>
+									
+									
+									</statement>
+					
+									
+									
+								</exploration>
+								
+								<p>
+									In the end, this was the end of Hamilton's method in apportioning House sizes.
+									Congress used Webster's method on a final House size of 386 seats.
+									However, Hamilton's method has been a fruitful source of additional paradoxes and so has remained a subject of study (in addition to its seemingly intuitive way of dealing with decimal parts).
+								</p>
+					
+					
+					
+							
+					
+							
+						</subsection>
+						
+						
+					
+					
+					
+						
+						
+					
+						
+						<subsection>
+							<title>The Population Paradox</title>
+							
+							<definition>
+								<statement>
+									<p>
+										The <term>population paradox</term> occurs when a small state with rapid population growth can lose a seat to a larger state with slower growth.
+									</p>
+								</statement>
+							</definition>
+					
+					
+							<exploration xml:id="expl-pop-paradox1">
+								<statement>
+									<p>
+										According to the Census Bureau, the population of Nevada grew from 1,998,257 in 2000 to 2,700,551 in 2010, and the population of Illinois grew from 12,419,293 in 2000 to 12,830,632 in 2010.
+										In the 2012 apportionment, which was based on the these 2010 numbers, Nevada gained a seat in the House while Illinois lost a seat.
+										Can you conclude that the population paradox occurred in 2012? Why or why not?
+									</p>
+								</statement>
+							</exploration>
+							
+							
+							<exploration>
+								<statement>
+									<p>
+										According to the Census Bureau, the population of Nevada grew from 1,201,598 in 1990 to 1,998,257 in 2000, and the population of Illinois grew from 11,435,813 in 1990 to 12,419,293 in 2000.
+										In the 2002 apportionment, which was based on the these 2000 numbers, Nevada gained a seat in the House while Illinois lost a seat.
+										Can you conclude that the population paradox occurred in 2002? Why or why not? And why is this more interesting that <xref ref="expl-pop-paradox1" />.
+									</p>
+								</statement>
+							</exploration>
+							
+													
+							
+						</subsection>
+						
+						<subsection>
+							<title>The New-States Paradox and the Balinski-Young Theorem</title>
+							
+							<exploration>
+								<statement>
+									<p>
+										In 1907, Oklahoma was the 46th state to join the Union.
+										Rather than completely reapportion the seats, Congress decided to give Oklahoma 5 seats, as this was in proportion to its share of the country's population.
+										This increased the House size from 386 to 391.
+										However, the following hypothetical apportionments were noted under Hamilton's method:
+									</p>
+									<ul>
+										<li>With 45 states (pre-Oklahoma) and 386 seats, New York would have been awarded 38 seats and Maine 4 seats.</li>
+										<li>With 46 seats (including Oklahoma) and 391 seats, New York would have been awarded 37 seats and Maine 5 seats.</li>
+									</ul>
+									<p>
+										Explain why this is yet another paradox (called the <term>new-states paradox</term>).
+									</p>
+								</statement>
+							</exploration>
+							
+							<p>
+								As it turns out, divisor methods (like Jefferson's, Adams', and Webster's) are not susceptible to these paradoxes.
+								However, as we saw, they can violate quota.
+								This is in contrast to Hamilton's method, which does not violate quota but is susceptible to these paradoxes.
+								A reasonable person might wonder if there isn't some better method that both satisfies quota <em>and</em> cannot fall victim to these paradoxes.
+								Fascinatingly, the answer is a resounding <em>no</em>.
+							</p>
+							
+							<theorem>
+								<creator>Balinski-Young (1983)</creator>
+								<statement>
+									<p>
+										It is impossible for an apportionment method that divides representation among three or more states to satisfy quota and be incapable of producing paradoxes.
+									</p>
+								</statement>
+							</theorem>
+					
+					
+					
+						</subsection>
+						
+						<subsection>
+							<title>Hill's Method</title>
+							
+							
+							<p>
+								The last method we'll consider is the one used today.
+								It was originally proposed by Joseph Hill, Chief Statistician of the U.S. Census Bureau, in the early 1900s and was eventually signed into law by FDR following the apportionment of 1942.
+							</p>
+							
+							<p>
+								To understand Hill's method, a new perspective on conventional rounding is helpful.
+								When we consider rounding a number like 11.494, we usually compare it to 11.5, which is halfway between the whole numbers 11 and 12.
+								Another way to think of 11.5, though, is as the <em>mean</em> of 11 and 12: <m>\frac{11+12}{2} = 11.5</m>.
+								But this mean is more properly known as the <em>arithmetic mean</em>.
+								Another mean exists: the <em>geometric mean</em>.
+							</p>
+							<p>
+								Given whole numbers <m>m,n</m>, the geometric mean is the number <m>\sqrt{m\cdot n}</m>.
+								In our example, <m>\sqrt{11\cdot 12} = 11.4891</m>; this, then, is the number to which we'll compare our standard quotas in Hill's method.
+								And thus, a standard quota of 11.494 would be rounded <em>up</em> to 12 rather than down to 11.
+							</p>
+					
+					
+							<assemblage>
+								<title>Hill's Method</title>
+								
+								<p>
+									<statement>
+										<ol>
+											<li>Find the standard quota for each state.</li>
+											<li>Round each standard quota based on the geometric mean of the two whole numbers between which the standard quota sits. If the sum of the rounded quotas equals the total number of seats being apportioned, we are done. Otherwise continue to the next step.</li>
+											<li>Choose a modified divisor different from the standard divisor, and use it to calculate modified quotas for each state by dividing the state's population by the modified divisor.</li>
+											<li>Round each modified quota based on the geometric mean of the two whole numbers between which the modified quota sits. If the sum of the rounded quotas equals the total number of seats being apportioned, we are done. Otherwise, repeat Step 3 with a different modified divisor.</li>
+										</ol>
+					
+									</statement>
+					
+								</p>
+					
+								
+							</assemblage>
+							
+							<exploration>
+								<statement>
+									<p>
+										Recall the population table from 1790:
+									</p>
+															<table xml:id="table-1790-population4">
+								  <title>
+									Population totals by state, Census of 1790
+								  </title>
+								  <tabular>
+									<row bottom="medium">
+									  <cell right="medium">
+										State
+									  </cell>
+									  <cell halign="right">
+										Population
+									  </cell>
+									</row>
+									<row>
+									  <cell right="medium">
+										Connecticut
+									  </cell>
+									  <cell halign="right">
+										237,655
+									  </cell>
+									</row>
+									<row>
+									  <cell right="medium">
+										Delaware
+									  </cell>
+									  <cell halign="right">
+										59,096
+									  </cell>
+									</row>
+									<row>
+									  <cell right="medium">
+										Georgia
+									  </cell>
+									  <cell halign="right">
+										82,548
+									  </cell>
+									</row>
+									<row>
+									  <cell right="medium">
+										Kentucky
+									  </cell>
+									  <cell halign="right">
+										73,677
+									  </cell>
+									</row>
+									<row>
+									  <cell right="medium">
+										Maryland
+									  </cell>
+									  <cell halign="right">
+										319,728
+									  </cell>
+									</row>
+									<row>
+									  <cell right="medium">
+										Massachusetts
+									  </cell>
+									  <cell halign="right">
+										475,199
+									  </cell>
+									</row>
+									<row>
+									  <cell right="medium">
+										New Hampshire
+									  </cell>
+									  <cell halign="right">
+										141,899
+									  </cell>
+									</row>
+									<row>
+									  <cell right="medium">
+										New Jersey
+									  </cell>
+									  <cell halign="right">
+										184,139
+									  </cell>
+									</row>
+									<row>
+									  <cell right="medium">
+										New York
+									  </cell>
+									  <cell halign="right">
+										340,241
+									  </cell>
+									</row>
+									<row>
+									  <cell right="medium">
+										North Carolina
+									  </cell>
+									  <cell halign="right">
+										395,005
+									  </cell>
+									</row>
+									<row>
+									  <cell right="medium">
+										Pennsylvania
+									  </cell>
+									  <cell halign="right">
+										433,611
+									  </cell>
+									</row>
+									<row>
+									  <cell right="medium">
+										Rhode Island
+									  </cell>
+									  <cell halign="right">
+										69,112
+									  </cell>
+									</row>
+									<row>
+									  <cell right="medium">
+										South Carolina
+									  </cell>
+									  <cell halign="right">
+										249,073
+									  </cell>
+									</row>
+									<row>
+									  <cell right="medium">
+										Vermont
+									  </cell>
+									  <cell halign="right">
+										85,341
+									  </cell>
+									</row>
+									<row bottom="medium">
+									  <cell right="medium">
+										Virginia
+									  </cell>
+									  <cell halign="right">
+										747,550
+									  </cell>
+									</row>
+									<row>
+									  <cell right="medium">
+										Total:
+									  </cell>
+									  <cell halign="right">
+										3,893,874
+									  </cell>
+									</row>
+								  </tabular>
+								</table>
+									<ol>
+										<li>Use Hill's method to apportion 105 seats to the fifteen states with population figures shown in <xref ref="table-1790-population4" />.
+										Write down the apportionment that results from each modified divisor you try, including those that fail to give away exactly 105 seats.</li>
+										<li>In your apportionment from question 1, which states were treated the best? Worst?</li>
+										<li>How does this apportionment compare to what you found using Hamilton's, Jefferson's, Adams', and Webster's methods?</li>
+									</ol>
+					
+							
+								</statement>
+							</exploration>
+					
+					
+							
+						</subsection>
+					
+					</worksheet>
+					
+				</section>
+				
+			
+			</chapter>
+			
+			
+			<chapter xml:id="chap-redistricting">
+				<title>Redistricting</title>
+				
+				
+				
+			</chapter>
+			 -->
+
+
+
+	<!-- </part> -->
+
+
+
+	<!-- <part xml:id="part-beauty">
+			<title>Beauty</title>
+			
+			<chapter xml:id="chap-fibonacci">
+				<title>The Fibonacci Sequence</title>
+				
+			</chapter>
+			
+			<chapter xml:id="chap-fractals">
+				<title>Fractal Geometry</title>
+				
+				
+			</chapter>
+			
+			
+			<chapter xml:id="chap-art">
+				<title>Mathematics and the Arts</title>
+				
+				
+			</chapter>
+			
+			
+	
+				
+			
+			
+			
+			
+			
+		</part> -->
+
+
+
+
+
+
+
+
+
+
+	<!--<xi:include href="./Truth.ptx" />
+    <xi:include href="./Justice.ptx" />    
+     <backmatter>
+      <index>
+        <title>Index</title>
+        <index-list />
+      </index>
+    </backmatter>-->
+
+</pretext>

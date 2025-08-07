@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US" dir="ltr">
+<head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Deductive Reasoning</title>
+<meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="book">
+<meta property="book:title" content="Explorations in Modern Mathematics">
+<meta property="book:author" content="Mike Janssen">
+<script src="https://sagecell.sagemath.org/static/embedded_sagecell.js"></script><script>
+var runestoneMathReady = new Promise((resolve) => window.rsMathReady = resolve);
+window.MathJax = {
+  "tex": {
+    "inlineMath": [
+      [
+        "\\(",
+        "\\)"
+      ]
+    ],
+    "tags": "none",
+    "tagSide": "right",
+    "tagIndent": ".8em",
+    "packages": {
+      "[+]": [
+        "base",
+        "extpfeil",
+        "ams",
+        "amscd",
+        "color",
+        "newcommand",
+        "knowl"
+      ]
+    }
+  },
+  "options": {
+    "ignoreHtmlClass": "tex2jax_ignore|ignore-math",
+    "processHtmlClass": "process-math",
+    "renderActions": {
+      "findScript": [
+        10,
+        function (doc) {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(function(node) {
+                var display = !!node.type.match(/; *mode=display/);
+                var math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                var text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = {node: text, delim: '', n: 0};
+                math.end = {node: text, delim: '', n: 0};
+                doc.math.push(math);
+            });
+        },
+        ""
+      ]
+    }
+  },
+  "chtml": {
+    "scale": 0.98,
+    "mtextInheritFont": true
+  },
+  "loader": {
+    "load": [
+      "input/asciimath",
+      "[tex]/extpfeil",
+      "[tex]/amscd",
+      "[tex]/color",
+      "[tex]/newcommand",
+      "[pretext]/mathjaxknowl3.js"
+    ],
+    "paths": {
+      "pretext": "_static/pretext/js/lib"
+    }
+  },
+  "startup": {
+    pageReady() {
+      return MathJax.startup.defaultPageReady().then(function () {
+      console.log("in ready function");
+      rsMathReady();
+      }
+    )}
+  }
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="_static/pretext/js/pretext_search.js"></script><link href="_static/pretext/css/pretext_search.css" rel="stylesheet" type="text/css">
+<script src="_static/pretext/js/lib/jquery.min.js"></script><script src="_static/pretext/js/lib/jquery.sticky.js"></script><script src="_static/pretext/js/lib/jquery.espy.min.js"></script><script src="_static/pretext/js/pretext.js"></script><script src="_static/pretext/js/pretext_add_on.js?x=1"></script><script src="_static/pretext/js/user_preferences.js"></script><script src="_static/pretext/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
+</script><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&amp;family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&amp;family=Tinos:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/dejavu-serif" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:opsz,wdth,wght@8..144,50..150,100..900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wdth,wght@75..100,300..800&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+<link href="_static/pretext/css/pretext.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/pretext_add_on.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/shell_default.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/banner_default.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/navbar_default.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/toc_default.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/knowls_default.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/style_default.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/colors_blue_grey.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/setcolors.css" rel="stylesheet" type="text/css">
+</head>
+<body class="pretext book ignore-math">
+<a class="assistive" href="#ptx-content">Skip to main content</a><header id="ptx-masthead" class="ptx-masthead"><div class="ptx-banner">
+<a id="logo-link" class="logo-link" target="_blank" href=""></a><div class="title-container">
+<h1 class="heading"><a href="root-1-2.html"><span class="title">Explorations in Modern Mathematics</span></a></h1>
+<p class="byline">Mike Janssen</p>
+</div>
+</div></header><nav id="ptx-navbar" class="ptx-navbar navbar"><button class="toc-toggle button" title="Contents"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5d2;</span><span class="name">Contents</span></button><a class="index-button button" href="root-1-2-10-1.html" title="Index"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe88e;</span><span class="name">Index</span></a><div class="searchbox">
+<div class="searchwidget"><button id="searchbutton" class="searchbutton button" type="button" title="Search book"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe8b6;</span><span class="name">Search Book</span></button></div>
+<div id="searchresultsplaceholder" class="searchresultsplaceholder" style="display: none">
+<div class="search-results-controls">
+<input aria-label="Search term" id="ptxsearch" class="ptxsearch" type="text" name="terms" placeholder="Search term"><button title="Close search" id="closesearchresults" class="closesearchresults"><span class="material-symbols-outlined">close</span></button>
+</div>
+<h2 class="search-results-heading">Search Results: </h2>
+<div id="searchempty" class="searchempty"><span>No results.</span></div>
+<ol id="searchresults" class="searchresults"></ol>
+</div>
+</div>
+<span class="nav-other-controls"></span><span class="treebuttons"><a class="previous-button button" href="chap-reasoning-3.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="up-button button" href="chap-reasoning.html" title="Up"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Up</span></a><a class="next-button button" href="chap-logic.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\({\labelitemi}{$\diamond$}
+\def\arraystretch{1.5}
+\newcommand{\contentsfinish}{}
+\newcommand{\separator}{\begin{center}\rule{\columnwidth}{\arrayrulewidth}\end{center}}
+\newcommand{\tosay}[1]{\begin{center}\text{\fbox{\scriptsize{#1}}}\end{center}}
+\renewcommand{\cftsecfont}{}
+\renewcommand{\cftsecpagefont}{}
+\renewcommand{\descriptionlabel}[1]{\hspace{\labelsep}\smallcaps{#1}}
+\def\oldequation{\equation}
+\def\endoldequation{\endequation}
+\newcommand{\nl}{
+}
+\newcommand{\runin}[1]{\textls[50]{\otherscshape #1}}
+\renewcommand{\sectionmark}[1]{}
+\renewcommand{\subsectionmark}[1]{}
+\renewcommand{\sectionmark}[1]{\markboth{{\thesection}.\ \smallcaps{#1}}{\thesection.\ \smallcaps{#1}}}
+\renewcommand{\subsectionmark}[1]{}
+\renewcommand{\sectionmark}[1]{\markboth{{\scriptsize\thesection}.\ \smallcaps{#1}}{}}
+\renewcommand{\subsectionmark}[1]{}
+\newcommand{\makedefaultsection}[2][true]{
+}
+\newcommand{\timestamp}{{\color{red}Last updated: {\currenttime\ (UTC), \today}}}
+\renewcommand{\le}{\leqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\ge}{\geqslant}
+\newcommand{\ideal}[1]{\left\langle\, #1 \,\right\rangle}
+\newcommand{\subgp}[1]{\left\langle\, #1 \,\right\rangle}
+\def\p{\varphi}
+\def\isomorphic{\cong}
+\def\Gal{\text{Gal}}
+\def\im{\text{im}}
+\def\normal{\vartriangleleft}
+\renewcommand{\qedsymbol}{$\checkmark$}
+\def\lcm{{\text{lcm}\,}}
+\newcommand{\q}[1]{{\color{red} {#1}}}
+\newcommand{\startimportant}[1]{\end{[{Hint:} #1]\end}}
+\renewcommand{\textcircled}[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=2pt,color=red] (char) {#1};}}
+\newcommand{\crossout}[1]{\tikz[baseline=(char.base)]{\node[mynode, cross out,draw] (char) {#1};}}
+\newcommand{\set}[1]{\left\{ {#1} \right\}}
+\newcommand{\setof}[2]{{\left\{#1\,\colon\,#2\right\}}}
+\def\C{{\mathbb C}}
+\def\Z{{\mathbb Z}}
+\def\bF{{\mathbb F}}
+\def\Q{{\mathbb Q}}
+\def\N{{\mathbb N}}
+\def\R{{\mathbb R}}
+\newcommand{\h}[1]{{\textbf{#1}}}
+\def\presnotes{}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\definecolor{fillinmathshade}{gray}{0.9}
+\newcommand{\fillinmath}[1]{\mathchoice{\colorbox{fillinmathshade}{$\displaystyle     \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\textstyle        \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptstyle      \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptscriptstyle\phantom{\,#1\,}$}}}
+\)</span></div>
+<div class="ptx-page">
+<div id="ptx-sidebar" class="ptx-sidebar"><nav id="ptx-toc" class="ptx-toc depth2"><ul class="structural contains-active toc-item-list">
+<li class="toc-item toc-frontmatter">
+<div class="toc-title-box"><a href="root-1-2-2.html" class="internal"><span class="title">Front Matter</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-colophon"><div class="toc-title-box"><a href="root-1-2-2-2.html" class="internal"><span class="title">Colophon</span></a></div></li>
+<li class="toc-item toc-preface">
+<div class="toc-title-box"><a href="Sec-Introduction.html" class="internal"><span class="title">Introduction</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-references"><div class="toc-title-box"><a href="Sec-Introduction-4.html" class="internal"><span class="title">References</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-preface"><div class="toc-title-box"><a href="sec-NoteToStudents.html" class="internal"><span class="title">A Note to Students</span></a></div></li>
+<li class="toc-item toc-preface"><div class="toc-title-box"><a href="sec-NoteToInstructors.html" class="internal"><span class="title">A Note to Instructors</span></a></div></li>
+<li class="toc-item toc-preface"><div class="toc-title-box"><a href="sec-versions.html" class="internal"><span class="title">Versions of this text</span></a></div></li>
+<li class="toc-item toc-preface"><div class="toc-title-box"><a href="sec-acknowledgements.html" class="internal"><span class="title">Acknowledgments</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="chap-cube.html" class="internal"><span class="codenumber">1</span> <span class="title">The Cube</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-play-intro.html" class="internal"><span class="codenumber">1.1</span> <span class="title">Introduction and Background</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-play-intro.html#sec-play-intro-3" class="internal"><span class="codenumber">1.1.1</span> <span class="title">Thinking about Play</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-play-intro.html#sec-play-intro-4" class="internal"><span class="codenumber">1.1.2</span> <span class="title">Exploring the Cube</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-play-intro.html#sec-play-intro-5" class="internal"><span class="codenumber">1.1.3</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-play-describing-the-cube.html" class="internal"><span class="codenumber">1.2</span> <span class="title">Describing the Cube</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-play-describing-the-cube.html#sec-play-describing-the-cube-4" class="internal"><span class="codenumber">1.2.1</span> <span class="title">Faces and Layers</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-play-describing-the-cube.html#sec-play-describing-the-cube-5" class="internal"><span class="codenumber">1.2.2</span> <span class="title">The Need for Notation</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-play-describing-the-cube.html#sec-play-describing-the-cube-6" class="internal"><span class="codenumber">1.2.3</span> <span class="title">Order</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-play-describing-the-cube.html#sec-play-describing-the-cube-8" class="internal"><span class="codenumber">1.2.4</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-play-moving-cubies.html" class="internal"><span class="codenumber">1.3</span> <span class="title">Moving Cubies</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-play-moving-cubies.html#expl-cube-move-cr-1" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-play-moving-cubies.html#def-sr-1" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-play-moving-cubies.html#cube-move-er-1" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-play-moving-cubies.html#sec-play-moving-cubies-14" class="internal"><span class="codenumber">1.3</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-play-reorienting-cubies.html" class="internal"><span class="codenumber">1.4</span> <span class="title">Reorienting Cubies</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-play-reorienting-cubies.html#cube-move-co-1" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-play-reorienting-cubies.html#cube-move-eo-1" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-play-reorienting-cubies.html#sec-play-reorienting-cubies-12" class="internal"><span class="codenumber">1.4</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter contains-active">
+<div class="toc-title-box"><a href="chap-reasoning.html" class="internal"><span class="codenumber">2</span> <span class="title">Inductive and Deductive Reasoning</span></a></div>
+<ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="chap-reasoning-3.html" class="internal"><span class="codenumber">2.1</span> <span class="title">Inductive Reasoning</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="chap-reasoning-3.html#chap-reasoning-3-6-1" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="chap-reasoning-3.html#chap-reasoning-3-12" class="internal"><span class="codenumber">2.1</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section active">
+<div class="toc-title-box"><a href="chap-reasoning-4.html" class="internal"><span class="codenumber">2.2</span> <span class="title">Deductive Reasoning</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="chap-reasoning-4.html#chap-reasoning-4-19" class="internal"><span class="codenumber">2.2</span> <span class="title">Exercises</span></a></div></li></ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="chap-logic.html" class="internal"><span class="codenumber">3</span> <span class="title">Modern Mathematical Logic</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-connectives.html" class="internal"><span class="codenumber">3.1</span> <span class="title">Logical Connectives and Rules of Inference</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-connectives.html#sec-connectives-4-1" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-connectives.html#sec-connectives-4-2" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-connectives.html#sec-connectives-4-3" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-connectives.html#sec-connectives-7-1" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-connectives.html#sec-connectives-7-2" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-connectives.html#sec-connectives-8-1" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-connectives.html#sec-connectives-8-2" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-connectives.html#sec-connectives-9-1" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-connectives.html#sec-connectives-9-2" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-connectives.html#def-implications-1" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-connectives.html#def-implications-2" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-connectives.html#def-implications-3" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-connectives.html#def-implications-4" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-connectives.html#sec-connectives-17-1" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-connectives.html#sec-connectives-19-1" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-connectives.html#sec-connectives-27" class="internal"><span class="codenumber">3.1</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-formal-systems-incompleteness.html" class="internal"><span class="codenumber">3.2</span> <span class="title">Formal Systems and Incompleteness</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-formal-systems-incompleteness.html#subsec-formal-systems" class="internal"><span class="codenumber">3.2.1</span> <span class="title">Formal Systems</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-formal-systems-incompleteness.html#subsec-infinite-sets" class="internal"><span class="codenumber">3.2.2</span> <span class="title">Infinity and Incompleteness</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-formal-systems-incompleteness.html#sec-formal-systems-incompleteness-6" class="internal"><span class="codenumber">3.2.3</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="chap-dynamical-systems.html" class="internal"><span class="codenumber">4</span> <span class="title">Discrete Dynamical Systems</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-intro-to-dds.html" class="internal"><span class="codenumber">4.1</span> <span class="title">Sequences</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-intro-to-dds.html#def-sequence-1" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-intro-to-dds.html#def-sequence-2" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-intro-to-dds.html#sec-intro-to-dds-13" class="internal"><span class="codenumber">4.1</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-dds.html" class="internal"><span class="codenumber">4.2</span> <span class="title">Discrete Dynamical Systems</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-dds.html#subsec-exponential-growth" class="internal"><span class="codenumber">4.2.1</span> <span class="title">Exponential Growth</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-dds.html#sec-dds-5" class="internal"><span class="codenumber">4.2.2</span> <span class="title">A discrete predator-prey model</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-dds.html#sec-dds-6" class="internal"><span class="codenumber">4.2.3</span> <span class="title">The discrete SIR epidemiological model</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-dds.html#sec-dds-8" class="internal"><span class="codenumber">4.2.4</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="chap-graphs.html" class="internal"><span class="codenumber">5</span> <span class="title">Graphs</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-intro-gt.html" class="internal"><span class="codenumber">5.1</span> <span class="title">Intro to Graph Theory</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-intro-gt.html#sec-intro-gt-3" class="internal"><span class="codenumber">5.1.1</span> <span class="title">The Bridges of Konigsberg</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-intro-gt.html#sec-intro-gt-4" class="internal"><span class="codenumber">5.1.2</span> <span class="title">Background and terminology</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-intro-gt.html#sec-intro-gt-6" class="internal"><span class="codenumber">5.1.3</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-planar-graphs.html" class="internal"><span class="codenumber">5.2</span> <span class="title">Planar Graphs and Graph Coloring</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-planar-graphs.html#sec-planar-graphs-3" class="internal"><span class="codenumber">5.2.1</span> <span class="title">Planar Graphs</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-planar-graphs.html#sec-graph-coloring" class="internal"><span class="codenumber">5.2.2</span> <span class="title">Graph Coloring</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-planar-graphs.html#sec-planar-graphs-6" class="internal"><span class="codenumber">5.2.3</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-trees.html" class="internal"><span class="codenumber">5.3</span> <span class="title">Trees</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-trees.html#def-tree-1" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-trees.html#sec-trees-22" class="internal"><span class="codenumber">5.3</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="chap-coding.html" class="internal"><span class="codenumber">6</span> <span class="title">Modular Arithmetic and Coding Theory</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-intro-to-mod-arithmetic.html" class="internal"><span class="codenumber">6.1</span> <span class="title">Adding in Circles</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-intro-to-mod-arithmetic.html#thm-divalg-1" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-intro-to-mod-arithmetic.html#thm-divalg-2" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-intro-to-mod-arithmetic.html#thm-divalg-3" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-intro-to-mod-arithmetic.html#thm-divalg-4" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-intro-to-mod-arithmetic.html#thm-divalg-5" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-intro-to-mod-arithmetic.html#def-congruence-1" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="sec-intro-to-mod-arithmetic.html#def-congruence-2" class="internal"><span class="codenumber">[STRUCT].[NUM]</span> <span class="title"></span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-intro-to-mod-arithmetic.html#sec-intro-to-mod-arithmetic-23" class="internal"><span class="codenumber">6.1</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-coding.html" class="internal"><span class="codenumber">6.2</span> <span class="title">Coding Theory</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-coding.html#sec-coding-21" class="internal"><span class="codenumber">6.2</span> <span class="title">Exercises</span></a></div></li></ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="chap-voting.html" class="internal"><span class="codenumber">7</span> <span class="title">Voting</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-voting-intro.html" class="internal"><span class="codenumber">7.1</span> <span class="title">Elections with Two Candidates</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-plurality-borda.html" class="internal"><span class="codenumber">7.2</span> <span class="title">Plurality and the Borda Count</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-worksheet">
+<div class="toc-title-box"><a href="sec-plurality-borda.html#sec-plurality-borda-2" class="internal"><span class="codenumber">7.2</span> <span class="title">Worksheet</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-plurality-borda.html#sec-plurality-borda-2-2" class="internal"><span class="codenumber">7.2.1.1</span> <span class="title">Describing the Problem</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-plurality-borda.html#sec-plurality-borda-2-3" class="internal"><span class="codenumber">7.2.1.2</span> <span class="title">A solution</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-plurality-borda.html#sec-plurality-borda-2-4" class="internal"><span class="codenumber">7.2.1.3</span> <span class="title">The Borda Count</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-plurality-borda.html#sec-plurality-borda-3" class="internal"><span class="codenumber">7.2</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-pwc-irv.html" class="internal"><span class="codenumber">7.3</span> <span class="title">Pairwise Comparisons and Instant Runoff Voting</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-worksheet">
+<div class="toc-title-box"><a href="sec-pwc-irv.html#sec-pwc-irv-2" class="internal"><span class="codenumber">7.3</span> <span class="title">Worksheet</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-pwc-irv.html#subsec-pwc" class="internal"><span class="codenumber">7.3.1.1</span> <span class="title">Pairwise Comparisons</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-pwc-irv.html#subsec-irv" class="internal"><span class="codenumber">7.3.1.2</span> <span class="title">Instant Runoff Voting and Arrow’s Theorem</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-pwc-irv.html#sec-pwc-irv-3" class="internal"><span class="codenumber">7.3</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-backmatter">
+<div class="toc-title-box"><a href="root-1-2-10.html" class="internal"><span class="title">Back Matter</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-index"><div class="toc-title-box"><a href="root-1-2-10-1.html" class="internal"><span class="title">Index</span></a></div></li></ul>
+</li>
+</ul></nav></div>
+<main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="chap-reasoning-4"><h2 class="heading hide-type">
+<span class="type">Section</span><span class="space"> </span><span class="codenumber">2.2</span><span class="space"> </span><span class="title">Deductive Reasoning</span>
+</h2>
+<article class="assemblage assemblage-like" id="chap-reasoning-4-2"><h3 class="heading"><span class="title">Motivating Questions.</span></h3>
+<div class="para" id="chap-reasoning-4-2-2">In this section, we will explore the following questions. <ol class="decimal">
+<li id="chap-reasoning-4-2-2-1-1-1"><div class="para" id="p-derived-chap-reasoning-4-2-2-1-1-1">What is deductive reasoning? How does it differ from inductive reasoning?</div></li>
+<li id="chap-reasoning-4-2-2-1-1-2"><div class="para" id="p-derived-chap-reasoning-4-2-2-1-1-2">How is deductive reasoning employed in mathematics?</div></li>
+<li id="chap-reasoning-4-2-2-1-1-3"><div class="para" id="p-derived-chap-reasoning-4-2-2-1-1-3">What are some strengths and weaknesses of deductive reasoning?</div></li>
+</ol>
+</div></article><div class="para" id="chap-reasoning-4-3">Formal mathematical reasoning is deductive (defined momentarily), and begins with <dfn class="terminology">axioms</dfn>, which are statements that should be self-evident and taken to be true. Note that while axioms are not always explicitly stated, they <em class="emphasis">can</em> be when necessary.</div>
+<article class="investigation project-like" id="chap-reasoning-4-4"><h3 class="heading">
+<span class="type">Investigation</span><span class="space"> </span><span class="codenumber">2.2.1</span><span class="period">.</span>
+</h3>
+<div class="para" id="chap-reasoning-4-4-1-1">The most famous set of axioms are Euclid’s postulates for geometry, defined in <em class="emphasis"><a class="external" href="https://en.wikipedia.org/wiki/Euclid's_Elements" target="_blank">The Elements</a><details class="ptx-footnote" aria-live="polite" id="chap-reasoning-4-4-1-1-1-2"><summary class="ptx-footnote__number" title="Footnote 2.2.1"><sup> 1 </sup></summary><div class="ptx-footnote__contents" id="chap-reasoning-4-4-1-1-1-2"><code class="code-inline tex2jax_ignore">en.wikipedia.org/wiki/Euclid's_Elements</code></div></details></em>, which not only shaped thousands of years of geometry, but solidified the deductive approach to doing and explaining mathematics that we will explore in this unit. At the beginning of Book I of <em class="emphasis">The Elements</em>, Euclid identified five postulates and five axioms.</div> <div class="para" id="chap-reasoning-4-4-1-2">Euclid’s <em class="emphasis">postulates</em> are:</div> <ol class="decimal">
+<li id="chap-reasoning-4-4-1-3-1"><div class="para" id="p-derived-chap-reasoning-4-4-1-3-1">A straight line segment can be drawn joining any two points.</div></li>
+<li id="chap-reasoning-4-4-1-3-2"><div class="para" id="p-derived-chap-reasoning-4-4-1-3-2">Any straight line segment can be extended indefinitely in a straight line.</div></li>
+<li id="chap-reasoning-4-4-1-3-3"><div class="para" id="p-derived-chap-reasoning-4-4-1-3-3">Any circle can be described given a center and (radial) distance.</div></li>
+<li id="chap-reasoning-4-4-1-3-4"><div class="para" id="p-derived-chap-reasoning-4-4-1-3-4">All right angles are equal to one another.</div></li>
+<li id="chap-reasoning-4-4-1-3-5"><div class="para" id="p-derived-chap-reasoning-4-4-1-3-5">If a straight line intersecting two straight lines make the interior angles on the same side less than two right angles, the two straight lines, if produced indefinitely, meet on the side on which the angles are less than two right angles.</div></li>
+</ol> <div class="para" id="chap-reasoning-4-4-1-4">Euclid’s <em class="emphasis">axioms</em> (or <em class="emphasis">common notions</em>) are:</div> <ol class="decimal">
+<li id="chap-reasoning-4-4-1-5-1"><div class="para" id="p-derived-chap-reasoning-4-4-1-5-1">Things which are equal to the same thing are also equal to one another.</div></li>
+<li id="chap-reasoning-4-4-1-5-2"><div class="para" id="p-derived-chap-reasoning-4-4-1-5-2">If equals are added to equals, the wholes are equal.</div></li>
+<li id="chap-reasoning-4-4-1-5-3"><div class="para" id="p-derived-chap-reasoning-4-4-1-5-3">If equals are subtracted from equals, the remainders are equal.</div></li>
+<li id="chap-reasoning-4-4-1-5-4"><div class="para" id="p-derived-chap-reasoning-4-4-1-5-4">Things which coincide with one another are equal to one another.</div></li>
+<li id="chap-reasoning-4-4-1-5-5"><div class="para" id="p-derived-chap-reasoning-4-4-1-5-5">The whole is greater than the part.</div></li>
+</ol> <div class="para" id="chap-reasoning-4-4-1-6">The desired qualities of a system of axioms are:</div> <ol class="decimal">
+<li id="chap-reasoning-4-4-1-7-1"><div class="para" id="p-derived-chap-reasoning-4-4-1-7-1">
+<dfn class="terminology">consistency</dfn>: we cannot deduce contradictory propositions, such as "God exists" and "God does not exist" from the same set of axioms</div></li>
+<li id="chap-reasoning-4-4-1-7-2"><div class="para" id="p-derived-chap-reasoning-4-4-1-7-2">
+<dfn class="terminology">simplicity</dfn>: we have as few axioms as possible, and they are no more complicated than they need to be</div></li>
+<li id="chap-reasoning-4-4-1-7-3"><div class="para" id="p-derived-chap-reasoning-4-4-1-7-3">
+<dfn class="terminology">completeness</dfn>: the system can answer every question we can think to ask</div></li>
+</ol> <div class="para" id="chap-reasoning-4-4-1-8">In your groups, discuss Euclid’s postulates and common notions, perhaps in view of the desired qualities of an axiomatic system. What strikes you as being interesting or noteworthy? Make a list of at least 2-3 observations. Then consider: on what axioms or assumptions do you make decisions (e.g., about how to spend your time, resources, etc)?</div></article><div class="para" id="chap-reasoning-4-5">The process of <dfn class="terminology">deductive reasoning</dfn> in mathematics begins from a set of generally agreed-upon axioms of <a class="external" href="https://en.wikipedia.org/wiki/Zermelo%E2%80%93Fraenkel_set_theory" target="_blank">set theory</a><details class="ptx-footnote" aria-live="polite" id="chap-reasoning-4-5-3"><summary class="ptx-footnote__number" title="Footnote 2.2.2"><sup> 2 </sup></summary><div class="ptx-footnote__contents" id="chap-reasoning-4-5-3"><code class="code-inline tex2jax_ignore">en.wikipedia.org/wiki/Zermelo–Fraenkel_set_theory</code></div></details><details class="ptx-footnote" aria-live="polite" id="chap-reasoning-4-5-4"><summary class="ptx-footnote__number" title="Footnote 2.2.3"><sup> 3 </sup></summary><div class="ptx-footnote__contents" id="chap-reasoning-4-5-4">It should be noted that there is disagreement about the Axiom of Choice, mostly due to some of its surprising consequences.</div></details> and uses logic to make inevitable conclusions from those axioms. These conclusions are generally called <dfn class="terminology">theorems</dfn>. They are usually given as conditional statements of the form “If <span class="process-math">\(P\text{,}\)</span> then <span class="process-math">\(Q\text{,}\)</span>” where <span class="process-math">\(P\)</span> and <span class="process-math">\(Q\)</span> are sensible statements. Moreover, since most deductive statements are presented in conditional form, their scope is generally limited. That is, the statement “if it is Monday, then we have math class” is only making a claim about what happens on Mondays; it says nothing whatsoever about any other day of the week. We will explore the consequences of this more in <a href="chap-logic.html" class="internal" title="Chapter 3: Modern Mathematical Logic">Chapter 3</a>.</div>
+<div class="para" id="chap-reasoning-4-6">The author Lewis Carroll loved logic puzzles (he was actually a mathematics professor!), and wrote many of them. Here is one, axiomatized for easy reference.</div>
+<article class="axiom theorem-like" id="axiom-kittens"><h3 class="heading">
+<span class="type">Axiom</span><span class="space"> </span><span class="codenumber">2.2.2</span><span class="period">.</span><span class="space"> </span><span class="title">(Carroll).</span>
+</h3>
+<div class="para" id="axiom-kittens-2-1">Consider the axioms:</div> <ol class="decimal">
+<li id="axiom-kittens-2-2-1"><div class="para" id="p-derived-axiom-kittens-2-2-1">If a kitten loves fish, then it is teachable.</div></li>
+<li id="axiom-kittens-2-2-2"><div class="para" id="p-derived-axiom-kittens-2-2-2">Every kitten without a tail will play with a gorilla.</div></li>
+<li id="axiom-kittens-2-2-3"><div class="para" id="p-derived-axiom-kittens-2-2-3">All kittens with whiskers love fish.</div></li>
+<li id="axiom-kittens-2-2-4"><div class="para" id="p-derived-axiom-kittens-2-2-4">If a kitten has green eyes, then it is not teachable.</div></li>
+<li id="axiom-kittens-2-2-5"><div class="para" id="p-derived-axiom-kittens-2-2-5">All kittens have whiskers or do not have tails.</div></li>
+</ol></article><div class="para" id="chap-reasoning-4-8">Once you have a deductive argument that (generally) begins from your premises and reasons, step-by-step, to your conclusion, you can write out the argument in a short essay known as a <em class="emphasis">proof</em>. For our purposes, a proof is just a <em class="emphasis">convicing argument</em>. It should be written at a level appropriate to the reader and clearly lay out the steps necessary for a reader who accepts your hypotheses to believe the conclusion. As an example, consider the following.</div>
+<article class="example example-like" id="example-kitten-deduction"><h3 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">2.2.3</span><span class="period">.</span>
+</h3>
+<div class="para" id="example-kitten-deduction-1-1">All kittens with whiskers are teachable.</div> <div class="para" id="example-kitten-deduction-1-2">
+<dfn class="terminology">Proof</dfn>. Suppose we have a kitten with whiskers. Let’s call him Arthur. By <a href="chap-reasoning-4.html#axiom-kittens" class="xref" data-knowl="./knowl/xref/axiom-kittens.html" data-reveal-label="Reveal" data-close-label="Close" title="Axiom 2.2.2: (Carroll)">Axiom 2.2.2</a> #3, Arthur loves fish. Since Arthur loves fish, <a href="chap-reasoning-4.html#axiom-kittens" class="xref" data-knowl="./knowl/xref/axiom-kittens.html" data-reveal-label="Reveal" data-close-label="Close" title="Axiom 2.2.2: (Carroll)">Axiom 2.2.2</a> #1 implies that Arthur is teachable.</div> <div class="para" id="example-kitten-deduction-1-3">Since Arthur was an arbitrary kitten, we conclude that all kittens with whiskers are teachable.</div></article><div class="para" id="chap-reasoning-4-10">There are several observations which are worth a moment of our time in the proof in <a href="chap-reasoning-4.html#example-kitten-deduction" class="xref" data-knowl="./knowl/xref/example-kitten-deduction.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 2.2.3">Example 2.2.3</a>.</div>
+<ul class="disc">
+<li id="chap-reasoning-4-11-1"><div class="para" id="p-derived-chap-reasoning-4-11-1">We first note that the proof is written using standard conventions of academic writing, including complete sentences, proper punctuation and capitalization, etc. This is important! In order to convince someone that your argument is valid, they need to be able to read it.</div></li>
+<li id="chap-reasoning-4-11-2"><div class="para" id="p-derived-chap-reasoning-4-11-2">While the statement to be proved is not written as “if <span class="process-math">\(P\text{,}\)</span> then <span class="process-math">\(Q\)</span>”, it <em class="emphasis">can</em> be stated that way: “If <span class="process-math">\(A\)</span> is a kitten with whiskers, then <span class="process-math">\(A\)</span> is teachable”. Thus, our proof begins by considering an arbitrary kitten with whiskers, who we name Arthur. We observe, however, that there is nothing special about Arthur that figures into our proof in a meaningful way, so the argument will apply just as well to any kitten with whiskers we may find.</div></li>
+<li id="chap-reasoning-4-11-3"><div class="para" id="p-derived-chap-reasoning-4-11-3">In each step we take throughout the proof, we refer to the specific axiom from <a href="chap-reasoning-4.html#axiom-kittens" class="xref" data-knowl="./knowl/xref/axiom-kittens.html" data-reveal-label="Reveal" data-close-label="Close" title="Axiom 2.2.2: (Carroll)">Axiom 2.2.2</a> that allow us to take that step. It is valuable to be able to do this, but generally we do not specifically refer to the axioms by number. This is to improve the readability of the proof.</div></li>
+<li id="chap-reasoning-4-11-4"><div class="para" id="p-derived-chap-reasoning-4-11-4">Finally, note that our proof concludes with a conclusion: all kittens with whiskers are teachable. This is good practice and sends an unmistakable signal to the reader that you are done.</div></li>
+</ul>
+<div class="para" id="chap-reasoning-4-12">Now, prove the theorems that follow using <a href="chap-reasoning-4.html#axiom-kittens" class="xref" data-knowl="./knowl/xref/axiom-kittens.html" data-reveal-label="Reveal" data-close-label="Close" title="Axiom 2.2.2: (Carroll)">Axiom 2.2.2</a>.</div>
+<article class="theorem theorem-like" id="chap-reasoning-4-13"><h3 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">2.2.4</span><span class="period">.</span>
+</h3>
+<div class="para" id="chap-reasoning-4-13-1-1">If a kitten has green eyes, then it does not love fish.</div></article><article class="theorem theorem-like" id="chap-reasoning-4-14"><h3 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">2.2.5</span><span class="period">.</span>
+</h3>
+<div class="para" id="chap-reasoning-4-14-1-1">If a kitten has a tail, then it does not have green eyes.</div></article><article class="theorem theorem-like" id="chap-reasoning-4-15"><h3 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">2.2.6</span><span class="period">.</span>
+</h3>
+<div class="para" id="chap-reasoning-4-15-1-1">Every kitten with green eyes will play with a gorilla.</div></article><article class="activity project-like" id="chap-reasoning-4-16"><h3 class="heading">
+<span class="type">Activity</span><span class="space"> </span><span class="codenumber">2.2.7</span><span class="period">.</span>
+</h3>
+<div class="para" id="chap-reasoning-4-16-1-1">Compare and contrast the structures of the proofs of the preceding theorems. Can you clarify the general reasoning patterns you used to prove them?</div></article><article class="principle theorem-like" id="chap-reasoning-4-17"><h3 class="heading">
+<span class="type">Discussion</span><span class="space"> </span><span class="codenumber">2.2.8</span><span class="period">.</span>
+</h3>
+<div class="para" id="chap-reasoning-4-17-1-1">We have now explored both inductive and deductive reasoning. How are they similar? How are they different? How might you decide which type of reasoning to employ in a given situation? What are their strengths and weaknesses?</div></article><section class="conclusion" id="chap-reasoning-4-18"><h3 class="heading">Conclusion.<span></span>
+</h3> <div class="para" id="chap-reasoning-4-18-2">In this section, we explored deductive reasoning, which begins from accepted axioms and premises and then reasons, step by logical step, toward a conclusion. This is the primary form of reasoning used in mathematics. We saw that while conclusions reached via deductive reasoning are generally tighter and more certain, there are still some drawbacks.</div> <div class="para" id="chap-reasoning-4-18-3">The main drawback of deductive reasoning involves scope. We must begin with axioms, so the axioms must be well-chosen and sensible. However, if one disagrees with the choice of a set of axioms, then one must be willing to set aside any results deduced from them (or, at least, deduced from the particular axioms with which one disagrees).</div> <div class="para" id="chap-reasoning-4-18-4">A second drawback having to do with scope concerns the premises of a conditional statement. In particular, if the premises of a statement are not satisfied, the statement makes no assertion whatsoever (though, as we will see in <a href="chap-logic.html" class="internal" title="Chapter 3: Modern Mathematical Logic">Chapter 3</a>, there is still a <em class="emphasis">consistent</em> way to assign truth values to statements whose premises are not satisfied).</div></section><section class="exercises" id="chap-reasoning-4-19"><h3 class="heading hide-type">
+<span class="type">Exercises</span><span class="space"> </span><span class="codenumber"></span><span class="space"> </span><span class="title">Exercises</span>
+</h3>
+<article class="exercise exercise-like" id="chap-reasoning-4-19-1"><h4 class="heading"><span class="codenumber">1<span class="period">.</span></span></h4>
+<div class="para" id="chap-reasoning-4-19-1-1-1">Invent one or two additional theorems that can be deduced from <a href="chap-reasoning-4.html#axiom-kittens" class="xref" data-knowl="./knowl/xref/axiom-kittens.html" data-reveal-label="Reveal" data-close-label="Close" title="Axiom 2.2.2: (Carroll)">Axiom 2.2.2</a>. Prove them.</div></article><article class="exercise exercise-like" id="chap-reasoning-4-19-2"><h4 class="heading"><span class="codenumber">2<span class="period">.</span></span></h4>
+<div class="para" id="chap-reasoning-4-19-2-1-1">While deductive proofs are crucial for the advancement of mathematical knowledge, they can often be complex and hard to understand, even for experts. An extreme example of this arose in the 1970s via the proof of the <a class="external" href="https://en.wikipedia.org/wiki/Four_color_theorem" target="_blank">four color theorem</a><details class="ptx-footnote" aria-live="polite" id="chap-reasoning-4-19-2-1-1-2"><summary class="ptx-footnote__number" title="Footnote 2.2.4"><sup> 4 </sup></summary><div class="ptx-footnote__contents" id="chap-reasoning-4-19-2-1-1-2"><code class="code-inline tex2jax_ignore">en.wikipedia.org/wiki/Four_color_theorem</code></div></details>. Read about this theorem and the controversy surrounding its proof, and write a one-paragraph summary. What is the current state of the theorem?</div></article></section></section></div>
+<div class="ptx-content-footer">
+<a class="previous-button button" href="chap-reasoning-3.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="chap-logic.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+</div></main>
+</div>
+<div id="ptx-page-footer" class="ptx-page-footer">
+<a class="pretext-link" href="https://pretextbook.org" title="PreTeXt"><div class="logo"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="338 3000 8772 6866"><g style="stroke-width:.025in; stroke:black; fill:none"><polyline points="472,3590 472,9732 " style="stroke:#000000;stroke-width:174; stroke-linejoin:miter; stroke-linecap:round; "></polyline><path style="stroke:#000000;stroke-width:126;stroke-linecap:butt;" d="M 4724,9448 A 4660 4660  0  0  1  8598  9259"></path><path style="stroke:#000000;stroke-width:174;stroke-linecap:butt;" d="M 4488,9685 A 4228 4228  0  0  0   472  9732"></path><path style="stroke:#000000;stroke-width:126;stroke-linecap:butt;" d="M 4724,3590 A 4241 4241  0  0  1  8598  3496"></path><path style="stroke:#000000;stroke-width:126;stroke-linecap:round;" d="M 850,3496  A 4241 4241  0  0  1  4724  3590"></path><path style="stroke:#000000;stroke-width:126;stroke-linecap:round;" d="M 850,9259  A 4507 4507  0  0  1  4724  9448"></path><polyline points="5385,4299 4062,8125" style="stroke:#000000;stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8598,3496 8598,9259" style="stroke:#000000;stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="850,3496 850,9259" style="stroke:#000000;stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="4960,9685 4488,9685" style="stroke:#000000;stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="3070,4582 1889,6141 3070,7700" style="stroke:#000000;stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="6418,4582 7600,6141 6418,7700" style="stroke:#000000;stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8976,3590 8976,9732" style="stroke:#000000;stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><path style="stroke:#000000;stroke-width:174;stroke-linecap:butt;" d="M 4960,9685 A 4228 4228  0  0  1  8976  9732"></path></g></svg></div></a><a class="runestone-link" href="https://runestone.academy" title="Runestone Academy"><img class="logo" src="https://runestone.academy/runestone/static/images/RAIcon_cropped.png"></a><a class="mathjax-link" href="https://www.mathjax.org" title="MathJax"><img class="logo" src="https://www.mathjax.org/badge/badge-square-2.png"></a>
+</div>
+</body>
+</html>

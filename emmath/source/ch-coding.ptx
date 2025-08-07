@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<chapter xml:id="chap-coding">
+  <title>Modular Arithmetic and Coding Theory</title>
+
+  <introduction>
+    <p>
+      In this short chapter, we explore an extension of arithmetic called <em>modular arithmetic</em>, which comes to us from the mathematical discipline of number theory.
+      We'll also see one application of these ideas to coding theory, which is the study of the reliable transmission of information.
+    </p>
+  </introduction>
+
+
+  <section xml:id="sec-intro-to-mod-arithmetic">
+    <title>Adding in Circles</title>
+
+
+    <assemblage>
+      <title>Motivating Questions</title>
+      <p>
+        <statement>
+          In this section, we will explore the following questions.
+          <ol>
+            <li>What is congruence modulo <m>m</m>?</li>
+            <li>How can we do arithemtic modulo <m>m</m>?</li>
+            <li>What are some real-world examples of congruence?</li>
+          </ol>
+        </statement>
+      </p>
+    </assemblage>
+
+    <p>
+      This topic comes to us from the realm of mathematics known as <em>number theory</em>, which is all about the properties of the integers: positive whole numbers, negatives of whole numbers, and zero.
+      Number theory is one of the oldest branches of mathematics; some of its hallmark theorems, still vital and taught today, have been known for thousands of years.
+      And many of the deep structural features of the integers have found modern application in the hiding and transmitting of information.
+      It is toward this last application that we now turn.
+    </p>
+
+    <p>
+      First, however, we need to be reminded of a suprisingly important result from school mathematics.
+      We begin with some warmup questions.
+    </p>
+
+
+    <hypothesis xml:id="warmup-long-division">
+      <statement>
+        <p>
+          For each pair of positive integers given below, perform long division to divide the first number by the second.
+        </p>
+        <ol>
+          <li>42, 6</li>
+          <li>42, 8</li>
+          <li>71, 9</li>
+          <li>0, 17</li>
+          <li>9, 71</li>
+          <li>8675309, 627</li>
+        </ol>
+      </statement>
+    </hypothesis>
+
+    <assemblage xml:id="thm-divalg">
+      <index>division algorithm</index>
+      <index>dividend</index>
+      <index>divisor</index>
+      <index>quotient</index>
+      <index>remainder</index>
+      <title>The Division Algorithm</title>
+      <p>
+        <statement>
+          Let <m>a</m> and <m>m</m> be integers, with <m>m\gt 0</m>.
+          Then there exist unique integers <m>q,r</m>, <m>0\le r \lt m</m>, such that
+          <me>
+            a = m\cdot q + r.
+          </me>
+          We call <m>a</m> the <term>dividend</term>, <m>m</m> the <term>divisor</term>, <m>q</m> the <term>quotient</term>, and <m>r</m> the <term>remainder</term>.
+        </statement>
+      </p>
+    </assemblage>
+
+    <activity>
+      <statement>
+        <p>
+          For each long division problem from
+          <xref ref="warmup-long-division" />, identify the dividend, divisor, quotient, and remainder as described in <xref ref="thm-divalg" text="custom">the Division Algorithm</xref>.
+          What do you notice? What do you wonder?
+        </p>
+      </statement>
+    </activity>
+
+    <principle>
+      <statement>
+        <p>
+          What is meant by the word <q>unique</q> in <xref ref="thm-divalg" text="custom">the Division Algorithm</xref>?
+          Or, put slightly differently, when dividing 71 by 9, why do you think we do we not give a quotient of 6 and remainder of 17?
+        </p>
+      </statement>
+    </principle>
+
+
+    <p>
+      Of primary importance for us will be a consideration of the remainders obtained by dividing by a fixed positive integer <m>m\gt 1</m>.
+    </p>
+
+    <activity xml:id="act-remainders">
+      <statement>
+        <p>
+          Throughout this activity, we will be dividing by <m>m = 5</m>.
+          However, you should be thinking about how the answers might differ if we divide by a different integer <m>m</m>.
+        </p>
+        <ol>
+          <li>What remainders do you obtain when dividing the integers <m>12, 16, 20, 24, 33</m> by 5?</li>
+          <li>What remainders do you obtain when dividing the integers <m>39, 52, 80, 108, 166</m> by 5?</li>
+          <li>What remainders are <em>possible</em> upon division by 5? How do you know?</li>
+          <li>What remainders do you expect to be possible upon division by 103? How do you know?</li>
+          <li>For each of the five integers from the first question, find the integer from the second question whose remainder upon division by 5 is the same and write the pairs in a list.</li>
+          <li>For each pair in the list you made in the previous question, find the difference between the two integers and divide <em>that number</em> by <m>m=5</m>. What do you notice? What do you wonder?</li>
+        </ol>
+      </statement>
+    </activity>
+
+
+    <p>
+      The work you did in
+      <xref ref="act-remainders" /> provides motivation for the following definition.
+    </p>
+
+    <definition xml:id="def-congruence">
+      <index>congruence modulo <m>m</m>
+      </index>
+      <index>modulus</index>
+      <statement>
+        <p>
+          Let <m>a,b</m> be integers and <m>m \gt 1</m> an integer.
+          We say that <m>a</m> and <m>b</m> are <term>congruent modulo <m>m</m>
+          </term> if <m>a</m> and <m>b</m> have the same remainder upon division by <m>m</m>.
+          In this case, we write <m>a\equiv b\mod m</m> and call <m>m</m> the <term>modulus</term>.
+        </p>
+        <p>
+          Equivalently, we say <m>a</m> and <m>b</m> are congruent modulo <m>m</m> if <m>m</m> evenly divides <m>b-a</m>.
+        </p>
+      </statement>
+    </definition>
+
+
+    <p>
+      Let's explore this definition a bit more.
+    </p>
+
+    <activity>
+      <statement>
+        <p>
+          For the given values below, determine whether <m>a \equiv b\mod m</m>.
+        </p>
+        <ol>
+          <li>
+            <m>a = 71</m>, <m>b = 39</m>, <m>m= 16</m>
+          </li>
+          <li>
+            <m>a = 17</m>, <m>b = 19</m>, <m>m = 4</m>
+          </li>
+          <li>
+            <m>a = 832</m>, <m>b = 584</m>, <m>m= 31</m>
+          </li>
+        </ol>
+      </statement>
+    </activity>
+
+    <p>
+      Congruence modulo <m>m</m> possesses several important properties.
+      We highlight three of them in the following theorem.
+    </p>
+
+    <theorem xml:id="thm-congruence-equiv-relation">
+      <statement>
+        <p>
+          Let <m>m\gt 1</m> be an integer, and suppose <m>a,b,c</m> are integers.
+        </p>
+        <ul>
+          <li>Congruence is <term>reflexive</term>: <m>a\equiv a\mod m</m>
+          </li>
+          <li>Congruence is <term>symmetric</term>: If <m>a\equiv b\mod m</m>, then <m>b\equiv a\mod m</m>.</li>
+          <li>Congruence is <term>transitive</term>: If <m>a\equiv b\mod m</m> and <m>b\equiv c\mod m</m>, then <m>a\equiv c\mod m</m>.</li>
+        </ul>
+      </statement>
+    </theorem>
+
+
+    <p>
+      Now that we are a bit more familiar with the definition, let's test its limits.
+    </p>
+
+    <exploration xml:id="expl-arithmetic-mod-m">
+      <statement>
+        <p>
+          Choose two different values of <m>m</m>, and for each value you choose, find two values of <m>a</m> and <m>b</m> so that <m>a\equiv b\mod m</m>.
+        </p>
+        <ol>
+          <li>Now choose a third integer <m>c</m>. For the integers you chose, is it true that <m>a+c \equiv b+c\mod m</m>? Is it true that <m>a-c \equiv b-c\mod m</m>? What about <m>a\cdot c\equiv b\cdot c\mod m</m>?</li>
+          <li>For each integer <m>c</m> you chose, find an integer <m>d</m> such that <m>c\equiv d\mod m</m>. Is it true that <m>a+c \equiv b+d\mod m</m>? Is it true that <m>a-c \equiv b-d\mod m</m>? What about <m>a\cdot c \equiv b\cdot d\mod m</m>?</li>
+          <li>Finally, note that <m>5\cdot 2 \equiv 3\cdot 2\mod 4</m>. Does it follow that <m>5\equiv 3\mod 4</m>?</li>
+        </ol>
+      </statement>
+    </exploration>
+
+    <p>
+      Our discoveries in
+      <xref ref="expl-arithmetic-mod-m" /> delineate the operations known as <term>modular arithmetic</term>: we may add, subtract, and multipy integers mod <m>m</m>, but we may not divide.
+    </p>
+
+    <activity>
+      <statement>
+        <p>
+          Find the smallest nonnegative integer <m>x</m> satisfying:
+        </p>
+        <ol>
+          <li>
+            <m>x\equiv 9\cdot 4\mod 5</m>
+          </li>
+          <li>
+            <m>x\equiv 103+405\mod 10</m>
+          </li>
+          <li>
+            <m>x \equiv 56 + 6\mod 7</m>
+          </li>
+          <li>
+            <m>x \equiv 9\cdot 99\mod 5</m>
+          </li>
+        </ol>
+      </statement>
+    </activity>
+
+    <assemblage>
+      <title>Questions</title>
+      <p>
+        <statement>
+          Consider the following questions, and what they have to do with modular arithmetic.
+
+          <ol>
+            <li>What day of the week will it be 62 days from now?</li>
+            <li>What month will it be 40 months from now?</li>
+            <li>What time will it be 27 hours from now?</li>
+          </ol>
+        </statement>
+      </p>
+    </assemblage>
+
+    <conclusion>
+      <p>
+        In this section, we explored the notion of <em>congruence modulo <m>m</m></em>.
+        We saw that we can reduce any integer <m>x</m> to its remainder upon division by <m>m</m>, and then do arithemtic operations of addition, subtraction, and multiplication mod <m>m</m>.
+        This corresponds to natural cyclical process, such as times and dates.
+      </p>
+      <p>
+        In the next section, we'll see how modular arithmetic can be used to reliably transmit information.
+      </p>
+    </conclusion>
+
+
+    <exercises>
+      <exercise>
+        <statement>
+          <p>
+            Find all solutions to the congruence <m>6 + x \equiv 5\mod 15</m>.
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            Find all solutions to the congruence <m>6x \equiv 5\mod 15</m>.
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise xml:id="exer-divisibility-mod-m">
+        <statement>
+          <p>
+            Let <m>m\gt 1</m> be an integer and let <m>a</m> be any integer.
+            Explain why <m>a</m> is divisible by <m>m</m> if and only if <m>a\equiv 0\mod m</m>.
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            Recall that the decimal representation of a number is a sum of powers of 10; for instance, <m>6429 = 6\cdot 10^3 + 4\cdot 10^2 + 2\cdot 10 + 9\cdot 1</m>.
+          </p>
+          <ol>
+            <li>Reduce <m>10\mod 3</m> and <m>10^2 \equiv 100\mod 3</m>.</li>
+            <li>What do you think it the smallest whole number <m>x</m> satisfying <m>x\equiv 10^k\mod 3</m> for any positive integer power <m>k</m>?</li>
+            <li>Explain why <m>6429 \equiv 6 + 4 + 2 + 9 \mod 3</m>.</li>
+            <li>Use your answers to these questions and
+              <xref ref="exer-divisibility-mod-m" /> to guess a way to determine if a number is divisible by 3. Explain your thinking.
+            </li>
+          </ol>
+        </statement>
+      </exercise>
+
+    </exercises>
+
+
+
+  </section>
+
+
+  <section xml:id="sec-coding">
+    <title>Coding Theory</title>
+
+    <assemblage>
+      <title>Motivating Questions</title>
+      <p>
+        <statement>
+          In this section, we will explore the following questions.
+          <ol>
+            <li>How can modular arithmetic be applied to the transmission of information?</li>
+            <li>How does the UPC check digit scheme work? What errors can it detect? What errors can it correct?</li>
+          </ol>
+        </statement>
+      </p>
+    </assemblage>
+
+    <activity>
+      <statement>
+        <p>
+          Get into groups of (ideally) 7-10 (larger is better!) and sit in a line.
+          Then play the game of telephone: one person, sitting at the end, whispers a short message to the person sitting next to them.
+          They then turn and whisper it to the person sitting next to them, and so on until the last person receives the message.
+          The last person shares the message they received, and it is compared to the original version.
+        </p>
+        <p>
+          Part of the fun of the activity is that the message is often garbled somewhere along the line; what could be done to mitigate this? Brainstorm a couple of ideas and be ready to share them with the class.
+        </p>
+      </statement>
+    </activity>
+
+
+    <p>
+      In
+      <xref ref="sec-intro-to-mod-arithmetic" />, we learned about modular arithmetic, which works by considering the remainders obtained upon division by a fixed number <m>m</m>.
+      In this section, we'll consider a relatively recent application of modular arithmetic to <term>coding theory</term>, which is the mathematical study of transmitting information.
+    </p>
+    <p>
+      The basic problem of coding theory is as follows: in order to send information from one entity to another, it needs to be encoded in some form by the <em>sender</em> (e.g., written, recorded, etc) and transmitted across a <em>channel</em> (e.g., mailed, emailed, uploaded/downloaded, etc) to the <em>receiver</em>.
+      However, as in the classic game of telephone, errors can creep into the process
+      <mdash />written messages can be smudged, physical defects or packet loss can corrupt digital messages, and so on, resulting in information that either cannot be read at all, or can be misread.
+      How can we be reasonably sure that common errors can be detected, and, perhaps, corrected?
+    </p>
+
+    <activity xml:id="warmup-coding">
+      <statement>
+        <p>
+          Alice wants to send a bit of information to her friend Bob; for simplicity's sake, let's assume she seeks to send a 0 or 1.
+          To improve the chances that the message is received correctly, she decides to send it three times in a row.
+          So, if Alice desires to send Bob a 1, she'll actually send 111; if she desires to send a 0, she'll send 000.
+        </p>
+        <ol>
+          <li>As described above, errors can creep into the transmitted messsage; perhaps Alice sends Bob 111 and that is what he receives, but what if he receives 101? Or 100? How should Bob interpet those two (different) messages?</li>
+          <li>What strengths and weaknesses do you see in Alice's system? How could you improve the chances that Bob interprets Alice's message as she intends?</li>
+          <li>Perhaps you decided that Alice's system is still too prone to errors, so you decide she should send the intended digit seven times instead of 3. In what way(s) is this revised system better? Worse?</li>
+        </ol>
+      </statement>
+    </activity>
+
+    <p>
+      Lots of information is encoded using numbers, which makes the reliable transmission of numbers an important problem to solve.
+      A fundamental example is alluded to in
+      <xref ref="warmup-coding" />, wherein we consider the transmission of a binary digit, 0 or 1
+      <mdash />this is the language of digital computers.
+      The actual codes that are used to transmit digital signals over the internet rely on lots of sophisticated mathematics and so are beyond the scope of our work here.
+    </p>
+    <p>
+      However, certain codes are within the grasp of those familiar with modular arithmetic.
+      We turn to one such example now: the UPC check digit scheme.
+    </p>
+
+    <p>
+      Universal Product Codes (UPCs) are found on most items available for sale (though books have their own identifiers called International Standard Book Numbers, or ISBNs)<footnote>UPCs are often encoded with <em>barcodes</em> so as to be machine-readable. We will concern ourselves only with the digits, not the barcodes</footnote>.
+    </p>
+    <p>
+      Let's consider the UPC from a copy of the game <q>The Resistance</q>:
+    </p>
+    <me>
+      7-22301-92617-8.
+    </me>
+    <p>
+      The first digit (7) indicates a product type.
+      This is typically 0, 1, or 6-9 (other digits are reserved for coupons, loyalty cards, etc).
+      The first group of five digits (22301) is a manufacturer number, while the second group of five digits (92617) describes the product.
+      The last digit (8) is known as the <term>check digit</term>; it is chosen so that
+    </p>
+    <me>
+      (3\cdot 7 + 2 + 3\cdot 2 + 3 + 3\cdot 0 + 1 + 3\cdot 9 + 2 + 3\cdot 6 + 1 + 3\cdot 7 + 8)\equiv 0\mod 10.
+    </me>
+
+    <p>
+      More generally, if the digits of a UPC are <m>d_1 - d_2 d_3 d_4 d_5 d_6 - d_7 d_8 d_9 d_{10} d_{11} - d_{12}</m>, the check digit <m>d_{12}</m> is chosen so that
+    </p>
+    <me>
+      (3\cdot d_1 + d_2 + 3\cdot d_3 + d_4 + 3\cdot d_5 + d_6 + 3\cdot d_7 + d_8 + 3\cdot d_9 + d_{10} + 3\cdot d_{11} + d_{12})\equiv 0\mod 10.
+    </me>
+
+    <p>
+      The check digit is called thus as it is an extra bit of information which helps validate everything that came before it.
+      Recall that our primary question is: how can we send information reliably over a channel?
+      That is, how can we send information in such a way that we can (a) if the information received is the same as what we sent, and (b) if not, (ideally) correct the information?
+    </p>
+
+    <activity xml:id="act-upc-first">
+      <statement>
+        <p>
+          Consider the following questions.
+        </p>
+        <ol>
+          <li>Calculate the check digit <m>d</m> for the UPC <m>1-03792 -19302-d</m>.</li>
+          <li>Is <m>8-62069-00678-9</m> a valid UPC? Explain. If it is invalid, change it to be a valid UPC.</li>
+        </ol>
+      </statement>
+    </activity>
+
+    <p>
+      We saw in
+      <xref ref="act-upc-first" /> that the check digit scheme can determine that a given proposed UPC is invalid.
+      However, we have no clear understanding of what went wrong.
+      Were two (or more) digits transposed?
+      Did we simply record a digit incorrectly?
+      In
+      <xref ref="expl-upc-errors" />, we'll see what sorts of errors can be detected.
+    </p>
+
+    <exploration xml:id="expl-upc-errors">
+      <statement>
+        <p>
+          As best you can, answer the following questions.
+        </p>
+        <ol>
+          <li>Consider the following UPC with missing digit <m>d</m>:
+            <me>
+              7-2d920-16431-8.
+            </me>
+            Can you determine the value of <m>d</m>?
+          </li>
+          <li>A certain box of chalk has UPC <m>6-15867-28380-2</m>. Choose two adjacent digits (e.g., 6 and 1) and switch their places. Is the resulting 12-digit number still a valid UPC? How can you tell?</li>
+          <li>A certain product has UPC <m>0-55005-00550-5</m>. Choose two adjacent digits and switch their places. Is the resulting 12-digit number still a valid UPC? How can you tell?</li>
+        </ol>
+      </statement>
+    </exploration>
+
+    <conclusion>
+      <p>
+        In this section, we learned about the main problem of coding theory: how can we reliably transmit information across a noisy channel (as in the game of telephone)?
+        We saw that number theory has been used to encode <q>extra</q> information into Universal Product Codes.
+        This extra information allows us to recover missing digits and detect if a given 12-digit code is valid or not.
+        If all 12 digits are present and the code is invalid, the UPC check digit scheme cannot generally allow us to identify what went wrong in transmission.
+      </p>
+    </conclusion>
+
+    <exercises>
+      <exercise>
+        <statement>
+          <p>
+            The following is presented as a possible UPC; is it valid? Explain.
+          </p>
+          <me>
+            8 - 05500 - 28542 -5
+          </me>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            The following is presented as a possible UPC; is it valid? Explain.
+          </p>
+          <me>
+            0 - 47495 - 11254 - 2
+          </me>
+        </statement>
+      </exercise>
+
+
+      <exercise>
+        <statement>
+          <p>
+            Identify the missing digit in the following partial UPC.
+          </p>
+          <me>
+            0 - 3x915 - 90093 - 8
+          </me>
+        </statement>
+      </exercise>
+
+
+      <exercise>
+        <statement>
+          <p>
+            Sam is learning to write his letters, but sometimes confuses the 6 and the 9.
+            He records the following UPC; is it valid? If so, justify. If not, can you correct it so that it is?
+          </p>
+          <me>
+            1 - 64252 - 72124 - 7
+          </me>
+        </statement>
+      </exercise>
+
+    </exercises>
+
+
+    <!-- <exploration>
+          <creator>Burger and Starbird</creator>
+          <statement>
+            <p>
+              A friend with lousy handwriting writes down a UPC.
+              Unfortunately, you can't tell his 4's from his 9's or his 1's from his 7's.
+              If the code <em>looks like</em>
+            </p>
+            <me>
+              9-03068-82351-7
+            </me>
+            <p>
+              is there any way to deal with the ambiguity?
+              If so, what is the actual UPC?
+              If it is not possible to determine the correct UPC, explain why.
+            </p>
+          </statement>
+        </exploration> -->
+
+
+
+  </section>
+
+  <!-- <section xml:id="sec-cryptography">
+         <title>Opkpun Tlzzhnlz: Hu Vclycpld vm Jyfwavnyhwof</title>
+        
+         
+       </section> -->
+
+</chapter>

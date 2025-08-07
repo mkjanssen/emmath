@@ -1,0 +1,947 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<chapter xml:id="chap-graphs">
+  <title>Graphs</title>
+
+  <introduction>
+    <p>
+      In this chapter, we'll explore the mathematics of connection via an object called a <em>graph</em>.
+      Computers are particularly well-suited for the study of graphs, and they are helpful for describing many aspects of modern life, including computer networks, social media networks, logistics networks, and the like.
+    </p>
+  </introduction>
+
+
+  <section xml:id="sec-intro-gt">
+    <title>Intro to Graph Theory</title>
+
+    <assemblage>
+      <title>Motivating Questions</title>
+      <p>
+        <statement>
+          In this section, we will explore the following questions.
+          <ol>
+            <li>What is a graph? What are some of the basic ideas and terminology used to describe graphs?</li>
+            <li>What features of the world can graphs help us study?</li>
+
+          </ol>
+        </statement>
+      </p>
+    </assemblage>
+
+    <subsection>
+      <title>The Bridges of Konigsberg</title>
+
+      <p>
+        The study of graph theory often traces its roots to a historical problem known as the Seven Bridges of Königsberg, and its solution by the mathematician Leonhard Euler.
+      </p>
+
+      <investigation permid="dGT">
+        <idx>
+          <h>Seven Bridges of Königsberg</h>
+        </idx>
+        <idx>
+          <h>Königsberg, Seven Bridges of</h>
+        </idx>
+        <idx>
+          <h>puzzle</h>
+          <h>seven bridges</h>
+        </idx>
+        <p permid="uFe">
+          In the town of Königsberg in Prussia,
+          there was a river containing two islands.
+          The islands were connected to the banks of the river by seven bridges
+          as seen in
+          <xref ref="fig-bridges" />.
+          On their days off,
+          townspeople would play a little game with themselves as they walked over the bridges:
+          was it possible to plan a walk so that you cross each bridge once and only once?
+        </p>
+
+        <sidebyside width="80%" permid="YXa">
+
+          <figure xml:id="fig-bridges">
+            <image xml:id="gt-bridges-art" permid="fwg" source="./images/gt-bridges-art.svg" />
+            <caption>The seven bridges (credit: Oscar Levin)</caption>
+          </figure>
+
+
+
+
+        </sidebyside>
+      </investigation>
+
+
+    </subsection>
+
+
+
+    <subsection>
+      <title>Background and terminology</title>
+
+
+      <p>
+        You've almost certainly encountered the word <em>graph</em> in a math class.
+      </p>
+
+      <principle>
+        <statement>
+          <p>
+            What is meant by the word <em>graph</em> in a mathematical context?
+            Give as many answers as you can, and be as clear and precise as possible.
+          </p>
+        </statement>
+      </principle>
+
+      <p>
+        A relatively new (by mathematical standards) use of the word <em>graph</em> in mathematics involves the notion of connection.
+        It is this notion that we will be exploring in this unit.
+        We present a formal definition below.
+      </p>
+
+      <definition>
+        <p>
+          A <term>graph</term>, <m>G</m>, is a collection of <term>vertices</term> (or <term>nodes</term>), <m>V</m>, and a collection of edges, <m>E</m>, which are pairs of vertices.
+          We denote the graph as <m>G(V,E)</m>.
+        </p>
+      </definition>
+
+      <p>
+        This relatively simple, short definition nonetheless has deep consequences.
+        We'll see an example below, but note that the primary defining features of a graph <m>G</m> are some objects (vertices) and the connections between (some of) the objects (the edges).
+        If a vertex <m>v</m> is connected to another vertex <m>u</m> by an edge <m>vu</m>, we say <m>uv</m> is <term>incident</term> to <m>v</m>, and we say <m>u</m> is <term>adjacent</term> to <m>v</m> and is in the <term>neighborhood</term> of <m>v</m>.
+
+      </p>
+
+      <example>
+        <p>
+          As a straightforward initial example, consider the graph <m>G(V, E)</m> where <m>V = \{a,b,c,d\}</m> and <m>E = \{ab,ac,bd\}</m>.
+          This graph has four vertices, and three edges.
+          One <term>representation</term> (drawing) of it is given in
+          <xref ref="fig-graphexample1" />.
+
+        <figure xml:id="fig-graphexample1">
+
+          <caption>One drawing of <m>G</m>.</caption>
+
+          <image xml:id="img-graphexample1" width="35%" source="images/graph01.svg" />
+        </figure>
+
+        As stated above, the most important feature of a graph is the connections it describes.
+        Thus, we would say the graph in
+        <xref ref="fig-graphexample2" /> <em>also</em> represents the graph <m>G</m> from
+        <xref ref="fig-graphexample1" />.
+
+        <figure xml:id="fig-graphexample2">
+
+          <caption>Another drawing of <m>G</m>.</caption>
+
+          <image xml:id="img-graphexample2" width="35%" source="images/graph02.svg" />
+        </figure>
+
+        </p>
+      </example>
+
+      <activity>
+        <statement>
+          <p>
+            In this activity, your job is to invent a graph <m>G</m> with the following properties.
+            Draw it and be ready to share it.
+            Then explain why your example meets the given criteria (e.g., for Question 4, which vertex has at least three neighbors?).
+          </p>
+
+
+          <ol>
+            <li>Your graph should have six vertices</li>
+            <li>Your graph should have ten edges</li>
+            <li>There should be at least one pair of vertices between which you cannot trace a path of edges</li>
+            <li>One vertex should should have at least three others in its neighborhood</li>
+          </ol>
+
+        </statement>
+      </activity>
+
+      <exploration>
+
+        <statement>
+          <p>
+            We saw in the last unit that we could model changing quantities over time using discrete dynamical systems.
+            Graphs, on the other hand, describe connections between objects.
+            Brainstorm or research at least two or three complex, real-world situations which graphs might be helpful to model.
+            That is, can you think of at least two or three situations in which one of the fundamental properties is <em>connection</em>?
+            Briefly describe each situation in 3-4 sentences, and make clear how graphs can be used to describe these situations.
+            If you find examples of such graphs, be ready to share.
+          </p>
+        </statement>
+      </exploration>
+
+
+
+
+
+      <p>
+        In order to discuss the nuances of the connections modeled by a graph, we need a bit more terminology.
+      </p>
+
+      <definition xml:id="def-deg">
+        <p>
+          Let <m>G(V,E)</m> be a graph.
+          A vertex <m>v</m> in <m>V</m> is <term>isolated</term> if it has no neighbors.
+          The number of edges incident to a vertex <m>v</m> is known as the <term>degree</term> of <m>v</m>, denoted <m>\deg(v)</m>.
+          If between every pair of vertices in <m>V</m> there is a path of edges, we say <m>G</m> is <term>connected</term>.
+          Otherwise, we say <m>G</m> is not connected.
+          Each of the largest possible connected pieces of <m>G</m> is known as a <term>component</term> of <m>G</m>.
+        </p>
+      </definition>
+
+
+      <exploration>
+        <statement>
+          <p>
+            For this exploration, we will consider the graph <m>G(V,E)</m> in
+            <xref ref="fig-graphexample3" />.
+          </p>
+          <figure xml:id="fig-graphexample3">
+
+            <caption>A graph <m>G</m>.</caption>
+
+            <image xml:id="img-graphexample3" width="50%" source="images/graph03.svg" />
+          </figure>
+          <ol>
+            <li>Is <m>G</m> connected? How many components does it have?</li>
+            <li>Does <m>G</m> have any isolated vertices? If so, what are their degrees?</li>
+            <li>What is the largest degree of a vertex in <m>G</m>? Which vertex/vertices have that degree?</li>
+            <li>Suppose that <m>G</m> represents a social network; that is, the vertices represent people, and the edges represent friendship. Who are <m>e</m>'s friends?</li>
+            <li>Still viewing <m>G</m> as the model of a network of friends, which pair of people do you think are more likely to become friends next: <m>a</m> and <m>b</m>, or <m>c</m> and <m>e</m>? Why?</li>
+            <li>Still viewing <m>G</m> as the model of a network of friends, which pair of people do you think are more likely to become friends next: <m>a</m> and <m>b</m>, or <m>c</m> and <m>h</m>? Why?</li>
+          </ol>
+        </statement>
+      </exploration>
+
+
+    </subsection>
+
+    <conclusion>
+      <p>
+        In this section, we introduced the idea of a graph as essentially a network: a collection of <em>vertices</em> connected by <em>edges</em>.
+        We thought about the types of situations that could be described with a graph, and learned some terminology that will help us ask and answer additional questions about graphs in future sections.
+      </p>
+    </conclusion>
+
+
+    <exercises>
+      <exercise>
+        <statement>
+          <p>
+            Do some internet research about (Kevin) <url href="https://www.oracleofbacon.org">Bacon numbers</url>.
+            What are they?
+            How could you use a graph to model the situation described by a Bacon number?
+            Then look up two or three people and report their Bacon numbers.
+          </p>
+        </statement>
+      </exercise>
+
+
+      <exercise>
+        <statement>
+          <p>
+            Draw two different representations of the graph with vertices <m>V = \set{a,b,c,d,e,f}</m> and edges <m>E = \set{ab,ad,df,ef,cd,be,af}</m>.
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            Do an internet search for <q>social graph</q>. What is it? How has it been used, and by whom?
+          </p>
+        </statement>
+      </exercise>
+
+    </exercises>
+
+  </section>
+
+
+
+
+
+
+  <section xml:id="sec-planar-graphs">
+
+    <title>Planar Graphs and Graph Coloring</title>
+
+    <assemblage>
+      <title>Motivating Questions</title>
+      <p>
+        <statement>
+          In this section, we will explore the following questions.
+          <ol>
+            <li>What does it mean for a graph to be planar? Are all graphs planar?</li>
+            <li>What does it mean to color a graph's vertices? How can vertex coloring be used to solve applied problems?</li>
+            <li>What does the four color theorem say?</li>
+          </ol>
+        </statement>
+      </p>
+    </assemblage>
+
+
+    <subsection>
+      <title>Planar Graphs</title>
+
+      <exploration>
+        <statement>
+          <p>
+            Suppose there are three houses, each needing to be connected to three utilities: water, natural gas, and electricity, as pictured in
+            <xref ref="fig-utilities" />. For safety reasons, we wish to draw the lines connecting the utilities to the houses so that they do not cross.
+            Can you find an arrangement of utility lines that do not cross?
+          </p>
+          <figure xml:id="fig-utilities">
+            <image source="./images/utilities.png" width="50%" />
+            <caption>Three utilities and three houses.</caption>
+          </figure>
+        </statement>
+      </exploration>
+
+
+      <exploration>
+        <statement>
+          <p>
+            Suppose there are five train stations, each wishing to be directly connected to the other four without having to pass underneath or over another rail line (no bridges or tunnels).
+            However, the rail lines do not need to be straight, nor do they need to take the shortest path.
+            Can you find a way to draw them so that they do not cross?
+          </p>
+          <figure xml:id="fig-train-stations">
+            <image source="./images/train-station.png" width="50%" />
+            <caption>Five train stations.</caption>
+          </figure>
+        </statement>
+      </exploration>
+
+      <p>
+        The two graphs you drew above are famous and have special names: the first is the <term>complete bipartite graph <m>K_{3,3}</m>
+        </term>, because you can group the vertices into two parts (<q>bi-partite</q>) such that every vertex from one group is connected to every vertex in the other. The second is called the <term>complete graph on five vertices, <m>K_5</m>
+        </term>, because it contains all possible edges connecting the vertices.
+      </p>
+
+      <activity>
+        <statement>
+          <p>
+            Find at least two different drawings each of the graphs <m>K_{3,3}</m> and <m>K_5</m>. If possible, try to find drawings of the graphs which solve the original problems. Note that your different drawings still describe the same connections.
+          </p>
+
+        </statement>
+      </activity>
+
+      <definition>
+        <index>planar graph</index>
+        <statement>
+          <p>
+            A graph is called <term>planar</term> if it is <em>possible</em> to draw the graph in such a way that none of the edges cross.
+          </p>
+        </statement>
+      </definition>
+
+      <exploration>
+        <statement>
+          <p>
+            Consider the graphs below. For each graph, determine whether it is planar. If so, draw it so none of the edges cross. If not, explain why not.
+          </p>
+
+          <figure xml:id="fig-planarity">
+            <image width="65%" source="./images/planarity.png" />
+          </figure>
+        </statement>
+      </exploration>
+
+
+
+
+      <p>
+        Thus, the utilities and train station problems can be stated as follows: Are <m>K_{3,3}</m> or <m>K_5</m> planar?
+        The answer comes from a theorem of Kuratowski.
+      </p>
+
+      <theorem>
+        <author>Kuratowski (1930)</author>
+        <statement>
+          A graph is planar if and only if it does not contain a copy of <m>K_{3,3}</m> or <m>K_5</m>, or a <term>subdivision</term> of <m>K_{3,3}</m> or <m>K_5</m>.
+        </statement>
+      </theorem>
+
+      <exploration>
+        <statement>
+          <p>
+            To see what we mean by <q>subdivision</q>, is the following graph planar?
+          </p>
+          <figure xml:id="fig-subdivision">
+            <image source="./images/subdivision.svg" width="35%" />
+          </figure>
+        </statement>
+      </exploration>
+
+
+
+
+
+
+
+
+
+    </subsection>
+
+
+
+
+
+
+
+
+
+    <subsection xml:id="sec-graph-coloring">
+      <title>Graph Coloring</title>
+
+      <p>
+
+        Another application of planar graphs arises when deciding how to color a map. A useful coloring must not color states that share a common border (that is, a part of their boundary) with the same color (otherwise it’s difficult to tell where one starts and another begins!). However, an efficient mapmaker might wonder how many colors are needed to color any world map so that no countries which share a border are given the same color.
+
+      </p>
+
+      <exploration>
+        <statement>
+          <p>
+            Consider the <url href="./usa_map.pdf">blank map of the USA</url> displayed in
+            <xref ref="fig-usa-map" />.
+            How many different colors are <em>needed</em> in order to color the states so that no states that share a border are given the same color? How could we model this problem with a graph?
+          </p>
+          <figure xml:id="fig-usa-map">
+            <image source="./images/usa.jpg" width="65%" />
+          </figure>
+        </statement>
+      </exploration>
+
+
+      <theorem>
+        <title>Four Color Theorem</title>
+        <statement>
+          <p>
+            Four colors suffice to color any map such that any two countries which share a part of a border are given different colors.
+          </p>
+        </statement>
+      </theorem>
+
+      <p>
+        The proof was very controversial, as it involves the use of computers to check thousands of cases. The proof is generally accepted now, however.
+      </p>
+
+      <p>
+        We can use graphs to model maps. The graph in
+        <xref ref="fig-map-graph" /> models the borders found in the generic map shown in
+        <xref ref="fig-map" />.
+      </p>
+
+      <figure xml:id="fig-map">
+        <image source="./images/map.png" width="50%" />
+      </figure>
+
+
+      <figure xml:id="fig-map-graph">
+        <image source="./images/map-graph.svg" width="50%" />
+      </figure>
+
+      <question>
+        <statement>
+          <p>
+            Why must the graph associated to a map be planar? Why must it have no loops or multiple edges?
+          </p>
+        </statement>
+      </question>
+
+      <!-- <p>
+                 We can't prove the Four Color Theorem, but we can prove that six colors suffice.
+               </p>
+               <theorem>
+                 <title>The Six Color Theorem</title>
+                 <statement>
+                   <p>
+                     Six colors suffice to color any map such that any two countries which share a part of a border are given different colors.
+                   </p>
+                 </statement>
+               </theorem>
+               
+               <p>
+                 To do this, we need a definition.
+               </p>
+               
+               <definition>
+                 <statement>
+                   <p>
+                     Let <m>G</m> be a graph.
+                     The <term>degree</term> of a vertex <m>v</m> in <m>G</m> is the number of edges incident to <m>v</m>.
+                   </p>
+                 </statement>
+               </definition>
+               
+               <activity>
+                 <statement>
+                   <p>
+                     Suppose <m>G</m> is a graph with <m>n</m> vertices and that the vertex <m>v_i</m> has degree <m>d_i</m>. Explain why the following is true:
+                     <me>
+                       d_1 + d_2 + \cdots + d_n = 2\times (\text{the number of edges})
+                     </me>
+                     (It may help to draw some examples!)
+                   </p>
+                 </statement>
+               </activity>
+               
+               <proposition xml:id="prop-planar-degree">
+                 <statement>
+                   <p>
+                     Suppose <m>G</m> is a planar graph with <m>n</m> vertices, <m>e</m> edges, and has no loops or multiple edges between the same pair of vertices.
+                     Then 
+                     <me>
+                       e \le 3n - 6.
+                     </me>
+                   </p>
+                 </statement>
+               </proposition>
+               
+               <p>
+                 We'll avoid proving this for now, but take it as true. (And it is!)
+               </p>
+               <p>
+                 As a step on the way to proving the Six Color Theorem, consider the following exploration.
+               </p>
+               
+               <exploration>
+                 <statement>
+                   <p>
+                     In this activity, we'll seek to understand the following claim:
+                     <blockquote>
+                       Every planar graph <m>G</m> with no loops or multiple edges must contain at least one vertex of degree less than or equal to 5.
+                     </blockquote>
+                     We'll approach this by assuming the conclusion is false and reaching a contradiction.
+                   </p>
+                   <ul>
+                     <li>To assume the conclusion is false, we should assume that each vertex of <m>G</m> has degree at least what?</li>
+                     <li>Let <m>v</m> denote the number of vertices in the graph. Since every edge has two ends, the number of edges <m>e</m> in the graph is <m>e =6v/2 = 3v</m>. Why is this a problem?</li>
+                     <li>What if there are vertices of degree larger than 6?</li>
+                     <li>Why can we conclude that every planar graph with no loops or multiple edges must have a vertex of degree 5 or less?</li>
+                   </ul>
+                 </statement>
+               </exploration>
+               
+               <p>
+                 We now explore the idea behind the proof of the Six Color Theorem.
+               </p>
+       
+               
+               <exploration>
+                 <statement>
+                   <p>
+                     Let <m>G</m> be a planar graph with <m>v</m> vertices and <m>e</m> edges, and no loops or multiple edges.
+                   </p>
+                   <ol>
+                     <li>If <m>v \le 6</m>, why are we done?</li>
+                     <li>Now consider a graph with <m>v = 7</m>. Why must we have a vertex <m>v_0</m> of degree 5 or less?</li>
+                     <li>Temporarily remove <m>v_0</m> and any associated edges. How many colors are required for what remains? How many of those colors were used on the neighbors of <m>v_0</m>?</li>
+                     <li>Explain why there is a 6-coloring of <m>G</m> with <m>v_0</m> added back in.</li>
+                     <li>What if our graph has 8 vertices?</li>
+                     <li>What if our graph has 9? Or <m>n</m>, for any <m>n\ge 1</m>?
+                   
+                   </li>
+                   </ol>
+       
+                 </statement>
+               </exploration>
+        -->
+
+      <p>
+        Lest you think graph coloring is just a fun game, consider the following version of a very real situation.
+      </p>
+
+      <activity>
+        <statement>
+          <p>
+            Suppose your friendly local university is looking to schedule its final exams. Obviously, it can't schedule them so that someone in two different classes is scheduled for an exam at the same time. But how many times are actually required?
+          </p>
+          <ol>
+            <li>First, make up a list of at least 5 courses, and 10 students who are in some of these courses. Ensure that each course shares at least one student in common with at least two other courses (this is just to make the problem sufficiently interesting).</li>
+            <li>Create a graph whose vertices are the courses. Draw an edge between any pair of courses for which a student is enrolled in both courses.</li>
+            <li>How many colors are required to color the vertices so that no pair of adjacent vertices gets the same color? <em>Can</em> the answer be more than 4? Why or why not?</li>
+            <li>How many final exam timeslots are required?</li>
+          </ol>
+        </statement>
+      </activity>
+
+
+    </subsection>
+
+    <conclusion>
+
+      <p>
+        In this section, we explored notions of planarity and graph coloring.
+        Planar graphs are useful when modeling connections formed by, e.g., the boundaries on a map.
+        Graph coloring is a helpful concept when needing to partition our vertex sets into unrelated parts (given by the colors).
+      </p>
+    </conclusion>
+
+    <exercises>
+
+      <exercise>
+        <statement>
+          <p>
+            Determine the smallest number of colors required to color the graph in
+            <xref ref="fig-map-graph" />.
+          </p>
+        </statement>
+      </exercise>
+
+
+
+      <exercise>
+        <statement>
+          <p>
+            As we discussed above, the utilities problem is not solvable on a flat sheet of paper (i.e., in the plane).
+            Is it solvable on another surface (e.g., a sphere? maybe something else?).
+            Draw some examples to see if you can find a solution.
+            If you run stuck, do some research online to see if you can find a solution.
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            A <term>cycle</term> on <m>n</m> vertices, denoted <m>C_n</m>, is the graph with vertex set <m>V = \set{v_1, v_2, v_3, \ldots, v_n}</m> and edge set <m>E = \set{v_1 v_2, v_2 v_3, \ldots, v_{n-1} v_n, v_n v_1}</m>.
+            Draw examples of <m>C_n</m> for <m>n = 3, 4, 5, 6</m>, and then calculate the fewest number of colors needed to color the vertices of a cycle for those graphs. Make a conjecture about what might be true in general and be ready to explain your thinking.
+          </p>
+        </statement>
+      </exercise>
+
+
+
+
+
+
+    </exercises>
+
+  </section>
+
+
+
+
+
+
+
+  <section xml:id="sec-trees">
+    <title>Trees</title>
+
+    <assemblage>
+      <title>Motivating Questions</title>
+      <p>
+        <statement>
+          In this section, we will explore the following questions.
+          <ol>
+            <li>What are paths and cycles?</li>
+            <li>What is a tree?</li>
+            <li>How are trees useful?</li>
+          </ol>
+        </statement>
+      </p>
+    </assemblage>
+
+    <p>
+      Two fundamental questions in the analysis of graphs are: given two vertices, is there a path between them? And if so, how can we find the shortest possible path?
+      Let's consider the second question first.
+    </p>
+
+    <p>
+      Notice in the graph in
+      <xref ref="fig-graphexample3" /> that there are several paths between, say, <m>A</m> and <m>F</m>.
+      There is a path spanning two edges: <m>A \to C \to F</m>.
+      There is also a path spanning four edges: <m>A\to C \to D \to E \to F</m>.
+      In general, by the <term>distance</term> between two vertices, we mean a path consisting of the fewest edges possible, so the distance between <m>A</m> and <m>F</m> is 1.
+    </p>
+
+    <activity>
+      <statement>
+        <p>
+          Consider the graph in
+          <xref ref="fig-distance" />.
+        </p>
+
+        <figure xml:id="fig-distance">
+
+          <caption>A graph.</caption>
+
+          <image xml:id="img-graphdistance" width="50%" source="images/graph04.svg" />
+        </figure>
+
+        <ol>
+          <li>Find three paths from vertex <m>L</m> to vertex <m>E</m>.</li>
+          <li>Determine the distance from vertex <m>B</m> to vertex <m>N</m>. How many paths of this distance can you find?</li>
+        </ol>
+
+
+      </statement>
+
+    </activity>
+
+
+    <p>
+      Returning to the first question above, if the graph is connected, the answer is obviously <em>yes</em>.
+      So, given a graph <m>G(V,E)</m>, we are often interested in removing superfluous edges in a systematic way to arrive at a smallest (which will be made precise shortly) connected <term>subgraph</term>
+      <m>T(V,E')</m>.
+    </p>
+
+
+    <definition>
+      <p>
+        A <term>cycle</term> on <m>n</m> vertices <m>v_1, v_2, \ldots, v_n</m> is the graph with <m>n+1</m> edges <m>v_1 v_2, v_2 v_3, \ldots, v_{n-1} v_n, v_n v_1</m>.
+        We denote such a cycle by <m>C_n</m>.
+        That is, a cycle consists of a path <m>v_1 \to v_2 \to v_3 \to \ldots \to v_n \to v_1</m>, where the only repeated vertex is the first/last one.
+      </p>
+    </definition>
+
+    <example>
+      <video youtube="iu-Zm4xBYw4" />
+    </example>
+
+    <p>
+      One of the major questions in theoretical graph theory is: given a graph <m>G</m>, is there an algorithm that determines whether <m>G</m> contains any cycles?
+      There are several such algorithms, and they are relatively efficient.
+      A related question is: given a graph <m>G</m>, is there an efficient algorithm which can produce a cycle that visits each vertex exactly once?
+      The answer to this question is currently unknown (as of April 2020), but an active area of research.
+    <aside>This is known as a <term>Hamiltonian cycle</term>.</aside>
+    </p>
+
+    <p>
+      Our focus for the rest of this section is graphs that do <em>not</em> contain any cycles.
+    </p>
+
+    <definition xml:id="def-tree">
+      <index>tree</index>
+      <p>
+        A connected graph <m>T(V,E)</m> that does not contain any cycles is known as a <term>tree</term>.
+      <aside>A graph <m>F(V,E)</m> that does not contain any cycles is known as a <term>forest</term>. Yes, a forest is a collection of trees.</aside>
+      </p>
+    </definition>
+
+    <example>
+      <video youtube="2Qy8fugua80" />
+    </example>
+
+
+    <p>
+      The description given in
+      <xref ref="def-tree" /> is pretty close to what we want.
+      Given a graph <m>G(V,E)</m>, we want a tree <m>T(V,E')</m> such that every vertex of <m>G</m> is also a vertex of <m>T</m>, and every edge of <m>T</m> to be an edge of <m>G</m>.
+      Such a tree is known as a <term>spanning tree</term> for <m>G</m>.
+    </p>
+
+    <exploration>
+      <statement>
+        <p>
+          Determine whether the given graph is a tree. Justify your answer by making explicit reference to
+          <xref ref="def-tree" />.
+        </p>
+        <ol>
+          <li>
+            <figure xml:id="fig-treeq01">
+
+              <caption>The graph for Question 1. Is it a tree, or no?</caption>
+
+              <image xml:id="img-tree01" width="50%" source="images/tree01.svg" />
+            </figure>
+          </li>
+
+          <li>
+            <figure xml:id="fig-treeq02">
+
+              <caption>The graph for Question 2. Is it a tree, or no?</caption>
+
+              <image xml:id="img-tree02" width="50%" source="images/tree02.svg" />
+            </figure>
+          </li>
+
+          <li>
+            <figure xml:id="fig-treeq03">
+
+              <caption>The graph for Question 3. Is it a tree, or no?</caption>
+
+              <image xml:id="img-tree03" width="50%" source="images/tree03.svg" />
+            </figure>
+          </li>
+        </ol>
+
+      </statement>
+    </exploration>
+
+
+
+
+
+
+
+
+
+
+    <p>
+      The last big idea that we'll explore is the notion of a <m>weighted</m> graph, which we introduce with an example.
+    </p>
+
+    <example>
+      <p>
+
+        Consider the graph in
+        <xref ref="fig-conveyorbelt" />.
+        Suppose the vertices represent stations in a factory, and the edges represent conveyor belts between the stations.
+      </p>
+
+      <figure xml:id="fig-conveyorbelt">
+
+        <caption>A graph representing the arrangements of conveyor belts between four stations in a factory.</caption>
+
+        <image xml:id="img-conveyorarrangement" width="50%" source="images/graph06.png" />
+      </figure>
+
+      <p>
+        A manager in the factory may be interested in how efficiently the conveyor belts can be run.
+        Suppose that belt <m>cd</m> costs $11/day to run, belt <m>de</m> costs $8/day to run, belt <m>cf</m> costs $9/day to run, belt <m>df</m> costs $12/day to run, and belt <m>ef</m> costs $11/day to run.
+        We can represent this by labeling each edge with its cost, as seen in
+        <xref ref="fig-weightedbelt" />.
+      </p>
+
+      <figure xml:id="fig-weightedbelt">
+
+        <caption>A <em>weighted</em> graph representing the arrangements of conveyor belts between four stations in a factory.</caption>
+
+        <image xml:id="img-weightedbelt" width="50%" source="images/graph05.png" />
+      </figure>
+
+      <p>
+        This is an example of a <term>weighted graph</term>, which is just a graph with the edges labeled.
+        The labels usually represent something meaningful about the situation the graph represents.
+        For example, we could have weighted the edges in
+        <xref ref="fig-weightedbelt" /> with the time it takes to move an object from one station to another, or the distance between stations (as one might find on a map), etc.
+      </p>
+
+
+    </example>
+
+    <p>
+      We tie this all together with the concept of a <term>minimal spanning tree</term>, which is a spanning tree with the smallest total weight.
+    </p>
+
+    <example xml:id="ex-mwst-elimination">
+      <p>
+        Again, consider the weighted graph representing our conveyor belt in
+        <xref ref="fig-weightedbelt" />.
+        The total cost to run the belts for one day is $51. Assume that eliminating a belt does not substantially increase the cost of running the others. How could we find a lower-cost arrangement?
+      </p>
+
+      <video youtube="fXfsHOVSy2U" />
+
+    </example>
+
+    <p>
+      There are several algorithms for finding minimum weight spanning trees in addition to the one presented in
+      <xref ref="ex-mwst-elimination" />.
+      A famous such example is <term>Prim's algorithm</term>.
+    </p>
+
+    <algorithm xml:id="alg-prim">
+      <title>
+        Prim's Algorithm
+      </title>
+
+      <p>
+        An important algorithm, due to Vojtěch Jarník and later rediscovered and published by Robert Prim and Edsger Dijkstra, provides a minimum-weight spanning tree as follows:
+      </p>
+      <ol>
+        <li>Choose one of the vertices of the graph.</li>
+        <li>Grow the tree by finding an edge of minimum weight which connects the existing tree to a vertex in the graph not yet in the tree, and put this edge in the tree.</li>
+        <li>Continue until all the vertices of the graph are in the tree.</li>
+      </ol>
+      <p>
+        The algorithm is demonstrated in the video below.
+      </p>
+
+      <video youtube="QoF1b9t4DGQ" />
+
+    </algorithm>
+
+    <conclusion>
+      <p>
+        In this section, we introduced the idea of a tree; given a connected graph <m>G</m>, of particular interest is a <em>spanning tree</em> for <m>G</m>, which contains all the vertices of <m>G</m>.
+        We are often interested in spanning trees of minimum weight, which may represent things like minimum distances or costs.
+        There are several algorithms for calculating minimum weight spanning trees; one is often called <em>Prim's algorithm</em> and works by growing the tree from one vertex, adding a minimum-weight edge at each step.
+      </p>
+    </conclusion>
+
+
+    <exercises>
+
+
+
+      <exercise>
+        <statement>
+          <p>
+            Is the following graph a tree? Explain.
+          </p>
+          <image source="./images/tree-exer01.svg" width="40%" />
+        </statement>
+      </exercise>
+
+
+      <exercise>
+        <statement>
+          <p>
+            Is the following graph a tree? Explain.
+          </p>
+          <image source="./images/tree-exer02.svg" width="40%" />
+        </statement>
+      </exercise>
+
+
+      <exercise>
+        <statement>
+          <p>
+            Is the following graph a tree? Explain.
+          </p>
+          <image source="./images/tree-exer03.svg" width="40%" />
+        </statement>
+      </exercise>
+
+
+      <exercise>
+        <statement>
+          <p>
+            Do some internet research to find at least one application of spanning trees.
+            Describe the application, who is interested in it, and why.
+          </p>
+        </statement>
+      </exercise>
+
+
+
+      <exercise>
+        <statement>
+          <p>
+            Consider the state capitals of the upper Midwestern U.S. to be: St. Paul, MN; Bismarck, ND; Pierre, SD; Lincoln, NE; Des Moines, IA; Madison, WI; Springfield, IL.
+          </p>
+          <ol>
+            <li>Calculate the distance from each state capital to the others. Use this information to create a weighted graph.</li>
+            <li>Calculate a minimum weight spanning tree of the graph you just found.</li>
+            <li>How could this minimum wieght spanning tree be useful?</li>
+          </ol>
+        </statement>
+      </exercise>
+
+
+    </exercises>
+
+  </section>
+
+
+</chapter>
